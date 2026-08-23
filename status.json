@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-23T22:31:00Z",
+  "updatedAt": "2026-08-23T22:41:00Z",
   "updatedBy": "relay",
-  "train": { "landed": 2, "total": 7 },
+  "train": { "landed": 3, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
-    { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:50Z" },
-    { "n": 30, "w": "W33", "state": "open", "ci": "green", "moved": "2026-08-23T22:23:00Z" },
+    { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
+    { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:38:40Z" },
     { "n": 28, "w": "W34", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:35Z" },
     { "n": 29, "w": "W35", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:36Z" },
     { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:38Z" },
@@ -13,19 +13,18 @@
   ],
   "pulse": {
     "running": true,
-    "text": "W40 cracked it: repaired W33 passes all six tests (6:27 PM). The worker is sweeping the same fix up the chain, one branch at a time. Relay holds merges until the sweep finishes so nothing collides, then merges every green window in order."
+    "text": "W33 MERGED 6:38 PM — 3 of 7 landed. Root cause found and beaten: auto-generated docs go stale whenever a new brief lands; fix is refresh + regenerate per branch. W41 sweep fired by the merge, now applying that fix to W34–W37 in order. Relay merges each on green."
   },
   "medianWindowMinutes": 45,
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 12, "inProgress": 5, "todo": 3 },
+    "counts": { "done": 13, "inProgress": 4, "todo": 3 },
     "inProgress": [
-      { "id": "603", "name": "W33 canonical balance — GREEN, awaiting orderly merge" },
-      { "id": "604", "name": "W34 naming cleanup — fix sweeping toward it" },
-      { "id": "605", "name": "W35 dual-time view — fix sweeping toward it" },
-      { "id": "606", "name": "W36 forecaster — fix sweeping toward it" },
-      { "id": "607", "name": "W37 integration record — fix sweeping toward it" }
+      { "id": "604", "name": "W34 naming cleanup — W41 sweep inbound" },
+      { "id": "605", "name": "W35 dual-time view — W41 sweep inbound" },
+      { "id": "606", "name": "W36 forecaster — W41 sweep inbound" },
+      { "id": "607", "name": "W37 integration record — W41 sweep inbound" }
     ]
   }
 }
