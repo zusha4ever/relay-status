@@ -1,32 +1,31 @@
 {
-  "updatedAt": "2026-08-23T21:47:00Z",
+  "updatedAt": "2026-08-23T22:04:00Z",
   "updatedBy": "relay",
-  "train": { "landed": 1, "total": 7 },
+  "train": { "landed": 2, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
-    { "n": 27, "w": "W32", "state": "open", "ci": "green", "moved": "2026-08-23T18:17:23Z" },
-    { "n": 30, "w": "W33", "state": "open", "ci": "green", "moved": "2026-08-23T18:13:59Z" },
-    { "n": 28, "w": "W34", "state": "open", "ci": "green", "moved": "2026-08-23T18:14:20Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "green", "moved": "2026-08-23T18:14:39Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "green", "moved": "2026-08-23T17:35:59Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "green", "moved": "2026-08-23T18:31:36Z" }
+    { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:50Z" },
+    { "n": 30, "w": "W33", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:34Z" },
+    { "n": 28, "w": "W34", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:35Z" },
+    { "n": 29, "w": "W35", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:36Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:38Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:39Z" }
   ],
   "pulse": {
     "running": true,
-    "text": "Rebuild pass W39 triggered 5:45 PM via a merge event — the trigger type with a perfect firing record. Expect branch movement within ~20 min; six merges follow, then W38."
+    "text": "W39 ran (chain built 5:55 PM). W32 merged green — 2 of 7 landed. One test job fails consistently from W33's link up; W32's merge just fired a rebuild run on fresh main, and diagnosis window W40 is queued if that doesn't cure it. Red never merges."
   },
   "medianWindowMinutes": 45,
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 11, "inProgress": 6, "todo": 2 },
+    "counts": { "done": 12, "inProgress": 5, "todo": 3 },
     "inProgress": [
-      { "id": "602", "name": "W32 staleness gate" },
-      { "id": "603", "name": "W33 canonical balance" },
-      { "id": "604", "name": "W34 naming cleanup" },
-      { "id": "605", "name": "W35 dual-time view" },
-      { "id": "606", "name": "W36 forecaster" },
-      { "id": "607", "name": "W37 integration record" }
+      { "id": "603", "name": "W33 canonical balance — tests red, rebuild firing" },
+      { "id": "604", "name": "W34 naming cleanup — tests red, rebuild firing" },
+      { "id": "605", "name": "W35 dual-time view — tests red, rebuild firing" },
+      { "id": "606", "name": "W36 forecaster — tests red, rebuild firing" },
+      { "id": "607", "name": "W37 integration record — tests red, rebuild firing" }
     ]
   }
 }
