@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-23T22:41:00Z",
+  "updatedAt": "2026-08-24T00:11:00Z",
   "updatedBy": "relay",
   "train": { "landed": 3, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
-    { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:38:40Z" },
+    { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
     { "n": 28, "w": "W34", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:35Z" },
     { "n": 29, "w": "W35", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:36Z" },
     { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:38Z" },
@@ -13,7 +13,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "W33 MERGED 6:38 PM — 3 of 7 landed. Root cause found and beaten: auto-generated docs go stale whenever a new brief lands; fix is refresh + regenerate per branch. W41 sweep fired by the merge, now applying that fix to W34–W37 in order. Relay merges each on green."
+    "text": "W41 sweep re-fired 8:09 PM: the 6:39 PM webhook left no run evidence in 87 minutes, so the relay re-triggered with the proven merge pattern. Expect W34's branch to move within ~20 min, then W35, W36, W37 in order. Backstop: 6:00 AM run."
   },
   "medianWindowMinutes": 45,
   "plane": {
