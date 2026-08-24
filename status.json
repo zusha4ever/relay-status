@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T16:50:00Z",
+  "updatedAt": "2026-08-24T17:44:00Z",
   "updatedBy": "relay",
   "train": { "landed": 4, "total": 7 },
   "prs": [
@@ -13,25 +13,25 @@
   ],
   "pulse": {
     "running": true,
-    "text": "Honest recap: nothing merged overnight. W38 failed its test job a third time at 3:17 AM; the overnight script halted on red as designed, and nothing else watches while the relay sleeps. Fix now running as W43 (fired 12:48 PM): one worker session with authority to repair W38's failing job (prime suspect: a known Node-24 regression that only bites the new lane), then stack W35, W36, W37 directly on top of the fix so the relay merges all four in a row, then refresh the four reports. Movement expected within the hour."
+    "text": "Breakthrough at 1:06 PM: the real blocker is found and it was never Node — it is a timing race in the database setup: 18 build lanes try to create the same global database role at once and one crashes. W44 fired 1:42 PM with the authorized fix (serialize that one step or treat the loser's error as harmless — no migration files touched), pushed onto W38's own branch so one green merge lands the runner switch AND the fix. The last three windows then stack on top for back-to-back merges."
   },
   "medianWindowMinutes": 45,
   "support": [
-    { "w": "W39", "phase": "done", "note": "Chain rebuild, Sat 5:55 PM; report PR 34 waits on the train" },
-    { "w": "W40", "phase": "done", "note": "Staleness root cause found, Sat 6:23 PM; report PR 36 waits on the train" },
-    { "w": "W41", "phase": "done", "note": "First sweep, Sat 8:21 PM; report PR 38 waits on the train" },
-    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat 9:13 PM; report PR 41 waits on the train" },
-    { "w": "W38", "phase": "running", "note": "Test job failed 3x on the new lane; W43 now repairing it with root-cause authority" },
-    { "w": "W43", "phase": "running", "note": "FIRED 12:48 PM: repair W38, stack the last three windows on top, hand the relay a four-merge finish" }
+    { "w": "W40", "phase": "done", "note": "Staleness root cause, Sat; report PR 36 queued behind the train" },
+    { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 queued behind the train" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 queued behind the train" },
+    { "w": "W43", "phase": "done", "note": "Ran 12:48-1:06 PM: DISPROVED the Node theory, found the real cause (role-creation race, DRIFT-392), correctly refused an out-of-scope fix; report PR 45" },
+    { "w": "W38", "phase": "running", "note": "The runner switch — W44 is pushing the race fix onto its branch; one green merge lands both" },
+    { "w": "W44", "phase": "running", "note": "FIRED 1:42 PM: kill the role race (authorized, no migration edits), green PR 43, stack W35-37 on top" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": { "done": 14, "inProgress": 3, "todo": 4 },
     "inProgress": [
-      { "id": "605", "name": "W35 dual-time view — stacking on the W38 fix (W43)" },
-      { "id": "606", "name": "W36 forecaster — stacking on the W38 fix (W43)" },
-      { "id": "607", "name": "W37 integration record — stacking on the W38 fix (W43)" }
+      { "id": "605", "name": "W35 dual-time view — stacks after the W44 race fix" },
+      { "id": "606", "name": "W36 forecaster — stacks after the W44 race fix" },
+      { "id": "607", "name": "W37 integration record — stacks after the W44 race fix" }
     ]
   }
 }
