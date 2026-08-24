@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-08-24T00:11:00Z",
+  "updatedAt": "2026-08-24T00:26:00Z",
   "updatedBy": "relay",
   "train": { "landed": 3, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
-    { "n": 28, "w": "W34", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:35Z" },
+    { "n": 28, "w": "W34", "state": "open", "ci": "pending", "moved": "2026-08-24T00:21:30Z" },
     { "n": 29, "w": "W35", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:36Z" },
     { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:38Z" },
     { "n": 32, "w": "W37", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:39Z" }
   ],
   "pulse": {
     "running": true,
-    "text": "W41 sweep re-fired 8:09 PM: the 6:39 PM webhook left no run evidence in 87 minutes, so the relay re-triggered with the proven merge pattern. Expect W34's branch to move within ~20 min, then W35, W36, W37 in order. Backstop: 6:00 AM run."
+    "text": "W41 sweep CONFIRMED LIVE: W34 took its fix 8:21 PM, tests running. W35, W36, W37 follow in strict order — roughly one every 10–15 minutes. Relay merges the whole set on the next pass after the sweep's report appears."
   },
   "medianWindowMinutes": 45,
   "plane": {
@@ -21,10 +21,10 @@
     "dates": "Aug 24 – Sep 5",
     "counts": { "done": 13, "inProgress": 4, "todo": 3 },
     "inProgress": [
-      { "id": "604", "name": "W34 naming cleanup — W41 sweep inbound" },
-      { "id": "605", "name": "W35 dual-time view — W41 sweep inbound" },
-      { "id": "606", "name": "W36 forecaster — W41 sweep inbound" },
-      { "id": "607", "name": "W37 integration record — W41 sweep inbound" }
+      { "id": "604", "name": "W34 naming cleanup — fixed 8:21 PM, tests running" },
+      { "id": "605", "name": "W35 dual-time view — next in sweep" },
+      { "id": "606", "name": "W36 forecaster — third in sweep" },
+      { "id": "607", "name": "W37 integration record — last in sweep" }
     ]
   }
 }
