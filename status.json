@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T02:47:00Z",
+  "updatedAt": "2026-08-24T16:50:00Z",
   "updatedBy": "relay",
   "train": { "landed": 4, "total": 7 },
   "prs": [
@@ -7,30 +7,31 @@
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
     { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "pending", "moved": "2026-08-24T02:45:00Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "pending", "moved": "2026-08-24T02:45:00Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "pending", "moved": "2026-08-24T02:45:00Z" }
+    { "n": 29, "w": "W35", "state": "open", "ci": "unknown", "moved": "2026-08-24T00:59:10Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:01:58Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:02:02Z" }
   ],
   "pulse": {
     "running": true,
-    "text": "W35 was waiting on a working test lane. Diagnosis 10:45 PM: the freshness gate failed because the relay's own late pushes staled the auto-generated docs. W38's branch is repaired, tests re-running on the Mac's free runner, and a finisher script now runs on the Mac: it merges W38 on green, then re-freshens and merges W35, W36, W37 and the four repair reports one by one, each only on green. Expect the train to fill to 7 of 7 over the next hour or two with no one watching."
+    "text": "Honest recap: nothing merged overnight. W38 failed its test job a third time at 3:17 AM; the overnight script halted on red as designed, and nothing else watches while the relay sleeps. Fix now running as W43 (fired 12:48 PM): one worker session with authority to repair W38's failing job (prime suspect: a known Node-24 regression that only bites the new lane), then stack W35, W36, W37 directly on top of the fix so the relay merges all four in a row, then refresh the four reports. Movement expected within the hour."
   },
   "medianWindowMinutes": 45,
   "support": [
-    { "w": "W39", "phase": "done", "note": "Chain rebuild, ran 5:55 PM; report queued in the finisher (PR 34)" },
-    { "w": "W40", "phase": "done", "note": "Redness diagnosis, ran 6:23 PM; report queued in the finisher (PR 36)" },
-    { "w": "W41", "phase": "done", "note": "First sweep, ran 8:21 PM; report queued in the finisher (PR 38)" },
-    { "w": "W42", "phase": "done", "note": "True-chain rebuild, done 9:13 PM; report queued in the finisher (PR 41)" },
-    { "w": "W38", "phase": "running", "note": "Repaired 10:45 PM after a docs-freshness failure; tests re-running on the Mac; finisher merges it on green" }
+    { "w": "W39", "phase": "done", "note": "Chain rebuild, Sat 5:55 PM; report PR 34 waits on the train" },
+    { "w": "W40", "phase": "done", "note": "Staleness root cause found, Sat 6:23 PM; report PR 36 waits on the train" },
+    { "w": "W41", "phase": "done", "note": "First sweep, Sat 8:21 PM; report PR 38 waits on the train" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat 9:13 PM; report PR 41 waits on the train" },
+    { "w": "W38", "phase": "running", "note": "Test job failed 3x on the new lane; W43 now repairing it with root-cause authority" },
+    { "w": "W43", "phase": "running", "note": "FIRED 12:48 PM: repair W38, stack the last three windows on top, hand the relay a four-merge finish" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": { "done": 14, "inProgress": 3, "todo": 4 },
     "inProgress": [
-      { "id": "605", "name": "W35 dual-time view — in the finisher queue" },
-      { "id": "606", "name": "W36 forecaster — in the finisher queue" },
-      { "id": "607", "name": "W37 integration record — in the finisher queue" }
+      { "id": "605", "name": "W35 dual-time view — stacking on the W38 fix (W43)" },
+      { "id": "606", "name": "W36 forecaster — stacking on the W38 fix (W43)" },
+      { "id": "607", "name": "W37 integration record — stacking on the W38 fix (W43)" }
     ]
   }
 }
