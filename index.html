@@ -69,6 +69,11 @@
   #detail .dt-cards{font-size:11px;color:var(--chalk-dim);font-family:ui-monospace,Menlo,monospace;line-height:1.6}
   tr.tap{cursor:pointer}
   .taphint{font-size:10px;color:var(--chalk-dim);margin-top:4px}
+  .tabs{display:flex;gap:3px;margin:14px 0 12px}
+  .tab{flex:1;background:var(--navy);border:1px solid var(--gold);color:var(--chalk-dim);font-family:'Inter';font-weight:600;font-size:12px;padding:9px 4px;cursor:pointer}
+  .tab.on{background:var(--gold);color:var(--navy-deep)}
+  .pane{display:none}
+  .pane.on{display:block}
   footer{margin-top:30px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--chalk-dim)}
 </style>
 </head>
@@ -91,7 +96,13 @@
   </div>
   <div class="deep">Numbers look stale? <a onclick="deepPull()">Deep live pull</a> — asks Claude to re-read GitHub directly; uses account tokens (request marked for caching), so it's the exception, not the habit.</div>
 
-  <h2>Merge train <small id="trainsub">the seven windows in flight</small></h2>
+  <div class="tabs">
+    <button class="tab on" onclick="showPane(0,this)">Train</button>
+    <button class="tab" onclick="showPane(1,this)">Repair crew</button>
+    <button class="tab" onclick="showPane(2,this)">Windows</button>
+    <button class="tab" onclick="showPane(3,this)">Plane</button>
+  </div>
+  <div class="pane on"><h2 style="margin-top:0">Merge train <small id="trainsub">every product window the feed lists — new ones appear here on their own</small></h2>
   <div class="trainpct"><span><b id="pct">–</b> landed on main</span><span id="landedcount"></span></div>
   <div class="train" id="train"></div>
   <div class="legend">
@@ -104,15 +115,17 @@
   <h2>Is anything running right now?</h2>
   <div class="pulsebox" id="pulse"><div class="skeleton">Loading…</div></div>
 
-  <h2>Repair crew <small>the support windows that keep the track usable</small></h2>
+  </div><div class="pane"><h2 style="margin-top:0">Repair crew <small>the support windows that keep the track usable</small></h2>
   <div id="support"><div class="skeleton">Loading…</div></div>
 
-  <h2>Every window, its state, its projected landing</h2>
+  </div><div class="pane"><h2 style="margin-top:0">Every window, its state, its projected landing</h2>
   <div id="queue"><div class="skeleton">Loading…</div></div>
-  <div id="detail"></div>
 
-  <h2>Plane board <small>the build register</small></h2>
+  </div><div class="pane"><h2 style="margin-top:0">Plane board <small>the build register</small></h2>
   <div id="board"><div class="skeleton">Loading…</div></div>
+
+  </div>
+  <div id="detail"></div>
 
   <footer>
     This board always shows the snapshot sealed into it by the relay at send time, and silently upgrades to the live feed when the viewer allows outside connections. A fresh file card in chat = a fresh snapshot.
@@ -123,8 +136,6 @@
 
 <script>
 const FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/status.json";
-const TRACKED=["W31","W32","W33","W34","W35","W36","W37"];
-const QUEUED_EXTRA=["W39","W38"];
 const PLAIN={
   W31:"Consumption validator — proves each build step used its inputs",
   W32:"Docs staleness gate — CI fails if governance docs fall out of date",
@@ -184,6 +195,7 @@ const DETAIL = {
   "Every test run after this bills zero GitHub minutes; the 20-dollar budget cap stops mattering.",
   "Rollback is a single one-line change, documented before the switch is flipped."]}
 };
+function showPane(i,btn){document.querySelectorAll(".pane").forEach((p,k)=>p.classList.toggle("on",k===i));document.querySelectorAll(".tab").forEach((t,k)=>t.classList.toggle("on",k===i));}
 let openW=null;
 function toggleDetail(w){
   const box=el("detail");
@@ -283,7 +295,8 @@ async function askClaude(prompt, servers){
 function renderTrain(prs){
   const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
   let landed=0; const now=Date.now();
-  el("train").innerHTML=TRACKED.map(w=>{
+  const L=prs.filter(p=>p.w).map(p=>p.w);
+  el("train").innerHTML=L.map(w=>{
     const p=byW[w]; let cls="wait", label="queued";
     if(p){
       const movedMin=p.moved?(now-new Date(p.moved))/60000:1e9;
@@ -296,8 +309,8 @@ function renderTrain(prs){
     }
     return `<div class="car ${cls}" onclick="toggleDetail('${w}')"><span class="w">${w}</span><span>${label}</span></div>`;
   }).join("");
-  el("pct").textContent=Math.round(landed/TRACKED.length*100)+"%";
-  el("landedcount").textContent=landed+" of "+TRACKED.length+" windows";
+  el("pct").textContent=Math.round(landed/(L.length||1)*100)+"%";
+  el("landedcount").textContent=landed+" of "+L.length+" windows";
 }
 
 function renderPulse(prs, feedPulse){
@@ -323,7 +336,8 @@ function renderQueue(prs, medianMin){
   const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
   let cursor=Date.now(), rows="";
   const median=(typeof medianMin==="number"&&medianMin>0)?medianMin:45;
-  TRACKED.forEach(w=>{
+  const L=prs.filter(p=>p.w).map(p=>p.w);
+  L.forEach(w=>{
     const p=byW[w]; let state="queued — no branch yet", cls="wait", eta="";
     if(p&&p.state==="merged"){state="LANDED on main";cls="landed";eta="done"}
     else if(p){
@@ -337,7 +351,6 @@ function renderQueue(prs, medianMin){
     }
     rows+=`<tr class="tap" onclick="toggleDetail('${w}')"><td class="w">${w}</td><td>${esc(PLAIN[w]||"")}</td><td><span class="st ${cls}">${state}</span><div class="eta">${eta}</div></td></tr>`;
   });
-  QUEUED_EXTRA.forEach(w=>{rows+=`<tr class="tap" onclick="toggleDetail('${w}')"><td class="w">${w}</td><td>${esc(w==="W39"?"Chain rebuild, ran 5:55 PM, report open as PR 34":"Test suite onto the Mac free runner, queued last")}</td><td><span class="st wait">${w==="W39"?"done, report pending merge":"queued"}</span></td></tr>`});
   el("queue").innerHTML=`<table><tr><th>Window</th><th>What it is</th><th>State · projected landing</th></tr>${rows}</table>
   <div class="taphint">Tap any window, in the train above or this table, to see what is being coded inside it in plain words and in card language.</div>
   <div class="note">Projections assume ${Math.round(median)} min per pending step and ~15 min verify-and-merge for green ones; they shift with every refresh.</div>`;
