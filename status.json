@@ -1,30 +1,36 @@
 {
-  "updatedAt": "2026-08-24T00:26:00Z",
+  "updatedAt": "2026-08-24T01:45:00Z",
   "updatedBy": "relay",
-  "train": { "landed": 3, "total": 7 },
+  "train": { "landed": 4, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
-    { "n": 28, "w": "W34", "state": "open", "ci": "pending", "moved": "2026-08-24T00:21:30Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:36Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:38Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "red", "moved": "2026-08-23T21:55:39Z" }
+    { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
+    { "n": 29, "w": "W35", "state": "open", "ci": "unknown", "moved": "2026-08-24T00:59:10Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:01:58Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:02:02Z" }
   ],
   "pulse": {
     "running": true,
-    "text": "W41 sweep CONFIRMED LIVE: W34 took its fix 8:21 PM, tests running. W35, W36, W37 follow in strict order — roughly one every 10–15 minutes. Relay merges the whole set on the next pass after the sweep's report appears."
+    "text": "Two events at once: the last three windows are chain-rebuilt and ready, BUT the paid hosted test lane hit its 20-dollar cap at 9:04 PM and refuses all work. W38 fired 9:41 PM — it moves testing onto the free Mac runner. On its green, the relay merges everything: three product windows plus four repair reports."
   },
   "medianWindowMinutes": 45,
+  "support": [
+    { "w": "W39", "phase": "done", "note": "Chain rebuild, ran 5:55 PM; report awaiting merge (PR 34)" },
+    { "w": "W40", "phase": "done", "note": "Redness diagnosis, ran 6:23 PM; found the staleness root cause; report PR 36" },
+    { "w": "W41", "phase": "done", "note": "First sweep, ran 8:21 PM; fixed W34; wrong topology on the rest; report PR 38" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, ran 8:56-9:13 PM; last three windows ready to land; report PR 41" },
+    { "w": "W38", "phase": "running", "note": "FIRING NOW 9:41 PM: moves all testing onto the Mac's free runner — the paid lane hit its cap" }
+  ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 13, "inProgress": 4, "todo": 3 },
+    "counts": { "done": 14, "inProgress": 3, "todo": 4 },
     "inProgress": [
-      { "id": "604", "name": "W34 naming cleanup — fixed 8:21 PM, tests running" },
-      { "id": "605", "name": "W35 dual-time view — next in sweep" },
-      { "id": "606", "name": "W36 forecaster — third in sweep" },
-      { "id": "607", "name": "W37 integration record — last in sweep" }
+      { "id": "605", "name": "W35 dual-time view — rebuilt, awaiting the new test lane" },
+      { "id": "606", "name": "W36 forecaster — rebuilt, awaiting the new test lane" },
+      { "id": "607", "name": "W37 integration record — rebuilt, awaiting the new test lane" }
     ]
   }
 }
