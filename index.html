@@ -104,6 +104,9 @@
   <h2>Is anything running right now?</h2>
   <div class="pulsebox" id="pulse"><div class="skeleton">Loading…</div></div>
 
+  <h2>Repair crew <small>the support windows that keep the track usable</small></h2>
+  <div id="support"><div class="skeleton">Loading…</div></div>
+
   <h2>Every window, its state, its projected landing</h2>
   <div id="queue"><div class="skeleton">Loading…</div></div>
   <div id="detail"></div>
@@ -165,8 +168,19 @@ const DETAIL = {
  W39:{cards:"Plane card 608 | PR 34 (its own report) | branch claude/w39-merge-train | rebuilt PRs 27>30>28>29>31>32 as a chain | found the diary-gate structural conflict (R46/R47 vs stacked diffs)",
   items:["The rebuild pass that restacked the six finished branches so they merge one after another without conflicts.",
   "Ran at 5:55 PM; its report identified exactly why tests redden on stacked branches, and the cure: merge in order, refreshing each branch after its predecessor lands."]},
+ W40:{cards:"No product card | PR 36 (report) | branch claude/sleepy-bell-mjcxtt | read failing job log 97268378144 | root cause: governance docs staleness vs windows_ledger.py",
+  items:["The detective window: read the actual failing test log instead of theorizing.",
+  "Found it: pushing a new work-order file makes every in-flight branch's auto-generated ledger one row stale, and the freshness gate rightly fails them.",
+  "Fixed W33 by regenerating its docs; W33 merged minutes later."]},
+ W41:{cards:"No product card | PR 38 (report) | branch claude/w41-chain-sweep | swept W34-W37 with refresh+regenerate | topology: siblings (the flaw)",
+  items:["Applied W40's cure to the four remaining windows and got W34 merged.",
+  "Its flaw, owned by the relay's own work order: it rebuilt the branches side by side instead of stacked, so the first merge re-broke the rest."]},
+ W42:{cards:"No product card | PR 41 (report) | branch claude/w42-chain-rebuild | true chain W35>W36>W37, cumulative doc regen | refreshed report PRs 34/36/38",
+  items:["The correction: rebuilt the last three windows stacked, each on its predecessor, so they merge back to back with nothing re-breaking.",
+  "Finished 9:13 PM; the three windows are ready and waiting only on a working test lane."]},
  W38:{cards:"Plane card 609 | migrates .github/workflows/gates.yml to [self-hosted, stell] | runner stell-colima-runner (proven by canary run 32659331581) | arch-aware gitleaks for arm64 | one-commit rollback",
-  items:["Moves the entire automated test suite onto the runner already living on your Mac.",
+  items:["FIRING NOW: moves the entire automated test suite onto the runner already living on your Mac.",
+  "Promoted to emergency status 9:41 PM when the paid lane hit its 20-dollar cap and began refusing all test runs.",
   "Every test run after this bills zero GitHub minutes; the 20-dollar budget cap stops mattering.",
   "Rollback is a single one-line change, documented before the switch is flipped."]}
 };
@@ -199,18 +213,25 @@ function fmtTime(d){return d.toLocaleTimeString([], {hour:"numeric",minute:"2-di
 
 /* ---------- embedded snapshot: always renders, even fully offline ---------- */
 const SNAPSHOT = {
-  "updatedAt": "2026-08-24T00:50:00Z",
+  "updatedAt": "2026-08-24T01:42:00Z",
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:50Z" },
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:38:40Z" },
     { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "pending", "moved": "2026-08-24T00:21:40Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "pending", "moved": "2026-08-24T00:29:10Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "pending", "moved": "2026-08-24T00:33:38Z" }
+    { "n": 29, "w": "W35", "state": "open", "ci": "unknown", "moved": "2026-08-24T00:59:10Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:01:58Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:02:02Z" }
   ],
-  "pulse": { "running": true, "text": "W34 MERGED 8:48 PM, 4 of 7 landed. Last three (W35, W36, W37) being rebuilt as a chain right now so they merge back to back. Relay lands them on green." },
+  "pulse": { "running": true, "text": "Two events at once: the last three windows are chain-rebuilt and ready, BUT the paid hosted test lane hit its 20-dollar cap at 9:04 PM and now refuses all work. W38 fired 9:41 PM: it moves testing onto the free runner on the Mac. On its green, the relay merges everything." },
   "medianWindowMinutes": 45,
+  "support": [
+    { "w": "W39", "phase": "done", "note": "Chain rebuild, ran 5:55 PM; report awaiting merge (PR 34)" },
+    { "w": "W40", "phase": "done", "note": "Redness diagnosis, ran 6:23 PM; found the staleness root cause; report PR 36" },
+    { "w": "W41", "phase": "done", "note": "First sweep, ran 8:21 PM; fixed W34; wrong topology on the rest; report PR 38" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, ran 8:56-9:13 PM; last three windows ready to land; report PR 41" },
+    { "w": "W38", "phase": "running", "note": "FIRING NOW 9:41 PM: moves all testing onto the Mac's free runner — the paid lane hit its cap" }
+  ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
@@ -322,6 +343,16 @@ function renderQueue(prs, medianMin){
   <div class="note">Projections assume ${Math.round(median)} min per pending step and ~15 min verify-and-merge for green ones; they shift with every refresh.</div>`;
 }
 
+function renderSupport(list){
+  if(!list||!list.length){el("support").innerHTML='<div class="note">No support windows reported in this feed write.</div>';return}
+  const rows=list.map(s=>{
+    const cls=s.phase==="running"?"moving":(s.phase==="done"?"landed":"wait");
+    const label=s.phase==="running"?"RUNNING":(s.phase==="done"?"executed":"queued");
+    return `<tr class="tap" onclick="toggleDetail('${s.w}')"><td class="w">${esc(s.w)}</td><td>${esc(s.note||"")}</td><td><span class="st ${cls}">${label}</span></td></tr>`;
+  }).join("");
+  el("support").innerHTML=`<table><tr><th>Window</th><th>What it did / is doing</th><th>Phase</th></tr>${rows}</table>
+  <div class="taphint">These windows repair and upgrade the pipeline itself; they carry no product features, so they sit outside the seven-car train. Tap any for detail.</div>`;
+}
 function renderBoard(b){
   if(!b){el("board").innerHTML='<div class="note">No board data in this feed write.</div>';return}
   const c=b.counts||{};
@@ -352,6 +383,7 @@ function renderData(f, src){
   renderTrain(f.prs||[]);
   renderPulse(f.prs||[], f.pulse);
   renderQueue(f.prs||[], f.medianWindowMinutes);
+  renderSupport(f.support);
   renderBoard(f.plane);
   el("feedstamp").textContent=ago(f.updatedAt)+" ("+src+")";
 }
