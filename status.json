@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T19:20:00Z",
+  "updatedAt": "2026-08-24T19:34:00Z",
   "updatedBy": "relay",
   "train": { "landed": 4, "total": 7 },
   "prs": [
@@ -13,7 +13,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "3:20 PM: W44 ran TWICE (the webhook and the hourly schedule both fired within 5 minutes) and the two runs wrote two different fixes. Ruling made: the second run's fix (retry the database setup step when it loses the race) wins, because the first run's lock only works inside one database and the race is across databases. Also found the real reason every window has gone red for two days: the test lane checks each branch against a copy that includes every brief pushed to main since, so every new brief broke every open branch. W45 fired 3:17 PM: land the right fix, make the test lane check the branch's own tree, add a claim-first rule so two runs can never both take the same window, then stack W35-37 on top."
+    "text": "3:34 PM: W45 re-fired at 3:32 PM on a clean base. The first fire (3:17) parked itself correctly: the branch it was told to build on was still being pushed to by the earlier W44 run, which corrected its own fix at 3:17 and then turned two more checks red. W45 now cuts straight from main, carries the Mac runner switch across, lands the proven retry fix, makes the test lane check each branch's own files (the two-day red streak's real cause), adds the claim-first rule, proves 6 of 6 green, then stacks W35-37."
   },
   "medianWindowMinutes": 45,
   "support": [
@@ -21,15 +21,16 @@
     { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 queued behind the train" },
     { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 queued behind the train" },
     { "w": "W43", "phase": "done", "note": "Ran 12:48-1:06 PM: DISPROVED the Node theory, found the real cause (role-creation race, DRIFT-392), correctly refused an out-of-scope fix; report PR 45" },
-    { "w": "W44", "phase": "done", "note": "Ran twice 1:42-2:06 PM (double fire): run A landed a lock that cannot work across databases; run B wrote the correct retry fix, then halted properly on finding the collision. Ruling on PR 47: run B's fix wins; W45 lands it" },
-    { "w": "W38", "phase": "running", "note": "The runner switch — rides inside W45's pull request now (PR 43 superseded); one green merge lands the runner switch, the race fix, and the test-lane fix" },
-    { "w": "W45", "phase": "running", "note": "FIRED 3:17 PM: claim first, revert the wrong lock, land the retry fix, one-line test-lane fix (check the branch's own tree), regenerate docs, prove 6/6 green on the Mac lane, then stack W35-37 on top" }
+    { "w": "W44", "phase": "done", "note": "Ran twice 1:42-3:17 PM (double fire): run A landed a lock that cannot work across databases, then corrected itself at 3:17 with a retry that broke two other checks; run B wrote the correct retry and halted properly on the collision. Ruling: run B's fix is the reference; W45 lands it" },
+    { "w": "W38", "phase": "running", "note": "The runner switch — rides inside W45's pull request now, carried across from PR 43 (superseded, 3 of 6 red, branch kept as evidence)" },
+    { "w": "W45", "phase": "running", "note": "FIRED 3:32 PM (first fire 3:17 parked correctly): claim first, cut from main, carry W38, land the proven retry, one-line test-lane fix, register R58, regenerate, 6/6 green on the Mac lane, then stack W35-37" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 14, "inProgress": 3, "todo": 4 },
+    "counts": { "done": 14, "inProgress": 4, "todo": 4 },
     "inProgress": [
+      { "id": "610", "name": "W45 runner switch + race fix + test-lane fix (running)" },
       { "id": "605", "name": "W35 dual-time view — stacks after W45 lands" },
       { "id": "606", "name": "W36 forecaster — stacks after W45 lands" },
       { "id": "607", "name": "W37 integration record — stacks after W45 lands" }
