@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STELL · Relay Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A; --navy-deep:#141F38; --gold:#B8860B; --gold-bright:#D4A017;
+    --chalk:#F8F7F4; --chalk-dim:#B9BCC6; --green:#5FA772; --red:#C96A5B; --line:#3A4A72;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;border-radius:0}
+  body{background:var(--navy-deep);color:var(--chalk);font-family:'Inter',sans-serif;font-size:14px;line-height:1.45;padding:16px 12px 48px}
+  .wrap{max-width:680px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--gold);padding-bottom:12px;margin-bottom:16px}
+  h1{font-family:'EB Garamond',serif;font-weight:600;font-size:26px;letter-spacing:.5px;color:var(--chalk)}
+  h1 span{color:var(--gold-bright)}
+  .stamp{font-size:11px;color:var(--chalk-dim);text-align:right}
+  .stamp b{color:var(--chalk);font-weight:600}
+  button.refresh{background:var(--gold);color:var(--navy-deep);border:none;font-family:'Inter';font-weight:700;font-size:13px;padding:10px 16px;cursor:pointer;width:100%;margin-bottom:8px}
+  button.refresh:disabled{background:var(--line);color:var(--chalk-dim)}
+  .auto{display:flex;justify-content:space-between;font-size:11px;color:var(--chalk-dim);margin-bottom:6px;align-items:center}
+  .auto label{display:flex;gap:6px;align-items:center;cursor:pointer}
+  .deep{font-size:11px;color:var(--chalk-dim);margin-bottom:16px}
+  .deep a{color:var(--gold-bright);text-decoration:underline;cursor:pointer}
+  h2{font-family:'EB Garamond',serif;font-weight:600;font-size:17px;color:var(--gold-bright);margin:22px 0 10px;letter-spacing:.4px}
+  h2 small{font-family:'Inter';font-size:11px;color:var(--chalk-dim);font-weight:400;margin-left:8px}
+  .train{display:flex;gap:3px;margin-bottom:6px}
+  .car{flex:1;height:44px;border:1px solid var(--gold);display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:10px;font-weight:600;color:var(--chalk-dim)}
+  .car .w{font-size:12px;letter-spacing:.5px}
+  .car.landed{background:var(--gold);color:var(--navy-deep)}
+  .car.green{border-color:var(--green);color:var(--green)}
+  .car.moving{border-color:var(--gold-bright);color:var(--gold-bright);animation:pulse 1.4s infinite}
+  .car.red{border-color:var(--red);color:var(--red)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .trainpct{display:flex;justify-content:space-between;font-size:12px;color:var(--chalk-dim);margin-bottom:4px}
+  .trainpct b{color:var(--chalk);font-size:15px}
+  .legend{font-size:10px;color:var(--chalk-dim);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:-1px}
+  .pulsebox{border:1px solid var(--line);background:var(--navy);padding:12px}
+  .pulsebox .big{font-size:15px;font-weight:600;margin-bottom:4px;color:var(--chalk)}
+  .pulsebox .big.live{color:var(--gold-bright)}
+  .pulsebox .sub{font-size:12px;color:var(--chalk-dim)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--chalk-dim);text-align:left;padding:6px 6px;border-bottom:1px solid var(--gold);font-weight:600}
+  td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--chalk)}
+  td.w{font-weight:700;white-space:nowrap}
+  .st{font-weight:600;white-space:nowrap}
+  .st.landed{color:var(--gold-bright)} .st.green{color:var(--green)} .st.wait{color:var(--chalk-dim)} .st.red{color:var(--red)} .st.moving{color:var(--gold-bright)}
+  .eta{color:var(--chalk-dim);font-size:11px}
+  .counts{display:flex;gap:3px;margin-bottom:10px}
+  .count{flex:1;border:1px solid var(--line);background:var(--navy);padding:10px 6px;text-align:center}
+  .count b{display:block;font-size:20px;font-family:'EB Garamond',serif;color:var(--gold-bright)}
+  .count span{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--chalk-dim)}
+  ul.cards{list-style:none}
+  ul.cards li{padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--chalk)}
+  ul.cards li b{color:var(--gold-bright);font-weight:600;margin-right:6px}
+  .note{font-size:11px;color:var(--chalk-dim);margin-top:8px;font-style:italic}
+  .err{border:1px solid var(--red);color:var(--red);padding:10px;font-size:12px;margin-top:8px}
+  .skeleton{color:var(--chalk-dim);font-size:12px;padding:14px 0}
+  .car{cursor:pointer}
+  #detail{display:none;border:1px solid var(--gold);background:var(--navy);padding:14px;margin:10px 0}
+  #detail .dt-title{font-family:'EB Garamond',serif;font-size:16px;color:var(--gold-bright);margin-bottom:8px}
+  #detail .dt-h{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--chalk-dim);margin:10px 0 5px;font-weight:600}
+  #detail ul{margin-left:16px}
+  #detail li{font-size:12px;color:var(--chalk);margin-bottom:5px}
+  #detail .dt-cards{font-size:11px;color:var(--chalk-dim);font-family:ui-monospace,Menlo,monospace;line-height:1.6}
+  tr.tap{cursor:pointer}
+  .taphint{font-size:10px;color:var(--chalk-dim);margin-top:4px}
+  footer{margin-top:30px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--chalk-dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>STELL <span>·</span> Relay Board</h1>
+    <div class="stamp">Finance module<br>feed written <b id="feedstamp">–</b><br>checked <b id="stamp">never</b></div>
+  </header>
+
+  <div style="border:1px solid var(--gold);background:var(--navy);padding:9px 12px;font-size:11px;color:var(--chalk-dim);margin-bottom:8px">
+    <b style="color:var(--gold-bright)">This is the LIVE board.</b> It reads the relay status feed on load and every 60 seconds.
+    If the feed is unreachable it falls back to the sealed snapshot and says so on the stamp line.
+    Bookmark this page; it costs nothing to refresh.
+  </div>
+  <button class="refresh" id="btn" onclick="refreshAll()">Refresh now</button>
+  <div class="auto">
+    <label><input type="checkbox" id="autochk" checked onchange="toggleAuto()"> auto-retry live feed every 60s — costs nothing</label>
+    <span id="countdown"></span>
+  </div>
+  <div class="deep">Numbers look stale? <a onclick="deepPull()">Deep live pull</a> — asks Claude to re-read GitHub directly; uses account tokens (request marked for caching), so it's the exception, not the habit.</div>
+
+  <h2>Merge train <small id="trainsub">the seven windows in flight</small></h2>
+  <div class="trainpct"><span><b id="pct">–</b> landed on main</span><span id="landedcount"></span></div>
+  <div class="train" id="train"></div>
+  <div class="legend">
+    <span><i style="background:var(--gold)"></i>landed on main</span>
+    <span><i style="border:1px solid var(--green)"></i>tests green, awaiting merge</span>
+    <span><i style="border:1px solid var(--gold-bright)"></i>moving right now</span>
+    <span><i style="border:1px solid var(--red)"></i>tests failing</span>
+  </div>
+
+  <h2>Is anything running right now?</h2>
+  <div class="pulsebox" id="pulse"><div class="skeleton">Loading…</div></div>
+
+  <h2>Every window, its state, its projected landing</h2>
+  <div id="queue"><div class="skeleton">Loading…</div></div>
+  <div id="detail"></div>
+
+  <h2>Plane board <small>the build register</small></h2>
+  <div id="board"><div class="skeleton">Loading…</div></div>
+
+  <footer>
+    This board always shows the snapshot sealed into it by the relay at send time, and silently upgrades to the live feed when the viewer allows outside connections. A fresh file card in chat = a fresh snapshot.
+    "Deep live pull" is the only action that spends account tokens.
+    "Moving right now" means that branch's code changed within the last 20 minutes.
+  </footer>
+</div>
+
+<script>
+const FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/status.json";
+const TRACKED=["W31","W32","W33","W34","W35","W36","W37"];
+const QUEUED_EXTRA=["W39","W38"];
+const PLAIN={
+  W31:"Consumption validator — proves each build step used its inputs",
+  W32:"Docs staleness gate — CI fails if governance docs fall out of date",
+  W33:"Canonical balance — one trusted balance figure proven end to end",
+  W34:"Naming cleanup — content items renamed to match the ratified schema",
+  W35:"Dual-time view — budget vs forecast on the review screen",
+  W36:"Forecaster — Monte Carlo projection of build completion",
+  W37:"Integration record — the rebuild pass that unblocked this train"
+};
+let busy=false, countTimer=null, secsLeft=0;
+
+/* ---------- per-window detail: card language + plain words ---------- */
+const DETAIL = {
+ W31:{cards:"Plane card 601 | PR 26 | branch claude/w31-consumption-validator | DRIFT range 373-378 | arms the consumption-traces gate in scripts/gates/",
+  items:["A checker script inside the repo that reads each build step's declared inputs and proves the step actually used them.",
+  "Ends the era where the consumption gate failed only because no checker existed.",
+  "Merged to main; the gate now runs on every test suite."]},
+ W32:{cards:"Plane card 602 | PR 27 | branch claude/w32-governance-docs-gate | DRIFT range 379-384 | wires 4 renderers into CI via governance-docs-check.sh | carries the tools/drift_index.py header fix (W37 repair)",
+  items:["Four governance documents (build diary chronicle, DRIFT index, rules index, windows ledger) are auto-generated; this makes CI fail whenever a generated copy falls out of date.",
+  "Silent drift between the record and reality becomes impossible.",
+  "Merged to main; the gate is live on every build."]},
+ W33:{cards:"Plane card 603 | PR 30 | branch claude/w33-canonical-balance | DRIFT range 385-390 | seeds canonical_balance (schema.md definition) on the W24 source chain: field_mapping > sync_run > canonical_account > canonical_transaction | new figure_lineage + computation_output pair | id exports in substrate/ids.ts | proof extends tests/e2e/journeys workflow-certify-and-file",
+  items:["The demo database gets its first real balance record, built column-for-column from the ratified schema, nothing invented.",
+  "One on-screen figure is wired all the way down to that balance record, so its number is traceable to source data.",
+  "The end-to-end walk test asserts the figure resolves and its real value renders: no dead controls, no faked numbers."]},
+ W34:{cards:"Plane card 604 | PR 28 | branch claude/w34-contentitem-naming | DRIFT range 391-396 | reconciles ContentItem names to the ratified schema | closes the DRIFT-331 residual",
+  items:["Content items, the building blocks every review screen renders, carried names that drifted from the ratified schema.",
+  "This renames them to match the schema exactly, across the contract and every file that references them.",
+  "Closes a recorded discrepancy (DRIFT-331) open since the naming drift was first caught."]},
+ W35:{cards:"Plane card 605 | PR 29 | branch claude/w35-dualtime-bridge | DRIFT range 397-402 | composes ReviewView.dualTime on screen S-14 per .architect/screen-14-review-screen.md | uses M30 dual-time computation layer (design D3) | owns apps/web/app/finance/operations/review-screen/ + apps/web/server/composition/",
+  items:["The review screen learns to tell time twice: every figure shown against both the locked budget and the current forecast, side by side.",
+  "W21 built the machinery but left the bridge unwired; this composes it for real from the ratified screen spec.",
+  "If the spec were ambiguous the rule was to stop and ask, never guess; the build followed the recorded spec."]},
+ W36:{cards:"Plane card 606 | PR 31 | branch claude/w36-forecast-tooling | Monte Carlo over docs/windows-ledger.json (the machine-readable build-throughput dataset from W29) | frozen forecast record | carries ruling R52 (certify-with-attestation) for governance transcription",
+  items:["A forecasting tool that runs thousands of simulated build futures over the real pace of past work windows.",
+  "Output: a frozen, dated projection of when the remaining build lands; the board's dates start coming from this instead of hand estimates.",
+  "Also carries the ratified rule that a reviewer signing off on an unproven figure must first write down what they checked."]},
+ W37:{cards:"Plane card 607 | PR 32 | branch claude/w37-integration | integration record: five-branch re-land, W32 renderer repair, Node-24 regression report | artifacts: W37-RESULT.md, diary, DRIFT entries",
+  items:["The written record of the rescue pass: how five stuck branches were rebuilt, what was repaired, and a test-environment problem reported honestly instead of patched silently.",
+  "Merges last, sealing the chain's history into the repo's permanent record."]},
+ W39:{cards:"Plane card 608 | PR 34 (its own report) | branch claude/w39-merge-train | rebuilt PRs 27>30>28>29>31>32 as a chain | found the diary-gate structural conflict (R46/R47 vs stacked diffs)",
+  items:["The rebuild pass that restacked the six finished branches so they merge one after another without conflicts.",
+  "Ran at 5:55 PM; its report identified exactly why tests redden on stacked branches, and the cure: merge in order, refreshing each branch after its predecessor lands."]},
+ W38:{cards:"Plane card 609 | migrates .github/workflows/gates.yml to [self-hosted, stell] | runner stell-colima-runner (proven by canary run 32659331581) | arch-aware gitleaks for arm64 | one-commit rollback",
+  items:["Moves the entire automated test suite onto the runner already living on your Mac.",
+  "Every test run after this bills zero GitHub minutes; the 20-dollar budget cap stops mattering.",
+  "Rollback is a single one-line change, documented before the switch is flipped."]}
+};
+let openW=null;
+function toggleDetail(w){
+  const box=el("detail");
+  if(openW===w){box.style.display="none";openW=null;return}
+  const d=DETAIL[w]; if(!d){box.style.display="none";openW=null;return}
+  openW=w;
+  box.innerHTML="<div class=\"dt-title\">"+w+" &mdash; inside this window</div>"
+   +"<div class=\"dt-h\">In plain words &mdash; what is being coded</div>"
+   +"<ul>"+d.items.map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>"
+   +"<div class=\"dt-h\">In the language of the cards</div>"
+   +"<div class=\"dt-cards\">"+esc(d.cards)+"</div>";
+  box.style.display="block";
+  if(box.scrollIntoView) box.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+
+function el(id){return document.getElementById(id)}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function ago(iso){
+  if(!iso) return "unknown";
+  const m=Math.round((Date.now()-new Date(iso))/60000);
+  if(m<1) return "under a minute ago";
+  if(m<60) return m+" min ago";
+  const h=Math.floor(m/60); return h+"h "+(m%60)+"m ago";
+}
+function fmtTime(d){return d.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}
+
+/* ---------- embedded snapshot: always renders, even fully offline ---------- */
+const SNAPSHOT = {
+  "updatedAt": "2026-08-24T00:50:00Z",
+  "prs": [
+    { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
+    { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:50Z" },
+    { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:38:40Z" },
+    { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
+    { "n": 29, "w": "W35", "state": "open", "ci": "pending", "moved": "2026-08-24T00:21:40Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "pending", "moved": "2026-08-24T00:29:10Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "pending", "moved": "2026-08-24T00:33:38Z" }
+  ],
+  "pulse": { "running": true, "text": "W34 MERGED 8:48 PM, 4 of 7 landed. Last three (W35, W36, W37) being rebuilt as a chain right now so they merge back to back. Relay lands them on green." },
+  "medianWindowMinutes": 45,
+  "plane": {
+    "cycle": "Cycle 3 — Generation engine: statement package",
+    "dates": "Aug 24 – Sep 5",
+    "counts": { "done": 14, "inProgress": 3, "todo": 4 },
+    "inProgress": [
+      { "id": "605", "name": "W35 dual-time view — chain rebuild firing" },
+      { "id": "606", "name": "W36 forecaster — chain rebuild firing" },
+      { "id": "607", "name": "W37 integration record — chain rebuild firing" }
+    ]
+  }
+};
+
+/* ---------- optional live feed: silently upgrades the snapshot when reachable ---------- */
+async function fetchFeed(){
+  const r=await fetch(FEED+"?t="+Date.now());
+  if(!r.ok) throw new Error("feed HTTP "+r.status);
+  return await r.json();
+}
+
+/* ---------- paid path: live pull via Claude + tools ---------- */
+function githubPrompt(){
+return `You have GitHub MCP tools. Repo: zusha4ever/STELL-Finance. Do exactly this, then output ONLY a JSON object, no prose, no fences.
+1. list_pull_requests state=all sort=updated direction=desc perPage=10, fields: number,title,state,merged_at,updated_at.
+2. Only for open PRs whose title starts with a W-number (like "W33:"): pull_request_read method=get_check_runs, one word each: green/red/pending/unknown.
+Omit PRs without a W-number. Schema:
+{"prs":[{"n":26,"w":"W31","state":"open|merged|closed","ci":"green|red|pending|unknown","moved":"ISO updated_at"}],"medianWindowMinutes":45}`;
+}
+async function askClaude(prompt, servers){
+  const r=await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      model:"claude-sonnet-4-6",max_tokens:1000,
+      messages:[{role:"user",content:[{type:"text",text:prompt,cache_control:{type:"ephemeral"}}]}],
+      mcp_servers:servers})
+  });
+  if(!r.ok){
+    let body=""; try{body=(await r.text()).slice(0,160)}catch(e){}
+    throw new Error("HTTP "+r.status+": "+body);
+  }
+  const data=await r.json();
+  if(data.error) throw new Error(data.error.message||"API error");
+  const txt=(data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("\n");
+  const m=txt.match(/\{[\s\S]*\}/);
+  if(!m) throw new Error("reply carried no JSON");
+  return JSON.parse(m[0]);
+}
+
+/* ---------- renderers ---------- */
+function renderTrain(prs){
+  const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
+  let landed=0; const now=Date.now();
+  el("train").innerHTML=TRACKED.map(w=>{
+    const p=byW[w]; let cls="wait", label="queued";
+    if(p){
+      const movedMin=p.moved?(now-new Date(p.moved))/60000:1e9;
+      if(p.state==="merged"){cls="landed";label="landed";landed++}
+      else if(movedMin<20){cls="moving";label="moving"}
+      else if(p.ci==="green"){cls="green";label="green"}
+      else if(p.ci==="red"){cls="red";label="failing"}
+      else if(p.ci==="pending"){cls="moving";label="testing"}
+      else {cls="wait";label="waiting"}
+    }
+    return `<div class="car ${cls}" onclick="toggleDetail('${w}')"><span class="w">${w}</span><span>${label}</span></div>`;
+  }).join("");
+  el("pct").textContent=Math.round(landed/TRACKED.length*100)+"%";
+  el("landedcount").textContent=landed+" of "+TRACKED.length+" windows";
+}
+
+function renderPulse(prs, feedPulse){
+  const now=Date.now();
+  const moving=prs.filter(p=>p.w&&p.state!=="merged"&&p.moved&&(now-new Date(p.moved))/60000<20);
+  let html;
+  if(moving.length){
+    html=`<div class="big live">YES — ${moving.length} branch${moving.length>1?"es":""} moving</div>
+    <div class="sub">${moving.map(p=>p.w+" updated "+ago(p.moved)).join(" · ")}<br>
+    Watch it live: claude.ai/code → Sessions.</div>`;
+  } else if(feedPulse&&feedPulse.running){
+    html=`<div class="big live">Worker firing</div><div class="sub">${esc(feedPulse.text||"")}</div>`;
+  } else {
+    const newest=prs.filter(p=>p.moved).sort((a,b)=>new Date(b.moved)-new Date(a.moved))[0];
+    html=`<div class="big">Quiet — no branch moved in the last 20 minutes</div>
+    <div class="sub">Most recent movement: ${newest?esc(newest.w||("PR "+newest.n))+" "+ago(newest.moved):"none"}.
+    ${feedPulse&&feedPulse.text?esc(feedPulse.text):"Next automatic worker run: hourly schedule, or the moment any pull request closes."}</div>`;
+  }
+  el("pulse").innerHTML=html;
+}
+
+function renderQueue(prs, medianMin){
+  const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
+  let cursor=Date.now(), rows="";
+  const median=(typeof medianMin==="number"&&medianMin>0)?medianMin:45;
+  TRACKED.forEach(w=>{
+    const p=byW[w]; let state="queued — no branch yet", cls="wait", eta="";
+    if(p&&p.state==="merged"){state="LANDED on main";cls="landed";eta="done"}
+    else if(p){
+      const movedMin=p.moved?(Date.now()-new Date(p.moved))/60000:1e9;
+      if(movedMin<20){state="moving now";cls="moving"}
+      else if(p.ci==="green"){state="tests green — awaiting merge";cls="green"}
+      else if(p.ci==="red"){state="tests FAILING";cls="red"}
+      else if(p.ci==="pending"){state="tests running";cls="moving"}
+      else{state="waiting";cls="wait"}
+      cursor+=(cls==="green"?15:median)*60000; eta="~"+fmtTime(new Date(cursor));
+    }
+    rows+=`<tr class="tap" onclick="toggleDetail('${w}')"><td class="w">${w}</td><td>${esc(PLAIN[w]||"")}</td><td><span class="st ${cls}">${state}</span><div class="eta">${eta}</div></td></tr>`;
+  });
+  QUEUED_EXTRA.forEach(w=>{rows+=`<tr class="tap" onclick="toggleDetail('${w}')"><td class="w">${w}</td><td>${esc(w==="W39"?"Chain rebuild, ran 5:55 PM, report open as PR 34":"Test suite onto the Mac free runner, queued last")}</td><td><span class="st wait">${w==="W39"?"done, report pending merge":"queued"}</span></td></tr>`});
+  el("queue").innerHTML=`<table><tr><th>Window</th><th>What it is</th><th>State · projected landing</th></tr>${rows}</table>
+  <div class="taphint">Tap any window, in the train above or this table, to see what is being coded inside it in plain words and in card language.</div>
+  <div class="note">Projections assume ${Math.round(median)} min per pending step and ~15 min verify-and-merge for green ones; they shift with every refresh.</div>`;
+}
+
+function renderBoard(b){
+  if(!b){el("board").innerHTML='<div class="note">No board data in this feed write.</div>';return}
+  const c=b.counts||{};
+  el("board").innerHTML=`
+  <div class="note" style="margin:0 0 8px">Cycle: <b style="color:var(--chalk)">${esc(b.cycle||"unknown")}</b> ${b.dates?("· "+esc(b.dates)):""}</div>
+  <div class="counts">
+    <div class="count"><b>${c.done??"–"}</b><span>done</span></div>
+    <div class="count"><b>${c.inProgress??"–"}</b><span>in progress</span></div>
+    <div class="count"><b>${c.todo??"–"}</b><span>to do</span></div>
+  </div>
+  ${(b.inProgress&&b.inProgress.length)?`<ul class="cards">${b.inProgress.map(i=>`<li><b>${esc(i.id||"")}</b>${esc(i.name||"")}</li>`).join("")}</ul>`:""}`;
+}
+
+/* ---------- orchestration ---------- */
+async function refreshAll(){
+  if(busy) return; busy=true;
+  const btn=el("btn"); btn.disabled=true; btn.textContent="Trying live feed…";
+  renderData(SNAPSHOT, "built-in snapshot");
+  try{
+    const f=await fetchFeed();
+    renderData(f, "live feed");
+  }catch(e){ /* feed unreachable; snapshot already rendered — no red walls */ }
+  el("stamp").textContent=fmtTime(new Date());
+  btn.disabled=false; btn.textContent="Refresh now";
+  busy=false; resetCountdown();
+}
+function renderData(f, src){
+  renderTrain(f.prs||[]);
+  renderPulse(f.prs||[], f.pulse);
+  renderQueue(f.prs||[], f.medianWindowMinutes);
+  renderBoard(f.plane);
+  el("feedstamp").textContent=ago(f.updatedAt)+" ("+src+")";
+}
+
+async function deepPull(){
+  if(busy) return; busy=true;
+  const btn=el("btn"); btn.disabled=true; btn.textContent="Deep pull — asking Claude to read GitHub live… (up to 90s)";
+  try{
+    const gh=await askClaude(githubPrompt(),[{type:"url",url:"https://api.githubcopilot.com/mcp",name:"git-auth"}]);
+    renderTrain(gh.prs||[]);
+    renderPulse(gh.prs||[], null);
+    renderQueue(gh.prs||[], gh.medianWindowMinutes);
+    el("stamp").textContent=fmtTime(new Date())+" (deep)";
+  }catch(e){
+    el("pulse").innerHTML='<div class="err">Deep pull failed: '+esc(e.message)+'. The free feed above still works — tap Refresh.</div>';
+  }
+  btn.disabled=false; btn.textContent="Refresh now";
+  busy=false; resetCountdown();
+}
+
+function toggleAuto(){
+  if(el("autochk").checked) resetCountdown();
+  else {clearInterval(countTimer); el("countdown").textContent="";}
+}
+function resetCountdown(){
+  clearInterval(countTimer);
+  if(!el("autochk").checked){el("countdown").textContent="";return}
+  secsLeft=60;
+  countTimer=setInterval(()=>{
+    secsLeft--;
+    el("countdown").textContent="next free pull in 0:"+String(Math.max(secsLeft,0)).padStart(2,"0");
+    if(secsLeft<=0){clearInterval(countTimer); refreshAll();}
+  },1000);
+}
+window.addEventListener("load",()=>{refreshAll()});
+</script>
+</body>
+</html>
