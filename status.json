@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T17:44:00Z",
+  "updatedAt": "2026-08-24T19:20:00Z",
   "updatedBy": "relay",
   "train": { "landed": 4, "total": 7 },
   "prs": [
@@ -13,7 +13,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "Breakthrough at 1:06 PM: the real blocker is found and it was never Node — it is a timing race in the database setup: 18 build lanes try to create the same global database role at once and one crashes. W44 fired 1:42 PM with the authorized fix (serialize that one step or treat the loser's error as harmless — no migration files touched), pushed onto W38's own branch so one green merge lands the runner switch AND the fix. The last three windows then stack on top for back-to-back merges."
+    "text": "3:20 PM: W44 ran TWICE (the webhook and the hourly schedule both fired within 5 minutes) and the two runs wrote two different fixes. Ruling made: the second run's fix (retry the database setup step when it loses the race) wins, because the first run's lock only works inside one database and the race is across databases. Also found the real reason every window has gone red for two days: the test lane checks each branch against a copy that includes every brief pushed to main since, so every new brief broke every open branch. W45 fired 3:17 PM: land the right fix, make the test lane check the branch's own tree, add a claim-first rule so two runs can never both take the same window, then stack W35-37 on top."
   },
   "medianWindowMinutes": 45,
   "support": [
@@ -21,17 +21,18 @@
     { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 queued behind the train" },
     { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 queued behind the train" },
     { "w": "W43", "phase": "done", "note": "Ran 12:48-1:06 PM: DISPROVED the Node theory, found the real cause (role-creation race, DRIFT-392), correctly refused an out-of-scope fix; report PR 45" },
-    { "w": "W38", "phase": "running", "note": "The runner switch — W44 is pushing the race fix onto its branch; one green merge lands both" },
-    { "w": "W44", "phase": "running", "note": "FIRED 1:42 PM: kill the role race (authorized, no migration edits), green PR 43, stack W35-37 on top" }
+    { "w": "W44", "phase": "done", "note": "Ran twice 1:42-2:06 PM (double fire): run A landed a lock that cannot work across databases; run B wrote the correct retry fix, then halted properly on finding the collision. Ruling on PR 47: run B's fix wins; W45 lands it" },
+    { "w": "W38", "phase": "running", "note": "The runner switch — rides inside W45's pull request now (PR 43 superseded); one green merge lands the runner switch, the race fix, and the test-lane fix" },
+    { "w": "W45", "phase": "running", "note": "FIRED 3:17 PM: claim first, revert the wrong lock, land the retry fix, one-line test-lane fix (check the branch's own tree), regenerate docs, prove 6/6 green on the Mac lane, then stack W35-37 on top" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": { "done": 14, "inProgress": 3, "todo": 4 },
     "inProgress": [
-      { "id": "605", "name": "W35 dual-time view — stacks after the W44 race fix" },
-      { "id": "606", "name": "W36 forecaster — stacks after the W44 race fix" },
-      { "id": "607", "name": "W37 integration record — stacks after the W44 race fix" }
+      { "id": "605", "name": "W35 dual-time view — stacks after W45 lands" },
+      { "id": "606", "name": "W36 forecaster — stacks after W45 lands" },
+      { "id": "607", "name": "W37 integration record — stacks after W45 lands" }
     ]
   }
 }
