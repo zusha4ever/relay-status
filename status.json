@@ -1,40 +1,43 @@
 {
-  "updatedAt": "2026-08-24T21:47:00Z",
+  "updatedAt": "2026-08-24T23:30:00Z",
   "updatedBy": "relay",
-  "train": { "landed": 4, "total": 7 },
+  "train": { "landed": 5, "total": 7 },
   "prs": [
     { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
     { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:41Z" },
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
     { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "unknown", "moved": "2026-08-24T00:59:10Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:01:58Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:02:02Z" }
+    { "n": 29, "w": "W35", "state": "merged", "ci": "green", "moved": "2026-08-24T22:10:11Z" },
+    { "n": 31, "w": "W36", "state": "open", "ci": "red", "moved": "2026-08-24T22:10:36Z" },
+    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T21:51:57Z" }
   ],
   "pulse": {
     "running": true,
-    "text": "5:44 PM: W45 MERGED — the first pull request in two days to pass all six checks, and it did it on the Mac runner (no GitHub minutes). On main now: the runner switch, the database-race fix (with a real exit-code bug the executor caught and fixed on the way), the test-lane fix that ends the red streak, and the claim-first rule. W46 fired at 5:44 PM: rebuild W35-37 on top and refresh the six report PRs; the relay merges them in order as each comes back green."
+    "text": "7:30 PM: train 5 of 7 — W35 (the dual-time view) merged at 6:10 PM. W48 merged at 7:27 PM, 6/6 green: it fixes the last structural trap (the diary gate faulted each chained window for its neighbours' files), and its merge fires the final re-chain of W36 and W37 plus the six report PRs; the relay merges them back to back on green. W47 (first product window since W37) proved the catalog render live — 275 deliverables, 21 sheets, 3,619 rows — and correctly parked the importer on a real design gap: no ratified field map from the workbook to the definition tables. W49 fired to land the render by fixing its one red gate."
   },
   "medianWindowMinutes": 45,
   "support": [
-    { "w": "W40", "phase": "done", "note": "Staleness root cause, Sat; report PR 36 refreshes in W46" },
-    { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 refreshes in W46" },
-    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 refreshes in W46" },
-    { "w": "W43", "phase": "done", "note": "Found the real cause (role-creation race, DRIFT-392); report PR 45 refreshes in W46" },
-    { "w": "W44", "phase": "done", "note": "Ran twice (double fire), both fixes superseded; PR 51 (supersession record) refreshes in W46" },
-    { "w": "W38", "phase": "done", "note": "LANDED 5:44 PM inside W45 / PR 50 — CI now runs on the Mac, zero billed minutes" },
-    { "w": "W45", "phase": "done", "note": "MERGED 5:44 PM, 6/6 green (run 32772526638): runner switch, correct race fix + DRIFT-422 exit-code fix, head-SHA checkout (DRIFT-420), R58 claim-first" },
-    { "w": "W46", "phase": "running", "note": "FIRED 5:44 PM: verify W45's unit-test step ran the real fanout, chain W35→W36→W37 on the fixed main, refresh six report PRs; relay merges on green" }
+    { "w": "W40", "phase": "done", "note": "Staleness root cause, Sat; report PR 36 refreshes in W48 T2" },
+    { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 refreshes in W48 T2" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 refreshes in W48 T2" },
+    { "w": "W43", "phase": "done", "note": "Found the real cause (role-creation race, DRIFT-392); report PR 45 refreshes in W48 T2" },
+    { "w": "W44", "phase": "done", "note": "Ran twice (double fire), both fixes superseded; PR 51 refreshes in W48 T2" },
+    { "w": "W38", "phase": "done", "note": "LANDED 5:44 PM inside W45 / PR 50 — CI runs on the Mac, zero billed minutes" },
+    { "w": "W45", "phase": "done", "note": "MERGED 5:44 PM, 6/6 green: runner switch, correct race fix + DRIFT-422, head-SHA checkout (DRIFT-420), R58 claim-first" },
+    { "w": "W46", "phase": "done", "note": "Proved from the log that W45's unit tests ran the real 18-database fanout; re-chained W35-37; found the diary-gate coupling W48 fixed" },
+    { "w": "W48", "phase": "done", "note": "MERGED 7:27 PM, 6/6 green (run 32788378912): diary coverage by union across a PR's windows (DRIFT-435); its merge fires the final re-chain (T2)" },
+    { "w": "W47", "phase": "running", "note": "Product window: catalog render v3.8.0 proven live (PR 54, 21 shards, 3,619 rows). Importer parked on DRIFT-431 (no ratified field map) — a chat-side design gate. One red gate (Prettier on the verbatim render) repaired by W49" },
+    { "w": "W49", "phase": "running", "note": "FIRED 7:27 PM: one-line prettierignore fix on W47's branch, prove 6/6, supersede PR 54 — lands the versioned catalog render" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 16, "inProgress": 4, "todo": 3 },
+    "counts": { "done": 18, "inProgress": 4, "todo": 3 },
     "inProgress": [
-      { "id": "611", "name": "W46 chain + report refresh (running)" },
-      { "id": "605", "name": "W35 dual-time view — rebuilt in W46, merges first" },
-      { "id": "606", "name": "W36 forecaster — rebuilt in W46, merges second" },
-      { "id": "607", "name": "W37 integration record — rebuilt in W46, merges third" }
+      { "id": "587", "name": "Catalog import v1 (W47) — render landed, importer parked on the field-map gate" },
+      { "id": "606", "name": "W36 forecaster — re-chained by W48 T2, merges next" },
+      { "id": "607", "name": "W37 integration record — merges after W36" },
+      { "id": "611", "name": "W46 chain + report refresh — done, closing with the train" }
     ]
   }
 }
