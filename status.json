@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T19:34:00Z",
+  "updatedAt": "2026-08-24T21:47:00Z",
   "updatedBy": "relay",
   "train": { "landed": 4, "total": 7 },
   "prs": [
@@ -13,27 +13,28 @@
   ],
   "pulse": {
     "running": true,
-    "text": "3:34 PM: W45 re-fired at 3:32 PM on a clean base. The first fire (3:17) parked itself correctly: the branch it was told to build on was still being pushed to by the earlier W44 run, which corrected its own fix at 3:17 and then turned two more checks red. W45 now cuts straight from main, carries the Mac runner switch across, lands the proven retry fix, makes the test lane check each branch's own files (the two-day red streak's real cause), adds the claim-first rule, proves 6 of 6 green, then stacks W35-37."
+    "text": "5:44 PM: W45 MERGED — the first pull request in two days to pass all six checks, and it did it on the Mac runner (no GitHub minutes). On main now: the runner switch, the database-race fix (with a real exit-code bug the executor caught and fixed on the way), the test-lane fix that ends the red streak, and the claim-first rule. W46 fired at 5:44 PM: rebuild W35-37 on top and refresh the six report PRs; the relay merges them in order as each comes back green."
   },
   "medianWindowMinutes": 45,
   "support": [
-    { "w": "W40", "phase": "done", "note": "Staleness root cause, Sat; report PR 36 queued behind the train" },
-    { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 queued behind the train" },
-    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 queued behind the train" },
-    { "w": "W43", "phase": "done", "note": "Ran 12:48-1:06 PM: DISPROVED the Node theory, found the real cause (role-creation race, DRIFT-392), correctly refused an out-of-scope fix; report PR 45" },
-    { "w": "W44", "phase": "done", "note": "Ran twice 1:42-3:17 PM (double fire): run A landed a lock that cannot work across databases, then corrected itself at 3:17 with a retry that broke two other checks; run B wrote the correct retry and halted properly on the collision. Ruling: run B's fix is the reference; W45 lands it" },
-    { "w": "W38", "phase": "running", "note": "The runner switch — rides inside W45's pull request now, carried across from PR 43 (superseded, 3 of 6 red, branch kept as evidence)" },
-    { "w": "W45", "phase": "running", "note": "FIRED 3:32 PM (first fire 3:17 parked correctly): claim first, cut from main, carry W38, land the proven retry, one-line test-lane fix, register R58, regenerate, 6/6 green on the Mac lane, then stack W35-37" }
+    { "w": "W40", "phase": "done", "note": "Staleness root cause, Sat; report PR 36 refreshes in W46" },
+    { "w": "W41", "phase": "done", "note": "First sweep, Sat; report PR 38 refreshes in W46" },
+    { "w": "W42", "phase": "done", "note": "True-chain rebuild, Sat; report PR 41 refreshes in W46" },
+    { "w": "W43", "phase": "done", "note": "Found the real cause (role-creation race, DRIFT-392); report PR 45 refreshes in W46" },
+    { "w": "W44", "phase": "done", "note": "Ran twice (double fire), both fixes superseded; PR 51 (supersession record) refreshes in W46" },
+    { "w": "W38", "phase": "done", "note": "LANDED 5:44 PM inside W45 / PR 50 — CI now runs on the Mac, zero billed minutes" },
+    { "w": "W45", "phase": "done", "note": "MERGED 5:44 PM, 6/6 green (run 32772526638): runner switch, correct race fix + DRIFT-422 exit-code fix, head-SHA checkout (DRIFT-420), R58 claim-first" },
+    { "w": "W46", "phase": "running", "note": "FIRED 5:44 PM: verify W45's unit-test step ran the real fanout, chain W35→W36→W37 on the fixed main, refresh six report PRs; relay merges on green" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 14, "inProgress": 4, "todo": 4 },
+    "counts": { "done": 16, "inProgress": 4, "todo": 3 },
     "inProgress": [
-      { "id": "610", "name": "W45 runner switch + race fix + test-lane fix (running)" },
-      { "id": "605", "name": "W35 dual-time view — stacks after W45 lands" },
-      { "id": "606", "name": "W36 forecaster — stacks after W45 lands" },
-      { "id": "607", "name": "W37 integration record — stacks after W45 lands" }
+      { "id": "611", "name": "W46 chain + report refresh (running)" },
+      { "id": "605", "name": "W35 dual-time view — rebuilt in W46, merges first" },
+      { "id": "606", "name": "W36 forecaster — rebuilt in W46, merges second" },
+      { "id": "607", "name": "W37 integration record — rebuilt in W46, merges third" }
     ]
   }
 }
