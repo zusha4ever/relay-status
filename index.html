@@ -85,6 +85,21 @@
   ul.gaps{list-style:none;margin-top:4px}
   ul.gaps li{padding:9px 0 9px 16px;border-bottom:1px solid var(--line);font-size:12px;color:var(--chalk-dim);position:relative}
   ul.gaps li:before{content:"—";position:absolute;left:0;color:var(--red)}
+  .chips{display:flex;gap:3px;margin-bottom:10px;flex-wrap:wrap}
+  .chip{flex:1 1 30%;background:var(--navy);border:1px solid var(--line);color:var(--chalk-dim);font-family:'Inter';font-weight:600;font-size:11px;padding:8px 4px;cursor:pointer}
+  .chip.on{border-color:var(--gold-bright);color:var(--gold-bright)}
+  .dentry{border-left:2px solid var(--line);padding:11px 0 11px 12px;margin-bottom:3px;cursor:pointer}
+  .dentry.built{border-left-color:var(--green)}
+  .dentry.decision{border-left-color:var(--gold-bright)}
+  .dentry.blocked{border-left-color:var(--red)}
+  .dentry.deviated{border-left-color:var(--red)}
+  .dentry .dmeta{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:var(--chalk-dim);margin-bottom:4px}
+  .dentry .dmeta b{color:var(--gold-bright);font-weight:600}
+  .dentry .dhead{font-size:13px;color:var(--chalk);line-height:1.4}
+  .dentry .dbody{display:none;margin-top:8px}
+  .dentry.open .dbody{display:block}
+  .dentry .dclaim{font-size:12px;color:var(--chalk-dim);line-height:1.5}
+  .dentry .dev{font-size:11px;color:var(--chalk-dim);font-family:ui-monospace,Menlo,monospace;margin-top:7px;padding-top:7px;border-top:1px solid var(--line);word-break:break-word}
   footer{margin-top:30px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--chalk-dim)}
 </style>
 </head>
@@ -112,7 +127,8 @@
     <button class="tab" onclick="showPane(1,this)">Forecast</button>
     <button class="tab" onclick="showPane(2,this)">Repair crew</button>
     <button class="tab" onclick="showPane(3,this)">Windows</button>
-    <button class="tab" onclick="showPane(4,this)">Plane</button>
+    <button class="tab" onclick="showPane(4,this)">Diary</button>
+    <button class="tab" onclick="showPane(5,this)">Plane</button>
   </div>
 
   <div class="pane on"><h2 style="margin-top:0">Merge train <small id="trainsub">every product window the feed lists — new ones appear here on their own</small></h2>
@@ -138,6 +154,10 @@
   </div><div class="pane"><h2 style="margin-top:0">Every window, its state, its projected landing</h2>
   <div id="queue"><div class="skeleton">Loading…</div></div>
 
+  </div><div class="pane"><h2 style="margin-top:0">Build diary <small>what each session actually did, and why</small></h2>
+  <div class="chips" id="diarychips"></div>
+  <div id="diary"><div class="skeleton">Loading…</div></div>
+
   </div><div class="pane"><h2 style="margin-top:0">Plane board <small>the build register</small></h2>
   <div id="board"><div class="skeleton">Loading…</div></div>
 
@@ -154,7 +174,7 @@
 
 <script>
 const FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/status.json";
-let busy=false, countTimer=null, secsLeft=0, DETAIL={}, PLAIN={};
+let busy=false, countTimer=null, secsLeft=0, DETAIL={}, PLAIN={}, DIARY=null, DFILTER="timeline";
 
 function showPane(i,btn){document.querySelectorAll(".pane").forEach((p,k)=>p.classList.toggle("on",k===i));document.querySelectorAll(".tab").forEach((t,k)=>t.classList.toggle("on",k===i));}
 let openW=null;
@@ -388,6 +408,48 @@ function renderBoard(b){
   ${(b.inProgress&&b.inProgress.length)?`<ul class="cards">${b.inProgress.map(i=>`<li><b>${esc(i.id||"")}</b>${esc(i.name||"")}</li>`).join("")}</ul>`:""}`;
 }
 
+const DIARY_FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/diary.json";
+const DFILTERS=[["timeline","Timeline"],["decisions","Decisions"],["blocked","Blocked"]];
+function setDFilter(k){DFILTER=k;renderDiary(DIARY);}
+function matchFilter(e){
+  if(DFILTER==="decisions") return e.type==="decision"||e.type==="deviated";
+  if(DFILTER==="blocked") return e.type==="blocked"||e.type==="uncertain";
+  return true;
+}
+function toggleEntry(i){
+  const n=document.getElementById("dent"+i);
+  if(n) n.classList.toggle("open");
+}
+function renderDiary(d){
+  const box=el("diary"), chips=el("diarychips");
+  if(!d){
+    chips.innerHTML="";
+    box.innerHTML='<div class="warnbox"><div class="wt">Diary not published yet</div><div class="ws">The build diary lives inside the private build repository, which this page cannot read. Nothing is broken and nothing is hidden; the step that publishes it here has not run.</div></div>';
+    return;
+  }
+  chips.innerHTML=DFILTERS.map(([k,label])=>`<button class="chip${DFILTER===k?" on":""}" onclick="setDFilter('${k}')">${label}</button>`).join("");
+  const labels=d.typeLabels||{};
+  const rows=(d.entries||[]).filter(matchFilter);
+  const list=rows.length?rows.map((e,i)=>{
+    const cls=(e.type==="tested")?"built":e.type;
+    return `<div class="dentry ${esc(cls)}" id="dent${i}" onclick="toggleEntry(${i})">
+      <div class="dmeta"><b>${esc(e.w)}</b> · ${esc(labels[e.type]||e.type)} · ${esc(ago(e.ts))}${e.files?" · "+e.files+" file"+(e.files===1?"":"s"):""}</div>
+      <div class="dhead">${esc(e.head||"")}</div>
+      <div class="dbody"><div class="dclaim">${esc(e.claim||"")}</div>${e.evidence?`<div class="dev">Evidence: ${esc(e.evidence)}</div>`:""}</div>
+    </div>`;
+  }).join(""):'<div class="note">Nothing in this view.</div>';
+  const cover=`<div class="note">Covers ${esc(d.covers||"an unstated set of windows")}. Published ${esc(ago(d.publishedAt))} by ${esc(d.publishedBy||"unknown")}. ${esc(d.coverageNote||"")}</div>`;
+  box.innerHTML=`<div class="taphint">Tap any entry to read what the session actually wrote and the evidence it stood on.</div>${list}${cover}`;
+}
+async function loadDiary(){
+  try{
+    const r=await fetch(DIARY_FEED+"?t="+Date.now());
+    if(!r.ok) throw new Error("diary HTTP "+r.status);
+    DIARY=await r.json();
+  }catch(e){ DIARY=null; }
+  renderDiary(DIARY);
+}
+
 /* ---------- orchestration ---------- */
 async function refreshAll(){
   if(busy) return; busy=true;
@@ -397,6 +459,7 @@ async function refreshAll(){
     const f=await fetchFeed();
     renderData(f, "live feed");
   }catch(e){ /* feed unreachable; snapshot already rendered — no red walls */ }
+  await loadDiary();
   el("stamp").textContent=fmtTime(new Date());
   btn.disabled=false; btn.textContent="Refresh now";
   busy=false; resetCountdown();
