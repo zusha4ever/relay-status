@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T20:05:00Z",
+  "updatedAt": "2026-08-25T21:52:00Z",
   "updatedBy": "relay",
   "train": { "landed": 7, "total": 7 },
   "prs": [
@@ -13,9 +13,23 @@
   ],
   "pulse": {
     "running": true,
-    "text": "W52 chain fully landed: PRs 57 (W49), 56 (W48 T2), and 58 (W50) all merged in chain order, all 6/6 green. W53 fired at 4:00 PM via PR 64 — demo tenant seed, catalog import, six Today surfaces. PR 61 (W52 record) still open, 0 check runs. PR 63 (stale trigger) closed as superseded. Executor should pick up W53 within 15-20 minutes."
+    "text": "5:52 PM Tuesday. W53 merged at 4:54 PM (PR 65) and W54 fired straight after. W54's session (PR 74) is open and reports itself parked: the demo-seed tasks need an is_demo column the schema does not have yet, logged as DRIFT-480. Its other work did land — seven old windows marked superseded, PRs 66 through 72, which are meant to be closed rather than merged. W55 was authored at 5:51 PM: make the build forecaster run itself every day and show its numbers on this board. It has not been fired yet, because firing while W54's session is still live would put two sessions on the same branches."
   },
   "medianWindowMinutes": 45,
+  "forecast": {
+    "runUtc": "2026-08-23T17:28:42Z",
+    "queue": ["W31", "W32", "W33", "W34", "W35", "W36", "W37"],
+    "p50": "2026-08-26",
+    "p80": "2026-08-27",
+    "p95": "2026-08-28",
+    "probSep04": 1.0,
+    "probSep18": 1.0,
+    "flipCondition": 0,
+    "coverage": null,
+    "queueGrowthPerWeek": null,
+    "stale": true,
+    "staleNote": "This is the only projection the forecaster has ever produced, and it was calculated on Sunday afternoon. It has not updated since, it has never been scored against what actually happened, and the queue it names has already cleared. Treat every number here as out of date. W55 is the window that makes it run daily and adds the missing pieces."
+  },
   "support": [
     { "w": "W43", "phase": "done", "note": "Disproved the Node theory; found the real cause (database role race). Pull request closed as superseded; finding upheld and now standing law" },
     { "w": "W44", "phase": "done", "note": "First race fix; found its own two follow-on bugs and reported them honestly. Pull request closed as superseded" },
@@ -25,7 +39,9 @@
     { "w": "W50", "phase": "done", "note": "MERGED 3:44 PM Tuesday: records-plane closure, run-state definitions, 77 screen records normalized (PR 58)" },
     { "w": "W51", "phase": "queued", "note": "Imports the 275-deliverable catalog into the definition tables (PR 59). PARKED — the builder cannot reach the separate catalog repository. Waiting on the catalog files being copied into this repository from the Mac" },
     { "w": "W52", "phase": "done", "note": "All three links landed in chain order. DRIFT-440 collision settled. PR 61 (record) open, 0 check runs" },
-    { "w": "W53", "phase": "running", "note": "Fired 4:00 PM Tuesday via PR 64. Demo tenant seed, catalog/3.8.0 import, six Today surfaces, six screenshots. Executor picking up" }
+    { "w": "W53", "phase": "done", "note": "MERGED 4:54 PM Tuesday (PR 65): dummy-data seed so the Today screens render with real-looking numbers instead of blanks" },
+    { "w": "W54", "phase": "running", "note": "PR 74 open. Reports itself part-done and part-parked: the demo-seed work needs an is_demo column the schema does not have (DRIFT-480). The seven supersede markers it opened, PRs 66-72, are housekeeping and should be closed, not merged" },
+    { "w": "W55", "phase": "queued", "note": "Authored 5:51 PM Tuesday, not yet fired. Makes the build forecaster run itself every day without anyone asking, teaches it that the queue keeps refilling and that repair windows cost time, scores its own past predictions, and adds a Forecast tab to this board" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
@@ -33,7 +49,7 @@
     "counts": { "done": 20, "inProgress": 2, "todo": 3 },
     "inProgress": [
       { "id": "612", "name": "W51 catalog import (parked on catalog files)" },
-      { "id": "614", "name": "W53 demo tenant + Today surfaces" }
+      { "id": "614", "name": "W54 demo seed (parked on DRIFT-480)" }
     ]
   }
 }
