@@ -34,6 +34,7 @@
   .car.green{border-color:var(--green);color:var(--green)}
   .car.moving{border-color:var(--gold-bright);color:var(--gold-bright);animation:pulse 1.4s infinite}
   .car.red{border-color:var(--red);color:var(--red)}
+  .car.wait{border-style:dashed}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   .trainpct{display:flex;justify-content:space-between;font-size:12px;color:var(--chalk-dim);margin-bottom:4px}
   .trainpct b{color:var(--chalk);font-size:15px}
@@ -69,11 +70,21 @@
   #detail .dt-cards{font-size:11px;color:var(--chalk-dim);font-family:ui-monospace,Menlo,monospace;line-height:1.6}
   tr.tap{cursor:pointer}
   .taphint{font-size:10px;color:var(--chalk-dim);margin-top:4px}
-  .tabs{display:flex;gap:3px;margin:14px 0 12px}
-  .tab{flex:1;background:var(--navy);border:1px solid var(--gold);color:var(--chalk-dim);font-family:'Inter';font-weight:600;font-size:12px;padding:9px 4px;cursor:pointer}
+  .tabs{display:flex;gap:3px;margin:14px 0 12px;flex-wrap:wrap}
+  .tab{flex:1 1 18%;background:var(--navy);border:1px solid var(--gold);color:var(--chalk-dim);font-family:'Inter';font-weight:600;font-size:11px;padding:9px 3px;cursor:pointer}
   .tab.on{background:var(--gold);color:var(--navy-deep)}
   .pane{display:none}
   .pane.on{display:block}
+  .warnbox{border-left:3px solid var(--red);background:var(--navy);padding:12px 14px;margin-bottom:14px}
+  .warnbox .wt{font-family:'EB Garamond',serif;font-size:16px;color:var(--red);margin-bottom:6px}
+  .warnbox .ws{font-size:12px;color:var(--chalk-dim)}
+  .dateline{border:1px solid var(--line);background:var(--navy);padding:14px;margin-bottom:3px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dateline .lbl{font-size:11px;color:var(--chalk-dim);line-height:1.4}
+  .dateline .val{font-family:'EB Garamond',serif;font-size:19px;color:var(--gold-bright);white-space:nowrap}
+  .dateline.muted .val{color:var(--chalk-dim)}
+  ul.gaps{list-style:none;margin-top:4px}
+  ul.gaps li{padding:9px 0 9px 16px;border-bottom:1px solid var(--line);font-size:12px;color:var(--chalk-dim);position:relative}
+  ul.gaps li:before{content:"—";position:absolute;left:0;color:var(--red)}
   footer{margin-top:30px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--chalk-dim)}
 </style>
 </head>
@@ -98,10 +109,12 @@
 
   <div class="tabs">
     <button class="tab on" onclick="showPane(0,this)">Train</button>
-    <button class="tab" onclick="showPane(1,this)">Repair crew</button>
-    <button class="tab" onclick="showPane(2,this)">Windows</button>
-    <button class="tab" onclick="showPane(3,this)">Plane</button>
+    <button class="tab" onclick="showPane(1,this)">Forecast</button>
+    <button class="tab" onclick="showPane(2,this)">Repair crew</button>
+    <button class="tab" onclick="showPane(3,this)">Windows</button>
+    <button class="tab" onclick="showPane(4,this)">Plane</button>
   </div>
+
   <div class="pane on"><h2 style="margin-top:0">Merge train <small id="trainsub">every product window the feed lists — new ones appear here on their own</small></h2>
   <div class="trainpct"><span><b id="pct">–</b> landed on main</span><span id="landedcount"></span></div>
   <div class="train" id="train"></div>
@@ -110,10 +123,14 @@
     <span><i style="border:1px solid var(--green)"></i>tests green, awaiting merge</span>
     <span><i style="border:1px solid var(--gold-bright)"></i>moving right now</span>
     <span><i style="border:1px solid var(--red)"></i>tests failing</span>
+    <span><i style="border:1px dashed var(--chalk-dim)"></i>queued, no branch yet</span>
   </div>
 
   <h2>Is anything running right now?</h2>
   <div class="pulsebox" id="pulse"><div class="skeleton">Loading…</div></div>
+
+  </div><div class="pane"><h2 style="margin-top:0">When does this finish? <small>the build's own projection of itself</small></h2>
+  <div id="forecast"><div class="skeleton">Loading…</div></div>
 
   </div><div class="pane"><h2 style="margin-top:0">Repair crew <small>the support windows that keep the track usable</small></h2>
   <div id="support"><div class="skeleton">Loading…</div></div>
@@ -131,70 +148,14 @@
     This board always shows the snapshot sealed into it by the relay at send time, and silently upgrades to the live feed when the viewer allows outside connections. A fresh file card in chat = a fresh snapshot.
     "Deep live pull" is the only action that spends account tokens.
     "Moving right now" means that branch's code changed within the last 20 minutes.
+    Every window name, description and detail on this page comes from the feed, not from anything typed into this file.
   </footer>
 </div>
 
 <script>
 const FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/status.json";
-const PLAIN={
-  W31:"Consumption validator — proves each build step used its inputs",
-  W32:"Docs staleness gate — CI fails if governance docs fall out of date",
-  W33:"Canonical balance — one trusted balance figure proven end to end",
-  W34:"Naming cleanup — content items renamed to match the ratified schema",
-  W35:"Dual-time view — budget vs forecast on the review screen",
-  W36:"Forecaster — Monte Carlo projection of build completion",
-  W37:"Integration record — the rebuild pass that unblocked this train"
-};
-let busy=false, countTimer=null, secsLeft=0;
+let busy=false, countTimer=null, secsLeft=0, DETAIL={}, PLAIN={};
 
-/* ---------- per-window detail: card language + plain words ---------- */
-const DETAIL = {
- W31:{cards:"Plane card 601 | PR 26 | branch claude/w31-consumption-validator | DRIFT range 373-378 | arms the consumption-traces gate in scripts/gates/",
-  items:["A checker script inside the repo that reads each build step's declared inputs and proves the step actually used them.",
-  "Ends the era where the consumption gate failed only because no checker existed.",
-  "Merged to main; the gate now runs on every test suite."]},
- W32:{cards:"Plane card 602 | PR 27 | branch claude/w32-governance-docs-gate | DRIFT range 379-384 | wires 4 renderers into CI via governance-docs-check.sh | carries the tools/drift_index.py header fix (W37 repair)",
-  items:["Four governance documents (build diary chronicle, DRIFT index, rules index, windows ledger) are auto-generated; this makes CI fail whenever a generated copy falls out of date.",
-  "Silent drift between the record and reality becomes impossible.",
-  "Merged to main; the gate is live on every build."]},
- W33:{cards:"Plane card 603 | PR 30 | branch claude/w33-canonical-balance | DRIFT range 385-390 | seeds canonical_balance (schema.md definition) on the W24 source chain: field_mapping > sync_run > canonical_account > canonical_transaction | new figure_lineage + computation_output pair | id exports in substrate/ids.ts | proof extends tests/e2e/journeys workflow-certify-and-file",
-  items:["The demo database gets its first real balance record, built column-for-column from the ratified schema, nothing invented.",
-  "One on-screen figure is wired all the way down to that balance record, so its number is traceable to source data.",
-  "The end-to-end walk test asserts the figure resolves and its real value renders: no dead controls, no faked numbers."]},
- W34:{cards:"Plane card 604 | PR 28 | branch claude/w34-contentitem-naming | DRIFT range 391-396 | reconciles ContentItem names to the ratified schema | closes the DRIFT-331 residual",
-  items:["Content items, the building blocks every review screen renders, carried names that drifted from the ratified schema.",
-  "This renames them to match the schema exactly, across the contract and every file that references them.",
-  "Closes a recorded discrepancy (DRIFT-331) open since the naming drift was first caught."]},
- W35:{cards:"Plane card 605 | PR 29 | branch claude/w35-dualtime-bridge | DRIFT range 397-402 | composes ReviewView.dualTime on screen S-14 per .architect/screen-14-review-screen.md | uses M30 dual-time computation layer (design D3) | owns apps/web/app/finance/operations/review-screen/ + apps/web/server/composition/",
-  items:["The review screen learns to tell time twice: every figure shown against both the locked budget and the current forecast, side by side.",
-  "W21 built the machinery but left the bridge unwired; this composes it for real from the ratified screen spec.",
-  "If the spec were ambiguous the rule was to stop and ask, never guess; the build followed the recorded spec."]},
- W36:{cards:"Plane card 606 | PR 31 | branch claude/w36-forecast-tooling | Monte Carlo over docs/windows-ledger.json (the machine-readable build-throughput dataset from W29) | frozen forecast record | carries ruling R52 (certify-with-attestation) for governance transcription",
-  items:["A forecasting tool that runs thousands of simulated build futures over the real pace of past work windows.",
-  "Output: a frozen, dated projection of when the remaining build lands; the board's dates start coming from this instead of hand estimates.",
-  "Also carries the ratified rule that a reviewer signing off on an unproven figure must first write down what they checked."]},
- W37:{cards:"Plane card 607 | PR 32 | branch claude/w37-integration | integration record: five-branch re-land, W32 renderer repair, Node-24 regression report | artifacts: W37-RESULT.md, diary, DRIFT entries",
-  items:["The written record of the rescue pass: how five stuck branches were rebuilt, what was repaired, and a test-environment problem reported honestly instead of patched silently.",
-  "Merges last, sealing the chain's history into the repo's permanent record."]},
- W39:{cards:"Plane card 608 | PR 34 (its own report) | branch claude/w39-merge-train | rebuilt PRs 27>30>28>29>31>32 as a chain | found the diary-gate structural conflict (R46/R47 vs stacked diffs)",
-  items:["The rebuild pass that restacked the six finished branches so they merge one after another without conflicts.",
-  "Ran at 5:55 PM; its report identified exactly why tests redden on stacked branches, and the cure: merge in order, refreshing each branch after its predecessor lands."]},
- W40:{cards:"No product card | PR 36 (report) | branch claude/sleepy-bell-mjcxtt | read failing job log 97268378144 | root cause: governance docs staleness vs windows_ledger.py",
-  items:["The detective window: read the actual failing test log instead of theorizing.",
-  "Found it: pushing a new work-order file makes every in-flight branch's auto-generated ledger one row stale, and the freshness gate rightly fails them.",
-  "Fixed W33 by regenerating its docs; W33 merged minutes later."]},
- W41:{cards:"No product card | PR 38 (report) | branch claude/w41-chain-sweep | swept W34-W37 with refresh+regenerate | topology: siblings (the flaw)",
-  items:["Applied W40's cure to the four remaining windows and got W34 merged.",
-  "Its flaw, owned by the relay's own work order: it rebuilt the branches side by side instead of stacked, so the first merge re-broke the rest."]},
- W42:{cards:"No product card | PR 41 (report) | branch claude/w42-chain-rebuild | true chain W35>W36>W37, cumulative doc regen | refreshed report PRs 34/36/38",
-  items:["The correction: rebuilt the last three windows stacked, each on its predecessor, so they merge back to back with nothing re-breaking.",
-  "Finished 9:13 PM; the three windows are ready and waiting only on a working test lane."]},
- W38:{cards:"Plane card 609 | migrates .github/workflows/gates.yml to [self-hosted, stell] | runner stell-colima-runner (proven by canary run 32659331581) | arch-aware gitleaks for arm64 | one-commit rollback",
-  items:["FIRING NOW: moves the entire automated test suite onto the runner already living on your Mac.",
-  "Promoted to emergency status 9:41 PM when the paid lane hit its 20-dollar cap and began refusing all test runs.",
-  "Every test run after this bills zero GitHub minutes; the 20-dollar budget cap stops mattering.",
-  "Rollback is a single one-line change, documented before the switch is flipped."]}
-};
 function showPane(i,btn){document.querySelectorAll(".pane").forEach((p,k)=>p.classList.toggle("on",k===i));document.querySelectorAll(".tab").forEach((t,k)=>t.classList.toggle("on",k===i));}
 let openW=null;
 function toggleDetail(w){
@@ -202,15 +163,14 @@ function toggleDetail(w){
   if(openW===w){box.style.display="none";openW=null;return}
   const d=DETAIL[w]; if(!d){box.style.display="none";openW=null;return}
   openW=w;
-  box.innerHTML="<div class=\"dt-title\">"+w+" &mdash; inside this window</div>"
-   +"<div class=\"dt-h\">In plain words &mdash; what is being coded</div>"
-   +"<ul>"+d.items.map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>"
+  box.innerHTML="<div class=\"dt-title\">"+esc(w)+" &mdash; inside this window</div>"
+   +"<div class=\"dt-h\">In plain words &mdash; what is being built</div>"
+   +"<ul>"+(d.items||[]).map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>"
    +"<div class=\"dt-h\">In the language of the cards</div>"
-   +"<div class=\"dt-cards\">"+esc(d.cards)+"</div>";
+   +"<div class=\"dt-cards\">"+esc(d.cards||"")+"</div>";
   box.style.display="block";
   if(box.scrollIntoView) box.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
-
 
 function el(id){return document.getElementById(id)}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
@@ -219,41 +179,41 @@ function ago(iso){
   const m=Math.round((Date.now()-new Date(iso))/60000);
   if(m<1) return "under a minute ago";
   if(m<60) return m+" min ago";
-  const h=Math.floor(m/60); return h+"h "+(m%60)+"m ago";
+  const h=Math.floor(m/60);
+  if(h<48) return h+"h "+(m%60)+"m ago";
+  return Math.floor(h/24)+" days ago";
 }
 function fmtTime(d){return d.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}
+function fmtDay(iso){
+  if(!iso) return "—";
+  const d=new Date(iso+(String(iso).length<=10?"T12:00:00Z":""));
+  if(isNaN(d)) return String(iso);
+  return d.toLocaleDateString([], {weekday:"long",month:"long",day:"numeric"});
+}
+function pctWords(p){
+  if(typeof p!=="number") return "not calculated";
+  const n=Math.round(p*10);
+  if(n>=10) return "as good as certain";
+  if(n<=0) return "as good as impossible";
+  return n+" in 10 chance";
+}
 
 /* ---------- embedded snapshot: always renders, even fully offline ---------- */
 const SNAPSHOT = {
-  "updatedAt": "2026-08-24T01:42:00Z",
+  "updatedAt": "2026-08-25T22:05:00Z",
+  "train": { "landed": 1, "total": 5 },
   "prs": [
-    { "n": 26, "w": "W31", "state": "merged", "ci": "green", "moved": "2026-08-23T19:00:23Z" },
-    { "n": 27, "w": "W32", "state": "merged", "ci": "green", "moved": "2026-08-23T22:01:50Z" },
-    { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:38:40Z" },
-    { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
-    { "n": 29, "w": "W35", "state": "open", "ci": "unknown", "moved": "2026-08-24T00:59:10Z" },
-    { "n": 31, "w": "W36", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:01:58Z" },
-    { "n": 32, "w": "W37", "state": "open", "ci": "unknown", "moved": "2026-08-24T01:02:02Z" }
+    { "n": 59, "w": "W51", "state": "open", "ci": "unknown", "moved": "2026-08-25T01:50:04Z", "what": "Loads all 275 finance deliverables into the product's own tables" },
+    { "n": 61, "w": "W52", "state": "open", "ci": "unknown", "moved": "2026-08-25T19:45:19Z", "what": "The written record of Tuesday's three-window chain" },
+    { "n": 65, "w": "W53", "state": "merged", "ci": "green", "moved": "2026-08-25T20:54:12Z", "what": "Fills the demo screens with realistic sample numbers" },
+    { "n": 74, "w": "W54", "state": "open", "ci": "unknown", "moved": "2026-08-25T21:22:36Z", "what": "Second pass at demo data, plus housekeeping on seven old windows" },
+    { "n": 0, "w": "W55", "state": "queued", "ci": "unknown", "moved": null, "what": "Makes the forecaster run itself daily and puts its numbers on this board" }
   ],
-  "pulse": { "running": true, "text": "Two events at once: the last three windows are chain-rebuilt and ready, BUT the paid hosted test lane hit its 20-dollar cap at 9:04 PM and now refuses all work. W38 fired 9:41 PM: it moves testing onto the free runner on the Mac. On its green, the relay merges everything." },
+  "pulse": { "running": false, "text": "Sealed snapshot from 6:05 PM Tuesday. Turn on the live feed for current numbers." },
   "medianWindowMinutes": 45,
-  "support": [
-    { "w": "W39", "phase": "done", "note": "Chain rebuild, ran 5:55 PM; report awaiting merge (PR 34)" },
-    { "w": "W40", "phase": "done", "note": "Redness diagnosis, ran 6:23 PM; found the staleness root cause; report PR 36" },
-    { "w": "W41", "phase": "done", "note": "First sweep, ran 8:21 PM; fixed W34; wrong topology on the rest; report PR 38" },
-    { "w": "W42", "phase": "done", "note": "True-chain rebuild, ran 8:56-9:13 PM; last three windows ready to land; report PR 41" },
-    { "w": "W38", "phase": "running", "note": "FIRING NOW 9:41 PM: moves all testing onto the Mac's free runner — the paid lane hit its cap" }
-  ],
-  "plane": {
-    "cycle": "Cycle 3 — Generation engine: statement package",
-    "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 14, "inProgress": 3, "todo": 4 },
-    "inProgress": [
-      { "id": "605", "name": "W35 dual-time view — chain rebuild firing" },
-      { "id": "606", "name": "W36 forecaster — chain rebuild firing" },
-      { "id": "607", "name": "W37 integration record — chain rebuild firing" }
-    ]
-  }
+  "forecast": { "stale": true, "runCount": 1, "staleNote": "Sealed snapshot. The live feed carries the real forecast state." },
+  "support": [],
+  "plane": { "cycle": "Cycle 3 — Generation engine: statement package", "dates": "Aug 24 – Sep 5", "counts": { "done": 21, "inProgress": 2, "todo": 3 }, "inProgress": [] }
 };
 
 /* ---------- optional live feed: silently upgrades the snapshot when reachable ---------- */
@@ -267,9 +227,9 @@ async function fetchFeed(){
 function githubPrompt(){
 return `You have GitHub MCP tools. Repo: zusha4ever/STELL-Finance. Do exactly this, then output ONLY a JSON object, no prose, no fences.
 1. list_pull_requests state=all sort=updated direction=desc perPage=10, fields: number,title,state,merged_at,updated_at.
-2. Only for open PRs whose title starts with a W-number (like "W33:"): pull_request_read method=get_check_runs, one word each: green/red/pending/unknown.
+2. Only for open PRs whose title starts with a W-number (like "W54:"): pull_request_read method=get_check_runs, one word each: green/red/pending/unknown.
 Omit PRs without a W-number. Schema:
-{"prs":[{"n":26,"w":"W31","state":"open|merged|closed","ci":"green|red|pending|unknown","moved":"ISO updated_at"}],"medianWindowMinutes":45}`;
+{"prs":[{"n":74,"w":"W54","state":"open|merged|closed","ci":"green|red|pending|unknown","moved":"ISO updated_at"}],"medianWindowMinutes":45}`;
 }
 async function askClaude(prompt, servers){
   const r=await fetch("https://api.anthropic.com/v1/messages",{
@@ -291,23 +251,35 @@ async function askClaude(prompt, servers){
   return JSON.parse(m[0]);
 }
 
+/* ---------- feed-driven lookup tables ---------- */
+function indexWindows(prs){
+  DETAIL={}; PLAIN={};
+  (prs||[]).forEach(p=>{
+    if(!p.w) return;
+    if(p.what) PLAIN[p.w]=p.what;
+    if(p.detail) DETAIL[p.w]=p.detail;
+  });
+}
+function classify(p){
+  if(!p) return {cls:"wait",label:"queued",long:"queued — no branch yet"};
+  if(p.state==="merged") return {cls:"landed",label:"landed",long:"LANDED on main"};
+  if(p.state==="queued") return {cls:"wait",label:"queued",long:"briefed — waiting to start"};
+  const movedMin=p.moved?(Date.now()-new Date(p.moved))/60000:1e9;
+  if(movedMin<20) return {cls:"moving",label:"moving",long:"moving now"};
+  if(p.ci==="green") return {cls:"green",label:"green",long:"tests green — awaiting merge"};
+  if(p.ci==="red") return {cls:"red",label:"failing",long:"tests FAILING"};
+  if(p.ci==="pending") return {cls:"moving",label:"testing",long:"tests running"};
+  return {cls:"wait",label:"open",long:"open — no test result yet"};
+}
+
 /* ---------- renderers ---------- */
 function renderTrain(prs){
-  const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
-  let landed=0; const now=Date.now();
-  const L=prs.filter(p=>p.w).map(p=>p.w);
-  el("train").innerHTML=L.map(w=>{
-    const p=byW[w]; let cls="wait", label="queued";
-    if(p){
-      const movedMin=p.moved?(now-new Date(p.moved))/60000:1e9;
-      if(p.state==="merged"){cls="landed";label="landed";landed++}
-      else if(movedMin<20){cls="moving";label="moving"}
-      else if(p.ci==="green"){cls="green";label="green"}
-      else if(p.ci==="red"){cls="red";label="failing"}
-      else if(p.ci==="pending"){cls="moving";label="testing"}
-      else {cls="wait";label="waiting"}
-    }
-    return `<div class="car ${cls}" onclick="toggleDetail('${w}')"><span class="w">${w}</span><span>${label}</span></div>`;
+  const L=(prs||[]).filter(p=>p.w);
+  let landed=0;
+  el("train").innerHTML=L.map(p=>{
+    const c=classify(p);
+    if(c.cls==="landed") landed++;
+    return `<div class="car ${c.cls}" onclick="toggleDetail('${esc(p.w)}')"><span class="w">${esc(p.w)}</span><span>${c.label}</span></div>`;
   }).join("");
   el("pct").textContent=Math.round(landed/(L.length||1)*100)+"%";
   el("landedcount").textContent=landed+" of "+L.length+" windows";
@@ -315,16 +287,16 @@ function renderTrain(prs){
 
 function renderPulse(prs, feedPulse){
   const now=Date.now();
-  const moving=prs.filter(p=>p.w&&p.state!=="merged"&&p.moved&&(now-new Date(p.moved))/60000<20);
+  const moving=(prs||[]).filter(p=>p.w&&p.state!=="merged"&&p.moved&&(now-new Date(p.moved))/60000<20);
   let html;
   if(moving.length){
     html=`<div class="big live">YES — ${moving.length} branch${moving.length>1?"es":""} moving</div>
-    <div class="sub">${moving.map(p=>p.w+" updated "+ago(p.moved)).join(" · ")}<br>
+    <div class="sub">${moving.map(p=>esc(p.w)+" updated "+ago(p.moved)).join(" · ")}<br>
     Watch it live: claude.ai/code → Sessions.</div>`;
   } else if(feedPulse&&feedPulse.running){
     html=`<div class="big live">Worker firing</div><div class="sub">${esc(feedPulse.text||"")}</div>`;
   } else {
-    const newest=prs.filter(p=>p.moved).sort((a,b)=>new Date(b.moved)-new Date(a.moved))[0];
+    const newest=(prs||[]).filter(p=>p.moved).sort((a,b)=>new Date(b.moved)-new Date(a.moved))[0];
     html=`<div class="big">Quiet — no branch moved in the last 20 minutes</div>
     <div class="sub">Most recent movement: ${newest?esc(newest.w||("PR "+newest.n))+" "+ago(newest.moved):"none"}.
     ${feedPulse&&feedPulse.text?esc(feedPulse.text):"Next automatic worker run: hourly schedule, or the moment any pull request closes."}</div>`;
@@ -332,28 +304,64 @@ function renderPulse(prs, feedPulse){
   el("pulse").innerHTML=html;
 }
 
+function renderForecast(f){
+  const box=el("forecast");
+  if(!f){
+    box.innerHTML=`<div class="warnbox"><div class="wt">No projection in this feed</div>
+    <div class="ws">The forecaster has not published anything the board can read. Nothing is being hidden; there is simply no number yet.</div></div>`;
+    return;
+  }
+  const runs=(typeof f.runCount==="number")?f.runCount:null;
+  let head="";
+  if(f.stale){
+    head=`<div class="warnbox">
+      <div class="wt">Out of date — do not act on these numbers</div>
+      <div class="ws">${esc(f.staleNote||"This projection has not refreshed recently.")}</div>
+    </div>`;
+  }
+  const dates=`
+    <div class="dateline${f.stale?" muted":""}"><span class="lbl">Halfway bet — the date it clears if things go averagely</span><span class="val">${esc(fmtDay(f.p50))}</span></div>
+    <div class="dateline${f.stale?" muted":""}"><span class="lbl">8-in-10 date — clears by here in most futures</span><span class="val">${esc(fmtDay(f.p80))}</span></div>
+    <div class="dateline${f.stale?" muted":""}"><span class="lbl">Almost-worst case — 19 futures in 20 clear by here</span><span class="val">${esc(fmtDay(f.p95))}</span></div>
+    <div class="dateline${f.stale?" muted":""}"><span class="lbl">Chance the queue clears by <b style="color:var(--chalk)">September 4</b> — the GTM date</span><span class="val">${esc(pctWords(f.probSep04))}</span></div>
+    <div class="dateline${f.stale?" muted":""}"><span class="lbl">Chance the queue clears by <b style="color:var(--chalk)">September 18</b> — the MVP date</span><span class="val">${esc(pctWords(f.probSep18))}</span></div>`;
+
+  const scope=(f.queue&&f.queue.length)
+    ? `<div class="note">Projected for: ${f.queue.map(esc).join(", ")} — calculated ${esc(ago(f.runUtc))}.</div>`
+    : `<div class="note">Calculated ${esc(ago(f.runUtc))}.</div>`;
+
+  const track=`<h2>Has it ever been right?</h2>
+    <div class="pulsebox">
+      <div class="big">${f.coverage==null?"No track record yet":Math.round(f.coverage*100)+"% of its past projections held"}</div>
+      <div class="sub">${f.coverage==null
+        ? "A projection earns trust by being graded against what actually happened. This one has never been graded, so treat every date above as an opinion rather than a measurement."
+        : "Share of past projections where the queue really did clear by the date they promised."}
+      ${runs!=null?" It has run "+runs+(runs===1?" time in total.":" times in total."):""}</div>
+    </div>`;
+
+  const gaps=(f.missing&&f.missing.length)
+    ? `<h2>What it still cannot see</h2><ul class="gaps">${f.missing.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>
+       ${f.fixedBy?`<div class="note">All of these are the job of ${esc(f.fixedBy)}. Until that lands, this tab is a record of what the forecaster knows it is missing, not a plan you can schedule against.</div>`:""}`
+    : "";
+
+  box.innerHTML=head+dates+scope+track+gaps;
+}
+
 function renderQueue(prs, medianMin){
-  const byW={}; prs.forEach(p=>{if(p.w) byW[p.w]=p});
+  const L=(prs||[]).filter(p=>p.w);
+  if(!L.length){el("queue").innerHTML='<div class="note">No windows in this feed write.</div>';return}
   let cursor=Date.now(), rows="";
   const median=(typeof medianMin==="number"&&medianMin>0)?medianMin:45;
-  const L=prs.filter(p=>p.w).map(p=>p.w);
-  L.forEach(w=>{
-    const p=byW[w]; let state="queued — no branch yet", cls="wait", eta="";
-    if(p&&p.state==="merged"){state="LANDED on main";cls="landed";eta="done"}
-    else if(p){
-      const movedMin=p.moved?(Date.now()-new Date(p.moved))/60000:1e9;
-      if(movedMin<20){state="moving now";cls="moving"}
-      else if(p.ci==="green"){state="tests green — awaiting merge";cls="green"}
-      else if(p.ci==="red"){state="tests FAILING";cls="red"}
-      else if(p.ci==="pending"){state="tests running";cls="moving"}
-      else{state="waiting";cls="wait"}
-      cursor+=(cls==="green"?15:median)*60000; eta="~"+fmtTime(new Date(cursor));
-    }
-    rows+=`<tr class="tap" onclick="toggleDetail('${w}')"><td class="w">${w}</td><td>${esc(PLAIN[w]||"")}</td><td><span class="st ${cls}">${state}</span><div class="eta">${eta}</div></td></tr>`;
+  L.forEach(p=>{
+    const c=classify(p); let eta="";
+    if(c.cls==="landed") eta="done";
+    else if(p.state!=="queued"){ cursor+=(c.cls==="green"?15:median)*60000; eta="~"+fmtTime(new Date(cursor)); }
+    else eta="not started";
+    rows+=`<tr class="tap" onclick="toggleDetail('${esc(p.w)}')"><td class="w">${esc(p.w)}</td><td>${esc(PLAIN[p.w]||"")}</td><td><span class="st ${c.cls}">${esc(c.long)}</span><div class="eta">${esc(eta)}</div></td></tr>`;
   });
   el("queue").innerHTML=`<table><tr><th>Window</th><th>What it is</th><th>State · projected landing</th></tr>${rows}</table>
-  <div class="taphint">Tap any window, in the train above or this table, to see what is being coded inside it in plain words and in card language.</div>
-  <div class="note">Projections assume ${Math.round(median)} min per pending step and ~15 min verify-and-merge for green ones; they shift with every refresh.</div>`;
+  <div class="taphint">Tap any window, in the train above or this table, to see what is being built inside it in plain words and in card language.</div>
+  <div class="note">These landing times are a rough clock, not the forecaster: ${Math.round(median)} min per pending step and about 15 min to verify and merge a green one. The Forecast tab is the real projection.</div>`;
 }
 
 function renderSupport(list){
@@ -361,11 +369,12 @@ function renderSupport(list){
   const rows=list.map(s=>{
     const cls=s.phase==="running"?"moving":(s.phase==="done"?"landed":"wait");
     const label=s.phase==="running"?"RUNNING":(s.phase==="done"?"executed":"queued");
-    return `<tr class="tap" onclick="toggleDetail('${s.w}')"><td class="w">${esc(s.w)}</td><td>${esc(s.note||"")}</td><td><span class="st ${cls}">${label}</span></td></tr>`;
+    return `<tr class="tap" onclick="toggleDetail('${esc(s.w)}')"><td class="w">${esc(s.w)}</td><td>${esc(s.note||"")}</td><td><span class="st ${cls}">${label}</span></td></tr>`;
   }).join("");
   el("support").innerHTML=`<table><tr><th>Window</th><th>What it did / is doing</th><th>Phase</th></tr>${rows}</table>
-  <div class="taphint">These windows repair and upgrade the pipeline itself; they carry no product features, so they sit outside the seven-car train. Tap any for detail.</div>`;
+  <div class="taphint">These windows repair and upgrade the pipeline itself; they carry no product features, so they sit outside the train.</div>`;
 }
+
 function renderBoard(b){
   if(!b){el("board").innerHTML='<div class="note">No board data in this feed write.</div>';return}
   const c=b.counts||{};
@@ -393,8 +402,10 @@ async function refreshAll(){
   busy=false; resetCountdown();
 }
 function renderData(f, src){
+  indexWindows(f.prs);
   renderTrain(f.prs||[]);
   renderPulse(f.prs||[], f.pulse);
+  renderForecast(f.forecast);
   renderQueue(f.prs||[], f.medianWindowMinutes);
   renderSupport(f.support);
   renderBoard(f.plane);
