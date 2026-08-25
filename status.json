@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T02:05:00Z",
+  "updatedAt": "2026-08-25T19:20:00Z",
   "updatedBy": "relay",
   "train": { "landed": 7, "total": 7 },
   "prs": [
@@ -8,31 +8,38 @@
     { "n": 30, "w": "W33", "state": "merged", "ci": "green", "moved": "2026-08-23T22:39:08Z" },
     { "n": 28, "w": "W34", "state": "merged", "ci": "green", "moved": "2026-08-24T00:48:00Z" },
     { "n": 29, "w": "W35", "state": "merged", "ci": "green", "moved": "2026-08-24T22:10:11Z" },
-    { "n": 31, "w": "W36", "state": "merged", "ci": "green", "moved": "2026-08-25T02:03:00Z" },
-    { "n": 32, "w": "W37", "state": "merged", "ci": "green", "moved": "2026-08-25T02:04:00Z" }
+    { "n": 31, "w": "W36", "state": "merged", "ci": "green", "moved": "2026-08-25T04:46:32Z" },
+    { "n": 32, "w": "W37", "state": "merged", "ci": "green", "moved": "2026-08-25T04:46:41Z" }
   ],
   "pulse": {
-    "running": false,
-    "text": "TRAIN COMPLETE — 7 of 7. W36 and W37 merged 10:03 and 10:04 PM, both six-of-six green on the Mac's free runner. The three-day blockage is over: the test lane is free, the database race is fixed, and every product window from W31 through W37 is on main. Newer windows W49, W50, W51 are already in flight behind them."
+    "running": true,
+    "text": "The queue was jammed, not broken — nothing moved for 14 hours because every window already had a pull request open, and the safety rule skips those. Cleared at 2:53 PM: six dead pull requests closed, W52 written and fired. By 3:09 PM the builder had rebuilt all three waiting branches and testing is under way. Nothing merged this pass — two branches passed every test but now collide with the main line, and one has a real failure being read from its log. The 275-deliverable catalog import is waiting on one thing only: copying the catalog files into the repository from the Mac."
   },
   "medianWindowMinutes": 45,
   "support": [
-    { "w": "W43", "phase": "done", "note": "Disproved the Node theory; found the real cause (database role race)" },
-    { "w": "W44", "phase": "done", "note": "First race fix; found its own two follow-on bugs and reported them honestly" },
-    { "w": "W45", "phase": "done", "note": "MERGED 5:42 PM: runner switch + the correct race fix — this is the one that unblocked everything" },
-    { "w": "W48", "phase": "done", "note": "MERGED 7:26 PM: diary-coverage rule fixed; re-chained W36 and W37 clean" },
-    { "w": "W49", "phase": "running", "note": "Formatting-config repair (PR 57)" },
-    { "w": "W50", "phase": "running", "note": "Records-plane closure: run-state definitions, 77 screen records normalized (PR 58)" },
-    { "w": "W51", "phase": "running", "note": "Imports the 275-deliverable catalog into the definition tables (PR 59)" }
+    { "w": "W43", "phase": "done", "note": "Disproved the Node theory; found the real cause (database role race). Pull request closed as superseded 2:56 PM; finding upheld and now standing law" },
+    { "w": "W44", "phase": "done", "note": "First race fix; found its own two follow-on bugs and reported them honestly. Pull request closed as superseded 2:57 PM" },
+    { "w": "W45", "phase": "done", "note": "MERGED 5:42 PM Monday: runner switch + the correct race fix — this is the one that unblocked everything" },
+    { "w": "W48", "phase": "done", "note": "MERGED 7:26 PM Monday: diary-coverage rule fixed; re-chained W36 and W37 clean, and those two landed at 12:46 AM" },
+    { "w": "W39", "phase": "done", "note": "Closed 2:54 PM as superseded — one of seven attempts at the same re-landing job. Branch kept as evidence" },
+    { "w": "W40", "phase": "done", "note": "Closed 2:55 PM as superseded. Its lesson survives: refreshing a branch is not enough, the records must be rebuilt last" },
+    { "w": "W41", "phase": "done", "note": "Closed 2:55 PM as superseded. Its per-link fix is why W36 and W37 landed at all" },
+    { "w": "W42", "phase": "done", "note": "Closed 2:56 PM as superseded. Branch kept — it is the evidence for a broken-record finding still open" },
+    { "w": "W46", "phase": "done", "note": "Closed 2:58 PM — W48 did the same job forty minutes later and reached green first" },
+    { "w": "W49", "phase": "running", "note": "Formatting-config repair, and it carries the catalog render: 22 data files including the 275-row deliverable map (PR 57). Rebuilt 3:02 PM, testing now" },
+    { "w": "W50", "phase": "running", "note": "Records-plane closure: run-state definitions, 77 screen records normalized (PR 58). One real test failure being read from its log before anything is changed" },
+    { "w": "W51", "phase": "queued", "note": "Imports the 275-deliverable catalog into the definition tables (PR 59). PARKED — the builder cannot reach the separate catalog repository. Waiting on the catalog files being copied into this repository from the Mac" },
+    { "w": "W52", "phase": "running", "note": "Fired 2:53 PM: re-lands W49, W48 and W50 as a stack on today's main line, repairs W50's failure, and settles a three-way label collision (PR 61)" }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 17, "inProgress": 3, "todo": 4 },
+    "counts": { "done": 17, "inProgress": 4, "todo": 4 },
     "inProgress": [
-      { "id": "610", "name": "W49 formatting-config repair" },
+      { "id": "610", "name": "W49 formatting-config repair + catalog render" },
       { "id": "611", "name": "W50 records-plane closure" },
-      { "id": "612", "name": "W51 catalog import" }
+      { "id": "612", "name": "W51 catalog import (parked on catalog files)" },
+      { "id": "613", "name": "W52 chain re-land on post-W37 main" }
     ]
   }
 }
