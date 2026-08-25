@@ -1,0 +1,118 @@
+{
+  "publishedAt": "2026-08-25T22:30:00Z",
+  "publishedBy": "relay (by hand)",
+  "covers": "W49, W50 and W53 only",
+  "coverageNote": "Published by hand from three windows so this tab has real entries rather than a placeholder. Every other window's diary still sits inside the private build repository, unreachable from this page. W55 adds the step that publishes all of them automatically after every run, and backfills the rest.",
+  "typeLabels": {
+    "built": "Built",
+    "tested": "Proved",
+    "decision": "Decision",
+    "blocked": "Blocked",
+    "deviated": "Went off plan",
+    "uncertain": "Noted"
+  },
+  "entries": [
+    {
+      "w": "W53", "seq": 5, "ts": "2026-08-25T20:00:39Z", "type": "built",
+      "head": "Regenerated all four governance documents last, after every content change",
+      "claim": "Unshallowed the repository and regenerated docs/CHRONICLE.md, docs/DRIFT-INDEX.md, docs/RULES-INDEX.md and docs/WINDOWS-LEDGER.md last, after every content change. The rules index came out byte-unchanged because this window registers no new rule number.",
+      "tags": [], "files": 4, "evidence": "governance-docs-check.sh: all governance docs match a fresh regeneration; every validator is clean."
+    },
+    {
+      "w": "W53", "seq": 4, "ts": "2026-08-25T19:58:00Z", "type": "blocked",
+      "head": "The sandbox has the wrong database version and no container service — a second, independent blocker",
+      "claim": "This sandbox carries PostgreSQL 16 only, no 17, and the container service is unreachable. Every gated entry point floors at version 17 by design with no opt-out. Same class of host problem as four earlier drift records. This blocks the proof obligation independently of the field-map gap.",
+      "tags": ["workaround"], "files": 0, "evidence": "docker ps: failed to connect — no such file or directory"
+    },
+    {
+      "w": "W53", "seq": 3, "ts": "2026-08-25T19:57:00Z", "type": "decision",
+      "head": "Two ratified rulings did not fit together, so it refused to re-derive the mapping itself and filed the conflict instead",
+      "claim": "W51's brief ratifies a field map, but against a different source than the one W53 was told to use. The two rulings do not compose: using W53's mandated source forfeits W51's ratified map. Filed as a drift record rather than silently re-deriving field values, which the runtime constitution reserves for the ratifier. Three downstream tasks block as a direct consequence.",
+      "tags": ["architecture"], "files": 1, "evidence": "commit 86f4411"
+    },
+    {
+      "w": "W53", "seq": 2, "ts": "2026-08-25T19:56:00Z", "type": "uncertain",
+      "head": "The source sheet is missing four columns the code requires, and one of them has no 'unknown' value to fall back on",
+      "claim": "Read against the real catalog rows: the sheet has no kind, countable, trigger type or personas columns. The trigger type is a closed three-value list with no 'unknown' member, so the brief's instruction to treat unknown as a first-class value cannot be satisfied without a schema change — and a schema change is ratifier-level by this window's own guard.",
+      "tags": ["architecture", "data-model"], "files": 0, "evidence": "trigger_type is an enum of calendar, event, on_demand"
+    },
+    {
+      "w": "W53", "seq": 1, "ts": "2026-08-25T19:53:04Z", "type": "uncertain",
+      "head": "Claimed the window in writing before starting any work, so a second session could not pick it up",
+      "claim": "Cut the branch from main and opened a draft pull request before any implementation task, per the claim-before-work rule. Confirmed no open pull request and no branch existed for this window at claim time.",
+      "tags": [], "files": 0, "evidence": "main at dcc4f7c9"
+    },
+    {
+      "w": "W50", "seq": 5, "ts": "2026-08-25T19:07:37Z", "type": "built",
+      "head": "Found that stale generated documents were the real cause of the red, and fixed narrowly instead of widening scope",
+      "claim": "Read the failing job first. The failing step was the repository's own staleness check: two generated documents were out of date after this window's result file landed without a follow-up regeneration. A gate defect, not a product defect — fixed by the normal regenerate-last discipline rather than widened. A drift number collided with one already landed, so it was renumbered with an annotation above its unedited body, matching the earlier repair precedent.",
+      "tags": ["workaround", "architecture"], "files": 5, "evidence": "drift index: 351 entries, 0 violations"
+    },
+    {
+      "w": "W50", "seq": 4, "ts": "2026-08-25T00:05:00Z", "type": "built",
+      "head": "Labelled all 77 screen records, and left 14 fields blank rather than inventing values it could not read",
+      "claim": "Added identity, slug, portal, actors and entry-point labels to all 77 screen records, derived from the ratified surface register and each record's own sections. 63 of 77 got all five; 14 got four, because their section is prose with no readable actor label — left absent rather than invented. Verified by re-parsing all 77 blocks with zero failures.",
+      "tags": ["data-model"], "files": 79, "evidence": "commit 69a20ce"
+    },
+    {
+      "w": "W50", "seq": 3, "ts": "2026-08-25T00:00:00Z", "type": "built",
+      "head": "Added four missing fields to the run-state table, and reported that the brief's own claim was wrong",
+      "claim": "Closed four fields missing from the run-state transition table and updated the schema record to match. A field-by-field comparison found two other entities already complete, contradicting the brief's cited count of three incomplete ones — filed as a drift record rather than left unsaid. No live database in this environment, so the migration is unverified against a running server — filed separately.",
+      "tags": ["data-model"], "files": 5, "evidence": "commit 7673d66"
+    },
+    {
+      "w": "W50", "seq": 2, "ts": "2026-08-24T23:55:00Z", "type": "deviated",
+      "head": "Three checking tools the brief named were not installed — it said so instead of pretending the gate had run",
+      "claim": "Preflight found the three named validators absent from this environment, along with a template file. Filed a drift record and a feedback record, then proceeded on the substantive work using a disclosed manual method, committing the comparison methodology rather than asserting the named gate ran. The missing tools block verification, not the underlying record work.",
+      "tags": ["architecture"], "files": 2, "evidence": "no such file or directory; installed version is 14.0.0, brief assumed 15"
+    },
+    {
+      "w": "W50", "seq": 1, "ts": "2026-08-24T23:47:48Z", "type": "uncertain",
+      "head": "Claimed the window in writing before starting any work",
+      "claim": "Cut the branch from main and opened a draft pull request before any implementation task. Checked two pages of open pull requests, twelve results, none for this window.",
+      "tags": [], "files": 0, "evidence": "main at 691aa37"
+    },
+    {
+      "w": "W49", "seq": 7, "ts": "2026-08-25T18:58:22Z", "type": "built",
+      "head": "Merged the newer main, regenerated the governance documents, and proved the catalog files were untouched",
+      "claim": "Merged current main into this branch. The drift record conflict was resolved by concatenation, main's side first, this branch's entry unedited. Three generated-document conflicts were not hand-merged — all four were regenerated fresh afterwards. Two came out byte-identical, so they do not appear in the commit. The 22 catalog files were verified byte-identical to the earlier head by an empty difference.",
+      "tags": ["workaround"], "files": 4, "evidence": "git diff on catalog: empty output, byte-identical"
+    },
+    {
+      "w": "W49", "seq": 6, "ts": "2026-08-24T23:49:00Z", "type": "uncertain",
+      "head": "Checked the real test results rather than assuming — nothing had failed, jobs were queued behind others",
+      "claim": "Read the pull request's actual check runs rather than assuming. Six jobs, all still queued or in progress, because a single self-hosted runner was working through this session's own earlier pull requests in submission order. No failures on any completed job across all four open pull requests.",
+      "tags": [], "files": 0, "evidence": "CI run 32790918164"
+    },
+    {
+      "w": "W49", "seq": 5, "ts": "2026-08-24T23:51:00Z", "type": "decision",
+      "head": "Two briefs reserved the same record numbers — took the next free block rather than colliding",
+      "claim": "Two sibling briefs both reserved the same three drift numbers, and this session had already used them minutes earlier in another window's report. Self-assigned the next free block instead of colliding, following the established precedent that covers a same-session, same-run collision — never inventing an arbitrary number outside that narrow case.",
+      "tags": [], "files": 1, "evidence": "brief quote: reserved DRIFT-437..439"
+    },
+    {
+      "w": "W49", "seq": 4, "ts": "2026-08-24T23:50:00Z", "type": "built",
+      "head": "Resolved merge conflicts by regenerating the documents rather than hand-editing them",
+      "claim": "Merging main produced two classes of conflict, both the established pattern. The drift record conflict was resolved by concatenation in the order both sides were actually authored. The four generated documents were resolved by regenerating fresh rather than hand-merging, per the rule every window in this chain applies.",
+      "tags": [], "files": 1, "evidence": "git merge: conflict in DRIFT.md plus 4 generated-doc conflicts"
+    },
+    {
+      "w": "W49", "seq": 3, "ts": "2026-08-24T23:48:00Z", "type": "tested",
+      "head": "Ran the same formatting check locally and it passed clean",
+      "claim": "Ran the exact command the failing job ran, against the full repository including the catalog: all matched files use the expected code style. The one-line ignore fix holds.",
+      "tags": [], "files": 1, "evidence": "All matched files use Prettier code style!"
+    },
+    {
+      "w": "W49", "seq": 2, "ts": "2026-08-24T23:46:00Z", "type": "built",
+      "head": "Read the failing job log before touching anything — one formatting check was the only thing red",
+      "claim": "Read the failing job log directly before changing any file, as the brief instructed. The formatting check was the only red step, with no second failure following in the log. Added the catalog directory to the ignore list using the same pattern and comment style as the existing entry.",
+      "tags": [], "files": 1, "evidence": "CI run 32785874278, job 97617613219"
+    },
+    {
+      "w": "W49", "seq": 1, "ts": "2026-08-24T23:45:00Z", "type": "uncertain",
+      "head": "Claimed the window in writing before starting any work",
+      "claim": "Cut the branch from the previous window's tip and pushed this entry with a draft pull request before any implementation task began. Confirmed no open pull request existed for this window at claim time.",
+      "tags": [], "files": 0, "evidence": "commit d8d9c94"
+    }
+  ]
+}
