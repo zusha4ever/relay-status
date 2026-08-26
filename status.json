@@ -1,109 +1,60 @@
 {
-  "updatedAt": "2026-08-25T22:05:00Z",
+  "updatedAt": "2026-08-26T01:57:00Z",
   "updatedBy": "relay",
-  "train": { "landed": 1, "total": 5 },
+  "train": {"landed": 2, "total": 6},
   "prs": [
-    {
-      "n": 59, "w": "W51", "state": "open", "ci": "unknown", "moved": "2026-08-25T01:50:04Z",
-      "what": "Loads all 275 finance deliverables into the product's own tables",
-      "detail": {
-        "cards": "Plane card 612 | PR 59 | branch claude/w51-catalog-import-v2 | maps a 275-record catalog across 14 function shards into five definition tables",
-        "items": [
-          "Takes the master list of every finance deliverable and writes it into the product's database so screens have real things to show.",
-          "PARKED: the builder cannot reach the separate catalog repository from inside its sandbox.",
-          "Unblocks when the catalog files are copied into this repository from the Mac."
-        ]
-      }
-    },
-    {
-      "n": 61, "w": "W52", "state": "open", "ci": "unknown", "moved": "2026-08-25T19:45:19Z",
-      "what": "The written record of the three-window chain that landed Tuesday afternoon",
-      "detail": {
-        "cards": "PR 61 | branch claude/w52-chain-land | landed W49, W48-T2 and W50 in chain order | DRIFT-440 collision settled",
-        "items": [
-          "The paperwork window: it carries the record of how W49, W48 and W50 were stacked and merged without breaking each other.",
-          "Its own content already landed; this pull request is the account of it.",
-          "Open with no tests run yet."
-        ]
-      }
-    },
-    {
-      "n": 65, "w": "W53", "state": "merged", "ci": "green", "moved": "2026-08-25T20:54:12Z",
-      "what": "Fills the demo screens with realistic sample numbers instead of blanks",
-      "detail": {
-        "cards": "PR 65 | branch claude/w53-demo-seed | merged 4:54 PM | filed DRIFT-462 rather than re-deriving an unratified field map",
-        "items": [
-          "Seeds a practice client so the Today screens render populated rather than empty.",
-          "It refused to invent a field mapping that had not been ratified, and said so on the record instead of guessing.",
-          "Merged to main."
-        ]
-      }
-    },
-    {
-      "n": 74, "w": "W54", "state": "open", "ci": "unknown", "moved": "2026-08-25T21:22:36Z",
-      "what": "Second pass at the demo data, plus housekeeping on seven old windows",
-      "detail": {
-        "cards": "Plane card 614 | PR 74 | branch claude/w54-demo-seed-ci | T1-T4 parked on DRIFT-480 | T5 seven-PR chain refresh + R57 renumber | T0/T6 done",
-        "items": [
-          "PARKED on the demo-data half: the database has no column marking a record as demo, so the work cannot be finished honestly. Logged as DRIFT-480.",
-          "The housekeeping half did land: seven stale windows marked superseded, PRs 66 through 72.",
-          "Those seven are markers, not work. They should be closed, not merged."
-        ]
-      }
-    },
-    {
-      "n": 0, "w": "W55", "state": "queued", "ci": "unknown", "moved": null,
-      "what": "Makes the build forecaster run itself daily and puts its numbers on this board",
-      "detail": {
-        "cards": "windows/W55.md, commit fb63cea | T1 unattended daily run | T2 queue-refill + repair drag | T3 first scoring pass | T4 publish to this feed | T5 Forecast tab | T6 new governance rule on what 'wired' means",
-        "items": [
-          "The forecaster was built in W36 and has run exactly once, on Sunday, because the daily command was written into a document rather than wired to anything.",
-          "This window makes it run every day on its own, teaches it that the queue keeps refilling and that repair windows cost real time, and makes it grade its own past predictions.",
-          "Authored 5:51 PM Tuesday. Not fired yet: W54's session may still be live, and two sessions on the same branches is how work gets lost."
-        ]
-      }
-    }
+    {"n": 59, "w": "W51", "state": "open", "ci": "unknown", "moved": "2026-08-25T01:50:04Z",
+     "what": "Loads all 275 finance deliverables into the product's own tables",
+     "detail": {"cards": "Plane card 612 | PR 59 | branch claude/w51-catalog-import-v2 | maps a 275-record catalog across 14 function shards into five definition tables",
+      "items": ["Takes the master list of every finance deliverable and writes it into the product's database so screens have real things to show.", "PARKED: the builder cannot reach the separate catalog repository from inside its sandbox.", "W58 tries to copy the catalog files in using the runner on the Mac; W51 resumes once they are in the repository."]}},
+    {"n": 65, "w": "W53", "state": "merged", "ci": "green", "moved": "2026-08-25T20:54:12Z",
+     "what": "Fills the demo screens with realistic sample numbers instead of blanks",
+     "detail": {"cards": "PR 65 | branch claude/w53-demo-seed | merged 4:54 PM | filed DRIFT-462 rather than re-deriving an unratified field map",
+      "items": ["Seeds a practice client so the Today screens render populated rather than empty.", "It refused to invent a field mapping that had not been ratified, and said so on the record instead of guessing.", "Merged to main."]}},
+    {"n": 74, "w": "W54", "state": "open", "ci": "green", "moved": "2026-08-25T21:22:36Z",
+     "what": "Second pass at the demo data, plus housekeeping on seven old windows",
+     "detail": {"cards": "Plane card 614 | PR 74 | branch claude/w54-demo-seed-ci | T1-T4 parked on DRIFT-480 | T5 seven-PR chain refresh + R57 renumber | T0/T6 done",
+      "items": ["Its demo-seed work was parked on a missing database column; W57 now carries that work forward.", "This PR stays open only as the record; W56 lands its files together with the other stale record PRs.", "Not merged on purpose: merging it alone would break the other stale PRs again."]}},
+    {"n": 75, "w": "W55", "state": "merged", "ci": "green", "moved": "2026-08-26T01:47:00Z",
+     "what": "The build forecaster now runs itself every day and models a refilling queue",
+     "detail": {"cards": "PR 75 | branch claude/relaxed-rubin-zqu4zq | merged 9:47 PM ET | forecast-daily.yml + refill/drag model + rule R59",
+      "items": ["Every morning at 7:17 AM ET the runner on the Mac writes one frozen forecast entry with no person involved.", "The forecast now accounts for new windows arriving and for repair windows that do not move the product.", "Publishing the number to this board is still blocked (the sandbox cannot reach this repo); W58 works around it."]}},
+    {"n": 0, "w": "W56", "state": "queued", "ci": "unknown", "moved": "2026-08-26T01:51:00Z",
+     "what": "One clean landing for the nine stale record-only pull requests",
+     "detail": {"cards": "windows/W56.md | fired 9:51 PM ET | sources: PRs 61, 66-72, 74",
+      "items": ["Copies every write-up, diary and defect entry from the nine stale PRs onto one fresh branch.", "Regenerates the governance documents once, at the end, so nothing is stale.", "After it merges the relay closes the nine old PRs with a written ruling each."]}},
+    {"n": 0, "w": "W57", "state": "queued", "ci": "unknown", "moved": "2026-08-26T01:51:00Z",
+     "what": "Adds the demo-data marker column, then fills the six Today screens with invented, consistent numbers",
+     "detail": {"cards": "windows/W57.md | queued behind W56 | carries W54 T1-T4",
+      "items": ["Adds one column, is_demo, so invented rows can never be mistaken for real client data.", "Seeds the invented tenant Northwind Components LLC and proves the seed in CI where a database exists.", "Wires the six Today screens to real database rows; anything unreachable says Not built yet on screen."]}},
+    {"n": 0, "w": "W58", "state": "queued", "ci": "unknown", "moved": "2026-08-26T01:51:00Z",
+     "what": "Uses the runner on the Mac to bring the 275-deliverable catalog into the repo and publish the forecast",
+     "detail": {"cards": "windows/W58.md | queued behind W57 | unblocks W51 and W55 T4/T5",
+      "items": ["The builder's sandbox can only see this one repository; the Mac runner may see more.", "Tries the no-credential route first; if only a token can work, the report names exactly what to create.", "Nothing on this board changes until W58 reports."]}}
   ],
-  "pulse": {
-    "running": true,
-    "text": "6:05 PM Tuesday. Ten pull requests are open, but only three are real work: W51 (parked, waiting on catalog files from the Mac), W52 (the written record of Tuesday's chain), and W54 (half landed, half parked on a missing database column). The other seven, PRs 66 through 72, are supersede markers from W54's housekeeping and are meant to be closed rather than merged. W55 was authored at 5:51 PM and is waiting to fire until W54's session reports out."
-  },
+  "pulse": {"running": true, "text": "9:57 PM Tuesday. W55 merged at 9:47 PM: the forecaster now runs itself daily. Three windows queued (W56 record landing, W57 demo marker + seed, W58 catalog via the Mac runner) and the executor fired at 9:51 PM. First sign of W56 expected by about 10:10 PM as a draft PR. The nine stale record PRs (61, 66-72, 74) stay open until W56 lands them together."},
   "medianWindowMinutes": 45,
   "forecast": {
     "runUtc": "2026-08-23T17:28:42Z",
     "queue": ["W31", "W32", "W33", "W34", "W35", "W36", "W37"],
-    "p50": "2026-08-26",
-    "p80": "2026-08-27",
-    "p95": "2026-08-28",
-    "probSep04": 1.0,
-    "probSep18": 1.0,
-    "flipCondition": 0,
-    "coverage": null,
-    "queueGrowthPerWeek": null,
-    "stale": true,
-    "runCount": 1,
-    "staleNote": "This is the only projection the forecaster has ever produced, and it was calculated on Sunday afternoon. The tool was built in W36 and works, but the command that runs it daily was written into a document instead of being wired to anything, so it never ran again. Every number on this tab is Sunday's, about a queue that has already cleared.",
-    "missing": [
-      "It has never graded itself. No projection has been compared to what actually happened, so it has no track record to earn trust with.",
-      "It assumes the queue stops growing. It projected seven windows on Sunday; the queue now runs past W55, and new work keeps arriving.",
-      "It assumes every window ships a feature. W38 through W46 spent their whole cycles on repair, which is why it can only print certainty."
-    ],
-    "fixedBy": "W55"
+    "p50": "2026-08-26", "p80": "2026-08-27", "p95": "2026-08-28",
+    "probSep04": 1.0, "probSep18": 1.0, "flipCondition": 0, "coverage": null, "queueGrowthPerWeek": null,
+    "stale": true, "runCount": 1,
+    "staleNote": "Still Sunday's only projection. W55 merged Tuesday 9:47 PM and wired the tool to run itself every morning at 7:17 AM ET; the first fresh number is expected Wednesday morning in the repository. Getting that number onto this tab needs W58 (the sandbox cannot write here).",
+    "missing": ["It has never graded itself. The first self-grade becomes possible once Sunday's p80 date (Aug 27) passes and a fresh run exists to compare against.", "Queue growth and repair drag are now modelled (W55), but no run has used the new model yet.", "This tab updates only when W58 lands a publishing route."],
+    "fixedBy": "W55 (model + daily run) and W58 (publishing to this board)"
   },
   "support": [
-    { "w": "W45", "phase": "done", "note": "MERGED: moved testing onto the free runner on the Mac and fixed the database race — the one that unblocked everything" },
-    { "w": "W48", "phase": "done", "note": "MERGED: diary-coverage rule fixed; re-chained W36 and W37 clean" },
-    { "w": "W49", "phase": "done", "note": "MERGED 3:43 PM Tuesday: formatting-config repair + catalog render, landed via the W52 chain (PR 57)" },
-    { "w": "W50", "phase": "done", "note": "MERGED 3:44 PM Tuesday: records-plane closure, run-state definitions, 77 screen records normalized (PR 58)" },
-    { "w": "W39-W46", "phase": "done", "note": "Eight windows of pipeline repair, now marked superseded by W54 as PRs 66 through 72. They carry no product features. Closing them is housekeeping, not a merge" }
+    {"w": "W45", "phase": "done", "note": "MERGED: moved testing onto the free runner on the Mac and fixed the database race — the one that unblocked everything"},
+    {"w": "W48", "phase": "done", "note": "MERGED: diary-coverage rule fixed; re-chained W36 and W37 clean"},
+    {"w": "W49", "phase": "done", "note": "MERGED 3:43 PM Tuesday: formatting-config repair + catalog render, landed via the W52 chain (PR 57)"},
+    {"w": "W50", "phase": "done", "note": "MERGED 3:44 PM Tuesday: records-plane closure, run-state definitions, 77 screen records normalized (PR 58)"},
+    {"w": "W39-W46", "phase": "done", "note": "Eight windows of pipeline repair, marked superseded as PRs 66 through 72. They carry no product features. W56 lands their write-ups together; then they close."}
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 21, "inProgress": 2, "todo": 3 },
-    "inProgress": [
-      { "id": "612", "name": "W51 catalog import — parked on catalog files" },
-      { "id": "614", "name": "W54 demo seed — parked on DRIFT-480" }
-    ]
+    "counts": {"done": 21, "inProgress": 2, "todo": 3},
+    "inProgress": [{"id": "612", "name": "W51 catalog import — parked, W58 unblocks"}, {"id": "614", "name": "W54 demo seed — carried by W57"}]
   }
 }
