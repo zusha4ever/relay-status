@@ -1,71 +1,261 @@
 {
-  "updatedAt": "2026-08-26T22:00:00Z",
+  "updatedAt": "2026-08-26T22:45:00Z",
   "updatedBy": "relay",
-  "train": {"landed": 8, "total": 11},
+  "train": {
+    "landed": 8,
+    "total": 11
+  },
   "prs": [
-    {"n": 59, "w": "W51", "state": "open", "ci": "unknown", "moved": "2026-08-25T01:50:04Z",
-     "what": "Loads all 275 finance deliverables into the product's own tables",
-     "detail": {"cards": "PR 59 | parked, guarded",
-      "items": ["Takes the master list of every finance deliverable and writes it into the product's database so screens have real things to show.", "PARKED: the builder cannot reach the separate catalog repository from inside its sandbox; the Mac runner needs the catalog folder mounted, a two-minute change that needs a Mac session."]}},
-    {"n": 81, "w": "W60", "state": "merged", "ci": "green", "moved": "2026-08-26T15:20:00Z",
-     "what": "The Production Desk shows today's deliverables for the invented tenant, end to end",
-     "detail": {"cards": "Plane card 617 Done | PR 81 | merged 11:20 AM Wednesday", "items": ["The deliverable ledger reads the three seeded rows through a tenant-scoped read path; a second tenant sees an honest empty state."]}},
-    {"n": 84, "w": "W61", "state": "merged", "ci": "green", "moved": "2026-08-26T15:21:00Z",
-     "what": "The Morning Briefing reads a real seeded briefing whose figure traces to its deliverable",
-     "detail": {"cards": "Plane card 618 Done | PR 84 | merged 11:21 AM Wednesday", "items": ["One seeded briefing; its Total Revenue figure is bound through lineage, so it shows a number, not a withheld marker."]}},
-    {"n": 85, "w": "W62", "state": "merged", "ci": "green", "moved": "2026-08-26T15:22:00Z",
-     "what": "Raised Item Examine works one seeded threshold crossing to a real, tracked acknowledgment",
-     "detail": {"cards": "Plane card 619 Done | PR 85 | merged 11:22 AM Wednesday", "items": ["One crossed threshold, one next action labelled Drafted, and an acknowledge control that really writes."]}},
-    {"n": 89, "w": "W64", "state": "merged", "ci": "green", "moved": "2026-08-26T18:25:00Z",
-     "what": "The forecaster answers two honest questions instead of one impossible one",
-     "detail": {"cards": "Plane card 621 Done | PR 89 | merged 2:25 PM Wednesday | 35/35 tests", "items": ["No sentinel date can leak out as a forecast; a second block waits for Zusha to name the September 18 windows."]}},
-    {"n": 87, "w": "W63", "state": "merged", "ci": "green", "moved": "2026-08-26T21:58:00Z",
-     "what": "is_demo on every seeded table, the false-success fix, and a viewable record of the populated Today screens",
-     "detail": {"cards": "Plane card 620 | PR 87 | merged 5:58 PM Wednesday | run 33000531143 6/6 green after W65's fix",
-      "items": ["Migration 0013 marks the last three seeded tables as demo data; a cross-tenant acknowledge now refuses instead of pretending.", "Rendered pages of the populated screens are committed under docs/demo/2026-08-26/ and produced in every CI run.", "Its one red check was fixed by W65 within 15 minutes of firing: the log was read first, the fix went on this branch."]}},
-    {"n": 92, "w": "W66", "state": "merged", "ci": "green", "moved": "2026-08-26T21:59:00Z",
-     "what": "One seeded deliverable certified end to end, with the written attestation the R52 law requires",
-     "detail": {"cards": "Plane card 623 | PR 92 | merged 5:59 PM Wednesday | run 33003485027 6/6 green | built in 23 minutes",
-      "items": ["The flow the product exists for now works for real: Approval Inbox to Item Review to certified, and the item leaves the inbox.", "Certify without a written attestation is refused in plain words when a figure is unproven; with the attestation it succeeds and the run state really changes, with a transition row and an audit event.", "Closed DRIFT-295 on the way: the release step that certification hands off to had been a stub since W29; it is real now.", "The committed demo pages now show the after-certify state."]}},
-    {"n": 93, "w": "W67", "state": "open", "ci": "red", "moved": "2026-08-26T19:47:01Z",
-     "what": "Production Desk shows due dates and close-day context from seeded schedule rows",
-     "detail": {"cards": "PR 93 | draft | run 33006178275: five jobs died in under ten seconds",
-      "items": ["Built and pushed at 3:38 PM; the checks did not run: every job that needs a database container failed in five to eight seconds, which means the Mac lane refused the work, not that the code failed.", "Waits for the lane to come back; then a re-run, then merge on green."]}},
-    {"n": 94, "w": "W68", "state": "open", "ci": "red", "moved": "2026-08-26T19:47:05Z",
-     "what": "No finance write path reports success on a cross-tenant no-op",
-     "detail": {"cards": "PR 94 | draft | run 33006948029: five jobs died in under ten seconds",
-      "items": ["Same lane refusal as W67 at 3:46 PM. The work is pushed; the verdict is missing.", "Waits for the lane; then a re-run, then merge on green after W67."]}}
+    {
+      "n": 59,
+      "w": "W51",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-08-25T01:50:04Z",
+      "what": "Loads all 275 finance deliverables into the product's own tables",
+      "detail": {
+        "cards": "PR 59 | parked, guarded",
+        "items": [
+          "Takes the master list of every finance deliverable and writes it into the product's database so screens have real things to show.",
+          "PARKED: the builder cannot reach the separate catalog repository from inside its sandbox; the Mac runner needs the catalog folder mounted, a two-minute change that needs a Mac session."
+        ]
+      }
+    },
+    {
+      "n": 81,
+      "w": "W60",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T15:20:00Z",
+      "what": "The Production Desk shows today's deliverables for the invented tenant, end to end",
+      "detail": {
+        "cards": "Plane card 617 Done | PR 81 | merged 11:20 AM Wednesday",
+        "items": [
+          "The deliverable ledger reads the three seeded rows through a tenant-scoped read path; a second tenant sees an honest empty state."
+        ]
+      }
+    },
+    {
+      "n": 84,
+      "w": "W61",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T15:21:00Z",
+      "what": "The Morning Briefing reads a real seeded briefing whose figure traces to its deliverable",
+      "detail": {
+        "cards": "Plane card 618 Done | PR 84 | merged 11:21 AM Wednesday",
+        "items": [
+          "One seeded briefing; its Total Revenue figure is bound through lineage, so it shows a number, not a withheld marker."
+        ]
+      }
+    },
+    {
+      "n": 85,
+      "w": "W62",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T15:22:00Z",
+      "what": "Raised Item Examine works one seeded threshold crossing to a real, tracked acknowledgment",
+      "detail": {
+        "cards": "Plane card 619 Done | PR 85 | merged 11:22 AM Wednesday",
+        "items": [
+          "One crossed threshold, one next action labelled Drafted, and an acknowledge control that really writes."
+        ]
+      }
+    },
+    {
+      "n": 89,
+      "w": "W64",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T18:25:00Z",
+      "what": "The forecaster answers two honest questions instead of one impossible one",
+      "detail": {
+        "cards": "Plane card 621 Done | PR 89 | merged 2:25 PM Wednesday | 35/35 tests",
+        "items": [
+          "No sentinel date can leak out as a forecast; a second block waits for Zusha to name the September 18 windows."
+        ]
+      }
+    },
+    {
+      "n": 87,
+      "w": "W63",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T21:58:00Z",
+      "what": "is_demo on every seeded table, the false-success fix, and a viewable record of the populated Today screens",
+      "detail": {
+        "cards": "Plane card 620 | PR 87 | merged 5:58 PM Wednesday | run 33000531143 6/6 green after W65's fix",
+        "items": [
+          "Migration 0013 marks the last three seeded tables as demo data; a cross-tenant acknowledge now refuses instead of pretending.",
+          "Rendered pages of the populated screens are committed under docs/demo/2026-08-26/ and produced in every CI run.",
+          "Its one red check was fixed by W65 within 15 minutes of firing: the log was read first, the fix went on this branch."
+        ]
+      }
+    },
+    {
+      "n": 92,
+      "w": "W66",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-26T21:59:00Z",
+      "what": "One seeded deliverable certified end to end, with the written attestation the R52 law requires",
+      "detail": {
+        "cards": "Plane card 623 | PR 92 | merged 5:59 PM Wednesday | run 33003485027 6/6 green | built in 23 minutes",
+        "items": [
+          "The flow the product exists for now works for real: Approval Inbox to Item Review to certified, and the item leaves the inbox.",
+          "Certify without a written attestation is refused in plain words when a figure is unproven; with the attestation it succeeds and the run state really changes, with a transition row and an audit event.",
+          "Closed DRIFT-295 on the way: the release step that certification hands off to had been a stub since W29; it is real now.",
+          "The committed demo pages now show the after-certify state."
+        ]
+      }
+    },
+    {
+      "n": 93,
+      "w": "W67",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-08-26T22:41:00Z",
+      "what": "Production Desk shows due dates and close-day context from seeded schedule rows",
+      "detail": {
+        "cards": "PR 93 | draft | run 33006178275: five jobs died in under ten seconds",
+        "items": [
+          "Built and pushed at 3:38 PM; the checks did not run: every job that needs a database container failed in five to eight seconds, which means the Mac lane refused the work, not that the code failed.",
+          "Waits for the lane to come back; then a re-run, then merge on green."
+        ]
+      }
+    },
+    {
+      "n": 94,
+      "w": "W68",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-08-26T22:41:00Z",
+      "what": "No finance write path reports success on a cross-tenant no-op",
+      "detail": {
+        "cards": "PR 94 | draft | run 33006948029: five jobs died in under ten seconds",
+        "items": [
+          "Same lane refusal as W67 at 3:46 PM. The work is pushed; the verdict is missing.",
+          "Waits for the lane; then a re-run, then merge on green after W67."
+        ]
+      }
+    }
   ],
-  "pulse": {"running": false, "text": "6:00 PM Wednesday. Real progress since 2:25 PM: W65 fixed W63's red in 15 minutes; W66 built the certify flow for real in 23 minutes; both merged at 5:58 and 5:59 PM. Then, at 3:37 PM, the Mac test lane stopped accepting work: every job that needs a database container has died in under ten seconds since, so W67 and W68 are pushed but unjudged. That is the thing not progressing, and it cannot be fixed from a phone. This board only moves when the relay writes to it; nothing publishes here on its own yet, which is why it sat still from 2:35 to 6:00 PM while the executor was working."},
+  "pulse": {
+    "running": true,
+    "text": "6:45 PM Wednesday. The Mac test lane is back: the 6:01 PM cleanup job freed 33 GB inside the test computer's disk (it was full of leftover database containers) and a fresh Postgres container now starts in under two seconds, proven on a throwaway branch. At 6:41 PM the relay re-ran the three sets of checks the dead lane had refused: main (the merged W63 + W66), then W67 (PR 93), then W68 (PR 94). The lane runs one set at a time, about 25 minutes each, so expect main's verdict near 7:10 PM, W67 near 7:40, W68 near 8:10. Nothing merges until each shows 6 of 6 green."
+  },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-08-26T11:29:16Z",
-    "queue": ["W51", "W60", "W61", "W62"],
-    "p50": null, "p80": null, "p95": null,
-    "probSep04": 0.0596, "probSep18": 0.0611, "flipCondition": 0, "coverage": 0.931, "queueGrowthPerWeek": 14.59,
-    "stale": true, "runCount": 2,
+    "queue": [
+      "W51",
+      "W60",
+      "W61",
+      "W62"
+    ],
+    "p50": null,
+    "p80": null,
+    "p95": null,
+    "probSep04": 0.0596,
+    "probSep18": 0.0611,
+    "flipCondition": 0,
+    "coverage": 0.931,
+    "queueGrowthPerWeek": 14.59,
+    "stale": true,
+    "runCount": 2,
     "staleNote": "The 7:29 AM run is the last entry in the old shape. W64 landed at 2:25 PM: from the next 7:17 AM run, dates that never land inside the horizon are withheld instead of printed as 2036. The milestone block reads not_defined until Zusha names the September 18 windows.",
-    "missing": ["The milestone list: docs/forecast-scope.json is committed empty; the September 18 window list is Zusha's input.", "A self-grade: available from tomorrow's run.", "A route to write this tab automatically: gated on a cross-repo token that does not exist; this entry was written by the relay by hand."],
+    "missing": [
+      "The milestone list: docs/forecast-scope.json is committed empty; the September 18 window list is Zusha's input.",
+      "A self-grade: available from tomorrow's run.",
+      "A route to write this tab automatically: gated on a cross-repo token that does not exist; this entry was written by the relay by hand."
+    ],
     "fixedBy": "W64 landed; the ratifier's milestone list; a publish route"
   },
   "support": [
-    {"w": "W45", "phase": "done", "note": "MERGED: moved testing onto the free runner on the Mac and fixed the database race"},
-    {"w": "W48", "phase": "done", "note": "MERGED: diary-coverage rule fixed; re-chained W36 and W37 clean"},
-    {"w": "W49", "phase": "done", "note": "MERGED Tuesday: formatting-config repair + catalog render (PR 57)"},
-    {"w": "W50", "phase": "done", "note": "MERGED Tuesday: records-plane closure, 77 screen records normalized (PR 58)"},
-    {"w": "W39-W46", "phase": "done", "note": "Eight windows of pipeline repair; write-ups on main; PRs 66-72 closed with rulings."},
-    {"w": "W52", "phase": "done", "note": "Chain landing record; write-up on main; PR 61 closed with a ruling."},
-    {"w": "W54", "phase": "done", "note": "Second demo-seed pass; parked correctly on the missing is_demo column; PR 74 closed."},
-    {"w": "W56", "phase": "done", "note": "Nine record PRs consolidated; landed inside W58 Tuesday night."},
-    {"w": "W57", "phase": "done", "note": "is_demo marker + seeded tenant + two Today screens; landed inside W58."},
-    {"w": "W58", "phase": "done", "note": "MERGED Tuesday night: catalog-vendor and forecast-publish tooling; runner mount pending."},
-    {"w": "W59", "phase": "done", "note": "MERGED 12:55 AM Wednesday: leftover write-ups carried, workflow-file lint gate added."},
-    {"w": "W65", "phase": "done", "note": "DONE 2:37 PM Wednesday: read W63's failing log, fixed on its branch, 6/6 green; record PR 91 open for its write-up."}
+    {
+      "w": "W45",
+      "phase": "done",
+      "note": "MERGED: moved testing onto the free runner on the Mac and fixed the database race"
+    },
+    {
+      "w": "W48",
+      "phase": "done",
+      "note": "MERGED: diary-coverage rule fixed; re-chained W36 and W37 clean"
+    },
+    {
+      "w": "W49",
+      "phase": "done",
+      "note": "MERGED Tuesday: formatting-config repair + catalog render (PR 57)"
+    },
+    {
+      "w": "W50",
+      "phase": "done",
+      "note": "MERGED Tuesday: records-plane closure, 77 screen records normalized (PR 58)"
+    },
+    {
+      "w": "W39-W46",
+      "phase": "done",
+      "note": "Eight windows of pipeline repair; write-ups on main; PRs 66-72 closed with rulings."
+    },
+    {
+      "w": "W52",
+      "phase": "done",
+      "note": "Chain landing record; write-up on main; PR 61 closed with a ruling."
+    },
+    {
+      "w": "W54",
+      "phase": "done",
+      "note": "Second demo-seed pass; parked correctly on the missing is_demo column; PR 74 closed."
+    },
+    {
+      "w": "W56",
+      "phase": "done",
+      "note": "Nine record PRs consolidated; landed inside W58 Tuesday night."
+    },
+    {
+      "w": "W57",
+      "phase": "done",
+      "note": "is_demo marker + seeded tenant + two Today screens; landed inside W58."
+    },
+    {
+      "w": "W58",
+      "phase": "done",
+      "note": "MERGED Tuesday night: catalog-vendor and forecast-publish tooling; runner mount pending."
+    },
+    {
+      "w": "W59",
+      "phase": "done",
+      "note": "MERGED 12:55 AM Wednesday: leftover write-ups carried, workflow-file lint gate added."
+    },
+    {
+      "w": "W65",
+      "phase": "done",
+      "note": "DONE 2:37 PM Wednesday: read W63's failing log, fixed on its branch, 6/6 green; record PR 91 open for its write-up."
+    },
+    {
+      "w": "LANE",
+      "phase": "done",
+      "note": "REPAIRED 6:10 PM Wednesday: 33 GB reclaimed in the runner VM, Postgres container start proven; stuck ghost job on PR 95 cancelled 6:41 PM."
+    }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": {"done": 33, "inProgress": 2, "todo": 0},
-    "inProgress": [{"id": "624", "name": "W67 due dates + close-day — PR 93 pushed, lane refused the checks"}, {"id": "625", "name": "W68 write-path audit — PR 94 pushed, lane refused the checks"}]
+    "counts": {
+      "done": 33,
+      "inProgress": 2,
+      "todo": 0
+    },
+    "inProgress": [
+      {
+        "id": "624",
+        "name": "W67 due dates + close-day — PR 93, checks re-running after lane repair"
+      },
+      {
+        "id": "625",
+        "name": "W68 write-path audit — PR 94, checks re-running after lane repair"
+      }
+    ]
   }
 }
