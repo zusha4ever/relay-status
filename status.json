@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-27T16:02:00Z",
+  "updatedAt": "2026-08-27T19:03:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 17,
-    "total": 23
+    "landed": 20,
+    "total": 25
   },
   "prs": [
     {
@@ -16,62 +16,19 @@
       "detail": {
         "cards": "PR 59 | parked, guarded",
         "items": [
-          "Takes the master list of every finance deliverable and writes it into the product's database so screens have real things to show.",
-          "PARKED: the builder cannot reach the separate catalog repository from inside its sandbox; the Mac runner needs the catalog folder mounted, a two-minute change that needs a Mac session."
-        ]
-      }
-    },
-    {
-      "n": 87,
-      "w": "W63",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-26T21:58:00Z",
-      "what": "is_demo on every seeded table, the false-success fix, and a viewable record of the populated Today screens",
-      "detail": {
-        "cards": "Plane card 620 Done | PR 87 | merged 5:58 PM Wednesday",
-        "items": [
-          "Rendered pages of the populated screens are committed under docs/demo/2026-08-26/ and produced in every CI run."
-        ]
-      }
-    },
-    {
-      "n": 92,
-      "w": "W66",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-26T21:59:00Z",
-      "what": "One seeded deliverable certified end to end, with the written attestation the R52 law requires",
-      "detail": {
-        "cards": "Plane card 623 Done | PR 92 | merged 5:59 PM Wednesday",
-        "items": [
-          "The flow the product exists for, real: Approval Inbox to Item Review to certified, and the item leaves the inbox."
+          "PARKED until the Mac runner has the catalog folder mounted; a Mac session prompt was handed to Zusha at 12:10 PM Thursday."
         ]
       }
     },
     {
       "n": 94,
-      "w": "W67+W68+W69",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-27T00:32:00Z",
-      "what": "Due dates on the Production Desk; no finance write path reports success on a cross-tenant no-op",
-      "detail": {
-        "cards": "PR 94 | merged 8:32 PM Wednesday",
-        "items": [
-          "Four silent-success write paths found and fixed with cross-tenant tests, plus a reusable one-line test helper."
-        ]
-      }
-    },
-    {
-      "n": 98,
-      "w": "W70",
+      "w": "W63–W70",
       "state": "merged",
       "ci": "green",
       "moved": "2026-08-27T01:09:00Z",
-      "what": "Hold and release a deliverable — halted honestly: no ratified role for a human hold (DRIFT-640/641)",
+      "what": "Certify end to end, write-path hardening, holds halt (DRIFT-640/641) — Wednesday's train",
       "detail": {
-        "cards": "Plane card 627 Done | PR 98 | merged 9:09 PM Wednesday",
+        "cards": "PRs 87 · 92 · 94 · 98 | all merged by 9:09 PM Wednesday",
         "items": [
           "Waiting on Zusha: who may place a hold and how."
         ]
@@ -79,15 +36,15 @@
     },
     {
       "n": 102,
-      "w": "W71+W72+W73+W74",
+      "w": "W71–W74",
       "state": "merged",
       "ci": "green",
       "moved": "2026-08-27T03:52:00Z",
-      "what": "Filed Deliverable, Deliverables Library and Role Home read the seeded tenant; The Watch halts (no monitor type, DRIFT-650)",
+      "what": "Filed Deliverable, Deliverables Library and Role Home read the seeded tenant; The Watch halts (DRIFT-650)",
       "detail": {
-        "cards": "Plane cards 628–631 Done | PR 102 | merged 11:52 PM Wednesday",
+        "cards": "PR 102 | merged 11:52 PM Wednesday",
         "items": [
-          "Three more screens real from seeded rows. The Watch waits on Zusha: does the data model gain a monitor type?"
+          "Waiting on Zusha: does the data model gain a monitor type for The Watch?"
         ]
       }
     },
@@ -97,96 +54,78 @@
       "state": "merged",
       "ci": "green",
       "moved": "2026-08-27T15:56:00Z",
-      "what": "The Deliverable Workspace shows the demo tenant's real deliverable from real rows; the route fixture is retired",
+      "what": "The Deliverable Workspace shows the demo tenant's real deliverable from real rows",
       "detail": {
-        "cards": "Plane card 634 Done | PR 103 | merged 11:56 AM Thursday | run 33047091878 6/6 green",
+        "cards": "Plane card 634 Done | PR 103 | merged 11:56 AM Thursday | run 33047091878 6/6",
         "items": [
-          "Built between 1:58 AM and 2:48 AM; the relay held it while the session was live and merged it this pass once the six checks were green.",
-          "Two honest gaps filed: no ratified table for the findings region (DRIFT-690); no in-progress instance in the demo seed, so the submit action is not wired (DRIFT-691).",
-          "Its page in the demo record is not yet committed (no database in the builder's sandbox); W81 produces it on the lane."
-        ]
-      }
-    },
-    {
-      "n": 105,
-      "w": "W76",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-27T06:28:00Z",
-      "what": "The demo walk starts at sign-in — halted on purpose; DECIDED: the sign-in service will be simulated (W80)",
-      "detail": {
-        "cards": "Plane card 635 | PR 105 | halted 2:28 AM Thursday | lands inside PR 107 via W79",
-        "items": [
-          "The ratified way to sign in is Supabase Auth, an outside service never connected to this app. The window stopped rather than invent a password table. Correct.",
-          "Zusha ruled Thursday: when an outside system must be present for testing or demo, simulate it unless it is free and easily configurable. Registered as rule R59 by W80.",
-          "This record lands when PR 107 merges; the actual sign-in work is W80."
-        ]
-      }
-    },
-    {
-      "n": 106,
-      "w": "W77",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-27T06:47:00Z",
-      "what": "Configure & Produce reads the demo tenant's real definition and run configuration; the fixture is retired",
-      "detail": {
-        "cards": "Plane card 636 In Progress | PR 106 | built 2:43–2:47 AM Thursday | run 33047141937: 5 of 6 green",
-        "items": [
-          "The code is done and five checks pass. The sixth (the combined gates check) failed after 78 seconds — a real inspection failure, not the lane refusing work.",
-          "The relay could not read the failing log from a phone session, so it did not guess: W79 reads the log first, then re-lands this branch on top of the merged W75.",
-          "Lands inside PR 107 when W79 finishes."
+          "Two honest gaps filed: no ratified findings table (DRIFT-690); no draft instance in the seed, so submit is not wired (DRIFT-691) — W83 closes that."
         ]
       }
     },
     {
       "n": 107,
-      "w": "W78 (chain tip)",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-27T06:56:00Z",
-      "what": "Produce Catalog reads the demo tenant's real catalog version and definitions; the permanent spinner is retired",
+      "w": "W76+W77+W78",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T18:44:00Z",
+      "what": "Configure & Produce and Produce Catalog read real rows; W76's honest sign-in halt recorded",
       "detail": {
-        "cards": "Plane card 637 In Progress | PR 107 | built 2:47–2:56 AM Thursday | run 33047720706: 5 of 6 green | merge vehicle for W76 + W77 + W78",
+        "cards": "Plane cards 635–637 Done | PR 107 | merged 2:44 PM Thursday | run 33095064189 6/6 | W79 re-landed the chain in 46 minutes",
         "items": [
-          "Same single red as W77, same cause class. This branch contains W76 and W77 by ancestry, so it is the one PR that merges; the other two close as contained.",
-          "W79 re-lands it as a chain on the merged W75, regenerates the governance documents last, and proves six of six; then the relay merges it."
+          "W79 read the failing log, rebuilt the three overnight branches on the merged W75, regenerated the documents last, and the six checks went green at 1:23 PM.",
+          "Two more screens real from seeded rows; the spinner that nothing ever replaced is gone."
         ]
       }
     },
     {
-      "n": 0,
+      "n": 110,
       "w": "W80",
-      "state": "queued",
-      "ci": "none",
-      "moved": "2026-08-27T15:57:00Z",
-      "what": "The demo walk begins at a real sign-in screen backed by a simulated identity service; Zusha's simulation rule registered as R59",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-08-27T18:41:00Z",
+      "what": "The demo walk begins at a real sign-in screen backed by a simulated identity service; Zusha's rule registered as R60",
       "detail": {
-        "cards": "Plane card 639 Todo | brief on main 11:57 AM Thursday | behind W79",
+        "cards": "Plane card 639 | PR 110 | built 12:30–2:28 PM Thursday | run 33103668551 6/6 green | blocked: merge conflict on generated documents",
         "items": [
-          "A stand-in sign-in service that speaks the ratified interface, names itself simulated on screen, is off by default, stores no password, and adds no database table.",
-          "If a database session record proves unavoidable, the window halts and files the decision for Zusha rather than inventing it."
+          "Built: a stand-in sign-in service behind the ratified interface, off by default, signed short-lived cookie, wrong credentials refused; wired behind the existing sign-in scaffold; Role Home reads the session.",
+          "Zusha's simulate-external-systems rule is on the branch as rule R60 (R59 was already taken; the relay's brief said R59 without checking — relay error, filed as DRIFT-740).",
+          "Not built yet (DRIFT-741): the full sign-in record (enrollment, session list, lockout) and a live browser round trip.",
+          "Why it isn't merged: it was cut from the chain while W79 was rewriting it, so its copy of the generated documents diverges from main and GitHub refuses the merge. Code is fine. W82 re-lands it."
+        ]
+      }
+    },
+    {
+      "n": 111,
+      "w": "W81",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-08-27T18:58:00Z",
+      "what": "The committed demo record gains Produce Catalog, Configure & Produce and Deliverable Workspace pages",
+      "detail": {
+        "cards": "Plane card 640 | PR 111 | built 12:37–2:36 PM Thursday | run 33104284182 6/6 green | blocked: same merge conflict as W80",
+        "items": [
+          "Same cause as W80, same fix: W82 re-lands both as one chain on the merged W78 and regenerates the documents once, last."
         ]
       }
     },
     {
       "n": 0,
-      "w": "W81",
+      "w": "W83",
       "state": "queued",
       "ci": "none",
-      "moved": "2026-08-27T15:57:00Z",
-      "what": "The committed demo record gains pages for Produce Catalog, Configure & Produce and Deliverable Workspace",
+      "moved": "2026-08-27T18:59:00Z",
+      "what": "Submit for review on the Deliverable Workspace is a real draft→review write",
       "detail": {
-        "cards": "Plane card 640 Todo | brief on main 11:57 AM Thursday | behind W80",
+        "cards": "Plane card 642 Todo | brief on main 2:59 PM Thursday | behind W82",
         "items": [
-          "Three screens are coded but have no page in the record because their builders had no database; the CI lane does. W81 produces the pages and links every page from the index."
+          "Seeds one draft deliverable, makes submit a real tenant-scoped write with a transition row and audit event, the item lands in the Approval Inbox, cross-tenant submit refused."
         ]
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "11:58 AM Thursday. W75 merged at 11:56 AM, six checks green. Overnight the executor also built W77 and W78 (five of six checks each) and W76 stopped honestly on sign-in. Zusha ruled this morning: outside systems needed for demo are simulated unless free and easy — so sign-in goes ahead as W80 with a stand-in service. The relay authored W79 (re-land the three overnight branches on the merged W75, reading the failing log first), W80 and W81 in one push and fired the executor at 11:58 AM. First evidence expected by about 12:20 PM: a W79 claim and force-pushes on the three branches. Still waiting on Zusha: holds (DRIFT-640/641) and The Watch (DRIFT-650)."
+    "text": "3:03 PM Thursday. W79 worked: the three overnight branches went green and PR 107 merged at 2:44 PM — Configure & Produce and Produce Catalog are on main. W80 (simulated sign-in) and W81 (demo-record pages) were both built and both passed all six checks by 2:58 PM, but neither can merge: they were cut from the chain while W79 was rewriting it, so their generated documents clash with main. That topology was the relay's brief, not the builders' choice. W82 was authored and fired at 3:00 PM to re-land both as one chain; W83 (a real submit on the Workspace) is queued behind it. First evidence expected by about 3:20 PM. Still waiting on Zusha: holds and The Watch."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -202,24 +141,19 @@
     "queueGrowthPerWeek": null,
     "stale": true,
     "runCount": 3,
-    "staleNote": "The unattended forecast run committed at 10:58 AM Thursday (first run in W64's two-question shape). The relay has not yet read its numbers into this tab; the figures above are withheld rather than copied from the old run. The milestone block still reads not_defined until Zusha names the September 18 windows.",
+    "staleNote": "The unattended forecast run committed at 10:58 AM Thursday in W64's two-question shape. The relay has not yet read its numbers into this tab; figures are withheld rather than copied from an older run. The milestone block still reads not_defined until Zusha names the September 18 windows.",
     "missing": [
       "The milestone list: docs/forecast-scope.json is committed empty; the September 18 window list is Zusha's input.",
-      "This tab's numbers from the 10:58 AM run: the relay will read docs/forecast-ledger.json next pass.",
-      "A route to write this tab automatically: gated on a cross-repo token that does not exist; this entry was written by the relay by hand."
+      "This tab's numbers from the 10:58 AM run: owed to the next relay pass.",
+      "A route to write this tab automatically: gated on a cross-repo token that does not exist."
     ],
     "fixedBy": "the ratifier's milestone list; a publish route"
   },
   "support": [
     {
-      "w": "W39-W59",
+      "w": "W39–W71",
       "phase": "done",
-      "note": "Pipeline repair windows Aug 23–26; all landed or recorded on main."
-    },
-    {
-      "w": "W65",
-      "phase": "done",
-      "note": "DONE 2:37 PM Wednesday: read W63's failing log, fixed on its branch; its write-up landed inside W69."
+      "note": "Pipeline repair and record windows Aug 23–27; all landed or recorded on main."
     },
     {
       "w": "LANE",
@@ -227,65 +161,47 @@
       "note": "REPAIRED 6:10 PM Wednesday: 33 GB reclaimed in the runner VM; Postgres container start proven."
     },
     {
-      "w": "W69",
-      "phase": "done",
-      "note": "MERGED 8:32 PM Wednesday inside PR 94: chain refreshed, W65 record carried, DRIFT-630 gate fix."
-    },
-    {
-      "w": "W70",
-      "phase": "done",
-      "note": "MERGED 9:09 PM Wednesday as an honest halt: no ratified role for a human hold; DRIFT-640/641."
-    },
-    {
-      "w": "W71",
-      "phase": "done",
-      "note": "Landed inside PR 102: The Watch stays unfinished until a monitor type is ratified (DRIFT-650)."
-    },
-    {
       "w": "W79",
+      "phase": "done",
+      "note": "DONE 12:47 PM Thursday: re-landed W76–W78 as a chain on merged W75; 6/6 green 1:23 PM; PR 107 merged 2:44 PM."
+    },
+    {
+      "w": "W82",
       "phase": "running",
-      "note": "FIRED 11:58 AM Thursday: re-land W76, W77, W78 as one chain on the merged W75; read the failing log before touching anything; PR 107 is the one that merges."
+      "note": "FIRED 3:00 PM Thursday: re-land W80 and W81 as one chain on the merged W78; conflicts resolved by regenerating the documents, never by hand."
     },
     {
       "w": "RUNNER MOUNT",
       "phase": "queued",
-      "note": "Needs a Mac session: mount the catalog folder into the runner container (about two minutes), then W51 can resume."
+      "note": "Mac session prompt handed to Zusha 12:10 PM: mount the catalog folder into the runner container; then W51 resumes."
     }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": {
-      "done": 45,
-      "inProgress": 4,
-      "todo": 2
+      "done": 49,
+      "inProgress": 3,
+      "todo": 1
     },
     "inProgress": [
       {
-        "id": "635",
-        "name": "W76 sign-in walk — halted DRIFT-700; ruled: simulate → W80"
+        "id": "639",
+        "name": "W80 simulated sign-in + R60 — built, green, blocked on docs conflict"
       },
       {
-        "id": "636",
-        "name": "W77 Configure & Produce from real rows — built, one red check"
+        "id": "640",
+        "name": "W81 demo-record pages — built, green, blocked on docs conflict"
       },
       {
-        "id": "637",
-        "name": "W78 Produce Catalog stub retired — built, one red check"
-      },
-      {
-        "id": "638",
-        "name": "W79 re-land the chain on merged W75, log-first"
+        "id": "641",
+        "name": "W82 re-land W80→W81 as a chain"
       }
     ],
     "todo": [
       {
-        "id": "639",
-        "name": "W80 simulated sign-in + R59"
-      },
-      {
-        "id": "640",
-        "name": "W81 demo record pages for S-04/S-05/S-06"
+        "id": "642",
+        "name": "W83 Workspace submit is a real write"
       }
     ]
   }
