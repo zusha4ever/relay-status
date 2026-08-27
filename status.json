@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-27T00:03:00Z",
+  "updatedAt": "2026-08-27T01:05:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 8,
-    "total": 13
+    "landed": 11,
+    "total": 14
   },
   "prs": [
     {
@@ -113,9 +113,9 @@
     {
       "n": 93,
       "w": "W67",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-26T22:53:00Z",
+      "state": "closed",
+      "ci": "green",
+      "moved": "2026-08-27T00:37:00Z",
       "what": "Production Desk shows due dates and close-day context from seeded schedule rows",
       "detail": {
         "cards": "PR 93 | run 33006178275 re-run 6:41 PM: 5 of 6 green, gates job red in 72 s",
@@ -128,10 +128,10 @@
     },
     {
       "n": 94,
-      "w": "W68",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-26T22:58:00Z",
+      "w": "W68+W69",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T00:32:00Z",
       "what": "No finance write path reports success on a cross-tenant no-op",
       "detail": {
         "cards": "PR 94 | run 33006948029 re-run 6:41 PM: 5 of 6 green, gates job red in 72 s | merge vehicle for W67 + W68 + W65's write-up",
@@ -142,38 +142,23 @@
       }
     },
     {
-      "n": 0,
-      "w": "W69",
-      "state": "fired",
-      "ci": "pending",
-      "moved": "2026-08-27T00:00:03Z",
-      "what": "The W67+W68 chain lands green on today's main, carrying W65's write-up",
-      "detail": {
-        "cards": "brief on main 8b16d1d | trigger PR 96 squash-merged 8:00 PM | works on PR 94's branch, no new PR",
-        "items": [
-          "Merge main in, regenerate the four generated docs last, wait for 6 of 6, close record PR 91 with a note.",
-          "First visible evidence: a W69 claim comment on PR 94, expected 15 to 20 minutes after 8:00 PM."
-        ]
-      }
+      "n": 97,
+      "w": "W70 (dup)",
+      "state": "closed",
+      "ci": "red",
+      "moved": "2026-08-27T00:57:00Z"
     },
     {
-      "n": 0,
+      "n": 98,
       "w": "W70",
-      "state": "queued",
+      "state": "open",
       "ci": "pending",
-      "moved": "2026-08-27T00:00:03Z",
-      "what": "A reviewer can put a scheduled deliverable on hold and release it; the Production Desk shows it honestly",
-      "detail": {
-        "cards": "brief on main 8b16d1d | queued behind W69 | base: PR 94's tip",
-        "items": [
-          "Uses the real hold and release paths W68 just hardened; if no ratified home for holds exists, it halts and says 'Not built yet' in words."
-        ]
-      }
+      "moved": "2026-08-27T00:56:00Z"
     }
   ],
   "pulse": {
     "running": true,
-    "text": "8:03 PM Wednesday. The lane is back and it judged W67 and W68 at 6:53 and 6:58 PM: five of six checks green on each, and the one red on both is the generated-docs freshness check, not the code. Cause: the relay merged W63 and W66 at 5:53 PM while those two branches were in flight, so their auto-written chronicle and ledger are two rows behind main. Fix in motion: W69 was fired at 8:00 PM to refresh the W68 branch (which already contains all of W67), regenerate the docs last, and prove 6 of 6; then PR 94 merges and W67 rides in with it. W70 (holds on the Production Desk) is queued behind it so the builder never finds an empty queue. Expect a W69 claim comment on PR 94 around 8:20 PM."
+    "text": "9:05 PM Wednesday. Landed: the W67+W68+W69 chain merged at 8:34 PM on 6 of 6 green, so main now carries due dates on the Production Desk, every finance write path refusing cross-tenant no-ops, and the chain's docs fresh. W70 (holds) ran twice at once (the merge webhook and the hourly timer both fired); both sessions stopped honestly at the first task: no ratified role or interface exists for a person to place a hold, so holds stay marked unfinished and DRIFT-640/641 are filed. The relay kept the stronger record (PR 98), fixed its one gate miss (four regenerated docs not named in its diary), and its checks are running now, about 25 minutes. W71 (The Watch, the sixth Today screen) and W72 (the Filed Deliverable screen showing W66's certified record with its rendered document) are authored on main; the executor picks W71 up once PR 98 merges."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -270,26 +255,37 @@
     },
     {
       "w": "W69",
-      "phase": "fired",
-      "note": "FIRED 8:00 PM Wednesday: refresh the W67+W68 chain on PR 94's branch, regenerate docs last, prove 6/6, close record PR 91."
+      "phase": "done",
+      "note": "MERGED 8:34 PM Wednesday inside PR 94: chain refreshed, W65 record carried, DRIFT-630 gate fix."
+    },
+    {
+      "w": "W70",
+      "phase": "halted",
+      "note": "Stopped at T1 8:43 PM: no ratified home for a human-placed hold; DRIFT-640/641 filed on PR 98, merging on green."
     }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": {
-      "done": 33,
-      "inProgress": 2,
-      "todo": 0
+      "done": 39,
+      "inProgress": 1,
+      "todo": 2
     },
     "inProgress": [
       {
-        "id": "624",
-        "name": "W67 due dates + close-day — PR 93: 5/6 green, docs stale; lands via PR 94 after W69"
+        "id": "627",
+        "name": "W70 holds — halted at T1, PR 98 checks running"
+      }
+    ],
+    "todo": [
+      {
+        "id": "628",
+        "name": "W71 The Watch, sixth Today screen"
       },
       {
-        "id": "625",
-        "name": "W68 write-path audit — PR 94: 5/6 green, docs stale; W69 refreshing"
+        "id": "629",
+        "name": "W72 Filed Deliverable shows the certified record"
       }
     ]
   }
