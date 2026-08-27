@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-26T23:20:00Z",
+  "updatedAt": "2026-08-27T00:03:00Z",
   "updatedBy": "relay",
   "train": {
     "landed": 8,
@@ -146,13 +146,13 @@
       "w": "W69",
       "state": "fired",
       "ci": "pending",
-      "moved": "2026-08-26T23:15:00Z",
+      "moved": "2026-08-27T00:00:03Z",
       "what": "The W67+W68 chain lands green on today's main, carrying W65's write-up",
       "detail": {
-        "cards": "brief on main 8b16d1d | trigger PR 96 squash-merged 7:15 PM | works on PR 94's branch, no new PR",
+        "cards": "brief on main 8b16d1d | trigger PR 96 squash-merged 8:00 PM | works on PR 94's branch, no new PR",
         "items": [
           "Merge main in, regenerate the four generated docs last, wait for 6 of 6, close record PR 91 with a note.",
-          "First visible evidence: a W69 claim comment on PR 94, expected 15 to 20 minutes after 7:15 PM."
+          "First visible evidence: a W69 claim comment on PR 94, expected 15 to 20 minutes after 8:00 PM."
         ]
       }
     },
@@ -161,7 +161,7 @@
       "w": "W70",
       "state": "queued",
       "ci": "pending",
-      "moved": "2026-08-26T23:15:00Z",
+      "moved": "2026-08-27T00:00:03Z",
       "what": "A reviewer can put a scheduled deliverable on hold and release it; the Production Desk shows it honestly",
       "detail": {
         "cards": "brief on main 8b16d1d | queued behind W69 | base: PR 94's tip",
@@ -173,7 +173,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "7:20 PM Wednesday. The lane is back and it judged W67 and W68 at 6:49 and 6:59 PM: five of six checks green on each, and the one red on both is the generated-docs freshness check, not the code. Cause: the relay merged W63 and W66 at 5:53 PM while those two branches were in flight, so their auto-written chronicle and ledger are two rows behind main. Fix in motion: W69 was fired at 7:15 PM to refresh the W68 branch (which already contains all of W67), regenerate the docs last, and prove 6 of 6; then PR 94 merges and W67 rides in with it. W70 (holds on the Production Desk) is queued behind it so the builder never finds an empty queue. Expect a W69 claim comment on PR 94 around 7:35 PM."
+    "text": "8:03 PM Wednesday. The lane is back and it judged W67 and W68 at 6:53 and 6:58 PM: five of six checks green on each, and the one red on both is the generated-docs freshness check, not the code. Cause: the relay merged W63 and W66 at 5:53 PM while those two branches were in flight, so their auto-written chronicle and ledger are two rows behind main. Fix in motion: W69 was fired at 8:00 PM to refresh the W68 branch (which already contains all of W67), regenerate the docs last, and prove 6 of 6; then PR 94 merges and W67 rides in with it. W70 (holds on the Production Desk) is queued behind it so the builder never finds an empty queue. Expect a W69 claim comment on PR 94 around 8:20 PM."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -271,7 +271,7 @@
     {
       "w": "W69",
       "phase": "fired",
-      "note": "FIRED 7:15 PM Wednesday: refresh the W67+W68 chain on PR 94's branch, regenerate docs last, prove 6/6, close record PR 91."
+      "note": "FIRED 8:00 PM Wednesday: refresh the W67+W68 chain on PR 94's branch, regenerate docs last, prove 6/6, close record PR 91."
     }
   ],
   "plane": {
