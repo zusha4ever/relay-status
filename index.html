@@ -129,6 +129,7 @@
     <button class="tab" onclick="showPane(3,this)">Windows</button>
     <button class="tab" onclick="showPane(4,this)">Diary</button>
     <button class="tab" onclick="showPane(5,this)">Plane</button>
+    <button class="tab" onclick="showPane(6,this)">Curve</button>
   </div>
 
   <div class="pane on"><h2 style="margin-top:0">Merge train <small id="trainsub">every product window the feed lists — new ones appear here on their own</small></h2>
@@ -160,6 +161,14 @@
 
   </div><div class="pane"><h2 style="margin-top:0">Plane board <small>the build register</small></h2>
   <div id="board"><div class="skeleton">Loading…</div></div>
+
+  </div><div class="pane"><h2 style="margin-top:0">Ideal vs actual <small>every session that ran against every session that landed, projected to Sep 18</small></h2>
+  <div id="curvekpis"></div>
+  <div id="curvelegend"></div>
+  <div style="position:relative;width:100%;height:340px"><canvas id="curvechart"></canvas></div>
+  <div class="taphint">Tap a circle for that window. Circle size is the session's work-log bytes. Dashed uprights: today, Sep 4, Sep 18.</div>
+  <div id="curvepanel" class="note">No window selected.</div>
+  <div id="curvenote" class="note"></div>
 
   </div>
   <div id="detail"></div>
@@ -507,5 +516,7 @@ function resetCountdown(){
 }
 window.addEventListener("load",()=>{refreshAll()});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="curve.js"></script>
 </body>
 </html>
