@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-27T01:05:00Z",
+  "updatedAt": "2026-08-27T01:25:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 11,
-    "total": 14
+    "landed": 12,
+    "total": 16
   },
   "prs": [
     {
@@ -151,14 +151,28 @@
     {
       "n": 98,
       "w": "W70",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T01:09:00Z"
+    },
+    {
+      "n": 99,
+      "w": "W71",
       "state": "open",
       "ci": "pending",
-      "moved": "2026-08-27T00:56:00Z"
+      "moved": "2026-08-27T00:57:00Z"
+    },
+    {
+      "n": 100,
+      "w": "W72",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-08-27T01:00:00Z"
     }
   ],
   "pulse": {
     "running": true,
-    "text": "9:05 PM Wednesday. Landed: the W67+W68+W69 chain merged at 8:34 PM on 6 of 6 green, so main now carries due dates on the Production Desk, every finance write path refusing cross-tenant no-ops, and the chain's docs fresh. W70 (holds) ran twice at once (the merge webhook and the hourly timer both fired); both sessions stopped honestly at the first task: no ratified role or interface exists for a person to place a hold, so holds stay marked unfinished and DRIFT-640/641 are filed. The relay kept the stronger record (PR 98), fixed its one gate miss (four regenerated docs not named in its diary), and its checks are running now, about 25 minutes. W71 (The Watch, the sixth Today screen) and W72 (the Filed Deliverable screen showing W66's certified record with its rendered document) are authored on main; the executor picks W71 up once PR 98 merges."
+    "text": "9:25 PM Wednesday. W70 merged at 9:09 PM on 6 of 6 green as an honest halt: holds stay marked unfinished until you decide who may place one (DRIFT-640). The executor then ran W71 on its own and stopped the same way in six minutes: the database only allows two kinds of standing artifact, dashboard and report definition, so The Watch cannot store a monitor until the data model gains that type (DRIFT-650, PR 99, your call). It moved straight on to W72, the Filed Deliverable screen showing W66's certified record; that session is live now (PR 100). W73 (Deliverables Library) and W74 (Role Home) are authored on main so the queue stays two deep. Two decisions wait for you; nothing else is blocked."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -260,32 +274,41 @@
     },
     {
       "w": "W70",
+      "phase": "done",
+      "note": "MERGED 9:09 PM Wednesday as an honest halt: no ratified role or interface for a human hold; DRIFT-640/641."
+    },
+    {
+      "w": "W71",
       "phase": "halted",
-      "note": "Stopped at T1 8:43 PM: no ratified home for a human-placed hold; DRIFT-640/641 filed on PR 98, merging on green."
+      "note": "Halted at T1 8:56 PM: standing_artifact admits no monitor type (DRIFT-650). Ratifier decision needed; PR 99 open as record."
     }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": {
-      "done": 39,
-      "inProgress": 1,
+      "done": 40,
+      "inProgress": 2,
       "todo": 2
     },
     "inProgress": [
       {
-        "id": "627",
-        "name": "W70 holds — halted at T1, PR 98 checks running"
+        "id": "628",
+        "name": "W71 The Watch — halted at T1, DRIFT-650, PR 99 record"
+      },
+      {
+        "id": "629",
+        "name": "W72 Filed Deliverable — session live, PR 100"
       }
     ],
     "todo": [
       {
-        "id": "628",
-        "name": "W71 The Watch, sixth Today screen"
+        "id": "630",
+        "name": "W73 Deliverables Library proven and recorded"
       },
       {
-        "id": "629",
-        "name": "W72 Filed Deliverable shows the certified record"
+        "id": "631",
+        "name": "W74 Role Home proven and recorded"
       }
     ]
   }
