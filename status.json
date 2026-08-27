@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-27T01:25:00Z",
+  "updatedAt": "2026-08-27T04:00:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 12,
-    "total": 16
+    "landed": 16,
+    "total": 18
   },
   "prs": [
     {
@@ -158,21 +158,35 @@
     {
       "n": 99,
       "w": "W71",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-27T00:57:00Z"
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T03:52:00Z"
     },
     {
       "n": 100,
       "w": "W72",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-27T01:00:00Z"
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T03:52:00Z"
+    },
+    {
+      "n": 101,
+      "w": "W73",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T03:52:00Z"
+    },
+    {
+      "n": 102,
+      "w": "W74 (chain tip)",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-27T03:52:00Z"
     }
   ],
   "pulse": {
     "running": true,
-    "text": "9:25 PM Wednesday. W70 merged at 9:09 PM on 6 of 6 green as an honest halt: holds stay marked unfinished until you decide who may place one (DRIFT-640). The executor then ran W71 on its own and stopped the same way in six minutes: the database only allows two kinds of standing artifact, dashboard and report definition, so The Watch cannot store a monitor until the data model gains that type (DRIFT-650, PR 99, your call). It moved straight on to W72, the Filed Deliverable screen showing W66's certified record; that session is live now (PR 100). W73 (Deliverables Library) and W74 (Role Home) are authored on main so the queue stays two deep. Two decisions wait for you; nothing else is blocked."
+    "text": "12:00 AM Thursday. The executor ran W72, W73 and W74 back to back overnight as one stacked chain and the relay merged it at 11:52 PM on 6 of 6 green: the Filed Deliverable screen now shows the deliverable W66 certified with its rendered document, the Deliverables Library lists it, and Role Home opens the demo walk with counts that trace to rows. The one red was the ledger being one commit stale; the relay regenerated it. The Watch stays unfinished on the record (DRIFT-650) and holds stay unfinished (DRIFT-640); both wait on your two rulings. W75 (Deliverable Workspace from real rows) and W76 (the walk starts at sign-in) are queued on main."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -279,36 +293,27 @@
     },
     {
       "w": "W71",
-      "phase": "halted",
-      "note": "Halted at T1 8:56 PM: standing_artifact admits no monitor type (DRIFT-650). Ratifier decision needed; PR 99 open as record."
+      "phase": "done",
+      "note": "Landed as a record in the PR 102 chain: The Watch stays unfinished until a monitor type is ratified (DRIFT-650)."
     }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
     "counts": {
-      "done": 40,
-      "inProgress": 2,
+      "done": 44,
+      "inProgress": 0,
       "todo": 2
     },
-    "inProgress": [
-      {
-        "id": "628",
-        "name": "W71 The Watch — halted at T1, DRIFT-650, PR 99 record"
-      },
-      {
-        "id": "629",
-        "name": "W72 Filed Deliverable — session live, PR 100"
-      }
-    ],
+    "inProgress": [],
     "todo": [
       {
-        "id": "630",
-        "name": "W73 Deliverables Library proven and recorded"
+        "id": "632",
+        "name": "W75 Deliverable Workspace from real rows"
       },
       {
-        "id": "631",
-        "name": "W74 Role Home proven and recorded"
+        "id": "633",
+        "name": "W76 demo walk starts at sign-in"
       }
     ]
   }
