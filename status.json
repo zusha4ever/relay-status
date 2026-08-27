@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-27T04:00:00Z",
+  "updatedAt": "2026-08-27T06:24:48Z",
   "updatedBy": "relay",
   "train": {
     "landed": 16,
-    "total": 18
+    "total": 20
   },
   "prs": [
     {
@@ -182,11 +182,26 @@
       "state": "merged",
       "ci": "green",
       "moved": "2026-08-27T03:52:00Z"
+    },
+    {
+      "n": 103,
+      "w": "W75",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-08-27T05:58:30Z",
+      "what": "The Deliverable Workspace shows the demo tenant's real deliverable from real rows",
+      "detail": {
+        "cards": "Plane card 634 In Progress | PR 103 | opened 1:58 AM Thursday, still building",
+        "items": [
+          "Claimed at 1:58 AM and still working. The relay held it rather than merging into a live session.",
+          "Five of six checks green. The sixth is red only because the generated governance documents do not yet describe the claim entry the session itself just wrote; regenerating them last is the closing step of the window, not a defect."
+        ]
+      }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "12:00 AM Thursday. The executor ran W72, W73 and W74 back to back overnight as one stacked chain and the relay merged it at 11:52 PM on 6 of 6 green: the Filed Deliverable screen now shows the deliverable W66 certified with its rendered document, the Deliverables Library lists it, and Role Home opens the demo walk with counts that trace to rows. The one red was the ledger being one commit stale; the relay regenerated it. The Watch stays unfinished on the record (DRIFT-650) and holds stay unfinished (DRIFT-640); both wait on your two rulings. W75 (Deliverable Workspace from real rows) and W76 (the walk starts at sign-in) are queued on main."
+    "text": "2:25 AM Thursday. Nothing merged this pass, and that is the right outcome. W75, the Deliverable Workspace, opened its pull request at 1:58 AM and is still building, so the relay held it instead of merging into a live session; five of its six checks are green and the sixth is red only because the generated governance documents do not yet describe the claim entry that session just wrote, which its own closing step clears. The relay spent the pass on the producing half of the walk instead: W77 makes Configure and Produce read real rows and retires its fixture, W78 stops the Produce Catalog showing a loading state that never resolves. Both were pushed to main in one commit at 2:15 AM, and the executor was fired at W76, the sign-in walk, at 2:18 AM. Three windows now sit queued and unclaimed, so the hourly executor cannot run dry."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -302,18 +317,27 @@
     "dates": "Aug 24 – Sep 5",
     "counts": {
       "done": 44,
-      "inProgress": 0,
-      "todo": 2
+      "inProgress": 1,
+      "todo": 3
     },
-    "inProgress": [],
+    "inProgress": [
+      {
+        "id": "634",
+        "name": "W75 Deliverable Workspace from real rows"
+      }
+    ],
     "todo": [
       {
-        "id": "632",
-        "name": "W75 Deliverable Workspace from real rows"
+        "id": "635",
+        "name": "W76 demo walk starts at sign-in"
       },
       {
-        "id": "633",
-        "name": "W76 demo walk starts at sign-in"
+        "id": "636",
+        "name": "W77 Configure & Produce from real rows"
+      },
+      {
+        "id": "637",
+        "name": "W78 Produce Catalog stub retired"
       }
     ]
   }
