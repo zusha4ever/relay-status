@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T06:24:48Z",
+  "updatedAt": "2026-08-27T06:31:05Z",
   "updatedBy": "relay",
   "train": {
     "landed": 16,
@@ -197,11 +197,28 @@
           "Five of six checks green. The sixth is red only because the generated governance documents do not yet describe the claim entry the session itself just wrote; regenerating them last is the closing step of the window, not a defect."
         ]
       }
+    },
+    {
+      "n": 105,
+      "w": "W76",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-08-27T06:28:00Z",
+      "what": "The demo walk starts at sign-in — halted on purpose, sign-in cannot be built yet",
+      "detail": {
+        "cards": "Plane card 635 In Progress | PR 105 | opened 2:28 AM Thursday, halted at its first task",
+        "items": [
+          "The ratified way to sign in is Supabase Auth, an outside service. It was never connected to this app: no Supabase package, no session-checking code, and the database schema says in writing that no session record exists.",
+          "The window stopped rather than inventing a password table, which would contradict the ratified design. It filed DRIFT-700 and changed zero application code.",
+          "Held behind W75: this branch is built on W75's unfinished work, so merging it now would land that unfinished work on main.",
+          "Needs a decision from Zusha: connect real Supabase Auth, ratify a local session record instead, or accept that the demo walk cannot begin at sign-in."
+        ]
+      }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "2:25 AM Thursday. Nothing merged this pass, and that is the right outcome. W75, the Deliverable Workspace, opened its pull request at 1:58 AM and is still building, so the relay held it instead of merging into a live session; five of its six checks are green and the sixth is red only because the generated governance documents do not yet describe the claim entry that session just wrote, which its own closing step clears. The relay spent the pass on the producing half of the walk instead: W77 makes Configure and Produce read real rows and retires its fixture, W78 stops the Produce Catalog showing a loading state that never resolves. Both were pushed to main in one commit at 2:15 AM, and the executor was fired at W76, the sign-in walk, at 2:18 AM. Three windows now sit queued and unclaimed, so the hourly executor cannot run dry."
+    "text": "2:31 AM Thursday. The executor was fired at 2:18 AM and answered in ten minutes with an honest stop: W76 was to make the demo walk begin at sign-in, and sign-in cannot be built. The ratified way to sign in is Supabase Auth, an outside service that was never connected to this app, and the database schema states in writing that no session record exists. The window filed DRIFT-700, changed no application code, and stopped rather than inventing a password table that would contradict the design. That is now the third thing waiting on a decision from Zusha, alongside holds and The Watch. Nothing merged tonight: W75 is still building and W76 is stacked on top of it, so both wait for W75 to finish. W77 and W78 were authored and sit queued, so the executor has work either way."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -317,20 +334,20 @@
     "dates": "Aug 24 – Sep 5",
     "counts": {
       "done": 44,
-      "inProgress": 1,
-      "todo": 3
+      "inProgress": 2,
+      "todo": 2
     },
     "inProgress": [
       {
         "id": "634",
         "name": "W75 Deliverable Workspace from real rows"
+      },
+      {
+        "id": "635",
+        "name": "W76 sign-in walk — halted, DRIFT-700"
       }
     ],
     "todo": [
-      {
-        "id": "635",
-        "name": "W76 demo walk starts at sign-in"
-      },
       {
         "id": "636",
         "name": "W77 Configure & Produce from real rows"
