@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-26T22:45:00Z",
+  "updatedAt": "2026-08-26T23:20:00Z",
   "updatedBy": "relay",
   "train": {
     "landed": 8,
-    "total": 11
+    "total": 13
   },
   "prs": [
     {
@@ -103,7 +103,7 @@
       "detail": {
         "cards": "Plane card 623 | PR 92 | merged 5:59 PM Wednesday | run 33003485027 6/6 green | built in 23 minutes",
         "items": [
-          "The flow the product exists for now works for real: Approval Inbox to Item Review to certified, and the item leaves the inbox.",
+          "The flow the product exists for real: Approval Inbox to Item Review to certified, and the item leaves the inbox.",
           "Certify without a written attestation is refused in plain words when a figure is unproven; with the attestation it succeeds and the run state really changes, with a transition row and an audit event.",
           "Closed DRIFT-295 on the way: the release step that certification hands off to had been a stub since W29; it is real now.",
           "The committed demo pages now show the after-certify state."
@@ -114,14 +114,15 @@
       "n": 93,
       "w": "W67",
       "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-26T22:41:00Z",
+      "ci": "red",
+      "moved": "2026-08-26T22:53:00Z",
       "what": "Production Desk shows due dates and close-day context from seeded schedule rows",
       "detail": {
-        "cards": "PR 93 | draft | run 33006178275: five jobs died in under ten seconds",
+        "cards": "PR 93 | run 33006178275 re-run 6:41 PM: 5 of 6 green, gates job red in 72 s",
         "items": [
-          "Built and pushed at 3:38 PM; the checks did not run: every job that needs a database container failed in five to eight seconds, which means the Mac lane refused the work, not that the code failed.",
-          "Waits for the lane to come back; then a re-run, then merge on green."
+          "The code checks pass: database floor, mutation proof, journeys, surfaces, secret scan all green on the repaired lane.",
+          "The one red is the generated-docs freshness check: W63 and W66 merged at 5:53 PM while this branch was in flight, so its auto-written chronicle and ledger are two rows behind main. Not a code defect.",
+          "This branch is fully contained in W68's, so it lands when PR 94 lands; W69 does the refresh there."
         ]
       }
     },
@@ -129,21 +130,50 @@
       "n": 94,
       "w": "W68",
       "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-26T22:41:00Z",
+      "ci": "red",
+      "moved": "2026-08-26T22:58:00Z",
       "what": "No finance write path reports success on a cross-tenant no-op",
       "detail": {
-        "cards": "PR 94 | draft | run 33006948029: five jobs died in under ten seconds",
+        "cards": "PR 94 | run 33006948029 re-run 6:41 PM: 5 of 6 green, gates job red in 72 s | merge vehicle for W67 + W68 + W65's write-up",
         "items": [
-          "Same lane refusal as W67 at 3:46 PM. The work is pushed; the verdict is missing.",
-          "Waits for the lane; then a re-run, then merge on green after W67."
+          "Four silent-success write paths found and fixed (DRIFT-621, 623, 624) with cross-tenant tests, plus a reusable one-line test helper.",
+          "Same one red as W67: generated docs two rows behind main. W69 refreshes this branch, regenerates docs last, and proves 6 of 6; then this PR merges and carries W67 with it."
+        ]
+      }
+    },
+    {
+      "n": 0,
+      "w": "W69",
+      "state": "fired",
+      "ci": "pending",
+      "moved": "2026-08-26T23:15:00Z",
+      "what": "The W67+W68 chain lands green on today's main, carrying W65's write-up",
+      "detail": {
+        "cards": "brief on main 8b16d1d | trigger PR 96 squash-merged 7:15 PM | works on PR 94's branch, no new PR",
+        "items": [
+          "Merge main in, regenerate the four generated docs last, wait for 6 of 6, close record PR 91 with a note.",
+          "First visible evidence: a W69 claim comment on PR 94, expected 15 to 20 minutes after 7:15 PM."
+        ]
+      }
+    },
+    {
+      "n": 0,
+      "w": "W70",
+      "state": "queued",
+      "ci": "pending",
+      "moved": "2026-08-26T23:15:00Z",
+      "what": "A reviewer can put a scheduled deliverable on hold and release it; the Production Desk shows it honestly",
+      "detail": {
+        "cards": "brief on main 8b16d1d | queued behind W69 | base: PR 94's tip",
+        "items": [
+          "Uses the real hold and release paths W68 just hardened; if no ratified home for holds exists, it halts and says 'Not built yet' in words."
         ]
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "6:45 PM Wednesday. The Mac test lane is back: the 6:01 PM cleanup job freed 33 GB inside the test computer's disk (it was full of leftover database containers) and a fresh Postgres container now starts in under two seconds, proven on a throwaway branch. At 6:41 PM the relay re-ran the three sets of checks the dead lane had refused: main (the merged W63 + W66), then W67 (PR 93), then W68 (PR 94). The lane runs one set at a time, about 25 minutes each, so expect main's verdict near 7:10 PM, W67 near 7:40, W68 near 8:10. Nothing merges until each shows 6 of 6 green."
+    "text": "7:20 PM Wednesday. The lane is back and it judged W67 and W68 at 6:49 and 6:59 PM: five of six checks green on each, and the one red on both is the generated-docs freshness check, not the code. Cause: the relay merged W63 and W66 at 5:53 PM while those two branches were in flight, so their auto-written chronicle and ledger are two rows behind main. Fix in motion: W69 was fired at 7:15 PM to refresh the W68 branch (which already contains all of W67), regenerate the docs last, and prove 6 of 6; then PR 94 merges and W67 rides in with it. W70 (holds on the Production Desk) is queued behind it so the builder never finds an empty queue. Expect a W69 claim comment on PR 94 around 7:35 PM."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -231,12 +261,17 @@
     {
       "w": "W65",
       "phase": "done",
-      "note": "DONE 2:37 PM Wednesday: read W63's failing log, fixed on its branch, 6/6 green; record PR 91 open for its write-up."
+      "note": "DONE 2:37 PM Wednesday: read W63's failing log, fixed on its branch, 6/6 green; its write-up (PR 91) lands inside W69."
     },
     {
       "w": "LANE",
       "phase": "done",
-      "note": "REPAIRED 6:10 PM Wednesday: 33 GB reclaimed in the runner VM, Postgres container start proven; stuck ghost job on PR 95 cancelled 6:41 PM."
+      "note": "REPAIRED 6:10 PM Wednesday: 33 GB reclaimed in the runner VM, Postgres container start proven; stuck ghost job on PR 95 cancelled 6:41 PM; PRs 93/94 re-judged by 7:00 PM."
+    },
+    {
+      "w": "W69",
+      "phase": "fired",
+      "note": "FIRED 7:15 PM Wednesday: refresh the W67+W68 chain on PR 94's branch, regenerate docs last, prove 6/6, close record PR 91."
     }
   ],
   "plane": {
@@ -250,11 +285,11 @@
     "inProgress": [
       {
         "id": "624",
-        "name": "W67 due dates + close-day — PR 93, checks re-running after lane repair"
+        "name": "W67 due dates + close-day — PR 93: 5/6 green, docs stale; lands via PR 94 after W69"
       },
       {
         "id": "625",
-        "name": "W68 write-path audit — PR 94, checks re-running after lane repair"
+        "name": "W68 write-path audit — PR 94: 5/6 green, docs stale; W69 refreshing"
       }
     ]
   }
