@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T19:03:00Z",
+  "updatedAt": "2026-08-28T04:25:00Z",
   "updatedBy": "relay",
   "train": {
     "landed": 20,
@@ -125,7 +125,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "3:03 PM Thursday. W79 worked: the three overnight branches went green and PR 107 merged at 2:44 PM — Configure & Produce and Produce Catalog are on main. W80 (simulated sign-in) and W81 (demo-record pages) were both built and both passed all six checks by 2:58 PM, but neither can merge: they were cut from the chain while W79 was rewriting it, so their generated documents clash with main. That topology was the relay's brief, not the builders' choice. W82 was authored and fired at 3:00 PM to re-land both as one chain; W83 (a real submit on the Workspace) is queued behind it. First evidence expected by about 3:20 PM. Still waiting on Zusha: holds and The Watch."
+    "text": "12:25 AM Thursday. Post-reboot check: the test lane is alive (probe jobs ran 11:44 PM, runner online). W86 fired at 12:09 AM to land the three finished-but-red windows — submit-to-review, the hold you ratified, the monitor type that finishes The Watch — as one green chain; W87 (dead-link gate for the demo record) is queued behind it. The daily report for Wednesday and the graded plan for Thursday are standing documents now: reports/2026-08-27.md and reports/PLAN-2026-08-28.md in this repo. One flag needs you, not the relay: GTM's last commit is 9 days old against the September 4 bar."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -204,5 +204,10 @@
         "name": "W83 Workspace submit is a real write"
       }
     ]
+  },
+  "reports": {
+    "latest": "reports/2026-08-27.md",
+    "plan": "reports/PLAN-2026-08-28.md",
+    "note": "Daily report every evening, graded against the prior evening plan; next-day plan beside it."
   }
 }
