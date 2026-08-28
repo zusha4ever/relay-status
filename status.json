@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-28T04:25:00Z",
+  "updatedAt": "2026-08-28T14:40:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 20,
+    "landed": 23,
     "total": 25
   },
   "prs": [
@@ -21,111 +21,39 @@
       }
     },
     {
-      "n": 94,
-      "w": "W63–W70",
+      "n": 116,
+      "w": "W83+W84+W85",
       "state": "merged",
       "ci": "green",
-      "moved": "2026-08-27T01:09:00Z",
-      "what": "Certify end to end, write-path hardening, holds halt (DRIFT-640/641) — Wednesday's train",
+      "moved": "2026-08-28T14:28:00Z",
+      "what": "Submit-to-review is a real write; Controller holds with a typed reason land; monitor becomes the third standing artifact type and The Watch reads real seeded monitors",
       "detail": {
-        "cards": "PRs 87 · 92 · 94 · 98 | all merged by 9:09 PM Wednesday",
+        "cards": "PR 116 (single merge vehicle) | 6/6 green 1:07 AM | merged 10:28 AM Thursday | PRs 114/115 closed content-identical, 120 (W86 record) closed complete",
         "items": [
-          "Waiting on Zusha: who may place a hold and how."
+          "The overnight executor rebuilt the three windows as one chain (W86) and went green at 1:07 AM; the merge waited for a relay pass \u2014 this morning's pass landed it.",
+          "Closes DRIFT-610, DRIFT-650, DRIFT-691: both owner rulings (holds; the monitor type) are now on main."
         ]
       }
     },
     {
-      "n": 102,
-      "w": "W71–W74",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-27T03:52:00Z",
-      "what": "Filed Deliverable, Deliverables Library and Role Home read the seeded tenant; The Watch halts (DRIFT-650)",
-      "detail": {
-        "cards": "PR 102 | merged 11:52 PM Wednesday",
-        "items": [
-          "Waiting on Zusha: does the data model gain a monitor type for The Watch?"
-        ]
-      }
-    },
-    {
-      "n": 103,
-      "w": "W75",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-27T15:56:00Z",
-      "what": "The Deliverable Workspace shows the demo tenant's real deliverable from real rows",
-      "detail": {
-        "cards": "Plane card 634 Done | PR 103 | merged 11:56 AM Thursday | run 33047091878 6/6",
-        "items": [
-          "Two honest gaps filed: no ratified findings table (DRIFT-690); no draft instance in the seed, so submit is not wired (DRIFT-691) — W83 closes that."
-        ]
-      }
-    },
-    {
-      "n": 107,
-      "w": "W76+W77+W78",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-27T18:44:00Z",
-      "what": "Configure & Produce and Produce Catalog read real rows; W76's honest sign-in halt recorded",
-      "detail": {
-        "cards": "Plane cards 635–637 Done | PR 107 | merged 2:44 PM Thursday | run 33095064189 6/6 | W79 re-landed the chain in 46 minutes",
-        "items": [
-          "W79 read the failing log, rebuilt the three overnight branches on the merged W75, regenerated the documents last, and the six checks went green at 1:23 PM.",
-          "Two more screens real from seeded rows; the spinner that nothing ever replaced is gone."
-        ]
-      }
-    },
-    {
-      "n": 110,
-      "w": "W80",
+      "n": 121,
+      "w": "W87",
       "state": "open",
-      "ci": "green",
-      "moved": "2026-08-27T18:41:00Z",
-      "what": "The demo walk begins at a real sign-in screen backed by a simulated identity service; Zusha's rule registered as R60",
+      "ci": "red",
+      "moved": "2026-08-28T05:13:00Z",
+      "what": "Every link in the demo record resolves \u2014 a gate that fails on a dead link",
       "detail": {
-        "cards": "Plane card 639 | PR 110 | built 12:30–2:28 PM Thursday | run 33103668551 6/6 green | blocked: merge conflict on generated documents",
+        "cards": "PR 121 | 5 of 6 checks green 1:13 AM | the combined gates job failed | W88 fired to read the failing log and green it on the same branch",
         "items": [
-          "Built: a stand-in sign-in service behind the ratified interface, off by default, signed short-lived cookie, wrong credentials refused; wired behind the existing sign-in scaffold; Role Home reads the session.",
-          "Zusha's simulate-external-systems rule is on the branch as rule R60 (R59 was already taken; the relay's brief said R59 without checking — relay error, filed as DRIFT-740).",
-          "Not built yet (DRIFT-741): the full sign-in record (enrollment, session list, lockout) and a live browser round trip.",
-          "Why it isn't merged: it was cut from the chain while W79 was rewriting it, so its copy of the generated documents diverges from main and GitHub refuses the merge. Code is fine. W82 re-lands it."
-        ]
-      }
-    },
-    {
-      "n": 111,
-      "w": "W81",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-08-27T18:58:00Z",
-      "what": "The committed demo record gains Produce Catalog, Configure & Produce and Deliverable Workspace pages",
-      "detail": {
-        "cards": "Plane card 640 | PR 111 | built 12:37–2:36 PM Thursday | run 33104284182 6/6 green | blocked: same merge conflict as W80",
-        "items": [
-          "Same cause as W80, same fix: W82 re-lands both as one chain on the merged W78 and regenerates the documents once, last."
-        ]
-      }
-    },
-    {
-      "n": 0,
-      "w": "W83",
-      "state": "queued",
-      "ci": "none",
-      "moved": "2026-08-27T18:59:00Z",
-      "what": "Submit for review on the Deliverable Workspace is a real draft→review write",
-      "detail": {
-        "cards": "Plane card 642 Todo | brief on main 2:59 PM Thursday | behind W82",
-        "items": [
-          "Seeds one draft deliverable, makes submit a real tenant-scoped write with a transition row and audit event, the item lands in the Approval Inbox, cross-tenant submit refused."
+          "Real failure, not a lane refusal: the job ran a normal 73 seconds. Which of the ten bundled sub-checks failed has not been read yet \u2014 that is W88's first task.",
+          "The branch is also one train stale after this morning's chain merge; W88 refreshes and regenerates the documents last."
         ]
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "12:25 AM Thursday. Post-reboot check: the test lane is alive (probe jobs ran 11:44 PM, runner online). W86 fired at 12:09 AM to land the three finished-but-red windows — submit-to-review, the hold you ratified, the monitor type that finishes The Watch — as one green chain; W87 (dead-link gate for the demo record) is queued behind it. The daily report for Wednesday and the graded plan for Thursday are standing documents now: reports/2026-08-27.md and reports/PLAN-2026-08-28.md in this repo. One flag needs you, not the relay: GTM's last commit is 9 days old against the September 4 bar."
+    "text": "10:40 AM Thursday. Overnight: the executor finished the W83\u2013W85 chain and went green at 1:07 AM, then queued W87 (dead-link gate, 5/6 green). It then idled 9 hours \u2014 the queue was empty and every open window was guarded; the executor never authors its own work, and no relay pass ran to restock. Relay's miss. Fixed this pass: the chain is MERGED (submit-to-review, holds, the monitor type all on main), W88 (green PR 121 on its own branch) and W89 (the finance engine loads in the real web server, proven by a real web request in CI \u2014 the Approval Inbox / Item Review browser fix) are authored, and the executor was re-fired at 10:32 AM. Standing rule going forward: no pass ends with fewer than two unclaimed windows queued."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -151,57 +79,53 @@
   },
   "support": [
     {
-      "w": "W39–W71",
+      "w": "W86",
       "phase": "done",
-      "note": "Pipeline repair and record windows Aug 23–27; all landed or recorded on main."
+      "note": "DONE overnight: rebuilt W83\u2013W85 as one chain on PR 116; green 1:07 AM; merged 10:28 AM."
     },
     {
-      "w": "LANE",
-      "phase": "done",
-      "note": "REPAIRED 6:10 PM Wednesday: 33 GB reclaimed in the runner VM; Postgres container start proven."
+      "w": "W88",
+      "phase": "queued",
+      "note": "FIRED 10:32 AM: read which gate failed on PR 121, fix it on the same branch, refresh against main."
     },
     {
-      "w": "W79",
-      "phase": "done",
-      "note": "DONE 12:47 PM Thursday: re-landed W76–W78 as a chain on merged W75; 6/6 green 1:23 PM; PR 107 merged 2:44 PM."
-    },
-    {
-      "w": "W82",
-      "phase": "running",
-      "note": "FIRED 3:00 PM Thursday: re-land W80 and W81 as one chain on the merged W78; conflicts resolved by regenerating the documents, never by hand."
+      "w": "W89",
+      "phase": "queued",
+      "note": "QUEUED behind W88: the composition-root fix so the finance engine loads in the built web server, plus a standing CI gate that issues a real web request to both broken screens."
     },
     {
       "w": "RUNNER MOUNT",
       "phase": "queued",
-      "note": "Mac session prompt handed to Zusha 12:10 PM: mount the catalog folder into the runner container; then W51 resumes."
+      "note": "Mac session prompt handed to Zusha 12:10 PM Wednesday: mount the catalog folder into the runner container; then W51 resumes."
     }
   ],
   "plane": {
-    "cycle": "Cycle 3 — Generation engine: statement package",
-    "dates": "Aug 24 – Sep 5",
+    "cycle": "Cycle 3 \u2014 Generation engine: statement package",
+    "dates": "Aug 24 \u2013 Sep 5",
     "counts": {
       "done": 49,
       "inProgress": 3,
       "todo": 1
     },
+    "note": "Board flush for the W83\u2013W85 landing owed to the next pass; card states below are as of Wednesday evening.",
     "inProgress": [
       {
         "id": "639",
-        "name": "W80 simulated sign-in + R60 — built, green, blocked on docs conflict"
+        "name": "W80 simulated sign-in + R60 \u2014 landed inside the W83\u2013W85 train history"
       },
       {
         "id": "640",
-        "name": "W81 demo-record pages — built, green, blocked on docs conflict"
+        "name": "W81 demo-record pages \u2014 landed inside the W83\u2013W85 train history"
       },
       {
         "id": "641",
-        "name": "W82 re-land W80→W81 as a chain"
+        "name": "W82 re-land \u2014 complete"
       }
     ],
     "todo": [
       {
         "id": "642",
-        "name": "W83 Workspace submit is a real write"
+        "name": "W83 Workspace submit \u2014 MERGED this morning; card move owed next pass"
       }
     ]
   },
@@ -212,14 +136,14 @@
   },
   "plannedWindows": [
     {
-      "w": 86,
+      "w": 88,
       "day": "2026-08-28",
-      "label": "lands the W83+W84+W85 chain green (fired 12:09 AM)"
+      "label": "green PR 121 (W87) on its own branch"
     },
     {
-      "w": 87,
+      "w": 89,
       "day": "2026-08-28",
-      "label": "demo-record dead-link gate"
+      "label": "finance engine loads in the real web server; real-HTTP CI gate for Approval Inbox and Item Review"
     }
   ]
 }
