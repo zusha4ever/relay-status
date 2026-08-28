@@ -209,5 +209,17 @@
     "latest": "reports/2026-08-27.md",
     "plan": "reports/PLAN-2026-08-28.md",
     "note": "Daily report every evening, graded against the prior evening plan; next-day plan beside it."
-  }
+  },
+  "plannedWindows": [
+    {
+      "w": 86,
+      "day": "2026-08-28",
+      "label": "lands the W83+W84+W85 chain green (fired 12:09 AM)"
+    },
+    {
+      "w": 87,
+      "day": "2026-08-28",
+      "label": "demo-record dead-link gate"
+    }
+  ]
 }

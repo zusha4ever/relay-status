@@ -130,6 +130,7 @@
     <button class="tab" onclick="showPane(4,this)">Diary</button>
     <button class="tab" onclick="showPane(5,this)">Plane</button>
     <button class="tab" onclick="showPane(6,this)">Curve</button>
+    <button class="tab" onclick="showPane(7,this)">Reports</button>
   </div>
 
   <div class="pane on"><h2 style="margin-top:0">Merge train <small id="trainsub">every product window the feed lists — new ones appear here on their own</small></h2>
@@ -169,6 +170,8 @@
   <div class="taphint">Tap a circle for that window. Circle size is the session's work-log bytes. Dashed uprights: today, Sep 4, Sep 18.</div>
   <div id="curvepanel" class="note">No window selected.</div>
   <div id="curvenote" class="note"></div>
+  </div><div class="pane"><h2 style="margin-top:0">Daily reports <small>each evening: what landed, graded against the prior evening's plan, plus tomorrow's plan</small></h2>
+  <div id="reports"><div class="skeleton">Loading reports…</div></div>
 
   </div>
   <div id="detail"></div>
@@ -459,6 +462,38 @@ async function loadDiary(){
   renderDiary(DIARY);
 }
 
+const REPORTS_BASE="https://raw.githubusercontent.com/zusha4ever/relay-status/main/";
+function md2html(md){
+  const esc2=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  return esc2(md)
+    .replace(/^### (.*)$/gm,"<h4>$1</h4>").replace(/^## (.*)$/gm,"<h3>$1</h3>").replace(/^# (.*)$/gm,"<h2>$1</h2>")
+    .replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>")
+    .replace(/^- (.*)$/gm,"<li>$1</li>").replace(/(<li>[\s\S]*?<\/li>)(?!\s*<li>)/g,"<ul>$1</ul>")
+    .replace(/^(?!<h|<u|<li|\s*$)(.+)$/gm,"<p>$1</p>");
+}
+async function renderReports(meta){
+  const box=el("reports"); if(!box) return;
+  try{
+    const idx=await (await fetch(REPORTS_BASE+"reports/index.json?t="+Date.now())).json();
+    idx.sort((a,b)=>b.date<a.date?-1:1);
+    let html="";
+    for(let i=0;i<idx.length;i++){
+      const e=idx[i];
+      html+=`<details ${i===0?"open":""} style="margin-bottom:10px"><summary style="cursor:pointer"><b>${esc(e.date)}</b> — report and next-day plan</summary><div class="note" data-rep="${esc(e.report)}" data-plan="${esc(e.plan||"")}">Loading…</div></details>`;
+    }
+    box.innerHTML=html||'<div class="note">No reports yet.</div>';
+    const first=box.querySelector("details[open] div[data-rep]");
+    if(first) loadReportBody(first);
+    box.querySelectorAll("details").forEach(d=>d.addEventListener("toggle",()=>{const b=d.querySelector("div[data-rep]"); if(d.open&&b&&b.textContent==="Loading…") loadReportBody(b);}));
+  }catch(e){ box.innerHTML='<div class="note">Reports feed unreachable from this network; the repo folder is relay-status/reports/.</div>'; }
+}
+async function loadReportBody(elm){
+  try{
+    const rep=await (await fetch(REPORTS_BASE+elm.dataset.rep+"?t="+Date.now())).text();
+    let plan=""; if(elm.dataset.plan){ try{ plan=await (await fetch(REPORTS_BASE+elm.dataset.plan+"?t="+Date.now())).text(); }catch(_){} }
+    elm.innerHTML='<div style="max-width:900px">'+md2html(rep)+(plan?'<hr style="border-color:#3A4A72">'+md2html(plan):"")+"</div>";
+  }catch(e){ elm.textContent="Could not load this report from the feed."; }
+}
 /* ---------- orchestration ---------- */
 async function refreshAll(){
   if(busy) return; busy=true;
@@ -474,6 +509,8 @@ async function refreshAll(){
   busy=false; resetCountdown();
 }
 function renderData(f, src){
+  window.FEEDDATA=f;
+  renderReports(f.reports);
   indexWindows(f.prs);
   renderTrain(f.prs||[]);
   renderPulse(f.prs||[], f.pulse);
