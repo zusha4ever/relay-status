@@ -1,88 +1,87 @@
 {
-  "updatedAt": "2026-08-28T21:40:00Z",
+  "updatedAt": "2026-08-30T03:10:00Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 24,
-    "total": 27
+    "landed": 28,
+    "total": 30
   },
   "prs": [
     {
-      "n": 116,
-      "w": "W83+W84+W85",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-28T14:25:00Z",
-      "what": "Submit-to-review is a real write; Controller holds with a typed reason; monitor is the third standing artifact type and The Watch reads real monitors",
-      "detail": {
-        "cards": "Merged 10:25 AM Thursday as one chain",
-        "items": [
-          "Both owner rulings (holds; the monitor type) are live on main."
-        ]
-      }
-    },
-    {
-      "n": 126,
-      "w": "W94",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-28T21:25:00Z",
-      "what": "The Deliverable Workspace shows its ratified findings (closes DRIFT-690)",
-      "detail": {
-        "cards": "PR 126 | 6/6 green | merged 5:25 PM Thursday",
-        "items": [
-          "Merged by the pre-Shabbat relay pass."
-        ]
-      }
-    },
-    {
-      "n": 128,
-      "w": "W91",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-08-28T21:26:00Z",
-      "what": "Demo record shows a hold placed and released, The Watch reading real monitors, and submit-to-review",
-      "detail": {
-        "cards": "PR 128 | 6/6 green but blocked by a document conflict with W94's merge",
-        "items": [
-          "The work is good; only its auto-generated bookkeeping files collide with W94's. W96 re-lands it cleanly over Shabbat; the relay merges it Saturday night."
-        ]
-      }
-    },
-    {
       "n": 125,
       "w": "W89",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-28T18:49:00Z",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-30T03:04:00Z",
       "what": "The finance engine loads in the real web server; CI proves it with a real web request to the two repaired screens",
       "detail": {
-        "cards": "PR 125 | 5 of 6 checks green | the combined gates check failed — W96 reads the log and fixes it first, because three queued windows wait on this one",
+        "cards": "PR 125 | 6/6 green | merged 11:04 PM Saturday",
         "items": [
-          "This is the plumbing chokepoint: W92, W93 and W95 all wait for it to merge."
+          "The plumbing chokepoint is gone: W92, W93 and W95 unblocked by this merge.",
+          "Friday's red was one file out of code-formatting style; the Shabbat rescue window fixed it."
         ]
       }
     },
     {
       "n": 124,
       "w": "W90",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-28T18:35:00Z",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-30T03:05:00Z",
       "what": "Record: the certify-with-written-attestation rule was already shipped in W23",
       "detail": {
-        "cards": "PR 124 | 5 of 6 green | same gate-check family as PR 125; W96 fixes it in the same chain",
+        "cards": "PR 124 | 6/6 green | merged 11:05 PM Saturday",
         "items": []
       }
     },
     {
       "n": 121,
       "w": "W87",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-08-28T18:44:00Z",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-30T03:06:00Z",
       "what": "Every link in the demo record resolves — a gate that fails on a dead link",
       "detail": {
-        "cards": "PR 121 | still red after W88's fix attempt | W96 reads the failing log before touching anything",
+        "cards": "PR 121 | 6/6 green | merged 11:06 PM Saturday",
+        "items": [
+          "Friday's red was a real defect in the checking tool itself (a diary file citing its own record file was falsely flagged); documented as DRIFT-900 for a future fix."
+        ]
+      }
+    },
+    {
+      "n": 132,
+      "w": "W91",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-30T03:06:30Z",
+      "what": "Demo record shows a hold placed and released, The Watch reading real monitors, and submit-to-review",
+      "detail": {
+        "cards": "PR 132 | 6/6 green | merged 11:06 PM Saturday (re-land of PR 128, closed with a ruling)",
+        "items": []
+      }
+    },
+    {
+      "n": 131,
+      "w": "W97",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-08-30T03:08:00Z",
+      "what": "THE MODEL PIVOT: the financial model's spine — sections like workbook tabs and a versioned assumption registry, tenant-isolated, proven by tests",
+      "detail": {
+        "cards": "PR 131 | 6/6 green but blocked by a bookkeeping-file conflict with tonight's four merges",
+        "items": [
+          "The code is proven; only its auto-generated record files collide with the chain that landed first. W99 re-lands it cleanly — same cure that worked for W91."
+        ]
+      }
+    },
+    {
+      "n": 130,
+      "w": "W96",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-08-30T03:08:30Z",
+      "what": "The Shabbat rescue: diagnosed and fixed all three red pull requests, re-landed W91 — its own record files ride to main inside W99",
+      "detail": {
+        "cards": "PR 130 | work fully landed via PRs 125/124/121/132 | record files land via W99, then this closes",
         "items": []
       }
     },
@@ -94,22 +93,8 @@
       "moved": "2026-08-28T20:13:00Z",
       "what": "Loads all 275 finance deliverables into the product's own tables",
       "detail": {
-        "cards": "PR 59 | parked | movement at 4:13 PM Thursday, unexamined — watch item for Saturday night",
+        "cards": "PR 59 | parked | no movement since Thursday 4:13 PM; that event itself still unexamined — carried as a watch item",
         "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W97",
-      "state": "queued",
-      "ci": "unknown",
-      "moved": "2026-08-28T21:30:00Z",
-      "what": "THE MODEL PIVOT begins: the financial model's spine — a model with sections like workbook tabs and a versioned assumption registry, tenant-isolated, proven by tests",
-      "detail": {
-        "cards": "Authored 5:30 PM Thursday on the ratifier's direction; claimable by the executor immediately",
-        "items": [
-          "Deliberately independent of the W89 plumbing fix so the model lane cannot stall on it."
-        ]
       }
     },
     {
@@ -117,21 +102,21 @@
       "w": "W98",
       "state": "queued",
       "ci": "unknown",
-      "moved": "2026-08-28T21:30:00Z",
+      "moved": "2026-08-30T03:08:00Z",
       "what": "Board ratification freezes the model as THE budget; the forecast keeps moving; variance answers against both bases and names the assumption that moved",
       "detail": {
-        "cards": "Queued behind W97's merge — Saturday-night fuel",
+        "cards": "Now waits on W99 landing the model spine (was: W97's merge)",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "5:40 PM Thursday, pre-Shabbat handoff. Today: the W83–W85 chain merged at 10:25 AM (submit-to-review, holds, the monitor type), W94 merged at 5:25 PM (Workspace findings), and the executor built five more windows through the afternoon. Tonight's pass loaded the Shabbat queue: W96 (repair chain — greens the three red pull requests and re-lands W91) and W97 (the financial model's spine — the pivot you ordered) are claimable now; W92/W93/W95/W98 wait on merges by design. The executor fires hourly all Shabbat. What it produces unattended are FINISHED, TEST-PROVEN pull requests parked at the acceptance gate — nothing merges itself; your first message Saturday night releases the second wave. Full report and the measuring stick: reports/2026-08-28.md and reports/PLAN-2026-08-29.md."
+    "text": "11:15 PM Saturday, post-Shabbat pass done. The Shabbat run worked: the rescue window fixed all three red pull requests and the model spine came back test-proven. Tonight the relay merged the whole chain — W89 (the plumbing chokepoint), W90, W87, and the W91 re-land — so the demo record's hold-and-release walk and the real-web-server proof are on main. The model spine (W97) is green but its bookkeeping files collided with tonight's merges; W99 re-lands it, already authored and queued. The merges unblocked W92, W93 and W95 — the second unattended wave runs tonight into Sunday. Graded report: reports/2026-08-29.md. Verdict vs the Shabbat plan: PARTIAL, five of six checks true, the sixth green-but-parked."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-08-27T14:58:31Z",
+    "runUtc": "2026-08-29T11:21:32Z",
     "queue": [],
     "p50": null,
     "p80": null,
@@ -142,8 +127,8 @@
     "coverage": null,
     "queueGrowthPerWeek": null,
     "stale": true,
-    "runCount": 3,
-    "staleNote": "Numbers withheld: the relay has not read the latest unattended run into this tab. The milestone block reads not_defined until Zusha names the September 18 windows.",
+    "runCount": 4,
+    "staleNote": "The unattended forecast ran 7:21 AM Saturday; its numbers are not yet read into this tab. The milestone block reads not_defined until Zusha names the September 18 windows.",
     "missing": [
       "The milestone list: docs/forecast-scope.json is committed empty; the September 18 window list is Zusha's input.",
       "The latest run's numbers: owed to the next relay pass.",
@@ -154,18 +139,18 @@
   "support": [
     {
       "w": "W96",
-      "phase": "queued",
-      "note": "FIRED 5:31 PM Thursday: read the failing check log on each of PRs 125/124/121, fix them as one stacked chain, re-land W91 on the tip. Includes a runner disk pre-flight (the past outage cause)."
+      "phase": "done",
+      "note": "Delivered exactly what the Shabbat plan asked: three distinct real causes found (a formatting miss, stale bookkeeping docs, and a genuine defect in the diary-checking gate), all fixed, W91 re-landed. Record files land via W99."
     },
     {
-      "w": "W88",
-      "phase": "done",
-      "note": "Superseded by W96; its claim PR 123 stays open on purpose so no duplicate session grabs the same work. The relay closes it Saturday night."
+      "w": "W99",
+      "phase": "queued",
+      "note": "Authored 11:07 PM Saturday: re-lands the model spine (W97) on the post-merge tip and carries the W96 record files; also cures the one-merge-stale bookkeeping docs on main (DRIFT-901)."
     },
     {
       "w": "RUNNER MOUNT",
       "phase": "queued",
-      "note": "W51 catalog import stays parked behind the Mac runner mount; PR 59 moved at 4:13 PM Thursday — unexamined, checked Saturday night."
+      "note": "W51 catalog import stays parked behind the Mac runner mount; PR 59 quiet since Thursday 4:13 PM, that movement still unexamined."
     }
   ],
   "plane": {
@@ -176,29 +161,24 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush for today's landings and the W96–W98 cards is owed to the Saturday-night pass (deferred under the ratifier's lean flag); card details withheld rather than cited unretrieved.",
+    "note": "Board flush (Friday's landings + tonight's four merges + W96–W99 cards) still owed, deferred under the ratifier's lean flag; card details withheld rather than cited unretrieved.",
     "inProgress": [],
     "todo": []
   },
   "reports": {
-    "latest": "reports/2026-08-28.md",
-    "plan": "reports/PLAN-2026-08-29.md",
-    "note": "Daily report every evening, graded against the prior evening plan; the Shabbat plan doubles as Saturday night's measuring stick."
+    "latest": "reports/2026-08-29.md",
+    "plan": "reports/PLAN-2026-08-30.md",
+    "note": "Daily report every evening, graded against the prior evening plan."
   },
   "plannedWindows": [
     {
-      "w": 96,
-      "day": "2026-08-28",
-      "label": "rescue chain: green PRs 125/124/121 stacked, re-land W91 on the tip"
-    },
-    {
-      "w": 97,
-      "day": "2026-08-28",
-      "label": "financial model spine: sections like workbook tabs + versioned assumption registry, proven"
+      "w": 99,
+      "day": "2026-08-29",
+      "label": "re-land the model spine (W97) + W96 record files on the post-merge tip"
     },
     {
       "w": 98,
-      "day": "2026-08-29",
+      "day": "2026-08-30",
       "label": "budget lock via filed-fact mechanics + rolling forecast + two-base variance"
     }
   ]
