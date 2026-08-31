@@ -1,87 +1,47 @@
 {
-  "updatedAt": "2026-08-30T03:10:00Z",
+  "updatedAt": "2026-08-31T03:29:25Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 28,
-    "total": 30
+    "landed": 42,
+    "total": 44
   },
   "prs": [
     {
-      "n": 125,
-      "w": "W89",
+      "n": 150,
+      "w": "W109",
       "state": "merged",
       "ci": "green",
-      "moved": "2026-08-30T03:04:00Z",
-      "what": "The finance engine loads in the real web server; CI proves it with a real web request to the two repaired screens",
+      "moved": "2026-08-30T22:47:00Z",
+      "what": "THE CHAIN TIP: the whole financial model landed in one merge \u2014 spine, drivers, volumes, timing, costs, roll-up, workbook, scenarios, budget lock, screens, and the FY27 end-to-end proof",
       "detail": {
-        "cards": "PR 125 | 6/6 green | merged 11:04 PM Saturday",
+        "cards": "PR 150 | 6/6 green | merged 6:47 PM Saturday \u2014 carried W98 + W99 + W100\u2013W109",
         "items": [
-          "The plumbing chokepoint is gone: W92, W93 and W95 unblocked by this merge.",
-          "Friday's red was one file out of code-formatting style; the Shabbat rescue window fixed it."
+          "Eleven windows rode one branch; one green run proved the union; one merge landed it.",
+          "The auto-land lane (W100) went live with this merge: green chain work now merges itself."
         ]
       }
     },
     {
-      "n": 124,
-      "w": "W90",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-30T03:05:00Z",
-      "what": "Record: the certify-with-written-attestation rule was already shipped in W23",
+      "n": 155,
+      "w": "W112",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-08-31T03:29:25Z",
+      "what": "Consolidation: the W92/W93/W95 demo-and-journey work lands, and the two overnight session races get adjudicated on evidence",
       "detail": {
-        "cards": "PR 124 | 6/6 green | merged 11:05 PM Saturday",
+        "cards": "PR 155 | local gates 21/21 | CI re-running after the instant-fail transient",
         "items": []
       }
     },
     {
-      "n": 121,
-      "w": "W87",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-30T03:06:00Z",
-      "what": "Every link in the demo record resolves — a gate that fails on a dead link",
-      "detail": {
-        "cards": "PR 121 | 6/6 green | merged 11:06 PM Saturday",
-        "items": [
-          "Friday's red was a real defect in the checking tool itself (a diary file citing its own record file was falsely flagged); documented as DRIFT-900 for a future fix."
-        ]
-      }
-    },
-    {
-      "n": 132,
-      "w": "W91",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-30T03:06:30Z",
-      "what": "Demo record shows a hold placed and released, The Watch reading real monitors, and submit-to-review",
-      "detail": {
-        "cards": "PR 132 | 6/6 green | merged 11:06 PM Saturday (re-land of PR 128, closed with a ruling)",
-        "items": []
-      }
-    },
-    {
-      "n": 131,
-      "w": "W97",
+      "n": 157,
+      "w": "W113",
       "state": "open",
-      "ci": "green",
-      "moved": "2026-08-30T03:08:00Z",
-      "what": "THE MODEL PIVOT: the financial model's spine — sections like workbook tabs and a versioned assumption registry, tenant-isolated, proven by tests",
+      "ci": "pending",
+      "moved": "2026-08-31T03:29:25Z",
+      "what": "Diagnoses Sunday evening's instant-fail CI run from the actual logs, then lands W112",
       "detail": {
-        "cards": "PR 131 | 6/6 green but blocked by a bookkeeping-file conflict with tonight's four merges",
-        "items": [
-          "The code is proven; only its auto-generated record files collide with the chain that landed first. W99 re-lands it cleanly — same cure that worked for W91."
-        ]
-      }
-    },
-    {
-      "n": 130,
-      "w": "W96",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-08-30T03:08:30Z",
-      "what": "The Shabbat rescue: diagnosed and fixed all three red pull requests, re-landed W91 — its own record files ride to main inside W99",
-      "detail": {
-        "cards": "PR 130 | work fully landed via PRs 125/124/121/132 | record files land via W99, then this closes",
+        "cards": "PR 157 | in flight now | carries delegated merge authority for PR 155 on full green",
         "items": []
       }
     },
@@ -93,30 +53,18 @@
       "moved": "2026-08-28T20:13:00Z",
       "what": "Loads all 275 finance deliverables into the product's own tables",
       "detail": {
-        "cards": "PR 59 | parked | no movement since Thursday 4:13 PM; that event itself still unexamined — carried as a watch item",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W98",
-      "state": "queued",
-      "ci": "unknown",
-      "moved": "2026-08-30T03:08:00Z",
-      "what": "Board ratification freezes the model as THE budget; the forecast keeps moving; variance answers against both bases and names the assumption that moved",
-      "detail": {
-        "cards": "Now waits on W99 landing the model spine (was: W97's merge)",
+        "cards": "PR 59 | parked | watch item \u2014 Thursday movement still unexamined",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "11:15 PM Saturday, post-Shabbat pass done. The Shabbat run worked: the rescue window fixed all three red pull requests and the model spine came back test-proven. Tonight the relay merged the whole chain — W89 (the plumbing chokepoint), W90, W87, and the W91 re-land — so the demo record's hold-and-release walk and the real-web-server proof are on main. The model spine (W97) is green but its bookkeeping files collided with tonight's merges; W99 re-lands it, already authored and queued. The merges unblocked W92, W93 and W95 — the second unattended wave runs tonight into Sunday. Graded report: reports/2026-08-29.md. Verdict vs the Shabbat plan: PARTIAL, five of six checks true, the sixth green-but-parked."
+    "text": "11:30 PM Sunday. The model chain is DOWN AND LANDED \u2014 one merge at 6:47 PM carried all eleven windows onto main, and the auto-land lane is live and cycling green on its half-hour schedule. W113 is in flight finishing the last cleanup (W112). The board itself was rebuilt tonight: light theme, readable reports, and a forecast that recomputes in your browser from windows.json \u2014 which now regenerates from the build repo every 30 minutes on the Mac, so nothing on this page is hand-typed."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-08-29T11:21:32Z",
+    "runUtc": "2026-08-31T03:29:25Z",
     "queue": [],
     "p50": null,
     "p80": null,
@@ -126,15 +74,13 @@
     "flipCondition": 0,
     "coverage": null,
     "queueGrowthPerWeek": null,
-    "stale": true,
+    "stale": false,
     "runCount": 4,
-    "staleNote": "The unattended forecast ran 7:21 AM Saturday; its numbers are not yet read into this tab. The milestone block reads not_defined until Zusha names the September 18 windows.",
+    "staleNote": "",
     "missing": [
-      "The milestone list: docs/forecast-scope.json is committed empty; the September 18 window list is Zusha's input.",
-      "The latest run's numbers: owed to the next relay pass.",
-      "A route to write this tab automatically: gated on a cross-repo token that does not exist."
+      "Nothing structural: the Forecast tab now recomputes live in the browser from windows.json on every visit."
     ],
-    "fixedBy": "the ratifier's milestone list; a publish route"
+    "fixedBy": "the board itself, automatically"
   },
   "support": [
     {
@@ -154,32 +100,21 @@
     }
   ],
   "plane": {
-    "cycle": "Cycle 3 — Generation engine: statement package",
-    "dates": "Aug 24 – Sep 5",
+    "cycle": "Cycle 3 \u2014 Generation engine: statement package",
+    "dates": "Aug 24 \u2013 Sep 5",
     "counts": {
       "done": 49,
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush (Friday's landings + tonight's four merges + W96–W99 cards) still owed, deferred under the ratifier's lean flag; card details withheld rather than cited unretrieved.",
+    "note": "Board flush still owed (deferred under the lean flag); counts below are from the last flush.",
     "inProgress": [],
     "todo": []
   },
   "reports": {
-    "latest": "reports/2026-08-29.md",
-    "plan": "reports/PLAN-2026-08-30.md",
-    "note": "Daily report every evening, graded against the prior evening plan."
+    "latest": "reports/2026-08-30.md",
+    "plan": "reports/PLAN-2026-08-31.md",
+    "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
-  "plannedWindows": [
-    {
-      "w": 99,
-      "day": "2026-08-29",
-      "label": "re-land the model spine (W97) + W96 record files on the post-merge tip"
-    },
-    {
-      "w": 98,
-      "day": "2026-08-30",
-      "label": "budget lock via filed-fact mechanics + rolling forecast + two-base variance"
-    }
-  ]
+  "plannedWindows": []
 }

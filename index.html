@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1B2A4A; --navy-deep:#141F38; --gold:#B8860B; --gold-bright:#D4A017;
-    --chalk:#F8F7F4; --chalk-dim:#B9BCC6; --green:#5FA772; --red:#C96A5B; --line:#3A4A72;
+    --navy:#FFFFFF; --navy-deep:#F7F5F0; --gold:#8F6A08; --gold-bright:#A67C00;
+    --chalk:#1F2937; --chalk-dim:#6B7280; --green:#2F7D46; --red:#B4442F; --line:#DDD8CC;
   }
   *{margin:0;padding:0;box-sizing:border-box;border-radius:0}
   body{background:var(--navy-deep);color:var(--chalk);font-family:'Inter',sans-serif;font-size:14px;line-height:1.45;padding:16px 12px 48px}
@@ -19,7 +19,7 @@
   h1 span{color:var(--gold-bright)}
   .stamp{font-size:11px;color:var(--chalk-dim);text-align:right}
   .stamp b{color:var(--chalk);font-weight:600}
-  button.refresh{background:var(--gold);color:var(--navy-deep);border:none;font-family:'Inter';font-weight:700;font-size:13px;padding:10px 16px;cursor:pointer;width:100%;margin-bottom:8px}
+  button.refresh{background:var(--gold);color:#FFFFFF;border:none;font-family:'Inter';font-weight:700;font-size:13px;padding:10px 16px;cursor:pointer;width:100%;margin-bottom:8px}
   button.refresh:disabled{background:var(--line);color:var(--chalk-dim)}
   .auto{display:flex;justify-content:space-between;font-size:11px;color:var(--chalk-dim);margin-bottom:6px;align-items:center}
   .auto label{display:flex;gap:6px;align-items:center;cursor:pointer}
@@ -30,7 +30,7 @@
   .train{display:flex;gap:3px;margin-bottom:6px}
   .car{flex:1;height:44px;border:1px solid var(--gold);display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:10px;font-weight:600;color:var(--chalk-dim)}
   .car .w{font-size:12px;letter-spacing:.5px}
-  .car.landed{background:var(--gold);color:var(--navy-deep)}
+  .car.landed{background:var(--gold);color:#FFFFFF}
   .car.green{border-color:var(--green);color:var(--green)}
   .car.moving{border-color:var(--gold-bright);color:var(--gold-bright);animation:pulse 1.4s infinite}
   .car.red{border-color:var(--red);color:var(--red)}
@@ -40,7 +40,7 @@
   .trainpct b{color:var(--chalk);font-size:15px}
   .legend{font-size:10px;color:var(--chalk-dim);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
   .legend i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:-1px}
-  .pulsebox{border:1px solid var(--line);background:var(--navy);padding:12px}
+  .pulsebox{border:1px solid var(--line);background:var(--navy);padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .pulsebox .big{font-size:15px;font-weight:600;margin-bottom:4px;color:var(--chalk)}
   .pulsebox .big.live{color:var(--gold-bright)}
   .pulsebox .sub{font-size:12px;color:var(--chalk-dim)}
@@ -72,7 +72,7 @@
   .taphint{font-size:10px;color:var(--chalk-dim);margin-top:4px}
   .tabs{display:flex;gap:3px;margin:14px 0 12px;flex-wrap:wrap}
   .tab{flex:1 1 18%;background:var(--navy);border:1px solid var(--gold);color:var(--chalk-dim);font-family:'Inter';font-weight:600;font-size:11px;padding:9px 3px;cursor:pointer}
-  .tab.on{background:var(--gold);color:var(--navy-deep)}
+  .tab.on{background:var(--gold);color:#FFFFFF}
   .pane{display:none}
   .pane.on{display:block}
   .warnbox{border-left:3px solid var(--red);background:var(--navy);padding:12px 14px;margin-bottom:14px}
@@ -100,6 +100,15 @@
   .dentry.open .dbody{display:block}
   .dentry .dclaim{font-size:12px;color:var(--chalk-dim);line-height:1.5}
   .dentry .dev{font-size:11px;color:var(--chalk-dim);font-family:ui-monospace,Menlo,monospace;margin-top:7px;padding-top:7px;border-top:1px solid var(--line);word-break:break-word}
+  .repbody{font-size:13px;color:var(--chalk);font-style:normal;line-height:1.55}
+  .repbody h2{margin:14px 0 8px}
+  .repbody h3{font-family:'EB Garamond',serif;font-size:15px;color:var(--gold-bright);margin:14px 0 6px}
+  .repbody h4{font-size:12px;color:var(--chalk);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.6px}
+  .repbody p{margin:6px 0}
+  .repbody ul,.repbody ol{margin:6px 0 6px 18px}
+  .repbody li{margin:3px 0}
+  .repbody table{margin:8px 0}
+  .repbody code{background:var(--navy-deep);padding:1px 4px;font-size:12px}
   footer{margin-top:30px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--chalk-dim)}
 </style>
 </head>
@@ -465,21 +474,53 @@ async function loadDiary(){
 const REPORTS_BASE="https://raw.githubusercontent.com/zusha4ever/relay-status/main/";
 function md2html(md){
   const esc2=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-  return esc2(md)
-    .replace(/^### (.*)$/gm,"<h4>$1</h4>").replace(/^## (.*)$/gm,"<h3>$1</h3>").replace(/^# (.*)$/gm,"<h2>$1</h2>")
-    .replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>")
-    .replace(/^- (.*)$/gm,"<li>$1</li>").replace(/(<li>[\s\S]*?<\/li>)(?!\s*<li>)/g,"<ul>$1</ul>")
-    .replace(/^(?!<h|<u|<li|\s*$)(.+)$/gm,"<p>$1</p>");
+  const inline=s=>s.replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>").replace(/`([^`]+)`/g,"<code>$1</code>");
+  const lines=esc2(md).split(/\r?\n/); const out=[]; let i=0;
+  while(i<lines.length){
+    const L=lines[i];
+    if(/^\s*\|/.test(L)){
+      const rows=[]; while(i<lines.length&&/^\s*\|/.test(lines[i])){rows.push(lines[i]);i++;}
+      const cells=r=>r.replace(/^\s*\|/,"").replace(/\|\s*$/,"").split("|").map(c=>inline(c.trim()));
+      const hdr=cells(rows[0]);
+      const body=rows.slice(1).filter(r=>!/^[\s|:\-]+$/.test(r)).map(cells);
+      out.push("<table><tr>"+hdr.map(h=>"<th>"+h+"</th>").join("")+"</tr>"+body.map(r=>"<tr>"+r.map(c=>"<td>"+c+"</td>").join("")+"</tr>").join("")+"</table>");
+      continue;
+    }
+    if(/^### /.test(L)){out.push("<h4>"+inline(L.slice(4))+"</h4>");i++;continue;}
+    if(/^## /.test(L)){out.push("<h3>"+inline(L.slice(3))+"</h3>");i++;continue;}
+    if(/^# /.test(L)){out.push("<h2>"+inline(L.slice(2))+"</h2>");i++;continue;}
+    if(/^- /.test(L)){const li=[];while(i<lines.length&&/^- /.test(lines[i])){li.push("<li>"+inline(lines[i].slice(2))+"</li>");i++;}out.push("<ul>"+li.join("")+"</ul>");continue;}
+    if(/^\d+\. /.test(L)){const li=[];while(i<lines.length&&/^\d+\. /.test(lines[i])){li.push("<li>"+inline(lines[i].replace(/^\d+\. /,""))+"</li>");i++;}out.push("<ol>"+li.join("")+"</ol>");continue;}
+    if(/^\s*$/.test(L)){i++;continue;}
+    out.push("<p>"+inline(L)+"</p>");i++;
+  }
+  return out.join("\n");
 }
 async function renderReports(meta){
   const box=el("reports"); if(!box) return;
   try{
-    const idx=await (await fetch(REPORTS_BASE+"reports/index.json?t="+Date.now())).json();
+    let idx=null;
+    try{
+      const api=await (await fetch("https://api.github.com/repos/zusha4ever/relay-status/contents/reports?t="+Date.now())).json();
+      if(Array.isArray(api)){
+        const names=api.map(f=>f.name);
+        const plans=new Set(names.filter(n=>/^PLAN-\d{4}-\d{2}-\d{2}\.md$/.test(n)));
+        idx=names.filter(n=>/^\d{4}-\d{2}-\d{2}\.md$/.test(n)).map(n=>{
+          const date=n.slice(0,10);
+          const next=new Date(date+"T12:00:00Z"); next.setUTCDate(next.getUTCDate()+1);
+          const pn="PLAN-"+next.toISOString().slice(0,10)+".md";
+          return {date, report:"reports/"+n, plan:plans.has(pn)?("reports/"+pn):""};
+        });
+      }
+    }catch(_){}
+    if(!idx||!idx.length){
+      idx=await (await fetch(REPORTS_BASE+"reports/index.json?t="+Date.now())).json();
+    }
     idx.sort((a,b)=>b.date<a.date?-1:1);
     let html="";
     for(let i=0;i<idx.length;i++){
       const e=idx[i];
-      html+=`<details ${i===0?"open":""} style="margin-bottom:10px"><summary style="cursor:pointer"><b>${esc(e.date)}</b> — report and next-day plan</summary><div class="note" data-rep="${esc(e.report)}" data-plan="${esc(e.plan||"")}">Loading…</div></details>`;
+      html+=`<details ${i===0?"open":""} style="margin-bottom:10px"><summary style="cursor:pointer"><b>${esc(e.date)}</b> — report and next-day plan</summary><div class="repbody" data-rep="${esc(e.report)}" data-plan="${esc(e.plan||"")}">Loading…</div></details>`;
     }
     box.innerHTML=html||'<div class="note">No reports yet.</div>';
     const first=box.querySelector("details[open] div[data-rep]");
@@ -491,7 +532,7 @@ async function loadReportBody(elm){
   try{
     const rep=await (await fetch(REPORTS_BASE+elm.dataset.rep+"?t="+Date.now())).text();
     let plan=""; if(elm.dataset.plan){ try{ plan=await (await fetch(REPORTS_BASE+elm.dataset.plan+"?t="+Date.now())).text(); }catch(_){} }
-    elm.innerHTML='<div style="max-width:900px">'+md2html(rep)+(plan?'<hr style="border-color:#3A4A72">'+md2html(plan):"")+"</div>";
+    elm.innerHTML='<div style="max-width:900px">'+md2html(rep)+(plan?'<hr style="border-color:var(--line)"><h3>The next-day plan it will be graded against</h3>'+md2html(plan):"")+"</div>";
   }catch(e){ elm.textContent="Could not load this report from the feed."; }
 }
 /* ---------- orchestration ---------- */
@@ -515,6 +556,7 @@ function renderData(f, src){
   renderTrain(f.prs||[]);
   renderPulse(f.prs||[], f.pulse);
   renderForecast(f.forecast);
+  if(window.fillForecastLive) window.fillForecastLive();
   renderQueue(f.prs||[], f.medianWindowMinutes);
   renderSupport(f.support);
   renderBoard(f.plane);

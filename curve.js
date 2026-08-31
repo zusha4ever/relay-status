@@ -26,10 +26,10 @@ async function renderCurve(){
   el("curvekpis").innerHTML=`<div class="counts"><div class="count"><b>${nE}</b><span>sessions run</span></div><div class="count"><b>${nM}</b><span>landed on main</span></div><div class="count"><b>${last(p50)}</b><span>landed by Sep 18, median</span></div><div class="count"><b>${idealEnd}</b><span>could have landed</span></div></div>`;
   el("curvelegend").innerHTML=`<div class="legend" style="margin-bottom:8px"><span><i style="background:var(--chalk-dim);border-radius:50%"></i>could have been: every session lands</span><span><i style="background:transparent;border:2px solid var(--gold);border-radius:50%"></i>planned, authored, not yet run</span><span><i style="background:var(--gold-bright);border-radius:50%"></i>actual landed</span><span><i style="border-top:2px dashed var(--gold-bright);height:0"></i>Monte Carlo median, band P10 to P90</span><span><i style="border-top:2px dotted var(--gold-bright);height:0"></i>straight-line regression</span></div>`;
   el("curvenote").textContent="Data as of "+ago(CURVE.asOf)+". Median "+last(p50)+" landed by Sep 18 (P10 "+last(p10)+", P90 "+last(p90)+"); regression says "+olsEnd+". "+CURVE.bytesNote+".";
-  const vlines={id:"vl",afterDraw(ch){const {ctx,chartArea:a,scales:{x}}=ch;[[TODAY,"today"],[GTM,"Sep 4"],[END,"Sep 18"]].forEach(([d,l])=>{const px=x.getPixelForValue(d);ctx.save();ctx.strokeStyle="#B9BCC6";ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.fillStyle="#B9BCC6";ctx.font="11px Inter";ctx.textAlign="center";ctx.fillText(l,px,a.top-4);ctx.restore();});}};
-  const G="#D4A017", GR="#B9BCC6";
+  const vlines={id:"vl",afterDraw(ch){const {ctx,chartArea:a,scales:{x}}=ch;[[TODAY,"today"],[GTM,"Sep 4"],[END,"Sep 18"]].forEach(([d,l])=>{const px=x.getPixelForValue(d);ctx.save();ctx.strokeStyle="#9AA0A8";ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.fillStyle="#9AA0A8";ctx.font="11px Inter";ctx.textAlign="center";ctx.fillText(l,px,a.top-4);ctx.restore();});}};
+  const G="#A67C00", GR="#8A8F98";
   curveChart=new Chart(el("curvechart"),{type:"bubble",data:{datasets:[
-    {label:"ideal",data:idealB,backgroundColor:"rgba(185,188,198,0.5)",borderColor:GR,borderWidth:1},
+    {label:"ideal",data:idealB,backgroundColor:"rgba(138,143,152,0.45)",borderColor:GR,borderWidth:1},
     {type:"line",label:"il",data:[{x:0,y:0}].concat(idealB.map(p=>({x:p.x,y:p.y}))),borderColor:GR,borderWidth:2,pointRadius:0},
     {type:"line",label:"ip",data:[{x:TODAY,y:nE},{x:END,y:idealEnd}],borderColor:GR,borderDash:[6,4],borderWidth:2,pointRadius:0},
     {label:"actual",data:actB,backgroundColor:"rgba(212,160,23,0.6)",borderColor:G,borderWidth:1},
@@ -40,9 +40,50 @@ async function renderCurve(){
     {label:"planned",data:(window.FEEDDATA&&window.FEEDDATA.plannedWindows||[]).map((p,i)=>({x:Math.max(TODAY+0.2,(new Date(p.day)-T0)/864e5),y:nM+i+1,r:7,w:p.w,lbl:p.label})),backgroundColor:"rgba(0,0,0,0)",borderColor:G,borderWidth:2},
     {type:"line",label:"ols",data:[{x:TODAY,y:nM},{x:END,y:olsEnd}],borderColor:G,borderDash:[2,3],borderWidth:2,pointRadius:0}
   ]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:16}},plugins:{legend:{display:false},tooltip:{filter:i=>i.dataset.label==="ideal"||i.dataset.label==="actual",callbacks:{label:i=>"W"+i.raw.w+" · "+dstr(i.raw.x)+" · #"+i.raw.y}}},
-    scales:{x:{type:"linear",min:0,max:END+1,ticks:{stepSize:7,color:GR,callback:v=>dstr(v)},grid:{display:false},border:{color:"#3A4A72"}},y:{min:0,max:Math.max(idealEnd,last(p90))+10,ticks:{color:GR},grid:{color:"#3A4A72"},title:{display:true,text:"cumulative windows (one Code session each)",color:GR,font:{size:11}}}},
+    scales:{x:{type:"linear",min:0,max:END+1,ticks:{stepSize:7,color:GR,callback:v=>dstr(v)},grid:{display:false},border:{color:"#DDD8CC"}},y:{min:0,max:Math.max(idealEnd,last(p90))+10,ticks:{color:GR},grid:{color:"#E7E3D8"},title:{display:true,text:"cumulative windows (one Code session each)",color:GR,font:{size:11}}}},
     onClick(e){const hit=curveChart.getElementsAtEventForMode(e,"nearest",{intersect:true},true).find(x=>x.datasetIndex===0||x.datasetIndex===3||curveChart.data.datasets[x.datasetIndex].label==="planned");if(!hit)return;const p=curveChart.data.datasets[hit.datasetIndex].data[hit.index];const w=W.find(r=>r[0]===p.w);const landed=w[2]!==null;const lag=landed?Math.round((w[2]-w[1])*24):null;
       el("curvepanel").innerHTML=`<b style="color:var(--chalk)">W${w[0]}</b> · ${landed?"landed on main":"executed, not landed"} · brief ${dstr(w[1])}${landed?" · merged "+dstr(w[2])+" · "+lag+" h brief to merge":" · still in a branch or PR"} · work log ${Math.round(w[3]/1000)} KB`;
       if(DETAIL["W"+w[0]]) toggleDetail("W"+w[0]);}
   },plugins:[vlines]});
 }
+
+
+/* ---- Forecast tab, computed in this browser from windows.json (never stale) ---- */
+async function ensureCurveData(){
+  if(CURVE) return CURVE;
+  const r=await fetch(CURVE_FEED+"?t="+Date.now());
+  if(!r.ok) throw new Error("HTTP "+r.status);
+  CURVE=await r.json(); return CURVE;
+}
+window.fillForecastLive=async function(){
+  try{
+    const C=await ensureCurveData();
+    const W=C.windows, T0=new Date(C.day0).getTime();
+    const TODAY=(Date.now()-T0)/864e5;
+    const mg=W.filter(w=>w[2]!==null).sort((a,b)=>a[2]-b[2]);
+    const nE=W.length, nM=mg.length, remaining=nE-nM;
+    const days=Math.ceil(TODAY), dailyM=[];
+    for(let d=0;d<days;d++) dailyM.push(mg.filter(w=>Math.floor(w[2])===d).length);
+    const recent=dailyM.slice(-7);
+    const N=4000, HMAX=90, clears=[];
+    for(let p=0;p<N;p++){
+      let c=nM, h=0;
+      while(c<nE&&h<HMAX){const src=Math.random()<0.5?dailyM:recent;c+=src[Math.floor(Math.random()*src.length)];h++;}
+      clears.push(h<HMAX?TODAY+h:Infinity);
+    }
+    clears.sort((a,b)=>a-b);
+    const q=qq=>clears[Math.floor(qq*(N-1))];
+    const iso=d=>!isFinite(d)?null:new Date(T0+d*864e5).toISOString().slice(0,10);
+    const frac=lim=>clears.filter(c=>c<=lim).length/N;
+    const unlanded=W.filter(w=>w[2]===null).map(w=>"W"+w[0]);
+    renderForecast({
+      p50:iso(q(.5)), p80:iso(q(.8)), p95:iso(q(.95)),
+      probSep04:frac(C.gtmDay), probSep18:frac(C.mvpDay),
+      runUtc:new Date().toISOString(), stale:false,
+      queue:unlanded.slice(0,10).concat(unlanded.length>10?["and "+(unlanded.length-10)+" more"]:[]),
+      coverage:null, runCount:null,
+      missing:["A graded track record — this projection recomputes in your browser on every visit ("+nM+" of "+nE+" windows landed, "+remaining+" open), so no run history accumulates yet."],
+      fixedBy:"letting it run a few days"
+    });
+  }catch(e){/* feed fallback already rendered */}
+};
