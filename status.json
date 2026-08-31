@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-31T03:29:25Z",
+  "updatedAt": "2026-08-31T16:59:42Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 42,
-    "total": 44
+    "landed": 45,
+    "total": 45
   },
   "prs": [
     {
@@ -24,24 +24,26 @@
     {
       "n": 155,
       "w": "W112",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-31T03:29:25Z",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-08-31T16:59:42Z",
       "what": "Consolidation: the W92/W93/W95 demo-and-journey work lands, and the two overnight session races get adjudicated on evidence",
       "detail": {
-        "cards": "PR 155 | local gates 21/21 | CI re-running after the instant-fail transient",
-        "items": []
+        "cards": "PR 155 | 6/6 green after the workspace cure | merged ~1:00 PM Monday",
+        "items": [
+          "The W92/W93/W95 demo-and-journey work is on main; both overnight races adjudicated on evidence."
+        ]
       }
     },
     {
       "n": 157,
       "w": "W113",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-08-31T03:29:25Z",
-      "what": "Diagnoses Sunday evening's instant-fail CI run from the actual logs, then lands W112",
+      "state": "closed",
+      "ci": "green",
+      "moved": "2026-08-31T16:59:42Z",
+      "what": "Diagnoses Sunday evening's instant-fail CI run from the actual logs, then lands W112 \u2014 diagnosis served; records carried to main",
       "detail": {
-        "cards": "PR 157 | in flight now | carries delegated merge authority for PR 155 on full green",
+        "cards": "PR 157 | closed with ruling | root cause: auto-land sparse checkout poisoning the shared workspace",
         "items": []
       }
     },
@@ -60,11 +62,11 @@
   ],
   "pulse": {
     "running": true,
-    "text": "11:30 PM Sunday. The model chain is DOWN AND LANDED \u2014 one merge at 6:47 PM carried all eleven windows onto main, and the auto-land lane is live and cycling green on its half-hour schedule. W113 is in flight finishing the last cleanup (W112). The board itself was rebuilt tonight: light theme, readable reports, and a forecast that recomputes in your browser from windows.json \u2014 which now regenerates from the build repo every 30 minutes on the Mac, so nothing on this page is hand-typed."
+    "text": "1:10 PM Monday. Everything queued is LANDED \u2014 W112 merged after the relay found and cured the real fault from inside the runner: the auto-land lane's one-file checkout had switched the shared workspace into sparse mode, so every later job saw an almost-empty tree. The '7 secret leaks' were the same illusion; a clean scan finds zero. The lane is intentionally OFF until W114 makes its checkout incapable of a repeat; W115 compiles every overnight design decision into one sheet for review; W116 re-certifies the model operational on final main. All three fire from the W112 merge."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-08-31T03:29:25Z",
+    "runUtc": "2026-08-31T16:59:42Z",
     "queue": [],
     "p50": null,
     "p80": null,
@@ -107,7 +109,7 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush still owed (deferred under the lean flag); counts below are from the last flush.",
+    "note": "Board flush still owed (deferred under the lean flag).",
     "inProgress": [],
     "todo": []
   },
