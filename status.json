@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T02:40:00Z",
+  "updatedAt": "2026-09-01T05:12:00Z",
   "updatedBy": "relay",
   "train": {
     "landed": 45,
@@ -7,14 +7,26 @@
   },
   "prs": [
     {
+      "n": 162,
+      "w": "W117",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-01T04:59:23Z",
+      "what": "The landing window for the three-window chain \u2014 blocked with everything else by the midnight date-rollover defect",
+      "detail": {
+        "cards": "PR 162 | red on the rollover defect | W122 fired 1:10 AM to cure it",
+        "items": []
+      }
+    },
+    {
       "n": 158,
       "w": "W114",
       "state": "open",
       "ci": "red",
-      "moved": "2026-08-31T17:08:53Z",
+      "moved": "2026-09-01T04:59:10Z",
       "what": "Makes the auto-land lane incapable of poisoning the shared CI workspace again; the lane stays off until this lands",
       "detail": {
-        "cards": "PR 158 | 5/6 green, the combined-gates job red at 1:08 PM Monday | W117 fired to cure and land it",
+        "cards": "PR 158 | red on the rollover defect | revives after W122 lands",
         "items": []
       }
     },
@@ -23,10 +35,10 @@
       "w": "W115",
       "state": "open",
       "ci": "red",
-      "moved": "2026-08-31T17:23:50Z",
+      "moved": "2026-09-01T04:59:14Z",
       "what": "The decision sheet: every design ruling the overnight chain made on its own, compiled in one place for review",
       "detail": {
-        "cards": "PR 159 | 5/6 green, the combined-gates job red at 1:22 PM Monday | lands second in the chain",
+        "cards": "PR 159 | red on the rollover defect | revives after W122 lands",
         "items": []
       }
     },
@@ -35,46 +47,70 @@
       "w": "W116",
       "state": "open",
       "ci": "red",
-      "moved": "2026-08-31T17:36:42Z",
+      "moved": "2026-09-01T04:59:18Z",
       "what": "Re-certifies the financial model operational on final merged main \u2014 the 'modeling completed, tested, operational' certificate",
       "detail": {
-        "cards": "PR 160 | 4/6 green, gates job and journeys check red ~1:36 PM Monday | lands last in the chain",
+        "cards": "PR 160 | red on the rollover defect | revives after W122 lands",
         "items": []
       }
     },
     {
-      "n": 155,
-      "w": "W112",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-31T16:59:42Z",
-      "what": "Consolidation: the W92/W93/W95 demo-and-journey work lands, and the two overnight session races get adjudicated on evidence",
-      "detail": {
-        "cards": "PR 155 | 6/6 green after the workspace cure | merged ~1:00 PM Monday",
-        "items": []
-      }
-    },
-    {
-      "n": 59,
-      "w": "W51",
+      "n": 163,
+      "w": "W118",
       "state": "open",
-      "ci": "unknown",
-      "moved": "2026-08-28T20:13:00Z",
-      "what": "Loads all 275 finance deliverables into the product's own tables",
+      "ci": "red",
+      "moved": "2026-09-01T04:56:04Z",
+      "what": "One monthly financial package produced and certified end to end on the seeded books \u2014 the September 18 centerpiece",
       "detail": {
-        "cards": "PR 59 | parked | watch item \u2014 Thursday movement still unexamined",
+        "cards": "PR 163 | claimed overnight under the no-idle floor | same rollover block",
+        "items": []
+      }
+    },
+    {
+      "n": 164,
+      "w": "W120",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-01T04:48:44Z",
+      "what": "Every wired screen proven by a real browser-style request, swept in one pass",
+      "detail": {
+        "cards": "PR 164 | claimed overnight | same rollover block",
+        "items": []
+      }
+    },
+    {
+      "n": 165,
+      "w": "W121",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-01T04:58:07Z",
+      "what": "The codebook: every utility, service, and module with a plain-language one-liner, generated from source and diaries, kept fresh by CI",
+      "detail": {
+        "cards": "PR 165 | claimed overnight | same rollover block",
+        "items": []
+      }
+    },
+    {
+      "n": 166,
+      "w": "W119",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-01T04:59:37Z",
+      "what": "The night watch's first claim: found the midnight defect blocking everyone, filed the diagnosis, correctly refused to exceed its authority",
+      "detail": {
+        "cards": "PR 166 | DRIFT-1130 filed with full evidence | merges once green post-W122",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "10:40 PM Monday. The three afternoon windows all went red within half an hour of starting, and because nothing was queued behind them the build sat idle nine hours \u2014 that empty queue was the relay's miss. Cure is fired: W117 is now claimed to read the three failing logs, fix each branch, and land W114 then W115 then W116 in order. Behind it sits W118 \u2014 the first monthly financial package produced and certified end to end on the seeded books, the September 18 centerpiece. The auto-land lane stays off until W114 lands."
+    "text": "1:10 AM Tuesday. The no-idle floor worked all night \u2014 five windows claimed within two hours \u2014 and then midnight itself broke the build: a database check hardcoded to August's calendar fails everywhere now that it is September. The night watch caught it on its first claim, wrote the full diagnosis (DRIFT-1130), and correctly stopped at its authority line. W122 is fired with a narrow grant to fix the two causes, land on main, and revive every red branch in order. Nothing merges until it does."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-09-01T02:40:00Z",
-    "queue": ["W117", "W118"],
+    "runUtc": "2026-09-01T05:12:00Z",
+    "queue": ["W122"],
     "p50": null,
     "p80": null,
     "p95": null,
@@ -93,14 +129,14 @@
   },
   "support": [
     {
-      "w": "W117",
-      "phase": "firing",
-      "note": "Landing window fired 10:31 PM Monday: diagnose the three red runs from their logs, cure each branch, merge the chain in order. First visible output expected within 15-20 minutes of the fire."
+      "w": "W119",
+      "phase": "proven",
+      "note": "First claim did exactly its job: systemic defect found within the hour, diagnosed to two named causes, evidence on every affected PR, authority line held."
     },
     {
-      "w": "W118",
-      "phase": "queued",
-      "note": "Queued behind the chain: one monthly financial package produced through the real screens and certified, written attestation stored for any figure the system cannot prove. Halts if it would need a ledger decision \u2014 that choice stays with Zusha."
+      "w": "W122",
+      "phase": "firing",
+      "note": "Urgent: fix the September-rollover defect on main with a narrow authority grant, then bring all eight red branches up to date so their checks re-run green."
     },
     {
       "w": "RUNNER MOUNT",
@@ -116,7 +152,7 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush owed a third day \u2014 scheduled first thing in Tuesday's morning pass, before any merge.",
+    "note": "Board flush owed \u2014 first action of Tuesday's morning pass, before any merge.",
     "inProgress": [],
     "todo": []
   },
