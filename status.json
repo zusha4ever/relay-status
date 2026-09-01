@@ -1,24 +1,45 @@
 {
-  "updatedAt": "2026-08-31T16:59:42Z",
+  "updatedAt": "2026-09-01T02:40:00Z",
   "updatedBy": "relay",
   "train": {
     "landed": 45,
-    "total": 45
+    "total": 48
   },
   "prs": [
     {
-      "n": 150,
-      "w": "W109",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-08-30T22:47:00Z",
-      "what": "THE CHAIN TIP: the whole financial model landed in one merge \u2014 spine, drivers, volumes, timing, costs, roll-up, workbook, scenarios, budget lock, screens, and the FY27 end-to-end proof",
+      "n": 158,
+      "w": "W114",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-08-31T17:08:53Z",
+      "what": "Makes the auto-land lane incapable of poisoning the shared CI workspace again; the lane stays off until this lands",
       "detail": {
-        "cards": "PR 150 | 6/6 green | merged 6:47 PM Saturday \u2014 carried W98 + W99 + W100\u2013W109",
-        "items": [
-          "Eleven windows rode one branch; one green run proved the union; one merge landed it.",
-          "The auto-land lane (W100) went live with this merge: green chain work now merges itself."
-        ]
+        "cards": "PR 158 | 5/6 green, the combined-gates job red at 1:08 PM Monday | W117 fired to cure and land it",
+        "items": []
+      }
+    },
+    {
+      "n": 159,
+      "w": "W115",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-08-31T17:23:50Z",
+      "what": "The decision sheet: every design ruling the overnight chain made on its own, compiled in one place for review",
+      "detail": {
+        "cards": "PR 159 | 5/6 green, the combined-gates job red at 1:22 PM Monday | lands second in the chain",
+        "items": []
+      }
+    },
+    {
+      "n": 160,
+      "w": "W116",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-08-31T17:36:42Z",
+      "what": "Re-certifies the financial model operational on final merged main \u2014 the 'modeling completed, tested, operational' certificate",
+      "detail": {
+        "cards": "PR 160 | 4/6 green, gates job and journeys check red ~1:36 PM Monday | lands last in the chain",
+        "items": []
       }
     },
     {
@@ -30,20 +51,6 @@
       "what": "Consolidation: the W92/W93/W95 demo-and-journey work lands, and the two overnight session races get adjudicated on evidence",
       "detail": {
         "cards": "PR 155 | 6/6 green after the workspace cure | merged ~1:00 PM Monday",
-        "items": [
-          "The W92/W93/W95 demo-and-journey work is on main; both overnight races adjudicated on evidence."
-        ]
-      }
-    },
-    {
-      "n": 157,
-      "w": "W113",
-      "state": "closed",
-      "ci": "green",
-      "moved": "2026-08-31T16:59:42Z",
-      "what": "Diagnoses Sunday evening's instant-fail CI run from the actual logs, then lands W112 \u2014 diagnosis served; records carried to main",
-      "detail": {
-        "cards": "PR 157 | closed with ruling | root cause: auto-land sparse checkout poisoning the shared workspace",
         "items": []
       }
     },
@@ -62,12 +69,12 @@
   ],
   "pulse": {
     "running": true,
-    "text": "1:10 PM Monday. Everything queued is LANDED \u2014 W112 merged after the relay found and cured the real fault from inside the runner: the auto-land lane's one-file checkout had switched the shared workspace into sparse mode, so every later job saw an almost-empty tree. The '7 secret leaks' were the same illusion; a clean scan finds zero. The lane is intentionally OFF until W114 makes its checkout incapable of a repeat; W115 compiles every overnight design decision into one sheet for review; W116 re-certifies the model operational on final main. All three fire from the W112 merge."
+    "text": "10:40 PM Monday. The three afternoon windows all went red within half an hour of starting, and because nothing was queued behind them the build sat idle nine hours \u2014 that empty queue was the relay's miss. Cure is fired: W117 is now claimed to read the three failing logs, fix each branch, and land W114 then W115 then W116 in order. Behind it sits W118 \u2014 the first monthly financial package produced and certified end to end on the seeded books, the September 18 centerpiece. The auto-land lane stays off until W114 lands."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-08-31T16:59:42Z",
-    "queue": [],
+    "runUtc": "2026-09-01T02:40:00Z",
+    "queue": ["W117", "W118"],
     "p50": null,
     "p80": null,
     "p95": null,
@@ -86,14 +93,14 @@
   },
   "support": [
     {
-      "w": "W96",
-      "phase": "done",
-      "note": "Delivered exactly what the Shabbat plan asked: three distinct real causes found (a formatting miss, stale bookkeeping docs, and a genuine defect in the diary-checking gate), all fixed, W91 re-landed. Record files land via W99."
+      "w": "W117",
+      "phase": "firing",
+      "note": "Landing window fired 10:31 PM Monday: diagnose the three red runs from their logs, cure each branch, merge the chain in order. First visible output expected within 15-20 minutes of the fire."
     },
     {
-      "w": "W99",
+      "w": "W118",
       "phase": "queued",
-      "note": "Authored 11:07 PM Saturday: re-lands the model spine (W97) on the post-merge tip and carries the W96 record files; also cures the one-merge-stale bookkeeping docs on main (DRIFT-901)."
+      "note": "Queued behind the chain: one monthly financial package produced through the real screens and certified, written attestation stored for any figure the system cannot prove. Halts if it would need a ledger decision \u2014 that choice stays with Zusha."
     },
     {
       "w": "RUNNER MOUNT",
@@ -109,13 +116,13 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush still owed (deferred under the lean flag).",
+    "note": "Board flush owed a third day \u2014 scheduled first thing in Tuesday's morning pass, before any merge.",
     "inProgress": [],
     "todo": []
   },
   "reports": {
-    "latest": "reports/2026-08-30.md",
-    "plan": "reports/PLAN-2026-08-31.md",
+    "latest": "reports/2026-08-31.md",
+    "plan": "reports/PLAN-2026-09-01.md",
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
   "plannedWindows": []
