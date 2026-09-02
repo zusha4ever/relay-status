@@ -33,7 +33,15 @@ for w in ledger["windows"]:
     for suffix in ("-RESULT.md", "-DIARY.jsonl"):
         p = pathlib.Path(WORKER) / "windows" / f"W{n}{suffix}"
         if p.exists(): b += p.stat().st_size
-    rows.append([n, authored, landed, b or 6000])
+    name=""
+    bp = pathlib.Path(WORKER) / "windows" / f"W{n}.md"
+    if bp.exists():
+        first = bp.read_text(errors="ignore").split("\n",1)[0]
+        for sep in (" \u2014 ", " - ", ": "):
+            if sep in first:
+                name = first.split(sep,1)[1].strip().rstrip(".")
+                break
+    rows.append([n, authored, landed, b or 6000, name[:70]])
 
 rows.sort(key=lambda r: r[0])
 out = {

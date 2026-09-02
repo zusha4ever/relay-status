@@ -1,116 +1,126 @@
 {
-  "updatedAt": "2026-09-01T05:12:00Z",
+  "updatedAt": "2026-09-02T01:36:55Z",
   "updatedBy": "relay",
   "train": {
-    "landed": 45,
-    "total": 48
+    "landed": 44,
+    "total": 51
   },
   "prs": [
     {
-      "n": 162,
-      "w": "W117",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:59:23Z",
-      "what": "The landing window for the three-window chain \u2014 blocked with everything else by the midnight date-rollover defect",
+      "n": 171,
+      "w": "W123",
+      "name": "The revival: chain rebuilt on cured main",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "Rebuilt the whole stalled chain on top of the September-rollover fix and landed its own record",
       "detail": {
-        "cards": "PR 162 | red on the rollover defect | W122 fired 1:10 AM to cure it",
+        "cards": "PR 171 | 6/6 green | merged 9:30 PM Tuesday",
         "items": []
       }
     },
     {
-      "n": 158,
-      "w": "W114",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:59:10Z",
-      "what": "Makes the auto-land lane incapable of poisoning the shared CI workspace again; the lane stays off until this lands",
-      "detail": {
-        "cards": "PR 158 | red on the rollover defect | revives after W122 lands",
-        "items": []
-      }
-    },
-    {
-      "n": 159,
-      "w": "W115",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:59:14Z",
-      "what": "The decision sheet: every design ruling the overnight chain made on its own, compiled in one place for review",
-      "detail": {
-        "cards": "PR 159 | red on the rollover defect | revives after W122 lands",
-        "items": []
-      }
-    },
-    {
-      "n": 160,
-      "w": "W116",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:59:18Z",
-      "what": "Re-certifies the financial model operational on final merged main \u2014 the 'modeling completed, tested, operational' certificate",
-      "detail": {
-        "cards": "PR 160 | red on the rollover defect | revives after W122 lands",
-        "items": []
-      }
-    },
-    {
-      "n": 163,
-      "w": "W118",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:56:04Z",
-      "what": "One monthly financial package produced and certified end to end on the seeded books \u2014 the September 18 centerpiece",
-      "detail": {
-        "cards": "PR 163 | claimed overnight under the no-idle floor | same rollover block",
-        "items": []
-      }
-    },
-    {
-      "n": 164,
-      "w": "W120",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:48:44Z",
-      "what": "Every wired screen proven by a real browser-style request, swept in one pass",
-      "detail": {
-        "cards": "PR 164 | claimed overnight | same rollover block",
-        "items": []
-      }
-    },
-    {
-      "n": 165,
+      "n": 177,
       "w": "W121",
+      "name": "The codebook generator",
       "state": "open",
-      "ci": "red",
-      "moved": "2026-09-01T04:58:07Z",
-      "what": "The codebook: every utility, service, and module with a plain-language one-liner, generated from source and diaries, kept fresh by CI",
+      "ci": "pending",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "chain complete",
       "detail": {
-        "cards": "PR 165 | claimed overnight | same rollover block",
+        "cards": "PR 177",
         "items": []
       }
     },
     {
-      "n": 166,
-      "w": "W119",
+      "n": 176,
+      "w": "W120",
+      "name": "Real-web-request sweep of every screen",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "real-HTTP sweep, on cured main, merged with W116",
+      "detail": {
+        "cards": "PR 176",
+        "items": []
+      }
+    },
+    {
+      "n": 175,
+      "w": "W118",
+      "name": "The monthly package",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "parked at T2, on cured main",
+      "detail": {
+        "cards": "PR 175",
+        "items": []
+      }
+    },
+    {
+      "n": 174,
+      "w": "W116",
+      "name": "FY27 model re-verified on final main",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "FY27 model re-verify, on cured main, stacked on W115",
+      "detail": {
+        "cards": "PR 174",
+        "items": []
+      }
+    },
+    {
+      "n": 173,
+      "w": "W115",
+      "name": "Decision sheet for your review",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "decision sheet, on cured main, stacked on W114",
+      "detail": {
+        "cards": "PR 173",
+        "items": []
+      }
+    },
+    {
+      "n": 172,
+      "w": "W114",
+      "name": "Auto-land lane isolation (rides W115's landing)",
       "state": "open",
       "ci": "red",
-      "moved": "2026-09-01T04:59:37Z",
-      "what": "The night watch's first claim: found the midnight defect blocking everyone, filed the diagnosis, correctly refused to exceed its authority",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "auto-land workspace isolation, on cured main",
       "detail": {
-        "cards": "PR 166 | DRIFT-1130 filed with full evidence | merges once green post-W122",
+        "cards": "PR 172",
+        "items": []
+      }
+    },
+    {
+      "n": 59,
+      "w": "W51",
+      "name": "import the deliverable catalog into the definition tables",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-09-02T01:36:55Z",
+      "what": "import the deliverable catalog into the definition tables",
+      "detail": {
+        "cards": "PR 59",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "1:10 AM Tuesday. The no-idle floor worked all night \u2014 five windows claimed within two hours \u2014 and then midnight itself broke the build: a database check hardcoded to August's calendar fails everywhere now that it is September. The night watch caught it on its first claim, wrote the full diagnosis (DRIFT-1130), and correctly stopped at its authority line. W122 is fired with a narrow grant to fix the two causes, land on main, and revive every red branch in order. Nothing merges until it does."
+    "text": "9:40 PM Tuesday. What you saw as a wall of failing windows was last night's FIRST build of the chain: every one hit the same September-rollover defect (date-assuming checks broke when the month flipped). That defect is fixed (W122), the chain was REBUILT clean on top of it (W123, landed 9:30 PM), and none of those old failing pull requests exist anymore. The rebuilt chain is queued: decision sheet, model re-verify, monthly package, screen sweep, codebook. One real blocker remains, found tonight: GitHub stopped creating test runs for this repository around 4:30 PM \u2014 nothing red, literally no runs start. That is tomorrow morning's first item; the rebuilt code itself is clean and waiting."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-09-01T05:12:00Z",
-    "queue": ["W122"],
+    "runUtc": "2026-09-02T01:36:55Z",
+    "queue": [
+      "W122"
+    ],
     "p50": null,
     "p80": null,
     "p95": null,

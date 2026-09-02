@@ -42,7 +42,7 @@ async function renderCurve(){
   ]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:16}},plugins:{legend:{display:false},tooltip:{filter:i=>i.dataset.label==="ideal"||i.dataset.label==="actual",callbacks:{label:i=>"W"+i.raw.w+" · "+dstr(i.raw.x)+" · #"+i.raw.y}}},
     scales:{x:{type:"linear",min:0,max:END+1,ticks:{stepSize:7,color:GR,callback:v=>dstr(v)},grid:{display:false},border:{color:"#DDD8CC"}},y:{min:0,max:Math.max(idealEnd,last(p90))+10,ticks:{color:GR},grid:{color:"#E7E3D8"},title:{display:true,text:"cumulative windows (one Code session each)",color:GR,font:{size:11}}}},
     onClick(e){const hit=curveChart.getElementsAtEventForMode(e,"nearest",{intersect:true},true).find(x=>x.datasetIndex===0||x.datasetIndex===3||curveChart.data.datasets[x.datasetIndex].label==="planned");if(!hit)return;const p=curveChart.data.datasets[hit.datasetIndex].data[hit.index];const w=W.find(r=>r[0]===p.w);const landed=w[2]!==null;const lag=landed?Math.round((w[2]-w[1])*24):null;
-      el("curvepanel").innerHTML=`<b style="color:var(--chalk)">W${w[0]}</b> · ${landed?"landed on main":"executed, not landed"} · brief ${dstr(w[1])}${landed?" · merged "+dstr(w[2])+" · "+lag+" h brief to merge":" · still in a branch or PR"} · work log ${Math.round(w[3]/1000)} KB`;
+      el("curvepanel").innerHTML=`<b style="color:var(--chalk)">${w[4]||("window "+w[0])}</b> · ${landed?"landed on main":"executed, not landed"} · brief ${dstr(w[1])}${landed?" · merged "+dstr(w[2])+" · "+lag+" h brief to merge":" · still in a branch or PR"} · work log ${Math.round(w[3]/1000)} KB`;
       if(DETAIL["W"+w[0]]) toggleDetail("W"+w[0]);}
   },plugins:[vlines]});
 }

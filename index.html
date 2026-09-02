@@ -320,7 +320,7 @@ function renderTrain(prs){
   el("train").innerHTML=L.map(p=>{
     const c=classify(p);
     if(c.cls==="landed") landed++;
-    return `<div class="car ${c.cls}" onclick="toggleDetail('${esc(p.w)}')"><span class="w">${esc(p.w)}</span><span>${c.label}</span></div>`;
+    return `<div class="car ${c.cls}" onclick="toggleDetail('${esc(p.w)}')" title="${esc(p.w)}"><span class="w">${esc(p.name||p.what&&p.what.split(":")[0]||p.w)}</span><span>${c.label}</span></div>`;
   }).join("");
   el("pct").textContent=Math.round(landed/(L.length||1)*100)+"%";
   el("landedcount").textContent=landed+" of "+L.length+" windows";
