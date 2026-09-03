@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-09-02T01:36:55Z",
-  "updatedBy": "relay",
+  "updatedAt": "2026-09-03T02:26:41Z",
+  "updatedBy": "relay (chat, local)",
   "train": {
     "landed": 44,
     "total": 51
@@ -113,7 +113,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "9:40 PM Tuesday. What you saw as a wall of failing windows was last night's FIRST build of the chain: every one hit the same September-rollover defect (date-assuming checks broke when the month flipped). That defect is fixed (W122), the chain was REBUILT clean on top of it (W123, landed 9:30 PM), and none of those old failing pull requests exist anymore. The rebuilt chain is queued: decision sheet, model re-verify, monthly package, screen sweep, codebook. One real blocker remains, found tonight: GitHub stopped creating test runs for this repository around 4:30 PM \u2014 nothing red, literally no runs start. That is tomorrow morning's first item; the rebuilt code itself is clean and waiting."
+    "text": "10:45 PM ET Wed: overnight chain unblocked. W128 was stuck on a design split (new tables vs. the already-approved ledger tables); ruled: use the approved tables. Auto-merge switched back on. Executor fired at W128; expect its first activity by about 11:05 PM ET, then W129 through W135 self-chain overnight."
   },
   "medianWindowMinutes": 40,
   "forecast": {
