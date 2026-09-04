@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -e
 cd ~/HA-Platfrom-Build/relay-worker/STELL-Finance
-git fetch -q origin main && git checkout -q main && git pull -q origin main
+git fetch -q origin main && git checkout -q -f main && git reset -q --hard origin/main
 cd ~/HA-Platfrom-Build/relay-status
 git pull -q origin main || true
 python3 tools/gen_windows.py >/dev/null

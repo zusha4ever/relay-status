@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-09-04T16:36:05Z",
+  "updatedAt": "2026-09-04T16:55:28Z",
   "updatedBy": "relay (chat, local)",
   "train": {
-    "landed": 44,
-    "total": 51
+    "landed": 117,
+    "total": 140
   },
   "prs": [
     {
@@ -113,29 +113,40 @@
   ],
   "pulse": {
     "running": true,
-    "text": "12:25 AM ET Fri: Wiki published from the Mac (5 pages, wiki commit 43ab379). W140 (Sept 18 walk gaps) landing; W141 (HA driver-built books) on main. Queue check next pass."
+    "text": "12:55 PM ET Fri: board repaired \u2014 the refresh job had been stuck since Wed night (a stray edit blocked its pull), and auto-merged windows were invisible to the ledger; both fixed, 117 of 140 windows now show as landed. Overnight: W136/W137/W139/W141 landed; W140 red after W141 moved main; W142/W143 queued. Sept 18 median 195 landed."
   },
   "medianWindowMinutes": 40,
   "forecast": {
-    "runUtc": "2026-09-02T01:36:55Z",
+    "runUtc": "2026-09-04T16:55:28Z",
     "queue": [
-      "W122"
+      "W140 re-land (inside W142)",
+      "W142",
+      "W143",
+      "W144"
     ],
-    "p50": null,
-    "p80": null,
-    "p95": null,
+    "p50": 195,
+    "p80": 216,
+    "p95": 237,
     "probSep04": null,
     "probSep18": null,
     "flipCondition": 0,
-    "coverage": null,
+    "coverage": "windows landed on main by Sep 18, cumulative; Monte Carlo over the daily landing history (50% all-history, 50% last 7 days), 4000 paths",
     "queueGrowthPerWeek": null,
     "stale": false,
-    "runCount": 4,
+    "runCount": 5,
     "staleNote": "",
-    "missing": [
-      "Nothing structural: the Forecast tab now recomputes live in the browser from windows.json on every visit."
-    ],
-    "fixedBy": "the board itself, automatically"
+    "next48h": {
+      "p10": 2,
+      "p50": 8,
+      "p90": 22,
+      "expected": [
+        "W140 re-land + Jan\u2013Jul partitions + full YTD (W142)",
+        "Sept 18 demo runbook and banners (W143)",
+        "ledger fix so auto-landed windows count (W144)"
+      ]
+    },
+    "missing": [],
+    "fixedBy": ""
   },
   "support": [
     {
@@ -162,7 +173,7 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board flush owed \u2014 first action of Tuesday's morning pass, before any merge.",
+    "note": "Plane board flush owed (counts below are from Sep 2). Cycle 3 ends Sep 5.",
     "inProgress": [],
     "todo": []
   },
@@ -171,5 +182,21 @@
     "plan": "reports/PLAN-2026-09-01.md",
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
-  "plannedWindows": []
+  "plannedWindows": [
+    {
+      "w": "142",
+      "day": "2026-09-05T00:55:28Z",
+      "label": "W142 \u2014 W140 re-land + full year-to-date books"
+    },
+    {
+      "w": "143",
+      "day": "2026-09-05T12:55:28Z",
+      "label": "W143 \u2014 Sept 18 demo rehearsed from a fresh seed"
+    },
+    {
+      "w": "144",
+      "day": "2026-09-05T22:55:28Z",
+      "label": "W144 \u2014 windows ledger counts auto-landed merges"
+    }
+  ]
 }

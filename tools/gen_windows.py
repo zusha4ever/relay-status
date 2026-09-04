@@ -19,11 +19,34 @@ subprocess.run([sys.executable, "tools/windows_ledger.py", "--ref", "HEAD",
                capture_output=True, text=True)
 ledger = json.load(open(ledger_path))
 
+# Overlay: windows landed by auto-land / GitHub-default merge subjects ("Merge pull request #N
+# from .../claude/w141-...") are invisible to the ledger's subject regex. Read merged PRs and
+# derive W-numbers from the head branch (claude/w141-...) and the title ("W116+W118+... [auto-land]").
+# Relay brief/trigger PRs (head relay/*, title "relay:") never count as a window landing.
+import re
+pr_landed = {}
+try:
+    raw = subprocess.run(["/opt/homebrew/bin/gh", "pr", "list", "-R", "zusha4ever/STELL-Finance",
+                          "--state", "merged", "--limit", "400", "--json", "title,headRefName,mergedAt"],
+                         capture_output=True, text=True, check=True).stdout
+    for pr in json.loads(raw):
+        head, title = pr["headRefName"], pr["title"]
+        if title.lower().startswith(("relay:","trigger")): continue
+        if re.search(r"\bclaim\b", title, re.I) and not re.search(r"auto-land|reland|re-land", title, re.I): continue
+        nums = {int(x) for x in re.findall(r"[Ww](\d{1,3})(?![\d])", head)} | {int(x) for x in re.findall(r"\bW(\d{1,3})\b", title)}
+        for n in nums:
+            t = pr["mergedAt"]
+            if n not in pr_landed or t < pr_landed[n]: pr_landed[n] = t
+except Exception as e:
+    print("gh overlay skipped:", e, file=sys.stderr)
+
 rows = []
 for w in ledger["windows"]:
     n = int(w["window"][1:])
     authored = day(w.get("brief_landed_at"))
     landed = day(w.get("merged_at")) if w.get("merged") else None
+    if landed is None and n in pr_landed:
+        landed = day(pr_landed[n])
     if authored is None and landed is None and not w.get("result_present"):
         continue
     if authored is None:
