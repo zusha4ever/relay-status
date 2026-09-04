@@ -1,101 +1,60 @@
 {
-  "updatedAt": "2026-09-04T16:55:28Z",
-  "updatedBy": "relay (chat, local)",
+  "updatedAt": "2026-09-04T23:25:00Z",
+  "updatedBy": "relay (chat, remote)",
   "train": {
     "landed": 117,
-    "total": 140
+    "total": 156
   },
   "prs": [
     {
-      "n": 171,
-      "w": "W123",
-      "name": "The revival: chain rebuilt on cured main",
+      "n": 216,
+      "w": "W143",
+      "name": "Sept 18 demo runbook and banners",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-09-04T18:32:35Z",
+      "what": "Finished, but un-mergeable since W142 landed under it; GitHub ran no checks. W145 carries it to main and closes this PR.",
+      "detail": { "cards": "PR 216 | dirty | re-land in W145", "items": [] }
+    },
+    {
+      "n": 217,
+      "w": "W144",
+      "name": "Windows ledger counts auto-landed merges",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-09-04T18:26:20Z",
+      "what": "Finished, but un-mergeable since W142 landed under it; GitHub ran no checks. W145 carries it to main and closes this PR.",
+      "detail": { "cards": "PR 217 | dirty | re-land in W145", "items": [] }
+    },
+    {
+      "n": 215,
+      "w": "W142",
+      "name": "W140 re-land + full year-to-date books",
       "state": "merged",
       "ci": "green",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "Rebuilt the whole stalled chain on top of the September-rollover fix and landed its own record",
-      "detail": {
-        "cards": "PR 171 | 6/6 green | merged 9:30 PM Tuesday",
-        "items": []
-      }
+      "moved": "2026-09-04T18:20:07Z",
+      "what": "Landed 6/6 green at 2:20 PM ET: January-July partitions, full-year load, month + year-to-date sentences on the package screen.",
+      "detail": { "cards": "PR 215 | 6/6 green | merged 2:20 PM Fri", "items": [] }
     },
     {
-      "n": 177,
-      "w": "W121",
-      "name": "The codebook generator",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "chain complete",
-      "detail": {
-        "cards": "PR 177",
-        "items": []
-      }
-    },
-    {
-      "n": 176,
-      "w": "W120",
-      "name": "Real-web-request sweep of every screen",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "real-HTTP sweep, on cured main, merged with W116",
-      "detail": {
-        "cards": "PR 176",
-        "items": []
-      }
-    },
-    {
-      "n": 175,
-      "w": "W118",
-      "name": "The monthly package",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "parked at T2, on cured main",
-      "detail": {
-        "cards": "PR 175",
-        "items": []
-      }
-    },
-    {
-      "n": 174,
-      "w": "W116",
-      "name": "FY27 model re-verified on final main",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "FY27 model re-verify, on cured main, stacked on W115",
-      "detail": {
-        "cards": "PR 174",
-        "items": []
-      }
-    },
-    {
-      "n": 173,
-      "w": "W115",
-      "name": "Decision sheet for your review",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "decision sheet, on cured main, stacked on W114",
-      "detail": {
-        "cards": "PR 173",
-        "items": []
-      }
-    },
-    {
-      "n": 172,
-      "w": "W114",
-      "name": "Auto-land lane isolation (rides W115's landing)",
+      "n": 213,
+      "w": "W140",
+      "name": "Sept 18 walk made whole",
       "state": "open",
       "ci": "red",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "auto-land workspace isolation, on cured main",
-      "detail": {
-        "cards": "PR 172",
-        "items": []
-      }
+      "moved": "2026-09-04T00:23:31Z",
+      "what": "Superseded by W142's re-land; W145 closes it unmerged with a ruling comment.",
+      "detail": { "cards": "PR 213 | superseded", "items": [] }
+    },
+    {
+      "n": 207,
+      "w": "W138",
+      "name": "Land the train (claim)",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-09-03T19:13:36Z",
+      "what": "Obsolete since the auto-land lane took over merging; W145 closes it.",
+      "detail": { "cards": "PR 207 | obsolete", "items": [] }
     },
     {
       "n": 59,
@@ -104,26 +63,18 @@
       "state": "open",
       "ci": "unknown",
       "moved": "2026-09-02T01:36:55Z",
-      "what": "import the deliverable catalog into the definition tables",
-      "detail": {
-        "cards": "PR 59",
-        "items": []
-      }
+      "what": "parked behind the Mac runner mount",
+      "detail": { "cards": "PR 59", "items": [] }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "12:55 PM ET Fri: board repaired \u2014 the refresh job had been stuck since Wed night (a stray edit blocked its pull), and auto-merged windows were invisible to the ledger; both fixed, 117 of 140 windows now show as landed. Overnight: W136/W137/W139/W141 landed; W140 red after W141 moved main; W142/W143 queued. Sept 18 median 195 landed."
+    "text": "7:25 PM ET Fri (Shabbat pass): W143 and W144 finished but went un-mergeable when W142 landed under them at 2:20 PM, and GitHub ran no checks on either, so the executor sat idle from 2:32 PM. Twelve independent windows W145-W156 authored and fired at 7:25 PM: W145 re-lands W143+W144; W146 budget lock; W147 tenant isolation over HTTP; W148 certify/hold enforcement; W149 named moved driver; W150 upload dry run; W151 banner removal; W152 export + delivery; W153 month with no actuals; W154 omission audit; W155 rehearsal + speed; W156 eight months of sentences. Estimated 14-20 executor-hours; the executor never authors, so the queue may run dry before Saturday night."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
-    "queue": [
-      "W140 re-land (inside W142)",
-      "W142",
-      "W143",
-      "W144"
-    ],
+    "queue": ["W145", "W146", "W147", "W148", "W149", "W150", "W151", "W152", "W153", "W154", "W155", "W156"],
     "p50": 195,
     "p80": 216,
     "p95": 237,
@@ -132,17 +83,18 @@
     "flipCondition": 0,
     "coverage": "windows landed on main by Sep 18, cumulative; Monte Carlo over the daily landing history (50% all-history, 50% last 7 days), 4000 paths",
     "queueGrowthPerWeek": null,
-    "stale": false,
+    "stale": true,
     "runCount": 5,
-    "staleNote": "",
+    "staleNote": "Forecast numbers are from the 12:55 PM ET run; the queue list was updated by hand at 7:25 PM ET. Re-run owed on the next pass.",
     "next48h": {
       "p10": 2,
       "p50": 8,
       "p90": 22,
       "expected": [
-        "W140 re-land + Jan\u2013Jul partitions + full YTD (W142)",
-        "Sept 18 demo runbook and banners (W143)",
-        "ledger fix so auto-landed windows count (W144)"
+        "W143 + W144 carried to main (W145)",
+        "Budget locked through the real path, both plan-vs-actual legs on screen (W146)",
+        "Tenant isolation proven over real HTTP (W147)",
+        "Variance sentence names the driver that moved (W149)"
       ]
     },
     "missing": [],
@@ -150,14 +102,9 @@
   },
   "support": [
     {
-      "w": "W119",
-      "phase": "proven",
-      "note": "First claim did exactly its job: systemic defect found within the hour, diagnosed to two named causes, evidence on every affected PR, authority line held."
-    },
-    {
-      "w": "W122",
+      "w": "W145",
       "phase": "firing",
-      "note": "Urgent: fix the September-rollover defect on main with a narrow authority grant, then bring all eight red branches up to date so their checks re-run green."
+      "note": "Re-land W143 and W144 on current main; close #216, #217, #213, #207 with ruling comments; branches retained."
     },
     {
       "w": "RUNNER MOUNT",
@@ -166,14 +113,10 @@
     }
   ],
   "plane": {
-    "cycle": "Cycle 3 \u2014 Generation engine: statement package",
-    "dates": "Aug 24 \u2013 Sep 5",
-    "counts": {
-      "done": 49,
-      "inProgress": 3,
-      "todo": 1
-    },
-    "note": "Plane board flush owed (counts below are from Sep 2). Cycle 3 ends Sep 5.",
+    "cycle": "Cycle 3 — Generation engine: statement package",
+    "dates": "Aug 24 – Sep 5",
+    "counts": { "done": 49, "inProgress": 3, "todo": 1 },
+    "note": "Plane board flush owed (counts are from Sep 2; W145-W156 not yet carded). Cycle 3 ends Sep 5.",
     "inProgress": [],
     "todo": []
   },
@@ -183,20 +126,17 @@
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
   "plannedWindows": [
-    {
-      "w": "142",
-      "day": "2026-09-05T00:55:28Z",
-      "label": "W142 \u2014 W140 re-land + full year-to-date books"
-    },
-    {
-      "w": "143",
-      "day": "2026-09-05T12:55:28Z",
-      "label": "W143 \u2014 Sept 18 demo rehearsed from a fresh seed"
-    },
-    {
-      "w": "144",
-      "day": "2026-09-05T22:55:28Z",
-      "label": "W144 \u2014 windows ledger counts auto-landed merges"
-    }
+    { "w": "145", "day": "2026-09-05T01:00:00Z", "label": "W145 — W143 + W144 re-landed on current main" },
+    { "w": "146", "day": "2026-09-05T03:00:00Z", "label": "W146 — budget lock ceremony, both plan-vs-actual legs" },
+    { "w": "147", "day": "2026-09-05T05:00:00Z", "label": "W147 — tenant isolation proven over HTTP" },
+    { "w": "148", "day": "2026-09-05T07:00:00Z", "label": "W148 — certify/hold rules enforced server-side" },
+    { "w": "149", "day": "2026-09-05T09:00:00Z", "label": "W149 — variance sentence names the moved driver" },
+    { "w": "150", "day": "2026-09-05T11:00:00Z", "label": "W150 — upload dry-run validator for the real export" },
+    { "w": "151", "day": "2026-09-05T13:00:00Z", "label": "W151 — banner removal on the walk" },
+    { "w": "152", "day": "2026-09-05T15:00:00Z", "label": "W152 — package export + delivery record" },
+    { "w": "153", "day": "2026-09-05T17:00:00Z", "label": "W153 — month with no actuals shows an honest waiting state" },
+    { "w": "154", "day": "2026-09-05T19:00:00Z", "label": "W154 — omission audit W138 onward" },
+    { "w": "155", "day": "2026-09-05T21:00:00Z", "label": "W155 — one-command rehearsal + package screen speed" },
+    { "w": "156", "day": "2026-09-05T23:00:00Z", "label": "W156 — January-August sentences committed and gated" }
   ]
 }
