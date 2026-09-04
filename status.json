@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-03T02:26:41Z",
+  "updatedAt": "2026-09-04T16:36:05Z",
   "updatedBy": "relay (chat, local)",
   "train": {
     "landed": 44,
@@ -113,7 +113,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "10:45 PM ET Wed: overnight chain unblocked. W128 was stuck on a design split (new tables vs. the already-approved ledger tables); ruled: use the approved tables. Auto-merge switched back on. Executor fired at W128; expect its first activity by about 11:05 PM ET, then W129 through W135 self-chain overnight."
+    "text": "12:25 AM ET Fri: Wiki published from the Mac (5 pages, wiki commit 43ab379). W140 (Sept 18 walk gaps) landing; W141 (HA driver-built books) on main. Queue check next pass."
   },
   "medianWindowMinutes": 40,
   "forecast": {
