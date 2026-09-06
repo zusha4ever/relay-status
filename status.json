@@ -1,80 +1,137 @@
 {
-  "updatedAt": "2026-09-04T23:25:00Z",
-  "updatedBy": "relay (chat, remote)",
+  "updatedAt": "2026-09-06T22:55:00Z",
+  "updatedBy": "relay (chat, local — lane pass)",
   "train": {
-    "landed": 117,
-    "total": 156
+    "landed": 123,
+    "total": 161
   },
   "prs": [
     {
-      "n": 216,
-      "w": "W143",
-      "name": "Sept 18 demo runbook and banners",
-      "state": "open",
-      "ci": "unknown",
-      "moved": "2026-09-04T18:32:35Z",
-      "what": "Finished, but un-mergeable since W142 landed under it; GitHub ran no checks. W145 carries it to main and closes this PR.",
-      "detail": { "cards": "PR 216 | dirty | re-land in W145", "items": [] }
-    },
-    {
-      "n": 217,
-      "w": "W144",
-      "name": "Windows ledger counts auto-landed merges",
-      "state": "open",
-      "ci": "unknown",
-      "moved": "2026-09-04T18:26:20Z",
-      "what": "Finished, but un-mergeable since W142 landed under it; GitHub ran no checks. W145 carries it to main and closes this PR.",
-      "detail": { "cards": "PR 217 | dirty | re-land in W145", "items": [] }
-    },
-    {
-      "n": 215,
-      "w": "W142",
-      "name": "W140 re-land + full year-to-date books",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-04T18:20:07Z",
-      "what": "Landed 6/6 green at 2:20 PM ET: January-July partitions, full-year load, month + year-to-date sentences on the package screen.",
-      "detail": { "cards": "PR 215 | 6/6 green | merged 2:20 PM Fri", "items": [] }
-    },
-    {
-      "n": 213,
-      "w": "W140",
-      "name": "Sept 18 walk made whole",
+      "n": 237,
+      "w": "W162",
+      "name": "Modeling journey screens rebuilt to the design standard",
       "state": "open",
       "ci": "red",
-      "moved": "2026-09-04T00:23:31Z",
-      "what": "Superseded by W142's re-land; W145 closes it unmerged with a ruling comment.",
-      "detail": { "cards": "PR 213 | superseded", "items": [] }
+      "moved": "2026-09-06T21:49:02Z",
+      "what": "Live session claim, fresh as of 5:49 PM ET. Red on the same borrowed-file style complaints W163 removes, not on its own work. Nobody touches it.",
+      "detail": {
+        "cards": "PR 237 | live claim | leave alone",
+        "items": []
+      }
     },
     {
-      "n": 207,
-      "w": "W138",
-      "name": "Land the train (claim)",
+      "n": 236,
+      "w": "W161",
+      "name": "Shell rebuilt to the design standard",
       "state": "open",
-      "ci": "unknown",
-      "moved": "2026-09-03T19:13:36Z",
-      "what": "Obsolete since the auto-land lane took over merging; W145 closes it.",
-      "detail": { "cards": "PR 207 | obsolete", "items": [] }
+      "ci": "red",
+      "moved": "2026-09-06T18:21:11Z",
+      "what": "Red only on the shared style-checker fault. Expected to go green on its next run once W163 lands.",
+      "detail": {
+        "cards": "PR 236 | red via main | waits on W163",
+        "items": []
+      }
     },
     {
-      "n": 59,
-      "w": "W51",
-      "name": "import the deliverable catalog into the definition tables",
+      "n": 234,
+      "w": "W159",
+      "name": "Impeccable parked, PRODUCT.md, UX audit of the modeling screens",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-06T08:32:45Z",
+      "what": "Finished and fully green, but conflicts with main in the auto-written record files only. W164 carries it across.",
+      "detail": {
+        "cards": "PR 234 | 6/6 green | conflicting | carried by W164",
+        "items": []
+      }
+    },
+    {
+      "n": 233,
+      "w": "W158",
+      "name": "The demo pack — every screen beside the prototype",
       "state": "open",
       "ci": "unknown",
-      "moved": "2026-09-02T01:36:55Z",
-      "what": "parked behind the Mac runner mount",
-      "detail": { "cards": "PR 59", "items": [] }
+      "moved": "2026-09-06T10:49:30Z",
+      "what": "Checks were cancelled mid-run; a live claim. Left alone this pass.",
+      "detail": {
+        "cards": "PR 233 | live claim | checks cancelled",
+        "items": []
+      }
+    },
+    {
+      "n": 232,
+      "w": "W157",
+      "name": "Land the train",
+      "state": "open",
+      "ci": "unknown",
+      "moved": "2026-09-06T08:01:49Z",
+      "what": "Live session claim. Its job is now largely W163's and W164's; left open, not touched.",
+      "detail": {
+        "cards": "PR 232 | live claim",
+        "items": []
+      }
+    },
+    {
+      "n": 229,
+      "w": "W155",
+      "name": "One-command rehearsal, faster screens",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-05T02:04:45Z",
+      "what": "Finished and fully green since Friday night, blocked only by conflicts in the auto-written record files. W164 carries it across.",
+      "detail": {
+        "cards": "PR 229 | 6/6 green | conflicting | carried by W164",
+        "items": []
+      }
+    },
+    {
+      "n": 228,
+      "w": "W154",
+      "name": "The record catches up with the work",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-05T01:44:16Z",
+      "what": "Finished and fully green since Friday night. The automatic merger picks it first every half hour, is refused because it conflicts, and then quits without trying the other two — W163 fixes that. W164 carries the work across.",
+      "detail": {
+        "cards": "PR 228 | 6/6 green | conflicting | head-of-line block",
+        "items": []
+      }
+    },
+    {
+      "n": 238,
+      "w": "trigger",
+      "name": "Executor trigger for W163 then W164",
+      "state": "open",
+      "ci": "n/a",
+      "moved": "2026-09-06T22:40:00Z",
+      "what": "Opened but NOT merged — the local session was refused permission to merge it. The hourly tick is the backstop; merging this pull request would start the executor immediately.",
+      "detail": {
+        "cards": "PR 238 | open | merge to fire now",
+        "items": []
+      }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "7:25 PM ET Fri (Shabbat pass): W143 and W144 finished but went un-mergeable when W142 landed under them at 2:20 PM, and GitHub ran no checks on either, so the executor sat idle from 2:32 PM. Twelve independent windows W145-W156 authored and fired at 7:25 PM: W145 re-lands W143+W144; W146 budget lock; W147 tenant isolation over HTTP; W148 certify/hold enforcement; W149 named moved driver; W150 upload dry run; W151 banner removal; W152 export + delivery; W153 month with no actuals; W154 omission audit; W155 rehearsal + speed; W156 eight months of sentences. Estimated 14-20 executor-hours; the executor never authors, so the queue may run dry before Saturday night."
+    "text": "6:55 PM ET Sunday. The whole train has been stuck on one thing, and it is the relay's own: this morning's commit put the Impeccable design skill into the repo, and the code-style checker started reading those 44 borrowed files as if they were our code — 1,472 complaints, and every branch that catches up to main inherits them. That is why nine finished windows show red. The build machine is fine (stell-colima-runner online); nothing is broken in the product. W163 was written tonight to fix exactly that and to stop the automatic merger from giving up when the oldest ready pull request happens to conflict; W164 then carries the three finished-but-conflicting windows (W154, W155, W159) across on one clean branch. Both are on main; the executor picks them up on its hourly tick. Nothing merged this pass — that is a ruling, not a stall."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
-    "queue": ["W145", "W146", "W147", "W148", "W149", "W150", "W151", "W152", "W153", "W154", "W155", "W156"],
+    "queue": [
+      "W145",
+      "W146",
+      "W147",
+      "W148",
+      "W149",
+      "W150",
+      "W151",
+      "W152",
+      "W153",
+      "W154",
+      "W155",
+      "W156"
+    ],
     "p50": 195,
     "p80": 216,
     "p95": 237,
@@ -102,21 +159,30 @@
   },
   "support": [
     {
-      "w": "W145",
-      "phase": "firing",
-      "note": "Re-land W143 and W144 on current main; close #216, #217, #213, #207 with ruling comments; branches retained."
+      "w": "W163",
+      "phase": "queued",
+      "note": "The lane's own repair: the style checker stops reading the borrowed Impeccable scripts as our code (without losing coverage of real source), and the automatic merger tries the next ready pull request instead of quitting on a conflict."
+    },
+    {
+      "w": "W164",
+      "phase": "queued",
+      "note": "Depends on W163 landing. Carries W154, W155 and W159 onto one clean branch off the fixed main, auto-written record files regenerated last, originals closed with a ruling and their branches kept."
     },
     {
       "w": "RUNNER MOUNT",
       "phase": "queued",
-      "note": "W51 catalog import stays parked behind the Mac runner mount; PR 59 quiet since Thursday 4:13 PM, that movement still unexamined."
+      "note": "W51 catalog import still parked behind the Mac runner mount; PR 59 untouched. Unchanged this pass."
     }
   ],
   "plane": {
     "cycle": "Cycle 3 — Generation engine: statement package",
     "dates": "Aug 24 – Sep 5",
-    "counts": { "done": 49, "inProgress": 3, "todo": 1 },
-    "note": "Plane board flush owed (counts are from Sep 2; W145-W156 not yet carded). Cycle 3 ends Sep 5.",
+    "counts": {
+      "done": 49,
+      "inProgress": 3,
+      "todo": 1
+    },
+    "note": "Board NOT retrieved this pass — no Plane access from this local session, so these counts are the Sep 2 figures and no card number is claimed as current. The flush is still owed: W145-W164 are uncarded.",
     "inProgress": [],
     "todo": []
   },
@@ -126,17 +192,7 @@
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
   "plannedWindows": [
-    { "w": "145", "day": "2026-09-05T01:00:00Z", "label": "W145 — W143 + W144 re-landed on current main" },
-    { "w": "146", "day": "2026-09-05T03:00:00Z", "label": "W146 — budget lock ceremony, both plan-vs-actual legs" },
-    { "w": "147", "day": "2026-09-05T05:00:00Z", "label": "W147 — tenant isolation proven over HTTP" },
-    { "w": "148", "day": "2026-09-05T07:00:00Z", "label": "W148 — certify/hold rules enforced server-side" },
-    { "w": "149", "day": "2026-09-05T09:00:00Z", "label": "W149 — variance sentence names the moved driver" },
-    { "w": "150", "day": "2026-09-05T11:00:00Z", "label": "W150 — upload dry-run validator for the real export" },
-    { "w": "151", "day": "2026-09-05T13:00:00Z", "label": "W151 — banner removal on the walk" },
-    { "w": "152", "day": "2026-09-05T15:00:00Z", "label": "W152 — package export + delivery record" },
-    { "w": "153", "day": "2026-09-05T17:00:00Z", "label": "W153 — month with no actuals shows an honest waiting state" },
-    { "w": "154", "day": "2026-09-05T19:00:00Z", "label": "W154 — omission audit W138 onward" },
-    { "w": "155", "day": "2026-09-05T21:00:00Z", "label": "W155 — one-command rehearsal + package screen speed" },
-    { "w": "156", "day": "2026-09-05T23:00:00Z", "label": "W156 — January-August sentences committed and gated" }
+    "W163",
+    "W164"
   ]
 }
