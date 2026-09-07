@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T17:35:00Z",
+  "updatedAt": "2026-09-07T17:38:00Z",
   "updatedBy": "relay (chat, remote — 1:30 PM ET review pass)",
   "train": {
     "landed": 126,
@@ -154,14 +154,14 @@
     }
   ],
   "plane": {
-    "cycle": "Cycle 4 — Sep 7 to Sep 18 (MVP)",
-    "dates": "Sep 7 – Sep 18",
+    "cycle": "not retrieved this pass",
+    "dates": "",
     "counts": {
       "done": 49,
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number is claimed as current. Flush owed: W145–W169 uncarded.",
+    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number or cycle is claimed as current. Flush owed: W145–W169 uncarded.",
     "inProgress": [],
     "todo": []
   },
