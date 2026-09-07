@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-09-07T17:38:00Z",
-  "updatedBy": "relay (chat, remote — 1:30 PM ET review pass)",
+  "updatedAt": "2026-09-07T17:47:48Z",
+  "updatedBy": "relay (chat, local — compiler starts today)",
   "train": {
     "landed": 126,
-    "total": 169
+    "total": 170
   },
   "prs": [
     {
@@ -42,6 +42,19 @@
       "what": "Built and fully green: the demo starts at sign-in, switches tenant, lands on a role home showing only the modeling journey. Rebased and landed after W166.",
       "detail": {
         "cards": "PR 243 | 6/6 green | executor rebases",
+        "items": []
+      }
+    },
+    {
+      "n": 0,
+      "w": "W170",
+      "name": "The screens speak the way a CFO speaks (SaaS workbook drivers become the questions and labels)",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-07T17:47:48Z",
+      "what": "Queued 1:55 PM ET, first in line after the three rebases. Zusha's SaaS model workbook is read for its real drivers; each gets a plain name and the question a person would be asked; the interview asks those questions; every code-word label on the seven modeling screens is replaced, and a check now fails any screen that shows one.",
+      "detail": {
+        "cards": "W170 | queued | first after W164/W166/W167",
         "items": []
       }
     },
@@ -100,7 +113,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "1:35 PM ET Monday. Overnight the executor built all three screen windows: W165 (six modeling screens on the real model) landed at 1:15 PM; W166 (actuals upload) and W167 (sign-in and role home) are fully green and waiting only on a rebase, which the 1:30 PM fire ordered by branch name along with W164. Behind them: W168 lands the eight finished-but-stale pull requests including the rebuilt shell and the demo pack; W169 proves the whole modeling journey in a real browser with live pictures. Nothing is red. Next visible evidence: W164, W166 and W167 merged this afternoon, then a W168 pull request."
+    "text": "2:00 PM ET Monday. Zusha reviewed the built modeling screens and rejected their language: code names and engineering phrases where a CFO's words belong. The compiler work he had scheduled for October starts today: all eight of his real model workbooks are now in the repo, and W170 is first in line to turn the SaaS workbook's real drivers into the interview questions and screen labels, with a check that fails on code words. Behind it: W168 (rebuilt shell and demo pack land), W169 (whole journey proven in a browser with pictures). W165 landed at 1:15 PM; W166 and W167 are green and rebasing."
   },
   "medianWindowMinutes": 40,
   "forecast": {
@@ -109,6 +122,7 @@
       "W164",
       "W166",
       "W167",
+      "W170",
       "W168",
       "W169"
     ],
@@ -129,8 +143,9 @@
       "p90": 8,
       "expected": [
         "W164, W166, W167 rebased and landed",
-        "Finished train (shell, demo pack, dry-run report and five more) landed (W168)",
-        "Modeling journey proven in a browser with live pictures (W169)"
+        "Modeling screens rewritten in plain words from the SaaS workbook's drivers (W170)",
+        "Finished train landed (W168)",
+        "Journey proven in a browser with pictures (W169)"
       ]
     },
     "missing": [],
@@ -174,6 +189,7 @@
     "W164",
     "W166",
     "W167",
+    "W170",
     "W168",
     "W169"
   ]
