@@ -1,34 +1,47 @@
 {
-  "updatedAt": "2026-09-07T07:20:00Z",
-  "updatedBy": "relay (chat, remote — overnight screens queue)",
+  "updatedAt": "2026-09-07T17:35:00Z",
+  "updatedBy": "relay (chat, remote — 1:30 PM ET review pass)",
   "train": {
-    "landed": 125,
-    "total": 164
+    "landed": 126,
+    "total": 169
   },
   "prs": [
     {
-      "n": 237,
-      "w": "W162",
-      "name": "Modeling journey screens rebuilt to the design standard",
+      "n": 241,
+      "w": "W165",
+      "name": "Six modeling screens read the real model",
       "state": "merged",
       "ci": "green",
-      "moved": "2026-09-07T01:29:14Z",
-      "what": "Landed 9:29 PM ET Sunday. All seven modeling screens now match the prototype; the driver-to-lock chain is proven in the engine. Six of the seven screens still show fixed sample figures instead of the real model; W165 wires them.",
+      "moved": "2026-09-07T17:15:00Z",
+      "what": "Landed 1:15 PM ET Monday. Driver Interview, Model Workspace, Assumption Registry, Variance, Reforecast and Budget Lock now read the seeded tenant's real FY27 model: Payroll provably moves 522,976.80 between two plan versions because of one real assumption change. Not yet proven in a browser and no live pictures; that is W169.",
       "detail": {
-        "cards": "PR 237 | merged | 6/6 green",
+        "cards": "PR 241 | merged 3cab347 | 6/6 green",
         "items": []
       }
     },
     {
-      "n": 239,
-      "w": "W163",
-      "name": "The lane works again",
-      "state": "merged",
+      "n": 242,
+      "w": "W166",
+      "name": "Actuals upload and mapping review (screen-25)",
+      "state": "open",
       "ci": "green",
-      "moved": "2026-09-07T00:09:27Z",
-      "what": "Landed 8:09 PM ET Sunday. The style checker no longer reads the borrowed design-skill files as our code; the automatic merger moves on past a conflicting pull request instead of quitting.",
+      "moved": "2026-09-07T10:19:29Z",
+      "what": "Built and fully green: pick a file, review how its columns map, load it, and a second tenant sees none of it (43 of 43 journey checks pass). Conflicting on auto-written record files after W165 landed; the executor rebases and lands it this afternoon.",
       "detail": {
-        "cards": "PR 239 | merged",
+        "cards": "PR 242 | 6/6 green | conflicting | executor rebases",
+        "items": []
+      }
+    },
+    {
+      "n": 243,
+      "w": "W167",
+      "name": "Sign-in, tenant switch and role home to the design standard",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-07T10:07:00Z",
+      "what": "Built and fully green: the demo starts at sign-in, switches tenant, lands on a role home showing only the modeling journey. Rebased and landed after W166.",
+      "detail": {
+        "cards": "PR 243 | 6/6 green | executor rebases",
         "items": []
       }
     },
@@ -39,90 +52,65 @@
       "state": "open",
       "ci": "green",
       "moved": "2026-09-07T01:11:06Z",
-      "what": "Fully green, but W162 landed ahead of it and the auto-written record files now conflict again. The executor rebases it on the next tick (no session ends red); nothing is wrong with the work.",
+      "what": "Fully green since 9:11 PM ET Sunday but conflicting on record files. The overnight fire skipped it because a pull request already existed; the 1:30 PM fire names it first, by branch, so the rebase actually happens.",
       "detail": {
-        "cards": "PR 240 | 6/6 green | conflicting | executor rebases",
+        "cards": "PR 240 | 6/6 green | conflicting | fired by name 1:30 PM ET",
         "items": []
       }
     },
     {
       "n": 0,
-      "w": "W165",
-      "name": "Six modeling screens read the real model",
+      "w": "W168",
+      "name": "Everything already built for the demo reaches main",
       "state": "queued",
       "ci": "n/a",
-      "moved": "2026-09-07T07:10:00Z",
-      "what": "Queued 3:10 AM ET. Driver Interview, Model Workspace, Assumption Registry, Variance, Reforecast and Budget Lock stop showing sample figures and read the seeded tenant's real model; the change-a-driver-see-the-bridge-move flow is proven through the actual screens, with real pictures beside the prototype.",
+      "moved": "2026-09-07T17:30:00Z",
+      "what": "Queued 1:30 PM ET. Eight finished pull requests that went stale while the lane was broken (the rebuilt shell, the demo pack of screenshots, the dry-run report, the moved-driver sentence, the honest empty month, fewer Not-built-yet banners, certify under attack) are carried onto one fresh branch and landed together.",
       "detail": {
-        "cards": "W165 | queued | base main",
+        "cards": "W168 | queued | after W164/W166/W167",
         "items": []
       }
     },
     {
       "n": 0,
-      "w": "W166",
-      "name": "Actuals upload and mapping review (screen-25)",
+      "w": "W169",
+      "name": "The modeling journey proven in a real browser, with pictures",
       "state": "queued",
       "ci": "n/a",
-      "moved": "2026-09-07T07:10:00Z",
-      "what": "Queued 3:10 AM ET. Upload a small actuals file, review how its columns map, load it, see it land for that tenant only. The dry-run report is placed if W150 has landed, otherwise the screen says so in plain words.",
+      "moved": "2026-09-07T17:30:00Z",
+      "what": "Queued 1:30 PM ET. Sign-in to driver interview to budget lock to reforecast to variance driven in a real browser, live screenshots at desktop and phone width beside the prototype, every empty or waiting state saying what it waits for, the what-works page made true, rehearsal run from a clean clone.",
       "detail": {
-        "cards": "W166 | queued | base main",
+        "cards": "W169 | queued | after W168",
         "items": []
       }
     },
     {
-      "n": 0,
-      "w": "W167",
-      "name": "Sign-in, tenant switch and role home to the design standard",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-07T07:10:00Z",
-      "what": "Queued 3:10 AM ET. The demo begins where a customer begins: sign in (simulated, named on screen), switch tenant, land on a role home that shows only the modeling journey; everything else says Not in this release and is not clickable.",
+      "n": 237,
+      "w": "W162",
+      "name": "Modeling journey screens rebuilt to the design standard",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-07T01:29:14Z",
+      "what": "Landed 9:29 PM ET Sunday. All seven modeling screens match the prototype; the driver-to-lock chain is proven in the engine.",
       "detail": {
-        "cards": "W167 | queued | base main",
-        "items": []
-      }
-    },
-    {
-      "n": 236,
-      "w": "W161",
-      "name": "Shell rebuilt to the design standard",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-06T18:21:11Z",
-      "what": "Was red only on the style-checker fault W163 fixed. Expected green on its next run; left alone until then.",
-      "detail": {
-        "cards": "PR 236 | re-run expected",
-        "items": []
-      }
-    },
-    {
-      "n": 233,
-      "w": "W158",
-      "name": "The demo pack — every screen beside the prototype",
-      "state": "open",
-      "ci": "unknown",
-      "moved": "2026-09-06T10:49:30Z",
-      "what": "Checks were cancelled by the runner restart, not by the code. Left alone; re-run expected.",
-      "detail": {
-        "cards": "PR 233 | re-run expected",
+        "cards": "PR 237 | merged | 6/6 green",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "3:20 AM ET Monday. Overnight Sunday the two blockers fell: W163 fixed the lane at 8:09 PM and W162 landed all seven rebuilt modeling screens at 9:29 PM. Tonight's queue is three product windows on top of W164's landing: W165 makes the six modeling screens show the real model instead of sample figures and proves the change-a-driver flow through the actual screens; W166 builds the actuals upload and mapping review screen; W167 rebuilds sign-in, tenant switch and the role home so the demo starts where a customer starts. Each waits for a fully green check before its session may end. The executor's hourly tick and the merge webhook run them in order until the queue is empty. Zusha reviews at 1:30 PM ET."
+    "text": "1:35 PM ET Monday. Overnight the executor built all three screen windows: W165 (six modeling screens on the real model) landed at 1:15 PM; W166 (actuals upload) and W167 (sign-in and role home) are fully green and waiting only on a rebase, which the 1:30 PM fire ordered by branch name along with W164. Behind them: W168 lands the eight finished-but-stale pull requests including the rebuilt shell and the demo pack; W169 proves the whole modeling journey in a real browser with live pictures. Nothing is red. Next visible evidence: W164, W166 and W167 merged this afternoon, then a W168 pull request."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
     "queue": [
       "W164",
-      "W165",
       "W166",
-      "W167"
+      "W167",
+      "W168",
+      "W169"
     ],
     "p50": 195,
     "p80": 216,
@@ -134,16 +122,15 @@
     "queueGrowthPerWeek": null,
     "stale": true,
     "runCount": 5,
-    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 3:20 AM ET Sep 7. Re-run owed on the next local pass.",
+    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 1:35 PM ET Sep 7. Re-run owed on the next local pass.",
     "next48h": {
-      "p10": 2,
-      "p50": 6,
-      "p90": 12,
+      "p10": 3,
+      "p50": 5,
+      "p90": 8,
       "expected": [
-        "W164 rebased and landed",
-        "Six modeling screens reading the real model, flow proven on screen (W165)",
-        "Actuals upload and mapping review screen (W166)",
-        "Sign-in, tenant switch, role home to the design standard (W167)"
+        "W164, W166, W167 rebased and landed",
+        "Finished train (shell, demo pack, dry-run report and five more) landed (W168)",
+        "Modeling journey proven in a browser with live pictures (W169)"
       ]
     },
     "missing": [],
@@ -151,14 +138,14 @@
   },
   "support": [
     {
+      "w": "W164",
+      "phase": "running",
+      "note": "Green, conflicting; fired by branch name at 1:30 PM ET so the rebase actually runs."
+    },
+    {
       "w": "W163",
       "phase": "done",
       "note": "Landed 8:09 PM ET Sunday. Lane repaired; automatic merger no longer quits on a conflict."
-    },
-    {
-      "w": "W164",
-      "phase": "running",
-      "note": "Built and fully green; conflicting on record files after W162 landed ahead of it. The executor rebases and lands it on its tick."
     },
     {
       "w": "RUNNER MOUNT",
@@ -167,14 +154,14 @@
     }
   ],
   "plane": {
-    "cycle": "Cycle 3 — Generation engine: statement package",
-    "dates": "Aug 24 – Sep 5",
+    "cycle": "Cycle 4 — Sep 7 to Sep 18 (MVP)",
+    "dates": "Sep 7 – Sep 18",
     "counts": {
       "done": 49,
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board NOT retrieved this pass — Plane connector not attached to this session; counts are the Sep 2 figures and no card number is claimed as current. Flush owed: W145–W167 uncarded.",
+    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number is claimed as current. Flush owed: W145–W169 uncarded.",
     "inProgress": [],
     "todo": []
   },
@@ -185,8 +172,9 @@
   },
   "plannedWindows": [
     "W164",
-    "W165",
     "W166",
-    "W167"
+    "W167",
+    "W168",
+    "W169"
   ]
 }
