@@ -1,21 +1,112 @@
 {
-  "updatedAt": "2026-09-08T00:42:28Z",
-  "updatedBy": "relay (chat, local — skill repaired, W171 running)",
+  "updatedAt": "2026-09-08T05:13:00Z",
+  "updatedBy": "relay (chat, remote — skill v1.3.0 drill then live pass)",
   "train": {
-    "landed": 126,
-    "total": 173
+    "landed": 127,
+    "total": 175
   },
   "prs": [
     {
-      "n": 246,
-      "w": "W171",
-      "name": "The three green pull requests land (rebase on their own branches)",
-      "state": "open",
-      "ci": "pending",
-      "moved": "2026-09-08T00:33:38Z",
-      "what": "Started 8:33 PM ET from the 8:28 PM fire. Rebases and lands W164, W166, W167 one at a time on the newest main. When it finishes, W170 (plain words) is next by number.",
+      "n": 240,
+      "w": "W164",
+      "name": "The stalled train lands (W154, W155, W159 carried across)",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-08T05:07:00Z",
+      "what": "Landed 1:07 AM ET Tuesday at a670a50 after W171 rebased it and it came back 6/6 green. Three finished pieces of record work (the rehearsal script, the UX audit, the omission fix) are now on main.",
       "detail": {
-        "cards": "PR 246 claim | running",
+        "cards": "PR 240 | merged a670a50 | 6/6 green",
+        "items": []
+      }
+    },
+    {
+      "n": 0,
+      "w": "W174",
+      "name": "The two finished screen windows land, and every word on them is listed",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-08T05:09:00Z",
+      "what": "Authored 1:09 AM ET and fired at 1:11 AM (trigger PR 250 merged). Rebases the actuals-upload screen (PR 242) and the sign-in and role-home screens (PR 243) onto the new main, then writes a table of every word a customer would see on them, checked against the copy rules. The relay merges only after reading that table.",
+      "detail": {
+        "cards": "W174 | fired 1:11 AM ET | launch evidence pending",
+        "items": []
+      }
+    },
+    {
+      "n": 0,
+      "w": "W175",
+      "name": "The plain-words window turns green and lands",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-08T05:09:00Z",
+      "what": "Authored 1:09 AM ET, next by number after W174. Names which check turned PR 247 red, fixes it on W170's own branch, and lists every label on the seven modeling screens with the workbook driver each came from.",
+      "detail": {
+        "cards": "W175 | queued",
+        "items": []
+      }
+    },
+    {
+      "n": 242,
+      "w": "W166",
+      "name": "Actuals upload and mapping review (screen-25)",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-08T00:45:54Z",
+      "what": "6/6 green after W171's rebase (run at 9:07 PM ET). Held by the relay: its write-up has no list of the words shown on screen, so the screen is not yet verified. W174 supplies that list; then it merges.",
+      "detail": {
+        "cards": "PR 242 | 6/6 green | held: no copy table | W174",
+        "items": []
+      }
+    },
+    {
+      "n": 243,
+      "w": "W167",
+      "name": "Sign-in, tenant switch and role home to the design standard",
+      "state": "open",
+      "ci": "green",
+      "moved": "2026-09-08T00:47:08Z",
+      "what": "6/6 green after W171's rebase (run at 9:26 PM ET). Held for the same reason as W166: no list of on-screen words yet. W174 supplies it.",
+      "detail": {
+        "cards": "PR 243 | 6/6 green | held: no copy table | W174",
+        "items": []
+      }
+    },
+    {
+      "n": 247,
+      "w": "W170",
+      "name": "The screens speak the way a CFO speaks (SaaS workbook drivers become the questions and labels)",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-08T02:48:24Z",
+      "what": "Built and pushed 10:48 PM ET. Five of six checks pass; the combined code-quality check fails after two minutes. Its session has not moved since, so the relay wrote W175 to name the failure, fix it, and land it.",
+      "detail": {
+        "cards": "PR 247 | 5/6 | gates job red | W175 lands it",
+        "items": []
+      }
+    },
+    {
+      "n": 248,
+      "w": "W172",
+      "name": "Everything already built for the demo reaches main",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-08T03:46:27Z",
+      "what": "Pushed 11:46 PM ET carrying eight finished pieces (rebuilt shell, demo pack, dry-run report and more). Five of six checks pass; the same combined check that failed W170 fails here. Its session moved within the last hour, so it stays alive to fix its own red.",
+      "detail": {
+        "cards": "PR 248 | 5/6 | gates job red | session live",
+        "items": []
+      }
+    },
+    {
+      "n": 249,
+      "w": "W173",
+      "name": "The modeling journey proven in a real browser, with pictures",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-08T04:10:39Z",
+      "what": "Pushed 12:10 AM ET. Five of six checks pass; the same combined check fails. Session live; it fixes its own red.",
+      "detail": {
+        "cards": "PR 249 | 5/6 | gates job red | session live",
         "items": []
       }
     },
@@ -26,114 +117,23 @@
       "state": "merged",
       "ci": "green",
       "moved": "2026-09-07T17:15:00Z",
-      "what": "Landed 1:15 PM ET Monday. Driver Interview, Model Workspace, Assumption Registry, Variance, Reforecast and Budget Lock now read the seeded tenant's real FY27 model: Payroll provably moves 522,976.80 between two plan versions because of one real assumption change. Not yet proven in a browser and no live pictures; that is W169.",
+      "what": "Landed 1:15 PM ET Monday. The six modeling screens read the seeded tenant's real FY27 model.",
       "detail": {
         "cards": "PR 241 | merged 3cab347 | 6/6 green",
-        "items": []
-      }
-    },
-    {
-      "n": 242,
-      "w": "W166",
-      "name": "Actuals upload and mapping review (screen-25)",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-07T10:19:29Z",
-      "what": "Built and fully green: pick a file, review how its columns map, load it, and a second tenant sees none of it (43 of 43 journey checks pass). Conflicting on auto-written record files after W165 landed; the executor rebases and lands it this afternoon.",
-      "detail": {
-        "cards": "PR 242 | 6/6 green | conflicting | executor rebases",
-        "items": []
-      }
-    },
-    {
-      "n": 243,
-      "w": "W167",
-      "name": "Sign-in, tenant switch and role home to the design standard",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-07T10:07:00Z",
-      "what": "Built and fully green: the demo starts at sign-in, switches tenant, lands on a role home showing only the modeling journey. Rebased and landed after W166.",
-      "detail": {
-        "cards": "PR 243 | 6/6 green | executor rebases",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W170",
-      "name": "The screens speak the way a CFO speaks (SaaS workbook drivers become the questions and labels)",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-07T17:47:48Z",
-      "what": "Queued 1:55 PM ET, first in line after W171 lands the three green pull requests. Zusha's SaaS model workbook is read for its real drivers; each gets a plain name and the question a person would be asked; the interview asks those questions; every code-word label on the seven modeling screens is replaced, and a check now fails any screen that shows one.",
-      "detail": {
-        "cards": "W170 | queued | after W171",
-        "items": []
-      }
-    },
-    {
-      "n": 240,
-      "w": "W164",
-      "name": "The stalled train lands (W154, W155, W159 carried across)",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-07T01:11:06Z",
-      "what": "Fully green since 9:11 PM ET Sunday but conflicting on record files. The overnight fire skipped it because a pull request already existed; the 1:30 PM fire names it first, by branch, so the rebase actually happens.",
-      "detail": {
-        "cards": "PR 240 | 6/6 green | conflicting | fired by name 1:30 PM ET",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W172",
-      "name": "Everything already built for the demo reaches main",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-07T17:30:00Z",
-      "what": "Queued 1:30 PM ET, renumbered 9:20 PM so the plain-words rewrite runs first. Eight finished pull requests that went stale while the lane was broken (the rebuilt shell, the demo pack of screenshots, the dry-run report, the moved-driver sentence, the honest empty month, fewer Not-built-yet banners, certify under attack) are carried onto one fresh branch and landed together.",
-      "detail": {
-        "cards": "W172 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W173",
-      "name": "The modeling journey proven in a real browser, with pictures",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-07T17:30:00Z",
-      "what": "Queued 1:30 PM ET, renumbered 9:20 PM so the plain-words rewrite runs first. Sign-in to driver interview to budget lock to reforecast to variance driven in a real browser, live screenshots at desktop and phone width beside the prototype, every empty or waiting state saying what it waits for, the what-works page made true, rehearsal run from a clean clone.",
-      "detail": {
-        "cards": "W173 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 237,
-      "w": "W162",
-      "name": "Modeling journey screens rebuilt to the design standard",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-07T01:29:14Z",
-      "what": "Landed 9:29 PM ET Sunday. All seven modeling screens match the prototype; the driver-to-lock chain is proven in the engine.",
-      "detail": {
-        "cards": "PR 237 | merged | 6/6 green",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "8:42 PM ET Monday. Six silent hours today were the relay's: its afternoon fires never reached the builder and every queued job was gated on pull requests nobody was landing. Fixed at 8:36 PM with a proper fire; W171 started at 8:33 PM and is rebasing and landing the three green pull requests. Next by number: W170, the plain-words rewrite from Zusha's SaaS workbook; then W172 (the finished train, including the rebuilt shell and demo pack); then W173 (the whole journey proven in a browser with pictures). The relay skill was rewritten tonight (v1.3.0) so a fire without launch evidence can no longer be reported as done."
+    "text": "1:13 AM ET Tuesday. Overnight the builder rebased the three stuck pull requests and all came back green; the relay landed the first (the stalled train, W164) at 1:07 AM. The two screen pull requests are green but held until someone lists every word a customer would read on them; W174 does that and was fired at 1:11 AM (launch not yet seen; hourly backstop 2:00 AM). The plain-words rewrite (W170), the finished train (W172) and the browser proof (W173) are all built and each fails the same one check of six; two of their sessions are still working, and W175 is queued to land the third."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
     "queue": [
-      "W171",
-      "W170",
+      "W174",
+      "W175",
       "W172",
       "W173"
     ],
@@ -147,14 +147,14 @@
     "queueGrowthPerWeek": null,
     "stale": true,
     "runCount": 5,
-    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 1:35 PM ET Sep 7. Re-run owed on the next local pass.",
+    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 1:13 AM ET Sep 8. Re-run owed on the next local pass.",
     "next48h": {
       "p10": 3,
       "p50": 5,
       "p90": 8,
       "expected": [
-        "W164, W166, W167 landed by W171",
-        "Modeling screens rewritten in plain words from the SaaS workbook (W170)",
+        "W166, W167 landed with their words listed (W174)",
+        "Modeling screens rewritten in plain words from the SaaS workbook (W170 via W175)",
         "Finished train landed (W172)",
         "Journey proven in a browser with pictures (W173)"
       ]
@@ -164,9 +164,9 @@
   },
   "support": [
     {
-      "w": "W164",
-      "phase": "running",
-      "note": "Green, conflicting; fired by branch name at 1:30 PM ET so the rebase actually runs."
+      "w": "W171",
+      "phase": "done",
+      "note": "Rebased W164, W166, W167 overnight; all three re-ran 6/6 green. Claim PR 246 closed."
     },
     {
       "w": "W163",
@@ -187,7 +187,7 @@
       "inProgress": 3,
       "todo": 1
     },
-    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number or cycle is claimed as current. Flush owed: W145–W169 uncarded.",
+    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number or cycle is claimed as current. Flush owed: W145–W175 uncarded.",
     "inProgress": [],
     "todo": []
   },
@@ -197,8 +197,8 @@
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
   "plannedWindows": [
-    "W171",
-    "W170",
+    "W174",
+    "W175",
     "W172",
     "W173"
   ]
