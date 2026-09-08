@@ -1,11 +1,24 @@
 {
-  "updatedAt": "2026-09-07T17:47:48Z",
-  "updatedBy": "relay (chat, local — compiler starts today)",
+  "updatedAt": "2026-09-08T00:42:28Z",
+  "updatedBy": "relay (chat, local — skill repaired, W171 running)",
   "train": {
     "landed": 126,
-    "total": 170
+    "total": 173
   },
   "prs": [
+    {
+      "n": 246,
+      "w": "W171",
+      "name": "The three green pull requests land (rebase on their own branches)",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-08T00:33:38Z",
+      "what": "Started 8:33 PM ET from the 8:28 PM fire. Rebases and lands W164, W166, W167 one at a time on the newest main. When it finishes, W170 (plain words) is next by number.",
+      "detail": {
+        "cards": "PR 246 claim | running",
+        "items": []
+      }
+    },
     {
       "n": 241,
       "w": "W165",
@@ -52,9 +65,9 @@
       "state": "queued",
       "ci": "n/a",
       "moved": "2026-09-07T17:47:48Z",
-      "what": "Queued 1:55 PM ET, first in line after the three rebases. Zusha's SaaS model workbook is read for its real drivers; each gets a plain name and the question a person would be asked; the interview asks those questions; every code-word label on the seven modeling screens is replaced, and a check now fails any screen that shows one.",
+      "what": "Queued 1:55 PM ET, first in line after W171 lands the three green pull requests. Zusha's SaaS model workbook is read for its real drivers; each gets a plain name and the question a person would be asked; the interview asks those questions; every code-word label on the seven modeling screens is replaced, and a check now fails any screen that shows one.",
       "detail": {
-        "cards": "W170 | queued | first after W164/W166/W167",
+        "cards": "W170 | queued | after W171",
         "items": []
       }
     },
@@ -73,27 +86,27 @@
     },
     {
       "n": 0,
-      "w": "W168",
+      "w": "W172",
       "name": "Everything already built for the demo reaches main",
       "state": "queued",
       "ci": "n/a",
       "moved": "2026-09-07T17:30:00Z",
-      "what": "Queued 1:30 PM ET. Eight finished pull requests that went stale while the lane was broken (the rebuilt shell, the demo pack of screenshots, the dry-run report, the moved-driver sentence, the honest empty month, fewer Not-built-yet banners, certify under attack) are carried onto one fresh branch and landed together.",
+      "what": "Queued 1:30 PM ET, renumbered 9:20 PM so the plain-words rewrite runs first. Eight finished pull requests that went stale while the lane was broken (the rebuilt shell, the demo pack of screenshots, the dry-run report, the moved-driver sentence, the honest empty month, fewer Not-built-yet banners, certify under attack) are carried onto one fresh branch and landed together.",
       "detail": {
-        "cards": "W168 | queued | after W164/W166/W167",
+        "cards": "W172 | queued",
         "items": []
       }
     },
     {
       "n": 0,
-      "w": "W169",
+      "w": "W173",
       "name": "The modeling journey proven in a real browser, with pictures",
       "state": "queued",
       "ci": "n/a",
       "moved": "2026-09-07T17:30:00Z",
-      "what": "Queued 1:30 PM ET. Sign-in to driver interview to budget lock to reforecast to variance driven in a real browser, live screenshots at desktop and phone width beside the prototype, every empty or waiting state saying what it waits for, the what-works page made true, rehearsal run from a clean clone.",
+      "what": "Queued 1:30 PM ET, renumbered 9:20 PM so the plain-words rewrite runs first. Sign-in to driver interview to budget lock to reforecast to variance driven in a real browser, live screenshots at desktop and phone width beside the prototype, every empty or waiting state saying what it waits for, the what-works page made true, rehearsal run from a clean clone.",
       "detail": {
-        "cards": "W169 | queued | after W168",
+        "cards": "W173 | queued",
         "items": []
       }
     },
@@ -113,18 +126,16 @@
   ],
   "pulse": {
     "running": true,
-    "text": "2:00 PM ET Monday. Zusha reviewed the built modeling screens and rejected their language: code names and engineering phrases where a CFO's words belong. The compiler work he had scheduled for October starts today: all eight of his real model workbooks are now in the repo, and W170 is first in line to turn the SaaS workbook's real drivers into the interview questions and screen labels, with a check that fails on code words. Behind it: W168 (rebuilt shell and demo pack land), W169 (whole journey proven in a browser with pictures). W165 landed at 1:15 PM; W166 and W167 are green and rebasing."
+    "text": "9:05 PM ET Monday. Six silent hours today were the relay's: its afternoon fires never reached the builder and every queued job was gated on pull requests nobody was landing. Fixed at 8:36 PM with a proper fire; W171 started at 8:33 PM and is rebasing and landing the three green pull requests. Next by number: W170, the plain-words rewrite from Zusha's SaaS workbook; then W172 (the finished train, including the rebuilt shell and demo pack); then W173 (the whole journey proven in a browser with pictures). The relay skill was rewritten tonight (v1.3.0) so a fire without launch evidence can no longer be reported as done."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
     "queue": [
-      "W164",
-      "W166",
-      "W167",
+      "W171",
       "W170",
-      "W168",
-      "W169"
+      "W172",
+      "W173"
     ],
     "p50": 195,
     "p80": 216,
@@ -142,10 +153,10 @@
       "p50": 5,
       "p90": 8,
       "expected": [
-        "W164, W166, W167 rebased and landed",
-        "Modeling screens rewritten in plain words from the SaaS workbook's drivers (W170)",
-        "Finished train landed (W168)",
-        "Journey proven in a browser with pictures (W169)"
+        "W164, W166, W167 landed by W171",
+        "Modeling screens rewritten in plain words from the SaaS workbook (W170)",
+        "Finished train landed (W172)",
+        "Journey proven in a browser with pictures (W173)"
       ]
     },
     "missing": [],
@@ -186,11 +197,9 @@
     "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
   },
   "plannedWindows": [
-    "W164",
-    "W166",
-    "W167",
+    "W171",
     "W170",
-    "W168",
-    "W169"
+    "W172",
+    "W173"
   ]
 }
