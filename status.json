@@ -126,7 +126,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "9:05 PM ET Monday. Six silent hours today were the relay's: its afternoon fires never reached the builder and every queued job was gated on pull requests nobody was landing. Fixed at 8:36 PM with a proper fire; W171 started at 8:33 PM and is rebasing and landing the three green pull requests. Next by number: W170, the plain-words rewrite from Zusha's SaaS workbook; then W172 (the finished train, including the rebuilt shell and demo pack); then W173 (the whole journey proven in a browser with pictures). The relay skill was rewritten tonight (v1.3.0) so a fire without launch evidence can no longer be reported as done."
+    "text": "8:42 PM ET Monday. Six silent hours today were the relay's: its afternoon fires never reached the builder and every queued job was gated on pull requests nobody was landing. Fixed at 8:36 PM with a proper fire; W171 started at 8:33 PM and is rebasing and landing the three green pull requests. Next by number: W170, the plain-words rewrite from Zusha's SaaS workbook; then W172 (the finished train, including the rebuilt shell and demo pack); then W173 (the whole journey proven in a browser with pictures). The relay skill was rewritten tonight (v1.3.0) so a fire without launch evidence can no longer be reported as done."
   },
   "medianWindowMinutes": 40,
   "forecast": {
