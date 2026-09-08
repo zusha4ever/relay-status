@@ -61,7 +61,13 @@ window.fillForecastLive=async function(){
     const W=C.windows, T0=new Date(C.day0).getTime();
     const TODAY=(Date.now()-T0)/864e5;
     const mg=W.filter(w=>w[2]!==null).sort((a,b)=>a[2]-b[2]);
-    const nE=W.length, nM=mg.length, remaining=nE-nM;
+    // Scope: the live train only. Windows the ledger shows unmerged but that
+    // are not on the train were absorbed into later landing windows; they are
+    // not open work and must not be forecast.
+    const train=((typeof TRAIN!=="undefined"&&TRAIN)||[]).filter(p=>p.w);
+    const trainOpen=train.filter(p=>p.state!=="merged"&&p.state!=="landed");
+    const remaining=train.length?trainOpen.length:(W.length-mg.length);
+    const nM=mg.length, nE=nM+remaining;
     const days=Math.ceil(TODAY), dailyM=[];
     for(let d=0;d<days;d++) dailyM.push(mg.filter(w=>Math.floor(w[2])===d).length);
     const recent=dailyM.slice(-7);
@@ -75,14 +81,14 @@ window.fillForecastLive=async function(){
     const q=qq=>clears[Math.floor(qq*(N-1))];
     const iso=d=>!isFinite(d)?null:new Date(T0+d*864e5).toISOString().slice(0,10);
     const frac=lim=>clears.filter(c=>c<=lim).length/N;
-    const unlanded=W.filter(w=>w[2]===null).map(w=>"W"+w[0]);
+    const unlanded=train.length?trainOpen.map(p=>p.name||p.w):W.filter(w=>w[2]===null).map(w=>"W"+w[0]);
     renderForecast({
       p50:iso(q(.5)), p80:iso(q(.8)), p95:iso(q(.95)),
       probSep04:frac(C.gtmDay), probSep18:frac(C.mvpDay),
       runUtc:new Date().toISOString(), stale:false,
       queue:unlanded.slice(0,10).concat(unlanded.length>10?["and "+(unlanded.length-10)+" more"]:[]),
       coverage:null, runCount:null,
-      missing:["A graded track record — this projection recomputes in your browser on every visit ("+nM+" of "+nE+" windows landed, "+remaining+" open), so no run history accumulates yet."],
+      missing:["A graded track record — this projection recomputes in your browser on every visit ("+remaining+" windows still open on the train, "+nM+" landed all-time), so no run history accumulates yet."],
       fixedBy:"letting it run a few days"
     });
   }catch(e){/* feed fallback already rendered */}

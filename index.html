@@ -196,18 +196,20 @@
 
 <script>
 const FEED="https://raw.githubusercontent.com/zusha4ever/relay-status/main/status.json";
-let busy=false, countTimer=null, secsLeft=0, DETAIL={}, PLAIN={}, DIARY=null, DFILTER="timeline";
+let busy=false, countTimer=null, secsLeft=0, DETAIL={}, PLAIN={}, NAMES={}, TRAIN=[], DIARY=null, DFILTER="timeline";
 
 function showPane(i,btn){document.querySelectorAll(".pane").forEach((p,k)=>p.classList.toggle("on",k===i));document.querySelectorAll(".tab").forEach((t,k)=>t.classList.toggle("on",k===i));}
 let openW=null;
 function toggleDetail(w){
   const box=el("detail");
   if(openW===w){box.style.display="none";openW=null;return}
-  const d=DETAIL[w]; if(!d){box.style.display="none";openW=null;return}
+  const d=DETAIL[w]||{}; const pl=PLAIN[w]||"";
+  if(!DETAIL[w]&&!pl){box.style.display="none";openW=null;return}
   openW=w;
-  box.innerHTML="<div class=\"dt-title\">"+esc(w)+" &mdash; inside this window</div>"
+  const items=(d.items&&d.items.length)?d.items:(pl?[pl]:["The relay has not written a plain-words description for this window yet."]);
+  box.innerHTML="<div class=\"dt-title\">"+esc(NAMES[w]||w)+" <small style=\"font-size:11px;color:var(--chalk-dim)\">("+esc(w)+")</small></div>"
    +"<div class=\"dt-h\">In plain words &mdash; what is being built</div>"
-   +"<ul>"+(d.items||[]).map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>"
+   +"<ul>"+items.map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>"
    +"<div class=\"dt-h\">In the language of the cards</div>"
    +"<div class=\"dt-cards\">"+esc(d.cards||"")+"</div>";
   box.style.display="block";
@@ -295,9 +297,10 @@ async function askClaude(prompt, servers){
 
 /* ---------- feed-driven lookup tables ---------- */
 function indexWindows(prs){
-  DETAIL={}; PLAIN={};
+  DETAIL={}; PLAIN={}; NAMES={}; TRAIN=prs||[];
   (prs||[]).forEach(p=>{
     if(!p.w) return;
+    if(p.name) NAMES[p.w]=p.name;
     if(p.what) PLAIN[p.w]=p.what;
     if(p.detail) DETAIL[p.w]=p.detail;
   });
@@ -365,7 +368,6 @@ function renderForecast(f){
     <div class="dateline${f.stale?" muted":""}"><span class="lbl">Halfway bet — the date it clears if things go averagely</span><span class="val">${esc(fmtDay(f.p50))}</span></div>
     <div class="dateline${f.stale?" muted":""}"><span class="lbl">8-in-10 date — clears by here in most futures</span><span class="val">${esc(fmtDay(f.p80))}</span></div>
     <div class="dateline${f.stale?" muted":""}"><span class="lbl">Almost-worst case — 19 futures in 20 clear by here</span><span class="val">${esc(fmtDay(f.p95))}</span></div>
-    <div class="dateline${f.stale?" muted":""}"><span class="lbl">Chance the queue clears by <b style="color:var(--chalk)">September 4</b> — the GTM date</span><span class="val">${esc(pctWords(f.probSep04))}</span></div>
     <div class="dateline${f.stale?" muted":""}"><span class="lbl">Chance the queue clears by <b style="color:var(--chalk)">September 18</b> — the MVP date</span><span class="val">${esc(pctWords(f.probSep18))}</span></div>`;
 
   const scope=(f.queue&&f.queue.length)
