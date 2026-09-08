@@ -1,167 +1,83 @@
 {
-  "updatedAt": "2026-09-08T18:55:00Z",
-  "updatedBy": "relay (chat, remote — '+++ relay now' pass)",
-  "train": {
-    "landed": 128,
-    "total": 177
-  },
+  "updatedAt": "2026-09-08T23:24:00Z",
+  "updatedBy": "relay (chat, remote — '/stell-relay status' pass)",
+  "train": { "landed": 129, "total": 179 },
   "prs": [
     {
-      "n": 247,
-      "w": "W170",
-      "name": "The screens speak the way a CFO speaks (SaaS workbook drivers become the questions and labels)",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-08T06:54:32Z",
-      "what": "Landed 2:54 AM ET Tuesday by the automatic merger after W175 fixed its one red check and listed every label. The relay has not yet read that word list; owed on the next pass.",
-      "detail": { "cards": "PR 247 | merged 2:54 AM ET | 6/6 green | copy table unread by relay", "items": [] }
+      "n": 254, "w": "W176",
+      "name": "The two finished screens land together, every word listed and clean",
+      "state": "merged", "ci": "green", "moved": "2026-09-08T23:16:00Z",
+      "what": "Landed 7:16 PM ET at 90b7e03. Carries the actuals-upload screen and the sign-in, choose-your-organization and role-home screens onto main, with two customer sentences rewritten. Word lists read: W166 passes (one configuration message parked for Zusha, DRIFT-1576); W167 clean after the rewrite.",
+      "detail": { "cards": "PR 254 | merged 90b7e03 | 6/6 green | words read", "items": [] }
     },
     {
-      "n": 0,
-      "w": "W176",
-      "name": "The two finished screens land together on one fresh branch, every word listed and clean",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-08T18:53:00Z",
-      "what": "Authored 2:51 PM ET, trigger PR 253 merged 2:53 PM ET. Carries the actuals-upload screen (PR 242), the sign-in and role-home screens (PR 243) and the W174/W175 write-ups (PRs 251, 252) onto one fresh branch, rewrites two sentences on the choose-your-organization screen that used system words, and lands. Launch evidence pending; hourly backstop 3:00 PM ET.",
-      "detail": { "cards": "W176 | fired 2:53 PM ET | launch evidence pending", "items": [] }
+      "n": 255, "w": "W177",
+      "name": "The finished train and the browser proof land together on one fresh branch",
+      "state": "open", "ci": "green", "moved": "2026-09-08T20:11:37Z",
+      "what": "6/6 green at 4:21 PM ET. Named the red on PRs 248/249 as two defects, not one; cured both. Became unmergeable at 7:17 PM ET when W176 landed ahead of it; its session ended at 4:11 PM, so W178 lands this branch (Codex L25). PRs 248 and 249 close after this lands.",
+      "detail": { "cards": "PR 255 | 6/6 green | dirty after 254 | W178 lands it", "items": [] }
     },
     {
-      "n": 0,
-      "w": "W177",
-      "name": "The finished train (W172) and the browser proof (W173) land together on one fresh branch",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-08T18:53:00Z",
-      "what": "Authored 2:51 PM ET, next by number after W176. Names which check turned PRs 248 and 249 red, carries both onto one fresh branch, adds word lists for the screens they touch, and lands.",
-      "detail": { "cards": "W177 | queued", "items": [] }
+      "n": 0, "w": "W178",
+      "name": "Land the W177 branch after the main line moved",
+      "state": "queued", "ci": "n/a", "moved": "2026-09-08T23:21:00Z",
+      "what": "Authored 7:18 PM ET, trigger PR 256 merged 7:21 PM ET. Landing-only: bring PR 255's branch onto current main, regenerate the records last, watch it to green. Launch evidence pending; hourly backstop 8:00 PM ET.",
+      "detail": { "cards": "W178 | fired 7:21 PM ET | launch evidence pending", "items": [] }
     },
     {
-      "n": 242,
-      "w": "W166",
-      "name": "Actuals upload and mapping review (screen-25)",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-08T05:44:30Z",
-      "what": "Word list read by the relay at 2:47 PM ET: passes. Merge attempt at 2:50 PM ET returned 405 (conflicts) because W170 landed after this branch was last rebased. W176 carries it; this PR closes after W176 lands.",
-      "detail": { "cards": "PR 242 | 6/6 green on old main | dirty | carried by W176", "items": [] }
+      "n": 0, "w": "W179",
+      "name": "Five modeling screens show real numbers instead of blank cells",
+      "state": "queued", "ci": "n/a", "moved": "2026-09-08T23:21:00Z",
+      "what": "Authored 7:18 PM ET, next by number after W178. Model Workspace, Assumption Registry, Budget Lock, Reforecast and Variance all show names and units today but never a value, because each page treats a successful load as still loading (found by W170 from real served pages, DRIFT-1575). Also removes the window suffix from two seeded plan names and shows a real author name on Working Saves.",
+      "detail": { "cards": "W179 | queued | base main", "items": [] }
     },
     {
-      "n": 243,
-      "w": "W167",
-      "name": "Sign-in, tenant switch and role home to the design standard",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-08T05:47:31Z",
-      "what": "Word list read at 2:49 PM ET: two sentences on the choose-your-organization screen use system words (tenant, instance, session, seeded). Held; W176 rewrites them and carries the screen. This PR closes after W176 lands.",
-      "detail": { "cards": "PR 243 | 6/6 green on old main | dirty | 2 strings red | carried by W176", "items": [] }
+      "n": 247, "w": "W170",
+      "name": "The screens speak the way a CFO speaks",
+      "state": "merged", "ci": "green", "moved": "2026-09-08T06:54:32Z",
+      "what": "Landed 2:54 AM ET. Word list read by the relay 7:10 PM ET: 67 interview questions from the SaaS workbook; registry shows names not codes; two ratified conventions (screen-code eyebrow, LEDGER OF RECORD badge) parked for Zusha as DRIFT-1574.",
+      "detail": { "cards": "PR 247 | merged | words read | DRIFT-1574 to Zusha", "items": [] }
     },
-    {
-      "n": 251,
-      "w": "W174",
-      "name": "Claim record: the two screen windows rebased and their words listed",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-08T06:19:01Z",
-      "what": "Work done (both screen PRs rebased and word lists written by 2:19 AM ET). Its own write-up is dirty against main; W176 carries it. Closes after W176 lands.",
-      "detail": { "cards": "PR 251 | 6/6 green | dirty | carried by W176", "items": [] }
-    },
-    {
-      "n": 252,
-      "w": "W175",
-      "name": "Claim record: the plain-words window turned green",
-      "state": "open",
-      "ci": "green",
-      "moved": "2026-09-08T06:27:13Z",
-      "what": "Work done (W170 landed 2:54 AM ET). Its own write-up is carried by W176. Closes after W176 lands.",
-      "detail": { "cards": "PR 252 | 6/6 green | carried by W176", "items": [] }
-    },
-    {
-      "n": 248,
-      "w": "W172",
-      "name": "Everything already built for the demo reaches main",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-08T03:46:27Z",
-      "what": "Five of six checks pass; the combined code-quality check failed at 11:52 PM ET Monday and the session ended without fixing it. Ownerless since; W177 names the failure, carries the eight pieces onto a fresh branch and lands them.",
-      "detail": { "cards": "PR 248 | 5/6 | gates job red | session dead | carried by W177", "items": [] }
-    },
-    {
-      "n": 249,
-      "w": "W173",
-      "name": "The modeling journey proven in a real browser, with pictures",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-08T04:10:39Z",
-      "what": "Same single red check, session ended 12:10 AM ET. W177 carries it; pictures re-taken so they show W170's words.",
-      "detail": { "cards": "PR 249 | 5/6 | gates job red | session dead | carried by W177", "items": [] }
-    },
-    {
-      "n": 240,
-      "w": "W164",
-      "name": "The stalled train lands (W154, W155, W159 carried across)",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-08T05:07:00Z",
-      "what": "Landed 1:07 AM ET Tuesday at a670a50.",
-      "detail": { "cards": "PR 240 | merged a670a50 | 6/6 green", "items": [] }
-    }
+    { "n": 242, "w": "W166", "name": "Actuals upload and mapping review", "state": "closed", "ci": "green", "moved": "2026-09-08T23:22:00Z", "what": "Closed 7:22 PM ET as absorbed by W176 (PR 254). Branch kept as evidence.", "detail": { "cards": "PR 242 | closed | absorbed by 254", "items": [] } },
+    { "n": 243, "w": "W167", "name": "Sign-in, organization switch and role home", "state": "closed", "ci": "green", "moved": "2026-09-08T23:22:00Z", "what": "Closed 7:22 PM ET as absorbed by W176 (PR 254). Branch kept as evidence.", "detail": { "cards": "PR 243 | closed | absorbed by 254", "items": [] } },
+    { "n": 248, "w": "W172", "name": "Everything already built for the demo reaches main", "state": "open", "ci": "red", "moved": "2026-09-08T03:46:27Z", "what": "Carried by W177 (PR 255). Closes when 255 lands via W178.", "detail": { "cards": "PR 248 | carried by 255", "items": [] } },
+    { "n": 249, "w": "W173", "name": "The modeling journey proven in a real browser", "state": "open", "ci": "red", "moved": "2026-09-08T04:10:39Z", "what": "Carried by W177 (PR 255) with pictures re-taken after W170's words. Closes when 255 lands via W178.", "detail": { "cards": "PR 249 | carried by 255", "items": [] } }
   ],
   "pulse": {
     "running": true,
-    "text": "2:55 PM ET Tuesday. The builder stood idle from 2:27 AM to 2:51 PM: the relay's 1 AM pass queued exactly two windows, both were claimed within an hour, and nobody queued the next two. That gap is the relay's. In the same stretch the plain-words screens (W170) landed at 2:54 AM, which made every other open pull request unmergeable until it is rebuilt on the new main. Two windows are now queued and fired at 2:53 PM: W176 lands the two finished screens together (with two sentences rewritten in customer words), W177 lands the finished train and the browser proof. Launch expected by 3:13 PM; hourly backstop 3:00 PM."
+    "text": "7:24 PM ET Tuesday. W176 landed at 7:16 PM: the actuals-upload screen and the sign-in, choose-your-organization and role-home screens are on main with customer words. W177 was green too but went unmergeable the moment W176 landed ahead of it, so W178 (fired 7:21 PM) lands that branch; behind it W179 fixes the biggest modeling gap found today: five of the six modeling screens show names and units but never a number, because each page treats a finished load as still loading. Launch expected by 7:41 PM; hourly backstop 8:00 PM."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
-    "queue": ["W176", "W177"],
-    "p50": 195,
-    "p80": 216,
-    "p95": 237,
-    "probSep04": null,
-    "probSep18": null,
-    "flipCondition": 0,
+    "queue": ["W178", "W179"],
+    "p50": 195, "p80": 216, "p95": 237, "probSep04": null, "probSep18": null, "flipCondition": 0,
     "coverage": "windows landed on main by Sep 18, cumulative; Monte Carlo over the daily landing history (50% all-history, 50% last 7 days), 4000 paths",
-    "queueGrowthPerWeek": null,
-    "stale": true,
-    "runCount": 5,
-    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 2:55 PM ET Sep 8. Re-run owed on the next local pass.",
-    "next48h": {
-      "p10": 2,
-      "p50": 4,
-      "p90": 6,
-      "expected": [
-        "W166, W167, W174, W175 landed together with customer words (W176)",
-        "Finished train (W172) and browser proof (W173) landed together (W177)"
-      ]
-    },
+    "queueGrowthPerWeek": null, "stale": true, "runCount": 5,
+    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 7:24 PM ET Sep 8. Re-run owed on the next local pass.",
+    "next48h": { "p10": 2, "p50": 3, "p90": 5, "expected": ["W177 branch landed (W178)", "Five modeling screens show real values (W179)", "Zusha rules on DRIFT-1574, DRIFT-1576, DRIFT-1606 (customer words)"] },
     "variance": {
-      "against": "1:13 AM ET Sep 8 plan (4 items, 48h)",
-      "ahead": ["W170 landed 2:54 AM ET (planned via W175; landed by auto-merge)"],
-      "behind": ["W166/W167 not landed: green but unmergeable after W170; W176 carries", "W172 not landed: red, session dead; W177 carries", "W173 not landed: red, session dead; W177 carries"],
-      "idleMinutes": 744,
-      "idleCause": "queue empty after 2:27 AM claim of W175; no relay pass until 2:45 PM (Codex L16)"
+      "against": "2:55 PM ET Sep 8 plan (2 items, 48h)",
+      "ahead": ["W176 landed 7:16 PM ET (planned)"],
+      "behind": ["W177 green at 4:21 PM ET but unmergeable after W176; W178 carries"],
+      "idleMinutes": 0,
+      "idleCause": "none this interval; both windows authored at 2:51 PM were claimed by 3:25 PM and finished by 4:21 PM. Green PRs then waited 3 hours for a relay pass to merge them."
     },
-    "missing": [],
-    "fixedBy": ""
+    "missing": [], "fixedBy": ""
   },
   "support": [
     { "w": "W171", "phase": "done", "note": "Rebased W164, W166, W167 overnight; all three re-ran 6/6 green. Claim PR 246 closed." },
     { "w": "W163", "phase": "done", "note": "Landed 8:09 PM ET Sunday. Lane repaired; automatic merger no longer quits on a conflict." },
-    { "w": "RUNNER MOUNT", "phase": "queued", "note": "W51 catalog import still parked behind the Mac runner mount; PR 59 untouched. Unchanged this pass." }
+    { "w": "RUNNER MOUNT", "phase": "queued", "note": "W51 catalog import still parked behind the Mac runner mount; PR 59 untouched." }
   ],
   "plane": {
     "cycle": "not retrieved this pass",
     "dates": "",
-    "counts": { "done": 49, "inProgress": 3, "todo": 1 },
-    "note": "Board NOT retrieved this pass; counts are the Sep 2 figures and no card number or cycle is claimed as current. Flush owed: W145–W177 uncarded.",
-    "inProgress": [],
-    "todo": []
+    "counts": { "done": 0, "inProgress": 0, "todo": 0 },
+    "note": "Board read 7:20 PM ET: 671 cards. Relay window cards stop at W85 (Aug 27); W86 through W175 have no cards, and W80-W82 still read In Progress though they landed Aug 27. Cards created this pass: W176 (Done), W177 (In Progress), W178, W179 (Todo). Full backfill is a 90-card bulk job for the Mac REST script, not chat.",
+    "inProgress": ["W177"],
+    "todo": ["W178", "W179"]
   },
-  "reports": {
-    "latest": "reports/2026-08-31.md",
-    "plan": "reports/PLAN-2026-09-01.md",
-    "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically."
-  },
-  "plannedWindows": ["W176", "W177"]
+  "reports": { "latest": "reports/2026-08-31.md", "plan": "reports/PLAN-2026-09-01.md", "note": "Daily report every evening, graded against the prior evening plan. The Reports tab lists the folder automatically." },
+  "plannedWindows": ["W178", "W179"]
 }
