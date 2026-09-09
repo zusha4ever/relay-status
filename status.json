@@ -1,34 +1,112 @@
 {
-  "updatedAt": "2026-09-09T14:10:00Z",
-  "updatedBy": "relay (chat, LOCAL \u2014 overnight queue pass)",
+  "updatedAt": "2026-09-09T17:05:00Z",
+  "updatedBy": "relay (chat, REMOTE — status pass, then 'go')",
   "train": {
     "landed": 131,
-    "total": 186
+    "total": 188
   },
   "prs": [
     {
-      "n": 255,
-      "w": "W177",
-      "name": "The finished train and the browser proof landed",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T00:42:30Z",
-      "what": "Landed 8:42 PM ET at 27f4c87 after W178 rebased it (17 conflicts resolved). Eight earlier windows plus the modeling journey browser proof are on main.",
+      "n": 0,
+      "w": "W187",
+      "name": "When a check fails, the failure explains itself on the PR",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-09T17:00:00Z",
+      "what": "Fired 1:03 PM ET. The workflow will post the last 40 lines of any failing step as a comment on the PR, so the relay can read WHY a check is red without a login it does not have. Also names the one failure shared by the three finished PRs.",
       "detail": {
-        "cards": "PR 255 | merged 27f4c87 | 6/6",
+        "cards": "W187 | queued | self-maintenance",
         "items": []
       }
     },
     {
-      "n": 258,
-      "w": "W179",
-      "name": "Loading-state gap traced; seed names fixed",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T04:41:00Z",
-      "what": "Landed 12:41 AM ET. Found the exact cause of blank values on five screens; parked because the screen specs list no \"answered\" state. The relay ruled the populated screen is the spec's default state; W181 applies it. Seed names lost their window suffix.",
+      "n": 0,
+      "w": "W188",
+      "name": "The day's finished work lands; four stalled claims judged",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-09T17:00:00Z",
+      "what": "Fired 1:03 PM ET. Rebases and lands the three finished PRs (W181, W184, W186), rules on the four overnight claims that stopped moving at 2:53 AM ET (finish, carry, or close), then re-rehearses the reviewer's packet so it describes what actually landed.",
       "detail": {
-        "cards": "PR 258 | merged | DRIFT-1620 ruled by relay",
+        "cards": "W188 | queued | landing-only",
+        "items": []
+      }
+    },
+    {
+      "n": 266,
+      "w": "W186",
+      "name": "Reviewer's packet: fresh-seed rehearsal, written up",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-09T05:35:57Z",
+      "what": "Finished at 1:35 AM ET; six of seven checks green, the code-quality bundle red. Session ended. W188 rebases it last and re-runs the rehearsal so the packet is true for the 4:30 PM review.",
+      "detail": {
+        "cards": "PR 266 | 6/7 | gates red | W188 lands",
+        "items": []
+      }
+    },
+    {
+      "n": 264,
+      "w": "W184",
+      "name": "Variance memo to review, certified, filed",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-09T05:22:48Z",
+      "what": "Finished 1:22 AM ET: the produce action was found to be a dead control (DRIFT-1660, parked); the cross-tenant safety it would inherit is proven. Six of seven checks green, the code-quality bundle red. W188 lands it.",
+      "detail": {
+        "cards": "PR 264 | 6/7 | gates red | W188 lands",
+        "items": []
+      }
+    },
+    {
+      "n": 261,
+      "w": "W181",
+      "name": "Five modeling screens show their numbers",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-09T05:07:26Z",
+      "what": "Finished 1:07 AM ET. Six of seven checks green, the code-quality bundle red on every finished PR since the 12:35 AM merges. W187 names the cause; W188 lands it.",
+      "detail": {
+        "cards": "PR 261 | 6/7 | gates red | W188 lands",
+        "items": []
+      }
+    },
+    {
+      "n": 265,
+      "w": "W185",
+      "name": "Every page swept for CFO words; gate widened",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-09T06:28:39Z",
+      "what": "Claimed 2:28 AM ET, no movement since. Session is dead; W188 reads the branch and finishes, carries, or closes it.",
+      "detail": {
+        "cards": "PR 265 | draft claim | stalled 2:28 AM",
+        "items": []
+      }
+    },
+    {
+      "n": 263,
+      "w": "W183",
+      "name": "The interview asks the workbook's own questions",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-09T06:36:33Z",
+      "what": "Claimed 2:36 AM ET, no movement since. Session is dead; W188 rules on it.",
+      "detail": {
+        "cards": "PR 263 | draft claim | stalled 2:36 AM",
+        "items": []
+      }
+    },
+    {
+      "n": 262,
+      "w": "W182",
+      "name": "Financial statements read the seeded books",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-09T06:16:19Z",
+      "what": "Claimed 2:16 AM ET, no movement since. Session is dead; W188 rules on it.",
+      "detail": {
+        "cards": "PR 262 | draft claim | stalled 2:16 AM",
         "items": []
       }
     },
@@ -38,88 +116,36 @@
       "name": "Three customer-word rulings applied; no internal surface",
       "state": "open",
       "ci": "pending",
-      "moved": "2026-09-09T03:48:40Z",
-      "what": "Claimed 11:48 PM ET. Removes screen codes and the ledger badges from customer screens, replaces the setting-names message with one plain sentence, holds the screenshot gallery to the same standard, and writes the rule into governance.",
+      "moved": "2026-09-09T06:53:26Z",
+      "what": "Claimed 11:48 PM ET, last commit 2:53 AM ET, nothing since. Session is dead; W188 rules on it first because every later screen's words depend on it.",
       "detail": {
-        "cards": "PR 259 | live",
+        "cards": "PR 259 | draft claim | stalled 2:53 AM",
         "items": []
       }
     },
     {
-      "n": 0,
-      "w": "W181",
-      "name": "Five modeling screens show their numbers",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "Next by number. Model Workspace, Assumption Registry, Budget Lock, Reforecast, Variance render real values on the successful load.",
+      "n": 258,
+      "w": "W179",
+      "name": "Loading-state gap traced; seed names fixed",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-09T04:35:52Z",
+      "what": "Landed 12:35 AM ET. Found the exact cause of blank values on five screens; parked because the screen specs list no \"answered\" state. The relay ruled the populated screen is the spec's default state; W181 applies it.",
       "detail": {
-        "cards": "W181 | queued",
+        "cards": "PR 258 | merged | DRIFT-1620 ruled by relay",
         "items": []
       }
     },
     {
-      "n": 0,
-      "w": "W182",
-      "name": "Financial statements read the seeded books",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "The third leg of the story: actuals as statements, every figure traceable.",
+      "n": 257,
+      "w": "W178",
+      "name": "The W177 train and browser proof landed",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-09T04:35:45Z",
+      "what": "Landed 12:35 AM ET together with W172 (#248) and W173 (#249).",
       "detail": {
-        "cards": "W182 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W183",
-      "name": "The interview asks the workbook's own questions",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "Seeded model drivers named per the SaaS workbook so real questions render, not fallbacks.",
-      "detail": {
-        "cards": "W183 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W184",
-      "name": "Variance memo to review, certified, filed",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "Closes the modeling loop through the real review path.",
-      "detail": {
-        "cards": "W184 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W185",
-      "name": "Every page swept for CFO words; gate widened",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "One redline table of every string changed, for Zusha.",
-      "detail": {
-        "cards": "W185 | queued",
-        "items": []
-      }
-    },
-    {
-      "n": 0,
-      "w": "W186",
-      "name": "Reviewer's packet: fresh-seed rehearsal, written up",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-09T04:35:00Z",
-      "what": "Runs last. Every screen in walk order: purpose, picture, what works, what is unfinished in plain words, every sentence with a column for his changes.",
-      "detail": {
-        "cards": "W186 | queued",
+        "cards": "PR 257 | merged | with #248 #249",
         "items": []
       }
     },
@@ -130,41 +156,23 @@
       "state": "merged",
       "ci": "green",
       "moved": "2026-09-08T23:16:00Z",
-      "what": "Landed 7:16 PM ET at 90b7e03. Carries the actuals-upload screen and the sign-in, choose-your-organization and role-home screens onto main, with two customer sentences rewritten. Word lists read: W166 passes (one configuration message parked for Zusha, DRIFT-1576); W167 clean after the rewrite.",
+      "what": "Landed 7:16 PM ET Tuesday at 90b7e03.",
       "detail": {
-        "cards": "PR 254 | merged 90b7e03 | 6/6 green | words read",
-        "items": []
-      }
-    },
-    {
-      "n": 247,
-      "w": "W170",
-      "name": "The screens speak the way a CFO speaks",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-08T06:54:32Z",
-      "what": "Landed 2:54 AM ET. Word list read by the relay 7:10 PM ET: 67 interview questions from the SaaS workbook; registry shows names not codes; two ratified conventions (screen-code eyebrow, LEDGER OF RECORD badge) parked for Zusha as DRIFT-1574.",
-      "detail": {
-        "cards": "PR 247 | merged | words read | DRIFT-1574 to Zusha",
+        "cards": "PR 254 | merged 90b7e03 | 6/6 | words read",
         "items": []
       }
     }
   ],
   "pulse": {
     "running": true,
-    "text": "10:10 AM ET Wednesday. Mac is off the lane for 24 hours; every check and every landing now runs on GitHub-hosted machines (proven live at 10:05 AM). Board refresh also moved to GitHub, every 30 minutes. Queue: W180 running or landed, W181\u2013W186 behind it, packet last. Relay checks at 4:30 PM ET."
+    "text": "1:05 PM ET Wednesday. Overnight: W172, W173, W177, W178, W179 landed. Then it stalled: three windows finished but red on one check (W181, W184, W186), four more claimed and abandoned by 2:53 AM (W180, W182, W183, W185). Nothing merged since 12:35 AM. Fired 1:03 PM: W187 makes every red check explain itself on the PR; W188 lands the finished three, judges the four, and re-rehearses the packet. Launch check 1:25 PM; hourly backstop 2:00 PM."
   },
   "medianWindowMinutes": 40,
   "forecast": {
     "runUtc": "2026-09-04T16:55:28Z",
     "queue": [
-      "W180",
-      "W181",
-      "W182",
-      "W183",
-      "W184",
-      "W185",
-      "W186"
+      "W187",
+      "W188"
     ],
     "p50": 195,
     "p80": 216,
@@ -176,36 +184,37 @@
     "queueGrowthPerWeek": null,
     "stale": true,
     "runCount": 5,
-    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 7:24 PM ET Sep 8. Re-run owed on the next local pass.",
+    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 1:05 PM ET Sep 9. Re-run owed on the next local pass.",
     "next48h": {
       "p10": 3,
       "p50": 5,
       "p90": 7,
       "expected": [
-        "Numbers on the five modeling screens (W181)",
-        "Financial statements live (W182)",
-        "Real interview questions (W183)",
-        "Memo review loop (W184)",
-        "Words sweep (W185)",
-        "Reviewer packet (W186)"
+        "Red checks explain themselves (W187)",
+        "W181, W184, W186 landed (W188)",
+        "W180, W182, W183, W185 finished or re-queued (W188)"
       ]
     },
     "variance": {
-      "against": "7:24 PM ET Sep 8 plan",
+      "against": "12:35 AM ET Sep 9 plan (seven windows through the night)",
       "ahead": [
-        "W177 landed 8:42 PM (planned via W178)",
-        "W179 landed 12:41 AM"
+        "W172, W173, W177, W178, W179 landed by 12:35 AM"
       ],
       "behind": [
-        "Values on screen: W179 parked on a spec reading; ruled by relay, W181 carries"
+        "W181, W184, W186 finished but red on one check; W180, W182, W183, W185 abandoned mid-work; nothing landed 12:35 AM to 1:05 PM"
       ],
-      "idleMinutes": 0,
-      "idleCause": "none"
+      "idleMinutes": 610,
+      "idleCause": "every queued window guarded by an open PR after 2:53 AM; relay's 10:10 AM pass did not read PR state; relay's error"
     },
     "missing": [],
-    "fixedBy": ""
+    "fixedBy": "W187 + W188, fired 1:03 PM ET"
   },
   "support": [
+    {
+      "w": "W187",
+      "phase": "queued",
+      "note": "Self-maintenance (R65): failing checks post their own last 40 lines on the PR."
+    },
     {
       "w": "W171",
       "phase": "done",
@@ -230,31 +239,28 @@
       "inProgress": 0,
       "todo": 0
     },
-    "note": "Board current: W177/W178/W179 Done; W180 In Progress; W181\u2013W186 To do. 761 cards.",
+    "note": "Board owed: W187, W188 cards not yet created; W172/W173/W177/W178/W179 Done flips not confirmed this pass. Flush on next pass.",
     "inProgress": [
-      "W180"
+      "W180",
+      "W182",
+      "W183",
+      "W185"
     ],
     "todo": [
       "W181",
-      "W182",
-      "W183",
       "W184",
-      "W185",
-      "W186"
+      "W186",
+      "W187",
+      "W188"
     ]
   },
   "reports": {
     "latest": "reports/2026-09-08.md",
     "plan": "reports/PLAN-2026-09-09.md",
-    "note": "Catch-up reports for Sep 1\u20138 written 8:00 PM ET Sep 8 from the relay log; Sep 1\u20132 and Sep 5\u20136 are combined and say they are reconstructed."
+    "note": "Catch-up reports for Sep 1–8 written 8:00 PM ET Sep 8 from the relay log."
   },
   "plannedWindows": [
-    "W180",
-    "W181",
-    "W182",
-    "W183",
-    "W184",
-    "W185",
-    "W186"
+    "W187",
+    "W188"
   ]
 }
