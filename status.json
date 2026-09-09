@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-09T04:50:00Z",
+  "updatedAt": "2026-09-09T14:10:00Z",
   "updatedBy": "relay (chat, LOCAL \u2014 overnight queue pass)",
   "train": {
     "landed": 131,
@@ -152,7 +152,7 @@
   ],
   "pulse": {
     "running": true,
-    "text": "12:50 AM ET Wednesday. Overnight queue set for the 4:30 PM review: W180 is running; six more windows are lined up behind it by number, ending with the reviewer's packet (W186). W177 and W179 landed tonight. Hourly backstop fires every hour; the relay checks at 4:30 PM ET."
+    "text": "10:10 AM ET Wednesday. Mac is off the lane for 24 hours; every check and every landing now runs on GitHub-hosted machines (proven live at 10:05 AM). Board refresh also moved to GitHub, every 30 minutes. Queue: W180 running or landed, W181\u2013W186 behind it, packet last. Relay checks at 4:30 PM ET."
   },
   "medianWindowMinutes": 40,
   "forecast": {
