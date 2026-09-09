@@ -4,8 +4,8 @@ Recipe: tools/windows_ledger.py output (brief/merge timestamps per window)
 plus windows/ file sizes (RESULT + DIARY bytes). Fully derived — nothing hand-typed."""
 import json, os, subprocess, sys, datetime, pathlib
 
-WORKER = os.path.expanduser("~/HA-Platfrom-Build/relay-worker/STELL-Finance")
-BOARD  = os.path.expanduser("~/HA-Platfrom-Build/relay-status")
+WORKER = os.environ.get("STELL_WORKER") or os.path.expanduser("~/HA-Platfrom-Build/relay-worker/STELL-Finance")
+BOARD  = os.environ.get("STELL_BOARD") or os.path.expanduser("~/HA-Platfrom-Build/relay-status")
 DAY0   = datetime.datetime(2026, 8, 14, tzinfo=datetime.timezone.utc)
 
 def day(iso):
@@ -26,7 +26,7 @@ ledger = json.load(open(ledger_path))
 import re
 pr_landed = {}
 try:
-    raw = subprocess.run(["/opt/homebrew/bin/gh", "pr", "list", "-R", "zusha4ever/STELL-Finance",
+    raw = subprocess.run([os.environ.get("GH_BIN","/opt/homebrew/bin/gh"), "pr", "list", "-R", "zusha4ever/STELL-Finance",
                           "--state", "merged", "--limit", "400", "--json", "title,headRefName,mergedAt"],
                          capture_output=True, text=True, check=True).stdout
     for pr in json.loads(raw):
