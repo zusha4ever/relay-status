@@ -1,189 +1,32 @@
 {
-  "updatedAt": "2026-09-10T04:10:00Z",
+  "updatedAt": "2026-09-10T04:27:00Z",
   "updatedBy": "relay (chat, REMOTE — 'everything green and merged')",
-  "train": {
-    "landed": 139,
-    "total": 191
-  },
+  "train": { "landed": 139, "total": 192 },
   "prs": [
-    {
-      "n": 0,
-      "w": "W191",
-      "name": "Plan-vs-actual package screen wired live",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-10T04:06:00Z",
-      "what": "Authored 12:06 AM ET from backlog item 7. The package screen shows both legs (against the locked budget and against the current forecast), each delta naming the assumption that moved, built to the design frame with pictures beside it.",
-      "detail": { "cards": "W191 | queued | product", "items": [] }
-    },
-    {
-      "n": 0,
-      "w": "W190",
-      "name": "The produce-memo button really produces a memo",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-10T04:06:00Z",
-      "what": "Authored 12:06 AM ET. The button on Variance & Bridges found dead by W184 becomes a real write: the memo is created, appears in the approval inbox, is reviewed, certified with attestation, and filed. Proven in a real browser with pictures.",
-      "detail": { "cards": "W190 | queued | product | closes DRIFT-1660", "items": [] }
-    },
-    {
-      "n": 0,
-      "w": "W189",
-      "name": "The failure explainer lands (W187 branch rebased)",
-      "state": "queued",
-      "ci": "n/a",
-      "moved": "2026-09-10T04:06:00Z",
-      "what": "Authored 12:06 AM ET. Lands the W187 branch: rebases it onto today's main and adds the one exclusion the diary check was missing (relay ruling), then merges #268.",
-      "detail": { "cards": "W189 | queued | landing-only | closes DRIFT-1691", "items": [] }
-    },
-    {
-      "n": 269,
-      "w": "W188",
-      "name": "The day's finished work landed; four stalled claims judged",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-10T04:08:00Z",
-      "what": "Landed everything: W181 and W184 rebased and merged, all four stalled claims found complete and merged (W180, W182, W183, W185), the reviewer's packet re-rehearsed and merged (W186). Its own record PR merged 12:08 AM ET at 1c5fa10.",
-      "detail": { "cards": "PR 269 | merged 1c5fa10 | 7/7", "items": [] }
-    },
-    {
-      "n": 268,
-      "w": "W187",
-      "name": "When a check fails, the failure explains itself on the PR",
-      "state": "open",
-      "ci": "red",
-      "moved": "2026-09-09T18:19:01Z",
-      "what": "Built and proven on its own PR (three real failures, one comment updated each time). Red on one named gap it filed itself: the diary check does not exempt the relay's log-entry file. Session ended 2:19 PM ET; W189 lands it.",
-      "detail": { "cards": "PR 268 | 7/8 | diary step red | W189 lands", "items": [] }
-    },
-    {
-      "n": 266,
-      "w": "W186",
-      "name": "Reviewer's packet: fresh-seed rehearsal, written up",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T20:28:26Z",
-      "what": "Landed 4:28 PM ET at 2ee4816 after a full re-rehearsal against the landed main.",
-      "detail": { "cards": "PR 266 | merged 2ee4816 | 7/7", "items": [] }
-    },
-    {
-      "n": 265,
-      "w": "W185",
-      "name": "Every page swept for CFO words; gate widened to 60 routes",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T19:52:34Z",
-      "what": "Landed 3:52 PM ET at b14148e. Five copy defects that had crept in after its sweep were fixed on the way in.",
-      "detail": { "cards": "PR 265 | merged b14148e | 7/7", "items": [] }
-    },
-    {
-      "n": 263,
-      "w": "W183",
-      "name": "The interview asks the workbook's own questions",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T19:25:59Z",
-      "what": "Landed 3:26 PM ET at 8c4816f. Driver Interview now shows 25 real questions from the workbook, up from 13.",
-      "detail": { "cards": "PR 263 | merged 8c4816f | 7/7", "items": [] }
-    },
-    {
-      "n": 262,
-      "w": "W182",
-      "name": "Financial statements read the seeded books",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T19:11:56Z",
-      "what": "Landed 3:12 PM ET at a024663. Real headline figures and a real profit-and-loss table; balance sheet and cash flow say plainly they are not there yet.",
-      "detail": { "cards": "PR 262 | merged a024663 | 7/7", "items": [] }
-    },
-    {
-      "n": 259,
-      "w": "W180",
-      "name": "Three customer-word rulings applied; no internal surface",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T19:00:02Z",
-      "what": "Landed 3:00 PM ET at f1fd86c.",
-      "detail": { "cards": "PR 259 | merged f1fd86c | 7/7", "items": [] }
-    },
-    {
-      "n": 264,
-      "w": "W184",
-      "name": "Variance memo to review: the produce button found dead",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T18:45:51Z",
-      "what": "Landed 2:46 PM ET at 10859d5. The produce action was a dead control (parked as DRIFT-1660); the cross-tenant safety it would inherit is proven. W190 wires it.",
-      "detail": { "cards": "PR 264 | merged 10859d5 | 7/7", "items": [] }
-    },
-    {
-      "n": 261,
-      "w": "W181",
-      "name": "Five modeling screens show their numbers",
-      "state": "merged",
-      "ci": "green",
-      "moved": "2026-09-09T18:15:16Z",
-      "what": "Landed 2:15 PM ET at 121cd5e.",
-      "detail": { "cards": "PR 261 | merged 121cd5e | 7/7", "items": [] }
-    }
+    { "n": 0, "w": "W192", "name": "A second customer walks the whole modeling journey on its own books", "state": "queued", "ci": "n/a", "moved": "2026-09-10T04:24:00Z", "what": "Authored 12:24 AM ET from backlog item 13. Meridian Industrial gets its own books and walks the same 16 steps as Holding Advisory; on every screen it cannot see the first customer's rows.", "detail": { "cards": "W192 | queued | product", "items": [] } },
+    { "n": 270, "w": "W191", "name": "Plan-vs-actual package screen wired live", "state": "open", "ci": "pending", "moved": "2026-09-10T04:15:35Z", "what": "Claimed 12:15 AM ET (claim PR #270). The package screen shows both legs (against the locked budget and against the current forecast), each delta naming the assumption that moved, built to the design frame with pictures beside it.", "detail": { "cards": "PR 270 | claimed 12:15 AM | product", "items": [] } },
+    { "n": 0, "w": "W190", "name": "The produce-memo button really produces a memo", "state": "queued", "ci": "n/a", "moved": "2026-09-10T04:06:00Z", "what": "Authored 12:06 AM ET, not yet claimed. The button on Variance & Bridges found dead by W184 becomes a real write: the memo is created, appears in the approval inbox, is reviewed, certified with attestation, and filed.", "detail": { "cards": "W190 | queued | product | closes DRIFT-1660", "items": [] } },
+    { "n": 271, "w": "W189", "name": "The failure explainer lands (W187 branch rebased)", "state": "open", "ci": "pending", "moved": "2026-09-10T04:19:07Z", "what": "Claimed 12:19 AM ET (claim PR #271). Rebases the W187 branch onto today's main, adds the one exclusion the diary check was missing (relay ruling), then merges #268.", "detail": { "cards": "PR 271 | claimed 12:19 AM | lands #268", "items": [] } },
+    { "n": 269, "w": "W188", "name": "The day's finished work landed; four stalled claims judged", "state": "merged", "ci": "green", "moved": "2026-09-10T04:08:00Z", "what": "Landed everything: W181 and W184 rebased and merged, all four stalled claims found complete and merged (W180, W182, W183, W185), the reviewer's packet re-rehearsed and merged (W186). Its own record PR merged 12:08 AM ET at 1c5fa10.", "detail": { "cards": "PR 269 | merged 1c5fa10 | 7/7", "items": [] } },
+    { "n": 268, "w": "W187", "name": "When a check fails, the failure explains itself on the PR", "state": "open", "ci": "red", "moved": "2026-09-09T18:19:01Z", "what": "Built and proven on its own PR. Red on one named gap it filed itself: the diary check does not exempt the relay's log-entry file. Session ended 2:19 PM ET; W189 is landing it now.", "detail": { "cards": "PR 268 | 7/8 | diary step red | W189 landing", "items": [] } },
+    { "n": 266, "w": "W186", "name": "Reviewer's packet: fresh-seed rehearsal, written up", "state": "merged", "ci": "green", "moved": "2026-09-09T20:28:26Z", "what": "Landed 4:28 PM ET at 2ee4816 after a full re-rehearsal against the landed main.", "detail": { "cards": "PR 266 | merged 2ee4816 | 7/7", "items": [] } },
+    { "n": 265, "w": "W185", "name": "Every page swept for CFO words; gate widened to 60 routes", "state": "merged", "ci": "green", "moved": "2026-09-09T19:52:34Z", "what": "Landed 3:52 PM ET at b14148e.", "detail": { "cards": "PR 265 | merged b14148e | 7/7", "items": [] } },
+    { "n": 263, "w": "W183", "name": "The interview asks the workbook's own questions", "state": "merged", "ci": "green", "moved": "2026-09-09T19:25:59Z", "what": "Landed 3:26 PM ET at 8c4816f. Driver Interview shows 25 real questions, up from 13.", "detail": { "cards": "PR 263 | merged 8c4816f | 7/7", "items": [] } },
+    { "n": 262, "w": "W182", "name": "Financial statements read the seeded books", "state": "merged", "ci": "green", "moved": "2026-09-09T19:11:56Z", "what": "Landed 3:12 PM ET at a024663.", "detail": { "cards": "PR 262 | merged a024663 | 7/7", "items": [] } },
+    { "n": 259, "w": "W180", "name": "Three customer-word rulings applied; no internal surface", "state": "merged", "ci": "green", "moved": "2026-09-09T19:00:02Z", "what": "Landed 3:00 PM ET at f1fd86c.", "detail": { "cards": "PR 259 | merged f1fd86c | 7/7", "items": [] } },
+    { "n": 264, "w": "W184", "name": "Variance memo to review: the produce button found dead", "state": "merged", "ci": "green", "moved": "2026-09-09T18:45:51Z", "what": "Landed 2:46 PM ET at 10859d5. Produce action was a dead control (DRIFT-1660); W190 wires it.", "detail": { "cards": "PR 264 | merged 10859d5 | 7/7", "items": [] } },
+    { "n": 261, "w": "W181", "name": "Five modeling screens show their numbers", "state": "merged", "ci": "green", "moved": "2026-09-09T18:15:16Z", "what": "Landed 2:15 PM ET at 121cd5e.", "detail": { "cards": "PR 261 | merged 121cd5e | 7/7", "items": [] } }
   ],
-  "pulse": {
-    "running": true,
-    "text": "12:10 AM ET Thursday. Wednesday afternoon W188 landed all seven of the day's PRs (W180 through W186) between 2:15 and 4:28 PM, then its own record went green at 4:57 PM. After that nothing was claimable for seven hours: the only two open PRs were W187 (red on one gap it named itself) and W188's record — the relay's error. Fixed now: W188's record merged 12:08 AM (that merge is the fire), and three windows are queued: W189 lands W187, W190 makes the produce-memo button real, W191 wires the package screen. Launch check 12:30 AM; hourly backstop 1:00 AM."
-  },
+  "pulse": { "running": true, "text": "12:27 AM ET Thursday. Wednesday afternoon W188 landed all seven of the day's PRs (W180 through W186) between 2:15 and 4:28 PM. Then nothing was claimable for seven hours — the relay's error. Fixed: W188's record merged 12:08 AM and that merge launched two sessions within eleven minutes — W191 (package screen) claimed 12:15 AM, W189 (lands W187) claimed 12:19 AM. W190 (produce-memo button real) and W192 (second customer end to end) wait in the queue. Next check 1:00 AM; hourly backstop 1:00 AM." },
   "medianWindowMinutes": 40,
-  "forecast": {
-    "runUtc": "2026-09-04T16:55:28Z",
-    "queue": ["W189", "W190", "W191"],
-    "p50": 195,
-    "p80": 216,
-    "p95": 237,
-    "probSep04": null,
-    "probSep18": null,
-    "flipCondition": 0,
-    "coverage": "windows landed on main by Sep 18, cumulative; Monte Carlo over the daily landing history (50% all-history, 50% last 7 days), 4000 paths",
-    "queueGrowthPerWeek": null,
-    "stale": true,
-    "runCount": 5,
-    "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 12:10 AM ET Sep 10. Re-run owed on the next local pass.",
-    "next48h": {
-      "p10": 2,
-      "p50": 3,
-      "p90": 4,
-      "expected": [
-        "Failure explainer landed (W189)",
-        "Produce-memo button real, memo walks to filed (W190)",
-        "Package screen wired live (W191)"
-      ]
-    },
-    "variance": {
-      "against": "1:03 PM ET Sep 9 fire (W187 + W188)",
-      "ahead": ["W188 landed all seven PRs by 4:28 PM ET; record merged 12:08 AM"],
-      "behind": ["W187 still open, red on one self-named gap; queue empty 5:20 PM to 12:06 AM (relay's error)"],
-      "idleMinutes": 406,
-      "idleCause": "no claimable window after W188 finished; both open PRs guarded; relay's error (Codex L16)"
-    },
-    "missing": [],
-    "fixedBy": "W189 + W190 + W191, fired 12:08 AM ET by the #269 merge"
-  },
+  "forecast": { "runUtc": "2026-09-04T16:55:28Z", "queue": ["W189", "W190", "W191", "W192"], "p50": 195, "p80": 216, "p95": 237, "probSep04": null, "probSep18": null, "flipCondition": 0, "coverage": "windows landed on main by Sep 18, cumulative; Monte Carlo over the daily landing history (50% all-history, 50% last 7 days), 4000 paths", "queueGrowthPerWeek": null, "stale": true, "runCount": 5, "staleNote": "Forecast numbers are from the Sep 4 12:55 PM ET run; the queue list was updated by hand at 12:27 AM ET Sep 10. Re-run owed on the next local pass.", "next48h": { "p10": 2, "p50": 3, "p90": 4, "expected": ["Failure explainer landed (W189)", "Produce-memo button real, memo walks to filed (W190)", "Package screen wired live (W191)", "Second customer walks the journey (W192)"] }, "variance": { "against": "1:03 PM ET Sep 9 fire (W187 + W188)", "ahead": ["W188 landed all seven PRs by 4:28 PM ET; record merged 12:08 AM; two sessions launched by 12:19 AM"], "behind": ["W187 still open; queue empty 5:20 PM to 12:06 AM (relay's error)"], "idleMinutes": 406, "idleCause": "no claimable window after W188 finished; both open PRs guarded; relay's error (Codex L16)" }, "missing": [], "fixedBy": "W189-W192, fired 12:08 AM ET by the #269 merge" },
   "support": [
-    { "w": "W189", "phase": "queued", "note": "Landing-only: lands W187 and closes DRIFT-1691 (one exclusion pattern, relay ruling)." },
-    { "w": "W187", "phase": "open", "note": "Self-maintenance (R65): failing checks post their own last 40 lines on the PR. Proven; awaiting W189 to land." },
+    { "w": "W189", "phase": "open", "note": "Landing-only: lands W187 and closes DRIFT-1691 (one exclusion pattern, relay ruling). Claim PR #271." },
+    { "w": "W187", "phase": "open", "note": "Self-maintenance (R65): failing checks post their own last 40 lines on the PR. Proven; W189 landing it." },
     { "w": "W171", "phase": "done", "note": "Rebased W164, W166, W167 overnight; all three re-ran 6/6 green. Claim PR 246 closed." },
     { "w": "RUNNER MOUNT", "phase": "queued", "note": "W51 catalog import still parked behind the Mac runner mount; PR 59 untouched." }
   ],
-  "plane": {
-    "cycle": "not retrieved this pass",
-    "dates": "",
-    "counts": { "done": 0, "inProgress": 0, "todo": 0 },
-    "note": "Board owed: Done flips for W180-W186 and W188; cards for W187-W191 not confirmed this pass. Flush on next local pass.",
-    "inProgress": [],
-    "todo": ["W187", "W189", "W190", "W191"]
-  },
-  "reports": {
-    "latest": "reports/2026-09-08.md",
-    "plan": "reports/PLAN-2026-09-09.md",
-    "note": "Catch-up reports for Sep 1–8 written 8:00 PM ET Sep 8 from the relay log."
-  },
-  "plannedWindows": ["W189", "W190", "W191"]
+  "plane": { "cycle": "not retrieved this pass", "dates": "", "counts": { "done": 0, "inProgress": 0, "todo": 0 }, "note": "Board owed: Done flips for W180-W186 and W188; cards for W187-W192 not confirmed this pass. Flush on next local pass.", "inProgress": ["W189", "W191"], "todo": ["W187", "W190", "W192"] },
+  "reports": { "latest": "reports/2026-09-08.md", "plan": "reports/PLAN-2026-09-09.md", "note": "Catch-up reports for Sep 1–8 written 8:00 PM ET Sep 8 from the relay log." },
+  "plannedWindows": ["W189", "W190", "W191", "W192"]
 }
