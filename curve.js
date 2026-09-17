@@ -5,7 +5,7 @@ showPane=function(i,btn){_showPane(i,btn); if(i===6) renderCurve();};
 async function renderCurve(){
   if(curveChart) return;
   if(!CURVE){ try{ const r=await fetch(CURVE_FEED+"?t="+Date.now()); if(!r.ok) throw new Error("HTTP "+r.status); CURVE=await r.json(); }catch(e){ el("curvenote").textContent="windows.json unreachable: "+e.message; return; } }
-  const W=CURVE.windows, T0=new Date(CURVE.day0).getTime(), END=CURVE.mvpDay, GTM=CURVE.gtmDay;
+  const W=CURVE.windows, T0=new Date(CURVE.day0).getTime(), END=CURVE.horizonDay||CURVE.mvpDay, MVP=CURVE.mvpDay, GTM=CURVE.gtmDay;
   const TODAY=Math.round((new Date(CURVE.asOf)-T0)/864e5*10)/10;
   const dstr=d=>new Date(T0+d*864e5).toISOString().slice(5,10).replace("-","/");
   const rad=b=>3+9*Math.sqrt(Math.min(b,60000)/60000);
@@ -23,10 +23,10 @@ async function renderCurve(){
   for(let h=0;h<H;h++){const x=Math.min(TODAY+h+1,END);p10.push({x,y:q(h,.1)});p50.push({x,y:q(h,.5)});p90.push({x,y:q(h,.9)});}
   const idealEnd=Math.round(nE+slopeE*(END-TODAY)), olsEnd=Math.round(nM+slopeM*(END-TODAY));
   const last=a=>a[a.length-1].y;
-  el("curvekpis").innerHTML=`<div class="counts"><div class="count"><b>${nE}</b><span>sessions run</span></div><div class="count"><b>${nM}</b><span>landed on main</span></div><div class="count"><b>${last(p50)}</b><span>landed by Sep 18, median</span></div><div class="count"><b>${idealEnd}</b><span>could have landed</span></div></div>`;
+  el("curvekpis").innerHTML=`<div class="counts"><div class="count"><b>${nE}</b><span>sessions run</span></div><div class="count"><b>${nM}</b><span>landed on main</span></div><div class="count"><b>${last(p50)}</b><span>landed by ${dstr(END)}, median</span></div><div class="count"><b>${idealEnd}</b><span>could have landed</span></div></div>`;
   el("curvelegend").innerHTML=`<div class="legend" style="margin-bottom:8px"><span><i style="background:var(--chalk-dim);border-radius:50%"></i>could have been: every session lands</span><span><i style="background:transparent;border:2px solid var(--gold);border-radius:50%"></i>planned, authored, not yet run</span><span><i style="background:var(--gold-bright);border-radius:50%"></i>actual landed</span><span><i style="border-top:2px dashed var(--gold-bright);height:0"></i>Monte Carlo median, band P10 to P90</span><span><i style="border-top:2px dotted var(--gold-bright);height:0"></i>straight-line regression</span></div>`;
-  el("curvenote").textContent="Data as of "+ago(CURVE.asOf)+". Median "+last(p50)+" landed by Sep 18 (P10 "+last(p10)+", P90 "+last(p90)+"); regression says "+olsEnd+". "+CURVE.bytesNote+".";
-  const vlines={id:"vl",afterDraw(ch){const {ctx,chartArea:a,scales:{x}}=ch;[[TODAY,"today"],[GTM,"Sep 4"],[END,"Sep 18"]].forEach(([d,l])=>{const px=x.getPixelForValue(d);ctx.save();ctx.strokeStyle="#9AA0A8";ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.fillStyle="#9AA0A8";ctx.font="11px Inter";ctx.textAlign="center";ctx.fillText(l,px,a.top-4);ctx.restore();});}};
+  el("curvenote").textContent="Data as of "+ago(CURVE.asOf)+". Median "+last(p50)+" landed by "+dstr(END)+" (P10 "+last(p10)+", P90 "+last(p90)+"); regression says "+olsEnd+". "+CURVE.bytesNote+".";
+  const vlines={id:"vl",afterDraw(ch){const {ctx,chartArea:a,scales:{x}}=ch;[[TODAY,"today"],[GTM,"Sep 4"],[MVP,"Sep 18 MVP"],[END,dstr(END)]].forEach(([d,l])=>{const px=x.getPixelForValue(d);ctx.save();ctx.strokeStyle="#9AA0A8";ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(px,a.top);ctx.lineTo(px,a.bottom);ctx.stroke();ctx.fillStyle="#9AA0A8";ctx.font="11px Inter";ctx.textAlign="center";ctx.fillText(l,px,a.top-4);ctx.restore();});}};
   const G="#A67C00", GR="#8A8F98";
   curveChart=new Chart(el("curvechart"),{type:"bubble",data:{datasets:[
     {label:"ideal",data:idealB,backgroundColor:"rgba(138,143,152,0.45)",borderColor:GR,borderWidth:1},

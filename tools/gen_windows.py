@@ -73,6 +73,7 @@ out = {
     "day0": "2026-08-14T00:00:00Z",
     "gtmDay": 21,
     "mvpDay": 35,
+    "horizonDay": 96,
     "bytesNote": "bytes = W{n}-RESULT.md + W{n}-DIARY.jsonl size; the repo records no token counts",
     "windows": rows,
 }
