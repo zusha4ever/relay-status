@@ -1,11 +1,63 @@
 {
-  "updatedAt": "2026-09-16T06:20:08+00:00",
+  "updatedAt": "2026-09-17T02:22:00Z",
   "updatedBy": "relay (chat, local)",
   "train": {
-    "landed": 143,
-    "total": 208
+    "landed": 144,
+    "total": 210
   },
   "prs": [
+    {
+      "n": 0,
+      "w": "W242",
+      "name": "The CFO confirms the cost logic history proposes, on a real screen",
+      "state": "queued",
+      "ci": "n/a",
+      "moved": "2026-09-17T02:18:00Z",
+      "what": "Authored 10:13 PM ET on the ratifier's confirmed objective; fired 10:18 PM ET (trigger #328). Builds on W235's own branch so PR #325 goes green and lands. Nine design, spec, test and review skills mandated and logged.",
+      "detail": {
+        "cards": "W242 | queued | fired 10:18 PM ET | lands #325",
+        "items": []
+      }
+    },
+    {
+      "n": 327,
+      "w": "W240",
+      "name": "Convergence: one review point before generation",
+      "state": "open",
+      "ci": "pending",
+      "moved": "2026-09-17T02:14:32Z",
+      "what": "Claimed 10:14 PM ET by a build session on the W219 merge webhook. Draft; in progress.",
+      "detail": {
+        "cards": "PR 327 | claimed 10:14 PM ET | product",
+        "items": []
+      }
+    },
+    {
+      "n": 325,
+      "w": "W235",
+      "name": "Cost logic learned from ledger history",
+      "state": "open",
+      "ci": "red",
+      "moved": "2026-09-17T02:00:00Z",
+      "what": "Engine built and tested (14 tests). Red only on the result-verdict gate because the confirm screen (T3) is parked. W242 finishes it on this branch.",
+      "detail": {
+        "cards": "PR 325 | red on gate teeth (honest) | W242 lands it",
+        "items": []
+      }
+    },
+    {
+      "n": 326,
+      "w": "W219",
+      "name": "Universality check in the pipeline: both intake paths compared",
+      "state": "merged",
+      "ci": "green",
+      "moved": "2026-09-17T02:09:00Z",
+      "what": "Merged 10:09 PM ET on the ratifier's go, 8/8 green (f265e54c). Board card #767 Done.",
+      "detail": {
+        "cards": "PR 326 | merged 10:09 PM ET | proof",
+        "items": []
+      }
+    },
     {
       "n": 281,
       "w": "W196",
