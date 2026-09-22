@@ -1,22 +1,22 @@
 {
- "updatedAt": "2026-09-22T16:04:00Z",
+ "updatedAt": "2026-09-22T21:30:00Z",
  "updatedBy": "relay (chat, remote)",
- "train": {"landed": 151, "total": 213},
+ "train": {"landed": 152, "total": 216},
  "prs": [
-  {"n": 348, "w": "W253", "name": "Budget lock and rolling forecast on compiled models", "state": "open", "ci": "green", "moved": "2026-09-22T07:32:00Z", "what": "Finished 3:45 AM ET, all eight checks green, marked to land itself. Two later merges moved main under it, so it collides and the landing lane cannot merge it. A landing session (W275) claimed it at 11:23 AM ET and is rebasing it now. Variance, Excel export and the tester's packet all wait on this.", "detail": {"cards": "PR 348 | green, colliding | W275 live since 11:23 AM", "items": []}},
-  {"n": 349, "w": "W241", "name": "Model View screen: the eleven-tab grid wearing STELL", "state": "open", "ci": "red", "moved": "2026-09-22T06:13:00Z", "what": "Built and proven on real data. Red only on a bookkeeping step (stale generated ledger). A refresh session (W276) claimed it at 11:24 AM ET; it ends with one notice naming six design gaps for the ratifier's go.", "detail": {"cards": "PR 349 | red on bookkeeping only | W276 live since 11:24 AM", "items": []}},
-  {"n": 345, "w": "W252", "name": "Marketing channels landing", "state": "open", "ci": "pending", "moved": "2026-09-22T08:45:00Z", "what": "Parked: the original remit was already superseded on main; a question is filed (DRIFT-2380). Not on the modeling critical path.", "detail": {"cards": "PR 345 | parked | question filed", "items": []}},
-  {"n": 336, "w": "W247", "name": "Drivers matrix piece", "state": "open", "ci": "unknown", "moved": "2026-09-20T18:29:00Z", "what": "Draft, open since Sep 20. Its content landed by another route per W270's record; this PR is now record-only. Closure owed on a later pass.", "detail": {"cards": "PR 336 | record-only | close later", "items": []}}
+  {"n": 373, "w": "W254", "name": "Variance against both bases (locked budget and current forecast)", "state": "open", "ci": "red", "moved": "2026-09-22T17:34:00Z", "what": "Works on the real screen and database. Red only because its records went stale when main moved. A landing session (W278, fired 5:27 PM ET) rebases it and lets it merge itself. The tester's packet waits on this.", "detail": {"cards": "PR 373 | red on bookkeeping only | W278 lands it", "items": []}},
+  {"n": 349, "w": "W241", "name": "Model View screen: the eleven-tab grid wearing STELL", "state": "open", "ci": "green", "moved": "2026-09-22T16:00:00Z", "what": "All checks green; a real conflict with main after the noon merges. The ratifier accepted the six listed gaps at 5:26 PM ET. A landing session (W279) resolves the conflict and lets it merge itself.", "detail": {"cards": "PR 349 | green, conflicting | W279 lands it", "items": []}},
+  {"n": 374, "w": "W255", "name": "Checks sheet writes live Excel formulas for its three named ties", "state": "merged", "ci": "green", "moved": "2026-09-22T21:26:00Z", "what": "Merged 5:26 PM ET on the ratifier's go, as-is. The Export to Excel button, its route and the real-database walk are W280 (fired 5:27 PM ET).", "detail": {"cards": "PR 374 | merged | button in W280", "items": []}},
+  {"n": 345, "w": "W252", "name": "Marketing channels landing", "state": "open", "ci": "pending", "moved": "2026-09-22T08:45:00Z", "what": "Parked: the original remit was already superseded on main; a question is filed (DRIFT-2380). Not on the modeling critical path.", "detail": {"cards": "PR 345 | parked | question filed", "items": []}}
  ],
- "pulse": {"running": true, "text": "12:04 PM ET Sep 22: both landing sessions launched within eight minutes of the 11:16 AM fire (lock/forecast at 11:23, Model View at 11:24). Watchdog off; 126 duplicates retired; W277 authored on the ratifier's confirm to fix the root cause (stale bookkeeping counted as a stalled build, no duplicate check, no hold list) and queued behind the modeling chain. Once lock/forecast lands, variance, Excel export and the tester's packet claim themselves in order."},
+ "pulse": {"running": true, "text": "5:30 PM ET Sep 22: lock/forecast landed 12:16 PM; Excel checks landed 5:26 PM on the ratifier's go. Three sessions fired at 5:27 PM: land the variance report, land the Model View screen (six gaps accepted), build the Export to Excel button. When variance and the button are on main, the packet job walks the whole path and writes the tester's step-by-step. Same staleness class recurred once today on variance; the permanent fix (W277) runs after the packet by the ratifier's order."},
  "medianWindowMinutes": 40,
  "forecast": {"stale": true, "staleNote": "Forecast last run Sep 4; re-run owed on the next local pass."},
  "support": [
   {"w": "AUTO-MERGE", "phase": "running", "note": "RUL-013 (Sep 20): the every-30-minutes landing lane merges jobs marked [auto-land] that are green, non-draft and design-matched. It cannot merge a colliding PR; a landing window handles that. Say B to turn it off."},
   {"w": "WATCHDOG", "phase": "off", "note": "Schedule switched off 11:15 AM ET Sep 22 (RUL-014, RUL-015). W277 (gated behind the tester's packet) builds the fix and the dry-run proof; the relay proposes the switch-on separately."},
-  {"w": "RULINGS", "phase": "current", "note": "RUL-013 folded into RULINGS.md; RUL-014 and RUL-015 recorded 11:14 AM ET Sep 22."}
+  {"w": "RULINGS", "phase": "current", "note": "RUL-013 folded into RULINGS.md; RUL-014 and RUL-015 recorded 11:14 AM ET Sep 22. Six Model View gaps accepted 5:26 PM ET."}
  ],
- "plane": {"cycle": "not retrieved this pass", "dates": "", "counts": {"done": 0, "inProgress": 0, "todo": 0}, "note": "Board flips owed: W250-W256 outcomes, W275/W276/W277 cards, twenty watchdog repair claims. Needs a Plane pass.", "inProgress": ["W275", "W276"], "todo": ["W254", "W255", "W256", "W277"]},
+ "plane": {"cycle": "not retrieved this pass", "dates": "", "counts": {"done": 0, "inProgress": 0, "todo": 0}, "note": "Board flips owed: W250-W256 outcomes, W275-W280 cards, twenty watchdog repair claims. Needs a Plane pass.", "inProgress": ["W278", "W279", "W280"], "todo": ["W256", "W277"]},
  "reports": {"latest": "reports/2026-09-08.md", "plan": "reports/PLAN-2026-09-09.md", "note": "Pass record in STELL-Finance RELAY-LOG-2026-09-22.md."},
- "plannedWindows": ["W275", "W276", "W254", "W255", "W256", "W277"]
+ "plannedWindows": ["W278", "W279", "W280", "W256", "W277"]
 }
