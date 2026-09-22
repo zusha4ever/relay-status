@@ -1,22 +1,22 @@
 {
- "updatedAt": "2026-09-22T01:58:00Z",
- "updatedBy": "relay (chat, remote)",
- "train": {"landed": 144, "total": 210},
+ "updatedAt": "2026-09-22T15:18:00Z",
+ "updatedBy": "relay (chat, local)",
+ "train": {"landed": 151, "total": 212},
  "prs": [
-  {"n": 334, "w": "W249", "name": "Drivers-matrix piece: last red check cleared, then lands itself", "state": "open", "ci": "red", "moved": "2026-09-20T18:29:50Z", "what": "W247 finished it Sep 20 2:29 PM ET with seven of eight checks green; the last red is a record-keeping check about an older job's edited brief. W249, fired Sep 21 9:57 PM ET, clears it and marks the piece to land on its own.", "detail": {"cards": "PR 334 | 7 of 8 green | W249 clears the last one", "items": []}},
-  {"n": 337, "w": "W248", "name": "Hourly queue watchdog: pings the ratifier, writes repair jobs automatically", "state": "open", "ci": "green", "moved": "2026-09-20T18:37:51Z", "what": "Finished Sep 20 2:37 PM ET, all checks green, but left as a draft so the landing lane skipped it. Released by the relay Sep 21 9:56 PM ET; the lane merges it within 30 minutes. Its one open proof is a live test notice that can only run after it merges.", "detail": {"cards": "PR 337 | green, released | lane merges next tick", "items": []}},
-  {"n": 338, "w": "W243", "name": "Confirm screen's record: two review passes, skill table, copy table", "state": "open", "ci": "pending", "moved": "2026-09-22T01:23:24Z", "what": "A builder session picked this job up again tonight at 9:01 PM ET because its own record file never existed. Working on PR 329's branch.", "detail": {"cards": "PR 338 | live tonight | record only", "items": []}},
-  {"n": 333, "w": "W246", "name": "Every job's record lists the skills it used, checked automatically", "state": "open", "ci": "red", "moved": "2026-09-18T06:30:01Z", "what": "Finished. Fails only because its check needs the matrix piece's record on main first. Marked to land itself once a fresh run passes after PR 334 lands.", "detail": {"cards": "PR 333 | waits on PR 334 | lands itself", "items": []}},
-  {"n": 325, "w": "W235", "name": "Cost logic learned from ledger history", "state": "open", "ci": "green", "moved": "2026-09-19T06:25:45Z", "what": "Built and green. HELD by the ratifier's Sep 17 ruling: it lands inside the Drivers-matrix piece.", "detail": {"cards": "PR 325 | green, held | lands via PR 334", "items": []}}
+  {"n": 348, "w": "W253", "name": "Budget lock and rolling forecast on compiled models", "state": "open", "ci": "green", "moved": "2026-09-22T07:32:00Z", "what": "Finished 3:45 AM ET, all eight checks green, marked to land itself. Two later merges moved main under it, so it collides and the landing lane cannot merge it. W275 (fired 11:16 AM ET) rebases the finished branch and lets it merge. Variance, Excel export and the tester's packet all wait on this.", "detail": {"cards": "PR 348 | green, colliding | W275 lands it", "items": []}},
+  {"n": 349, "w": "W241", "name": "Model View screen: the eleven-tab grid wearing STELL", "state": "open", "ci": "red", "moved": "2026-09-22T06:13:00Z", "what": "Built and proven on real data (editable driver cells, three lenses, period toggle, tenant isolation). Red only on a bookkeeping step: the generated job ledger went stale when main moved. W276 (fired 11:16 AM ET, parallel) refreshes it and sends the ratifier a notice naming six design gaps for his go.", "detail": {"cards": "PR 349 | red on bookkeeping only | W276 refreshes", "items": []}},
+  {"n": 345, "w": "W252", "name": "Marketing channels landing", "state": "open", "ci": "pending", "moved": "2026-09-22T08:45:00Z", "what": "Parked: the original remit was already superseded on main; a question is filed (DRIFT-2380). Not on the modeling critical path.", "detail": {"cards": "PR 345 | parked | question filed", "items": []}},
+  {"n": 336, "w": "W247", "name": "Drivers matrix piece", "state": "open", "ci": "unknown", "moved": "2026-09-20T18:29:00Z", "what": "Draft, open since Sep 20. Its content landed by another route per W270's record; this PR is now record-only. Closure owed on a later pass.", "detail": {"cards": "PR 336 | record-only | close later", "items": []}}
  ],
- "pulse": {"running": true, "text": "9:58 PM ET Sep 21: still nothing merged since Sep 16. Both Sep 20 jobs finished within minutes of your ruling and stopped at 'say go' before it reached them. Tonight the watchdog was released to the landing lane (merges within the half hour) and a job was fired to clear the last red check on the Drivers-matrix piece and land it. A builder session is live on the confirm-screen record."},
+ "pulse": {"running": true, "text": "11:18 AM ET Sep 22: seven pieces landed overnight (compensation schedules, statements lens first task, cost-rule choice in the Drivers matrix, history-derived cost logic, tenant isolation, skill-table gate, watchdog). The night queue then stalled: the lock/forecast job went green but collided with later merges and nothing catches that. The watchdog looped, writing 146 duplicate repair briefs in twelve hours. This pass: watchdog schedule off, 126 duplicates retired, two landing windows fired at 11:16 AM ET, rulings recorded."},
  "medianWindowMinutes": 40,
  "forecast": {"stale": true, "staleNote": "Forecast last run Sep 4; re-run owed on the next local pass."},
  "support": [
-  {"w": "AUTO-MERGE", "phase": "running", "note": "RUL-013 (Sep 20): the every-30-minutes landing lane merges jobs marked [auto-land] that are green, non-draft and design-matched. Say B to turn it off."},
-  {"w": "RULINGS", "phase": "owed", "note": "RUL-013 staged beside RULINGS.md; five earlier decisions still in chat only."}
+  {"w": "AUTO-MERGE", "phase": "running", "note": "RUL-013 (Sep 20): the every-30-minutes landing lane merges jobs marked [auto-land] that are green, non-draft and design-matched. It cannot merge a colliding PR; a landing window handles that. Say B to turn it off."},
+  {"w": "WATCHDOG", "phase": "off", "note": "Schedule switched off 11:15 AM ET Sep 22 (RUL-014, RUL-015). Returns after its duplicate check and hold-list read are built and proven; that window is proposed separately."},
+  {"w": "RULINGS", "phase": "current", "note": "RUL-013 folded into RULINGS.md; RUL-014 and RUL-015 recorded 11:14 AM ET Sep 22."}
  ],
- "plane": {"cycle": "not retrieved this pass", "dates": "", "counts": {"done": 0, "inProgress": 0, "todo": 0}, "note": "Cards W247, W248, W249 exist (In Progress, Urgent). Older backlog of flips needs a Mac pass.", "inProgress": ["W247", "W248", "W249", "W243"], "todo": []},
- "reports": {"latest": "reports/2026-09-08.md", "plan": "reports/PLAN-2026-09-09.md", "note": "Idle audits in STELL-Finance RELAY-LOG-2026-09-20.md and RELAY-LOG-2026-09-21.md."},
- "plannedWindows": ["W249", "W241"]
+ "plane": {"cycle": "not retrieved this pass", "dates": "", "counts": {"done": 0, "inProgress": 0, "todo": 0}, "note": "Board flips owed: W250-W256 outcomes, W275/W276 cards, twenty watchdog repair claims. Needs a Plane pass.", "inProgress": ["W275", "W276"], "todo": ["W254", "W255", "W256"]},
+ "reports": {"latest": "reports/2026-09-08.md", "plan": "reports/PLAN-2026-09-09.md", "note": "Pass record in STELL-Finance RELAY-LOG-2026-09-22.md."},
+ "plannedWindows": ["W275", "W276", "W254", "W255", "W256"]
 }
